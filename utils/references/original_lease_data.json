@@ -1,0 +1,198 @@
+{
+    "lease_summary": {
+        "key_facts": {
+            "tenant_name": {
+                "value": "",
+                "citation": ""
+            },
+            "landlord_name": {
+                "value": "",
+                "citation": ""
+            },
+            "property_address": {
+                "street": {
+                    "value": "",
+                    "citation": ""
+                },
+                "city": {
+                    "value": "",
+                    "citation": ""
+                },
+                "state": {
+                    "value": "",
+                    "citation": ""
+                },
+                "zip": {
+                    "value": "",
+                    "citation": ""
+                },
+                "suite": {
+                    "value": "",
+                    "citation": ""
+                }
+            },
+            "total_square_footage": {
+                "value": null,
+                "citation": ""
+            },
+            "lease_commencement_date": {
+                "value": "",
+                "citation": ""
+            },
+            "lease_expiration_date": {
+                "value": "",
+                "citation": ""
+            },
+            "proportionate_share_percentage": {
+                "value": null,
+                "citation": ""
+            },
+            "base_year_for_opex": {
+                "value": null,
+                "citation": ""
+            },
+            "security_deposit_amount": {
+                "value": null,
+                "citation": ""
+            }
+        },
+        "rent_schedule": [
+            {
+                "period_description": {
+                    "value": "",
+                    "citation": ""
+                },
+                "monthly_rent": {
+                    "value": null,
+                    "citation": ""
+                },
+                "annual_rent": {
+                    "value": null,
+                    "citation": ""
+                },
+                "notes": {
+                    "value": "",
+                    "citation": ""
+                }
+            }
+        ],
+        "key_clauses": {
+            "alterations": {
+                "value": "",
+                "citation": ""
+            },
+            "assignment_or_sublease": {
+                "value": "",
+                "citation": ""
+            },
+            "events_of_default": {
+                "value": "",
+                "citation": ""
+            },
+            "holdover": {
+                "value": "",
+                "citation": ""
+            },
+            "insurance_requirements": {
+                "coverage_details": {
+                    "value": "",
+                    "citation": ""
+                },
+                "additional_insured_status": {
+                    "value": "",
+                    "citation": ""
+                }
+            },
+            "late_fee": {
+                "rate": {
+                    "value": null,
+                    "citation": ""
+                },
+                "grace_period_days": {
+                    "value": null,
+                    "citation": ""
+                }
+            },
+            "termination_option": {
+                "details": {
+                    "value": "",
+                    "citation": ""
+                },
+                "paybacks": {
+                    "value": "",
+                    "citation": ""
+                }
+            },
+            "tenant_improvements": {
+                "allowance_amount": {
+                    "value": null,
+                    "citation": ""
+                },
+                "landlord_work_details": {
+                    "value": "",
+                    "citation": ""
+                }
+            },
+            "maintenance_responsibilities": {
+                "tenant": {
+                    "value": "",
+                    "citation": ""
+                },
+                "landlord": {
+                    "value": "",
+                    "citation": ""
+                }
+            },
+            "renewal_rights": {
+                "number_of_renewals": {
+                    "value": null,
+                    "citation": ""
+                },
+                "length_of_each_renewal_months": {
+                    "value": null,
+                    "citation": ""
+                },
+                "notice_window_days": {
+                    "value": null,
+                    "citation": ""
+                }
+            },
+            "taxes": {
+                "base_year": {
+                    "value": null,
+                    "citation": ""
+                },
+                "pass_through_details": {
+                    "value": "",
+                    "citation": ""
+                },
+                "audit_rights": {
+                    "value": false,
+                    "citation": ""
+                }
+            },
+            "operating_expenses_cam": {
+                "gross_up_percentage": {
+                    "value": null,
+                    "citation": ""
+                },
+                "controllable_cost_cap_percentage": {
+                    "value": null,
+                    "citation": ""
+                },
+                "audit_rights": {
+                    "value": false,
+                    "citation": ""
+                }
+            },
+            "right_of_first_refusal": {
+                "value": false,
+                "citation": ""
+            },
+            "right_of_first_offer": {
+                "value": false,
+                "citation": ""
+            }
+        }
+    }
+}

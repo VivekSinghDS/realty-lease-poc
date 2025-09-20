@@ -1,0 +1,53 @@
+{
+    "fact_sheet": {
+        "key_facts": {
+            "tenant_name": {
+                "value": "string",
+                "citation": "string"
+            }
+        },
+        "rent_schedule": [
+            {
+                "period_description": {
+                    "value": "string",
+                    "citation": "string"
+                }
+            }
+        ],
+        "key_clauses": {
+            "alterations": {
+                "value": "string",
+                "citation": "string"
+            }
+        }
+    },
+    "money_map": [
+        {
+            "clause_name": "string",
+            "explanation": "string",
+            "citation": "string"
+        }
+    ],
+    "obligations_list": {
+        "tenant_obligations": [
+            {
+                "description": "string",
+                "citation": "string"
+            }
+        ],
+        "landlord_obligations": [
+            {
+                "description": "string",
+                "citation": "string"
+            }
+        ]
+    },
+    "audit_and_exceptions": [
+        {
+            "flag_type": "string",
+            "description": "string",
+            "suggested_next_step": "string",
+            "citation": "string"
+        }
+    ]
+}
