@@ -4,12 +4,13 @@ import os
 from http import HTTPStatus
 from fastapi import (
     APIRouter,
+    BackgroundTasks,
     File,
     UploadFile,
 )
 from dotenv import load_dotenv
 from fastapi.responses import JSONResponse
-from utils.helpers import pdf_to_base64_images
+from utils.helpers import save_response_to_file
 from utils.logs import logger
 from utils.helpers import get_llm_adapter
 from utils.prompts import LEASE_ANALYSIS
@@ -18,16 +19,17 @@ router = APIRouter()
 
 llm_adapter = get_llm_adapter()
 
-@router.post("/lease-summary")
+@router.post("")
 async def get_minimum_lease_terms(
-    assets: UploadFile | None = File(None)
+    background_task: BackgroundTasks,
+    asset: UploadFile | None = File(None),
 ):
     try:
-        if not assets:
+        if not asset:
             return JSONResponse(
                 content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
             )
-        data = await assets.read()
+        data = await asset.read()
         base64_string = base64.b64encode(data).decode("utf-8")
         
         with open("./utils/references/original_lease_data.json") as file:
@@ -53,8 +55,11 @@ async def get_minimum_lease_terms(
         print(payload[0]['content'])
         response = llm_adapter.get_non_streaming_response(payload)
         
-        # with open('sample.txt', 'w') as file:
-        #     file.write(response)
+        background_task.add_task(
+            save_response_to_file, 
+            response.output_text, 
+            str(asset.filename)
+        )
         return response.output_text
 
         
