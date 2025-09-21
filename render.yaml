@@ -1,0 +1,33 @@
+specVersion: "1"
+services:
+  - type: web
+    name: realty-lease-poc
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    autoDeploy: true
+    healthCheckPath: /health
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: LLM
+        value: '{"provider":"openai"}'
+      - key: ENVIRONMENT
+        value: production
+
+  - type: web
+    name: realty-lease-poc-python
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    autoDeploy: true
+    healthCheckPath: /health
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: LLM
+        value: '{"provider":"openai"}'
+      - key: ENVIRONMENT
+        value: production
