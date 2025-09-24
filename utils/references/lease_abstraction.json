@@ -3,21 +3,24 @@
         "key_facts": {
             "tenant_name": {
                 "value": "string",
-                "citation": "string"
+                "citation": "string",
+                "amendments": [["string"]]
             }
         },
         "rent_schedule": [
             {
                 "period_description": {
                     "value": "string",
-                    "citation": "string"
+                    "citation": "string",
+                    "amendments": [["string"]]
                 }
             }
         ],
         "key_clauses": {
             "alterations": {
                 "value": "string",
-                "citation": "string"
+                "citation": "string",
+                "amendments": [["string"]]
             }
         }
     },
@@ -25,20 +28,23 @@
         {
             "clause_name": "string",
             "explanation": "string",
-            "citation": "string"
+            "citation": "string",
+            "amendments": [["string"]]
         }
     ],
     "obligations_list": {
         "tenant_obligations": [
             {
                 "description": "string",
-                "citation": "string"
+                "citation": "string",
+                "amendments": [["string"]]
             }
         ],
         "landlord_obligations": [
             {
                 "description": "string",
-                "citation": "string"
+                "citation": "string",
+                "amendments": [["string"]]
             }
         ]
     },
@@ -47,7 +53,8 @@
             "flag_type": "string",
             "description": "string",
             "suggested_next_step": "string",
-            "citation": "string"
+            "citation": "string",
+            "amendments": [["string"]]
         }
     ]
 }

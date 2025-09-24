@@ -1,4 +1,5 @@
 import base64
+import re
 import json 
 import os 
 from http import HTTPStatus
@@ -12,6 +13,7 @@ from fastapi.responses import JSONResponse
 from utils.logs import logger
 from utils.helpers import get_llm_adapter
 from utils.prompts import LEASE_ANALYSIS
+from utils.prompts import AMENDMENT_ANALYSIS
 load_dotenv()
 router = APIRouter()
 
@@ -26,19 +28,45 @@ async def get_lease_abstraction(
             return JSONResponse(
                 content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
             )
+        # Assign fileid from the uploaded file's name and prepare target directory
+        original_filename = assets.filename or "uploaded_file"
+        safe_fileid = "".join([c if c.isalnum() or c in ["-", "_", "."] else "_" for c in original_filename])
+        fileid = safe_fileid
+        target_dir = os.path.join(".", fileid)
+
+        # If directory already exists, return specified message along with existing original_lease.json
+        if os.path.isdir(target_dir):
+            existing_path = os.path.join(target_dir, "original_lease.json")
+            existing_payload = None
+            if os.path.isfile(existing_path):
+                try:
+                    with open(existing_path, "r", encoding="utf-8") as f:
+                        existing_text = f.read()
+                    try:
+                        existing_payload = json.loads(existing_text)
+                    except Exception:
+                        existing_payload = existing_text
+                except Exception:
+                    existing_payload = None
+            return JSONResponse(content={
+                "message": "original lease abstraction already provided",
+                "fileid": fileid,
+                "original_lease": existing_payload
+            }, status_code=HTTPStatus.OK.value)
+
         data = await assets.read()
         base64_string = base64.b64encode(data).decode("utf-8")
         with open("./utils/references/lease_abstraction.json") as file:
             original_lease_data_template = json.load(file)
             
         payload = [
-            {"role": "system", "content": LEASE_ANALYSIS['system'].format(JSON_STRUCTURE = json.dumps(original_lease_data_template))},
+            {"role": "system", "content": LEASE_ANALYSIS['system'].format(JSON_STRUCTURE = json.dumps(original_lease_data_template), DOCUMENT_NAME = original_filename)},
             {
                 "role": "user", "content": 
                 [
                     {
                         "type": "input_file", 
-                        "filename": "draconomicon.pdf",
+                        "filename": original_filename,
                         "file_data": f"data:application/pdf;base64,{base64_string}"
                     },
                     {
@@ -50,10 +78,20 @@ async def get_lease_abstraction(
         ]
         print(payload[0]['content'])
         response = llm_adapter.get_non_streaming_response(payload)
-        
-        # with open('sample.txt', 'w') as file:
-        #     file.write(response)
-        return response.output_text
+
+        # Create directory named as fileid and write results to original_lease.json
+        os.makedirs(target_dir, exist_ok=False)
+        result_text = response.output_text
+        output_path = os.path.join(target_dir, "original_lease.json")
+        try:
+            parsed_json = json.loads(result_text)
+            with open(output_path, "w", encoding="utf-8") as out_file:
+                json.dump(parsed_json, out_file, ensure_ascii=False, indent=2)
+        except Exception:
+            with open(output_path, "w", encoding="utf-8") as out_file:
+                out_file.write(result_text)
+
+        return result_text
 
         
     except Exception as error:
@@ -65,3 +103,140 @@ async def get_lease_abstraction(
             )
     
 
+
+@router.post("/amendment-analysis")
+async def amendment_analysis(
+    amendment: UploadFile | None = File(None)
+):
+    try:
+        # step 1: accept multipart pdf named 'amendment'
+        if not amendment:
+            return JSONResponse(
+                content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
+            )
+
+        # step 2: compare amendment filename to existing fileid directories
+        original_filename = amendment.filename or "uploaded_file.pdf"
+        base_name = os.path.splitext(os.path.basename(original_filename))[0]
+
+        # First try name-only matching: extract leading alphabetic name (e.g., "Bayer")
+        name_match = re.match(r"\s*([A-Za-z]+)", base_name or "")
+        candidate_dir = None
+        candidate_fileid = None
+        if name_match:
+            name_key = name_match.group(1).lower()
+            try:
+                dirs = [d for d in os.listdir(".") if os.path.isdir(os.path.join(".", d))]
+                # Prefer directories starting with the name; fallback to containing the name
+                starts_with = [d for d in dirs if d.lower().startswith(name_key)]
+                contains = [d for d in dirs if (name_key in d.lower())]
+                chosen = starts_with[0] if starts_with else (contains[0] if contains else None)
+                if chosen:
+                    candidate_dir = os.path.join(".", chosen)
+                    candidate_fileid = chosen
+            except Exception:
+                pass
+
+        # If no name-only match , return the no-matches-found response
+        if not candidate_dir:
+            return JSONResponse(
+                content={"message": "Please provide original lease first. Original abstraction unavailable."},
+                status_code=HTTPStatus.NOT_FOUND.value,
+            )
+
+        # step 3: if directory somehow missing, return specified response
+        if not os.path.isdir(candidate_dir):
+            return JSONResponse(
+                content={"message": "Please provide original lease first. Original abstraction unavailable."},
+                status_code=HTTPStatus.NOT_FOUND.value,
+            )
+
+        # Match exists: load latest original lease JSON (original_lease.json or original_lease_<x>.json)
+        pattern = re.compile(r"^(?:original|orignal)_lease(?:_(\d+))?\.json$", re.IGNORECASE)
+        versions = []
+        try:
+            for name in os.listdir(candidate_dir):
+                match = pattern.match(name)
+                if match:
+                    version = int(match.group(1)) if match.group(1) else 0
+                    versions.append((version, name))
+        except Exception:
+            versions = []
+
+        if not versions:
+            return JSONResponse(
+                content={
+                    "message": "Original abstraction files not found in matched directory.",
+                    "fileid": candidate_fileid,
+                },
+                status_code=HTTPStatus.NOT_FOUND.value,
+            )
+
+        versions.sort(key=lambda x: x[0])
+        latest_version, latest_file = versions[-1]
+        latest_path = os.path.join(candidate_dir, latest_file)
+
+        input_json = None
+        try:
+            with open(latest_path, "r", encoding="utf-8") as f:
+                raw_text = f.read()
+            try:
+                input_json = json.loads(raw_text)
+            except Exception:
+                input_json = raw_text
+        except Exception:
+            input_json = None
+        # Read amendment file and create base64 for the payload
+        data = await amendment.read()
+        base64_string = base64.b64encode(data).decode("utf-8")
+        amendment_filename = amendment.filename or "amendment.pdf"
+
+        # Load schema for amendment analysis as JSON_STRUCTURE
+        with open("./utils/references/lease_abstraction.json") as file:
+            original_lease_data_template = json.load(file)
+
+        payload = [
+            {"role": "system", "content": AMENDMENT_ANALYSIS['system'].format(INPUT_JSON = json.dumps(input_json), JSON_STRUCTURE = json.dumps(original_lease_data_template), DOCUMENT_NAME = amendment_filename)},
+            {
+                "role": "user", "content": 
+                [
+                    {
+                        "type": "input_file", 
+                        "filename": amendment_filename,
+                        "file_data": f"data:application/pdf;base64,{base64_string}"
+                    },
+                    {
+                        "type": "input_text", 
+                        "text": AMENDMENT_ANALYSIS['user']
+                    }
+                ]
+            }
+        ]
+        print(payload[0]['content'])
+        response = llm_adapter.get_non_streaming_response(payload)
+
+        # Store the response as the next version: original_lease_<x>.json
+        try:
+            next_version = (max(v for v, _ in versions) + 1) if versions else 0
+            new_output_path = os.path.join(candidate_dir, f"original_lease_{next_version}.json")
+            result_text = response.output_text
+            try:
+                parsed_json = json.loads(result_text)
+                with open(new_output_path, "w", encoding="utf-8") as out_file:
+                    json.dump(parsed_json, out_file, ensure_ascii=False, indent=2)
+            except Exception:
+                with open(new_output_path, "w", encoding="utf-8") as out_file:
+                    out_file.write(result_text)
+        except Exception as write_error:
+            logger.error(write_error)
+
+        # Return the model output directly, consistent with get_lease_abstraction
+        return response.output_text
+    except Exception as error:
+        logger.error(error)
+        return JSONResponse(
+            content={
+                "message": "Something went wrong, please contact support@stealth.com"
+            },
+            status_code=HTTPStatus.INTERNAL_SERVER_ERROR.value,
+        )

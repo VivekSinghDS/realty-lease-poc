@@ -1,0 +1,626 @@
+{
+  "fact_sheet": {
+    "key_facts": {
+      "lease_identification": {
+        "value": "Lease ABC1",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.1",
+        "amendments": []
+      },
+      "landlord_name": {
+        "value": "PH Office 2, LLC",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.1; Bayer 2015-10-05 Lease (1).pdf p.2; Bayer 2015-10-05 Lease (1).pdf p.25",
+        "amendments": []
+      },
+      "tenant_name": {
+        "value": "Bayer HealthCare LLC",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.1; Bayer 2015-10-05 Lease (1).pdf p.2; Bayer 2015-10-05 Lease (1).pdf p.4",
+        "amendments": []
+      },
+      "tenant_addresses_and_contacts": {
+        "value": "Pre-commencement: 210 S.E. 34th St, Ste 20, Bentonville, AR 72712, Attn: Kyden Reeh. Post-commencement: 510 W. J.B. Hunt Dr., Suite 620 (handwritten), Rogers, AR 72758, Attn: Kyden Reeh. Corporate: 100 Bayer Blvd, Whippany, NJ 07981 (Attn: Ken Accardi; Law & Patents).",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.2",
+        "amendments": []
+      },
+      "landlord_address_and_contact": {
+        "value": "3333 Pinnacle Hills Pkwy, Suite 602, Rogers, AR 72758. Attn: Accounts Receivable. Landlord contact: Tom Allen, (479) 845-3500.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.2",
+        "amendments": []
+      },
+      "premises_location_and_floor": {
+        "value": "6th floor premises in building at 5100 W. J.B. Hunt Drive, Rogers, Arkansas 72758.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.3",
+        "amendments": []
+      },
+      "premises_size": {
+        "value": "Approx. 14,642 usable SF; 17,090 rentable SF (to be measured per ANSI/BOMA Z65.1-1996 and confirmed via Exhibit D).",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.3; Bayer 2015-10-05 Lease (1).pdf p.34",
+        "amendments": []
+      },
+      "building_size_and_share": {
+        "value": "Building RSF 226,468. Tenant Proportionate Share 7.5% (17,090/226,468; subject to final Exhibit D).",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.3; Bayer 2015-10-05 Lease (1).pdf p.34",
+        "amendments": []
+      },
+      "lease_term_primary": {
+        "value": "Primary Term ends last day of the 77th full month.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.3; Bayer 2015-10-05 Lease (1).pdf p.5",
+        "amendments": []
+      },
+      "lease_extension_to_90_months": {
+        "value": "Tenant may extend Primary Term to 90 months by notice after Commencement.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.3; Bayer 2015-10-05 Lease (1).pdf p.5",
+        "amendments": [
+          [
+            "Notice window discrepancy: 14 days (Basic Lease Info) vs 21 days (Section 1.A). See p.3 and p.5."
+          ]
+        ]
+      },
+      "renewal_options": {
+        "value": "Two additional Renewal Terms of 5 years each at Fair Market Value; notice 365 to 180 days prior to term end; appraisal tie-breaker mechanism; each party pays own appraiser; split cost of third.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.5-6",
+        "amendments": []
+      },
+      "commencement_date_definition": {
+        "value": "Commences after (i) substantial completion of Tenant Improvements and City 'Final Inspection'; (ii) Landlord completion notice; (iii) Tenant begins install within 2 days and has 8 business days to install FF&E; (iv) Tenant applies for CO and business license.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.3",
+        "amendments": []
+      },
+      "rent_commencement": {
+        "value": "Base Rent starts first day of the 6th full month of Primary Term; if Primary Term extended to 90 months, Base Rent starts first day of the 7th full month.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.3-4",
+        "amendments": []
+      },
+      "base_rent_structure": {
+        "value": "Year 1 rate $24.50/RSF full service gross (includes OpEx, utilities, insurance, taxes), net of janitorial. Annual 2% increases. Detailed rent schedule below.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.3-4",
+        "amendments": []
+      },
+      "security_deposit": {
+        "value": "Waived.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.3-4",
+        "amendments": []
+      },
+      "late_charges": {
+        "value": "2% late charge if Base Rent not paid by the 10th of the month; Landlord may send up to two payment notices per calendar year if rent not received by the 5th. Separate provision: 5% late charge if any payment remains unpaid 5 business days after Landlord’s written notice.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.4; Bayer 2015-10-05 Lease (1).pdf p.17",
+        "amendments": []
+      },
+      "ti_allowance": {
+        "value": "Allowance $72.22/RSF (total $1,234,239.80) for 77-month term; if extended to 90 months, $84.42/RSF (total $1,442,737.80). Certain soft costs excluded (e.g., telecom, cabling, security, FF&E, moving; with specified exceptions).",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.6-7 (section D); Bayer 2015-10-05 Lease (1).pdf p.2 (Basic Lease Info summary)",
+        "amendments": []
+      },
+      "construction_and_gc_terms": {
+        "value": "If Tenant provides finish drawings, Core to develop construction drawings at $3.00/useable SF. Crossland Construction as GC: $36,000 general conditions + 6% fee (4% OH/2% profit); competitively bid ≥3 subs/trade; Tenant can review bids.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.6-7",
+        "amendments": []
+      },
+      "early_termination_right": {
+        "value": "Tenant option to terminate effective at end of 51st month with ≥6 months notice; Tenant must pay Termination Fee = unamortized TI Allowance + broker commission amortized at 7% annual interest, payable within 60 days after Landlord’s fee notice (which Landlord must deliver within 30 days after Tenant’s notice).",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.7",
+        "amendments": []
+      },
+      "operating_expenses": {
+        "value": "Base Year = 2016 (grossed up to 95% occupancy). Tenant pays increases over Base Year on pro-rata basis. Controllable OpEx (excl. taxes and insurance) capped at 5% annual increases. Extensive list of exclusions.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.4-6",
+        "amendments": []
+      },
+      "taxes": {
+        "value": "Landlord pays property taxes; increases over Base Year 2016 passed through pro-rata. Tenant may inspect books within 180 days of invoice; waives audit rights thereafter.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.4",
+        "amendments": []
+      },
+      "op_ex_statements_and_audit": {
+        "value": "Annual OpEx statement issued within 90 days after calendar year-end; Tenant may audit within 6 months of receipt; if overstatement >5%, Landlord reimburses reasonable audit cost.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.5-6",
+        "amendments": []
+      },
+      "services_and_hours": {
+        "value": "HVAC 7:00 a.m.–6:00 p.m. Mon–Fri; 8:00 a.m.–12:00 p.m. Sat. After-hours HVAC override in 1-hour increments at no charge. Water, standard electrical for lights, 24/7 elevator service. Access 24/7 via key cards; replacement cards $25. Janitorial available at Tenant cost if requested; otherwise excluded from rent.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.9-10; Bayer 2015-10-05 Lease (1).pdf p.3",
+        "amendments": []
+      },
+      "maintenance_responsibilities": {
+        "value": "Landlord (at its expense, not in OpEx) maintains/repairs roof, foundation, exterior walls, interior structural walls/components, windows, common areas, Building Systems. Tenant maintains interior of Premises; Tenant’s appliances; repairs damage caused by Tenant.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.7",
+        "amendments": []
+      },
+      "alterations_summary": {
+        "value": "Tenant alterations require Landlord consent (not unreasonably withheld/conditioned/delayed); Tenant may use Landlord-approved contractors or its own (subject to approval); no Landlord overhead/supervision fee; roof access/use prohibited.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.7-8",
+        "amendments": []
+      },
+      "signage_rights": {
+        "value": "Tenant may install signage per Exhibit E and building standards at Tenant’s cost; must remove/restore at end. Directory listing provided by Landlord.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.8; Bayer 2015-10-05 Lease (1).pdf p.35",
+        "amendments": []
+      },
+      "insurance_requirements": {
+        "value": "Tenant: CGL incl. personal injury $4,000,000 per occurrence and property damage $2,000,000; workers’ comp; property insurance for Tenant Improvements at replacement cost; Landlord named as additional insured; 30 days’ cancellation notice. Landlord: building replacement cost (fire/EC/VMM, etc.).",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.10",
+        "amendments": []
+      },
+      "casualty": {
+        "value": "If repairs can’t substantially complete in 120 days (150 incl. Force Majeure/Tenant delays) Landlord/Tenant may terminate per terms; rent abates to extent untenantable; Tenant may terminate if ≥30% of Premises RSF damaged.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.10-11",
+        "amendments": []
+      },
+      "assignment_and_subletting": {
+        "value": "Affiliate/successor assignment/sublease allowed (net worth ≥$100,000,000). Other subleases/assignments require Landlord consent (not unreasonably withheld/delayed); deemed consent if no response in 10 business days. Tenant shares 50% of sublease profit over Base Rent with Landlord.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.13-14",
+        "amendments": []
+      },
+      "parking": {
+        "value": "4.5 unreserved spaces per 1,000 RSF at no charge. Landlord/affiliates may have 6 reserved spaces; if others receive reserved, Tenant gets equivalent ratio.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.14",
+        "amendments": []
+      },
+      "holdover": {
+        "value": "150% of preceding rent, plus OpEx and taxes, during holdover; additional actual damages if holdover >3 months.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.14-15",
+        "amendments": []
+      },
+      "right_of_first_refusal": {
+        "value": "First right of refusal on adjacent 6th floor space; Tenant has 10 business days to elect; rent mirrors then-current lease rate; TI allowance prorated (example provided); target move-in ≤120 days.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.23",
+        "amendments": []
+      },
+      "landlord_relocation": {
+        "value": "No relocation right; Landlord shall not relocate Tenant during Term or renewals.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.24",
+        "amendments": []
+      },
+      "landlord_default_and_setoff": {
+        "value": "After notice and cure period, Tenant may cure certain Landlord defaults (emergencies; maintenance/repair) and offset reasonable costs against Base Rent/Additional Rent until reimbursed.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.24",
+        "amendments": []
+      },
+      "hazardous_materials": {
+        "value": "Tenant restrictions on storage/use; limited office/kitchen materials allowed; spill notice and cleanup obligations; Tenant indemnity if caused by Tenant; Landlord warrants (to its knowledge) property free of hazardous materials and indemnifies if not caused by Tenant.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.19-20",
+        "amendments": []
+      },
+      "rules_and_regulations_reference": {
+        "value": "Exhibit C applies; smoking prohibited within 25 feet; various operational rules.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.31-33",
+        "amendments": []
+      },
+      "snda_and_financing": {
+        "value": "Lease is subject/subordinate to mortgages; Landlord to use commercially reasonable efforts to obtain commercially reasonable SNDA; building initially has construction loan; permanent financing anticipated post-construction.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.18",
+        "amendments": []
+      },
+      "execution_dates": {
+        "value": "Tenant executed September 30, 2015; Landlord executed October 5, 2015.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.25",
+        "amendments": [
+          [
+            "Basic Lease Info shows Lease Date edited to October 5, 2015. See p.2."
+          ]
+        ]
+      }
+    },
+    "rent_schedule": [
+      {
+        "period_description": {
+          "value": "Months 1–5: Base Rent $0.00 (free rent).",
+          "citation": "Bayer 2015-10-05 Lease (1).pdf p.4",
+          "amendments": []
+        }
+      },
+      {
+        "period_description": {
+          "value": "Months 6–17: $34,892.08 per month ($24.50/RSF/yr on 17,090 RSF).",
+          "citation": "Bayer 2015-10-05 Lease (1).pdf p.4",
+          "amendments": []
+        }
+      },
+      {
+        "period_description": {
+          "value": "Months 18–29: $35,589.93 per month ($24.99/RSF/yr).",
+          "citation": "Bayer 2015-10-05 Lease (1).pdf p.4",
+          "amendments": []
+        }
+      },
+      {
+        "period_description": {
+          "value": "Months 30–41: $36,302.01 per month ($25.49/RSF/yr).",
+          "citation": "Bayer 2015-10-05 Lease (1).pdf p.4",
+          "amendments": []
+        }
+      },
+      {
+        "period_description": {
+          "value": "Months 42–53: $37,028.33 per month ($26.00/RSF/yr).",
+          "citation": "Bayer 2015-10-05 Lease (1).pdf p.4",
+          "amendments": []
+        }
+      },
+      {
+        "period_description": {
+          "value": "Months 54–65: $37,768.90 per month ($26.52/RSF/yr).",
+          "citation": "Bayer 2015-10-05 Lease (1).pdf p.4",
+          "amendments": []
+        }
+      },
+      {
+        "period_description": {
+          "value": "Months 66–77: $38,523.71 per month ($27.05/RSF/yr).",
+          "citation": "Bayer 2015-10-05 Lease (1).pdf p.4",
+          "amendments": []
+        }
+      }
+    ],
+    "key_clauses": {
+      "alterations": {
+        "value": "Consent required; Tenant can use approved contractors; no Landlord overhead/supervision fee; Tenant must restore; roof access/use prohibited.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.7-8",
+        "amendments": []
+      },
+      "use": {
+        "value": "General office use and incidental lawful purposes; compliance with laws and Rules; no nuisances; no smoking inside or within 25 feet (designated area only).",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.13",
+        "amendments": []
+      },
+      "services": {
+        "value": "HVAC hours, water, electricity for lights, elevators 24/7, access control; after-hours HVAC override free; janitorial optional at Tenant cost.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.9-10",
+        "amendments": []
+      },
+      "insurance": {
+        "value": "Tenant CGL $4M per occurrence personal injury, $2M property damage; Tenant property insurance; Landlord additional insured; 30 days cancellation notice.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.10",
+        "amendments": []
+      },
+      "casualty_damage": {
+        "value": "Termination/abatement rights based on repair timing and extent of damage; Tenant termination right at ≥30% damage.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.10-11",
+        "amendments": []
+      },
+      "assignment_subletting": {
+        "value": "Affiliate/successor permitted (≥$100M NW); others with consent (deemed after 10 business days); 50% profit share to Landlord.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.13-14",
+        "amendments": []
+      },
+      "default_and_remedies": {
+        "value": "Payment default after 5 business days from notice; Landlord remedies include termination, possession, lock change with notice; additional 5% late fee after notice; prevailing party fees.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.15-18",
+        "amendments": []
+      },
+      "holdover": {
+        "value": "Month-to-month or tenancy at sufferance at 150% rent plus OpEx/taxes; additional damages if >3 months.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.14-15",
+        "amendments": []
+      },
+      "landlord_repairs": {
+        "value": "Landlord maintains structural components, windows, common areas, and Building Systems at Landlord’s expense (not OpEx).",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.7",
+        "amendments": []
+      },
+      "tenant_repairs": {
+        "value": "Tenant maintains interior and appliances; repairs Tenant-caused damage.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.7",
+        "amendments": []
+      },
+      "taxes_and_op_ex": {
+        "value": "Base Year 2016; 95% gross-up; 5% cap on controllable OpEx; detailed exclusions; audit windows and adjustment process.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.4-6",
+        "amendments": []
+      },
+      "early_termination": {
+        "value": "Option at end of 51st month; 6 months’ notice; pay unamortized TI and broker commission amortized at 7% annual interest.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.7",
+        "amendments": []
+      },
+      "rofr": {
+        "value": "Right of first refusal on adjacent 6th floor space; 10 business days to elect; TI allowance prorated; same rental rate as then-current.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.23",
+        "amendments": []
+      },
+      "relocation": {
+        "value": "No relocation right reserved by Landlord.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.24",
+        "amendments": []
+      },
+      "landlord_default_offset": {
+        "value": "Tenant may self-help in emergencies or for Landlord maintenance defaults after notice/cure and offset costs against rent until reimbursed.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.24",
+        "amendments": []
+      }
+    }
+  },
+  "money_map": [
+    {
+      "clause_name": "Base Rent Summary",
+      "explanation": "Year 1 $24.50/RSF full service gross (excludes janitorial); 2% annual escalations; free rent months 1–5; monthly amounts set for months 6–77 based on 17,090 RSF.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.3-4",
+      "amendments": []
+    },
+    {
+      "clause_name": "Rent Commencement",
+      "explanation": "Starts first day of 6th full month; if 90-month Primary Term elected, starts first day of 7th full month.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.3-4",
+      "amendments": []
+    },
+    {
+      "clause_name": "TI Allowance",
+      "explanation": "$72.22/RSF (total $1,234,239.80) for 77-month term; if 90-month Primary Term, $84.42/RSF (total $1,442,737.80). Exclusions include telecom/cabling/security/FF&E/moving (with noted exceptions).",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.6-7; Bayer 2015-10-05 Lease (1).pdf p.2",
+      "amendments": []
+    },
+    {
+      "clause_name": "Construction Drawing Cost",
+      "explanation": "If Tenant provides finish drawings, Core to produce construction drawings at $3.00 per usable SF.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.6",
+      "amendments": []
+    },
+    {
+      "clause_name": "GC Fees",
+      "explanation": "Crossland Construction GC: $36,000 general conditions + 6% fee (4% OH + 2% profit) added to subcontractor bids.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.6-7",
+      "amendments": []
+    },
+    {
+      "clause_name": "Early Termination Fee",
+      "explanation": "If Tenant terminates at month 51, pays Termination Fee = unamortized TI Allowance + broker commission, amortized at 7% annual interest; payable within 60 days after Landlord notice.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.7",
+      "amendments": []
+    },
+    {
+      "clause_name": "Late Charges",
+      "explanation": "2% if monthly Base Rent not paid by 10th; additional 5% charge if any payment remains unpaid 5 business days after Landlord’s written notice.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.4; Bayer 2015-10-05 Lease (1).pdf p.17",
+      "amendments": []
+    },
+    {
+      "clause_name": "OpEx and Tax Pass-through",
+      "explanation": "Tenant pays increases over Base Year 2016 for both property taxes and Operating Expenses (95% gross-up; 5% cap on controllables; detailed exclusions).",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.4-6",
+      "amendments": []
+    },
+    {
+      "clause_name": "Audit/Review Costs",
+      "explanation": "If OpEx overstated by >5%, Landlord reimburses Tenant’s reasonable audit cost; if understated, Tenant pays shortfall.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.6",
+      "amendments": []
+    },
+    {
+      "clause_name": "Maintenance Personnel Charge",
+      "explanation": "$50/hour (1-hour minimum) when Landlord’s maintenance personnel perform work that is Tenant’s responsibility.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.7",
+      "amendments": []
+    },
+    {
+      "clause_name": "Access Cards",
+      "explanation": "Initial access cards at no charge; replacement cards $25 each.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.9",
+      "amendments": []
+    },
+    {
+      "clause_name": "After-hours HVAC",
+      "explanation": "Tenant may override for 1-hour intervals at no additional charge.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.9",
+      "amendments": []
+    },
+    {
+      "clause_name": "Sublease Profit Sharing",
+      "explanation": "Tenant remits 50% of rent received from subtenant in excess of Base Rent to Landlord within 30 days of receipt.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.13",
+      "amendments": []
+    },
+    {
+      "clause_name": "Parking",
+      "explanation": "4.5 spaces/1,000 RSF included at no charge (unreserved).",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.14",
+      "amendments": []
+    },
+    {
+      "clause_name": "Holdover Rent",
+      "explanation": "150% of prior rent plus OpEx/taxes; additional actual damages if holdover exceeds 3 months.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.14-15",
+      "amendments": []
+    },
+    {
+      "clause_name": "Appraisal Costs for Renewal FMV",
+      "explanation": "Each party pays own appraiser; parties split cost of third appraiser if used.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.5-6",
+      "amendments": []
+    }
+  ],
+  "obligations_list": {
+    "tenant_obligations": [
+      {
+        "description": "Pay Base Rent per schedule; Additional Rent for OpEx/tax increases over Base Year; any late charges if applicable.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.3-6; Bayer 2015-10-05 Lease (1).pdf p.4",
+        "amendments": []
+      },
+      {
+        "description": "Maintain interior of Premises, keep in good, neat, clean, sanitary, operable condition; maintain Tenant’s appliances; repair Tenant-caused damage.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.7",
+        "amendments": []
+      },
+      {
+        "description": "Obtain and maintain required insurance (CGL, workers’ compensation, property for Tenant Improvements) naming Landlord as additional insured; deliver certificates; 30 days’ cancellation notice.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.10",
+        "amendments": []
+      },
+      {
+        "description": "Comply with laws, ordinances, and Rules and Regulations; no smoking inside or within 25 feet; avoid nuisances.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.13; Bayer 2015-10-05 Lease (1).pdf p.31-33",
+        "amendments": []
+      },
+      {
+        "description": "No alterations without Landlord consent; provide drawings; restore as required; remove trade fixtures/shelves/machinery at end and repair damage.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.7-8",
+        "amendments": []
+      },
+      {
+        "description": "Signage at Tenant cost per standards; remove and restore fascia at move-out.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.8",
+        "amendments": []
+      },
+      {
+        "description": "Pay taxes on Tenant’s personal property/fixtures and any increases caused by inclusion thereof.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.4",
+        "amendments": []
+      },
+      {
+        "description": "Provide notice and pay Termination Fee if exercising early termination right.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.7",
+        "amendments": []
+      },
+      {
+        "description": "Abide by hazardous materials restrictions; notify Landlord of spills; indemnify Landlord for contamination caused by Tenant.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.19-20",
+        "amendments": []
+      },
+      {
+        "description": "Avoid mechanic’s liens; discharge/bond any lien placed by Tenant within 20 days or actively contest in good faith.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.19; Bayer 2015-10-05 Lease (1).pdf p.16",
+        "amendments": []
+      },
+      {
+        "description": "Cooperate with service access, move-in/move-out scheduling and building procedures; pay applicable charges (e.g., card replacements, optional janitorial).",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.9; Bayer 2015-10-05 Lease (1).pdf p.31-33",
+        "amendments": []
+      },
+      {
+        "description": "Provide estoppel certificate within 30 days after request (with Landlord-provided draft).",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.21",
+        "amendments": []
+      },
+      {
+        "description": "Share 50% of sublease profits over Base Rent with Landlord within 30 days.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.13",
+        "amendments": []
+      },
+      {
+        "description": "Surrender Premises in clean and good condition, ordinary wear/tear excepted; restore fascia damaged by signage.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.7",
+        "amendments": []
+      }
+    ],
+    "landlord_obligations": [
+      {
+        "description": "Construct and deliver Building Core & Shell per Exhibit B-1; construct Tenant Improvements per approved plans; secure permits for base building; comply with ADA and applicable laws.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.5-7; Bayer 2015-10-05 Lease (1).pdf p.29",
+        "amendments": []
+      },
+      {
+        "description": "Measure Premises per ANSI/BOMA Z65.1-1996; complete Exhibit D and Tenant to execute within 5 days after occupancy.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.3; Bayer 2015-10-05 Lease (1).pdf p.7; Bayer 2015-10-05 Lease (1).pdf p.34",
+        "amendments": []
+      },
+      {
+        "description": "Maintain and repair roof, foundation, exterior and interior structural walls/components, windows, common areas, and Building Systems at Landlord expense (not OpEx).",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.7",
+        "amendments": []
+      },
+      {
+        "description": "Provide building services (HVAC during stated hours; water; electrical for lighting; elevator service; access control).",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.9-10",
+        "amendments": []
+      },
+      {
+        "description": "Carry building insurance (replacement cost) and pay property taxes (with pass-through of increases over Base Year).",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.10; Bayer 2015-10-05 Lease (1).pdf p.4",
+        "amendments": []
+      },
+      {
+        "description": "Issue annual OpEx statements within 90 days of calendar year-end; adjust charges/credits; cooperate with Tenant audit.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.5-6",
+        "amendments": []
+      },
+      {
+        "description": "Provide directory listing; signage approvals not unreasonably withheld.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.8",
+        "amendments": []
+      },
+      {
+        "description": "Honor Right of First Refusal process and deliver offer notice upon bona fide third-party offer; provide TI allowance proration per formula.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.23",
+        "amendments": []
+      },
+      {
+        "description": "Not relocate Tenant during Term or renewals.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.24",
+        "amendments": []
+      },
+      {
+        "description": "Use commercially reasonable efforts to obtain a commercially reasonable SNDA from future lender(s).",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.18",
+        "amendments": []
+      },
+      {
+        "description": "Abate Rent to extent Premises untenantable due to service interruption until restored.",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.10",
+        "amendments": []
+      }
+    ]
+  },
+  "audit_and_exceptions": [
+    {
+      "flag_type": "Discrepancy",
+      "description": "Deadline to elect 90-month Primary Term extension is 14 days (Basic Lease Info) vs 21 days (Section 1.A).",
+      "suggested_next_step": "Clarify in a short amendment which notice window governs to avoid dispute.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.3; Bayer 2015-10-05 Lease (1).pdf p.5",
+      "amendments": []
+    },
+    {
+      "flag_type": "Address Verification",
+      "description": "Post-commencement Tenant address shows '510 W. J.B. Hunt Dr., Suite 620' while Premises address references 5100 W. J.B. Hunt Drive; suite number handwritten. Potential OCR/typing inconsistency.",
+      "suggested_next_step": "Confirm official building street number and Tenant suite for notices and signage.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.2; Bayer 2015-10-05 Lease (1).pdf p.3",
+      "amendments": []
+    },
+    {
+      "flag_type": "Exhibits Missing/To Be Added",
+      "description": "Exhibit A (Premises plan) and Exhibit B (Tenant Improvements) are placeholders to be added post-approval; Exhibit E (Signage) blank.",
+      "suggested_next_step": "Insert final, executed Exhibits A, B, and E; complete Exhibit D at delivery.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.27-28; Bayer 2015-10-05 Lease (1).pdf p.35",
+      "amendments": []
+    },
+    {
+      "flag_type": "Measurement Pending",
+      "description": "Final RSF/Proportionate Share to be determined by BOMA measurement and memorialized in Exhibit D.",
+      "suggested_next_step": "Obtain Core/Nielsen measurement certificate and execute Exhibit D at possession.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.3; Bayer 2015-10-05 Lease (1).pdf p.34",
+      "amendments": []
+    },
+    {
+      "flag_type": "Dual Late Fee Provisions",
+      "description": "Base Rent late charge of 2% after the 10th vs. general late fee of 5% for any payment 5 business days after notice; could overlap.",
+      "suggested_next_step": "Clarify hierarchy and whether both apply or only one, to avoid compounding charges.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.4; Bayer 2015-10-05 Lease (1).pdf p.17",
+      "amendments": []
+    },
+    {
+      "flag_type": "Lease Date Confirmation",
+      "description": "Basic Lease Info shows edited Lease Date to October 5, 2015; signature blocks show Tenant signed September 30, 2015 and Landlord October 5, 2015.",
+      "suggested_next_step": "Confirm effective Lease Date for triggering deadlines tied to execution date.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.2; Bayer 2015-10-05 Lease (1).pdf p.25",
+      "amendments": []
+    },
+    {
+      "flag_type": "TI Timeline vs Execution",
+      "description": "Deadlines for Tenant to provide drawings (Aug 21/Sep 21, 2015) precede the Landlord’s execution date.",
+      "suggested_next_step": "Confirm that these dates were met or amended; if not, document agreed revised dates.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.6",
+      "amendments": []
+    },
+    {
+      "flag_type": "Base Year Assessment Note",
+      "description": "Base Year may move later if assessment does not reflect completed building value.",
+      "suggested_next_step": "Confirm actual Base Year applied once assessment finalized and update reconciliation assumptions.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.4",
+      "amendments": []
+    },
+    {
+      "flag_type": "Building Name References",
+      "description": "Use-of-name clause references 'HUNT VENTURES'; Core & Shell definition references 'Hunt Tower'; Premises description refers to building commonly known as PH Office 2, LLC.",
+      "suggested_next_step": "Align official building name across lease and signage criteria.",
+      "citation": "Bayer 2015-10-05 Lease (1).pdf p.20; Bayer 2015-10-05 Lease (1).pdf p.29; Bayer 2015-10-05 Lease (1).pdf p.3",
+      "amendments": []
+    }
+  ]
+}
