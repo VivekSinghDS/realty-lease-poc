@@ -1,0 +1,121 @@
+{
+  "fact_sheet": {
+    "key_facts": {
+      "tenant_name": {
+        "value": "Bayer HealthCare LLC",
+        "citation": "Bayer 2015-10-05 Lease (1).pdf p.1; Bayer 2015-10-05 Lease (1).pdf p.2; Bayer 2015-10-05 Lease (1).pdf p.4",
+        "amendments": [
+          [
+            "Bayer 2017 Lease Abstract 1st Amend.pdf Page 1"
+          ]
+        ]
+      }
+    },
+    "rent_schedule": [
+      {
+        "period_description": {
+          "value": "Months 1/1/2018-6/30/2018: $38,076.43 per month.",
+          "citation": "Bayer 2017 Lease Abstract 1st Amend.pdf Page 1",
+          "amendments": []
+        }
+      },
+      {
+        "period_description": {
+          "value": "Months 7/1/2018-6/30/2019: $38,838.26 per month.",
+          "citation": "Bayer 2017 Lease Abstract 1st Amend.pdf Page 1",
+          "amendments": []
+        }
+      },
+      {
+        "period_description": {
+          "value": "Months 7/1/2019-6/30/2020: $39,615.33 per month.",
+          "citation": "Bayer 2017 Lease Abstract 1st Amend.pdf Page 1",
+          "amendments": []
+        }
+      },
+      {
+        "period_description": {
+          "value": "Months 7/1/2020-6/30/2021: $40,407.64 per month.",
+          "citation": "Bayer 2017 Lease Abstract 1st Amend.pdf Page 1",
+          "amendments": []
+        }
+      },
+      {
+        "period_description": {
+          "value": "Months 7/1/2021-4/30/2022: $41,215.18 per month.",
+          "citation": "Bayer 2017 Lease Abstract 1st Amend.pdf Page 1",
+          "amendments": []
+        }
+      }
+    ],
+    "key_clauses": {
+      "alterations": {
+        "value": "Landlord shall construct the Expansion Space per mutually approved plans and finishes.",
+        "citation": "Bayer 2017 Lease Abstract 1st Amend.pdf Page 2",
+        "amendments": []
+      }
+    }
+  },
+  "money_map": [
+    {
+      "clause_name": "Base Rent Summary",
+      "explanation": "Base Rent adjusted for expansion space; new rates effective from 1/1/2018.",
+      "citation": "Bayer 2017 Lease Abstract 1st Amend.pdf Page 1",
+      "amendments": []
+    },
+    {
+      "clause_name": "TI Allowance",
+      "explanation": "Landlord provides $55.00 RSF for Expansion Space, totaling $65,450.00.",
+      "citation": "Bayer 2017 Lease Abstract 1st Amend.pdf Page 2",
+      "amendments": []
+    },
+    {
+      "clause_name": "Operating Expenses",
+      "explanation": "Tenant's Proportionate Share adjusted to 8% upon Expansion Commencement Date.",
+      "citation": "Bayer 2017 Lease Abstract 1st Amend.pdf Page 2",
+      "amendments": []
+    }
+  ],
+  "obligations_list": {
+    "tenant_obligations": [
+      {
+        "description": "Pay adjusted Base Rent for expanded premises.",
+        "citation": "Bayer 2017 Lease Abstract 1st Amend.pdf Page 1",
+        "amendments": []
+      },
+      {
+        "description": "Provide financial information for subtenant approval.",
+        "citation": "Bayer 2017 Lease Abstract 1st Amend.pdf Page 2",
+        "amendments": []
+      }
+    ],
+    "landlord_obligations": [
+      {
+        "description": "Construct Expansion Space per approved plans.",
+        "citation": "Bayer 2017 Lease Abstract 1st Amend.pdf Page 2",
+        "amendments": []
+      },
+      {
+        "description": "Provide additional parking spaces for expansion.",
+        "citation": "Bayer 2017 Lease Abstract 1st Amend.pdf Page 2",
+        "amendments": []
+      }
+    ]
+  },
+  "audit_and_exceptions": [
+    {
+      "flag_type": "Expansion Space Verification",
+      "description": "Expansion Space to be verified by measurement upon completion.",
+      "suggested_next_step": "Verify and document final measurements.",
+      "citation": "Bayer 2017 Lease Abstract 1st Amend.pdf Page 2",
+      "amendments": []
+    },
+    {
+      "flag_type": "Assignment Clause Update",
+      "description": "Net worth requirement for subtenants removed.",
+      "suggested_next_step": "Ensure subtenant financials are reviewed for approval.",
+      "citation": "Bayer 2017 Lease Abstract 1st Amend.pdf Page 2",
+      "amendments": []
+    }
+  ]
+}
