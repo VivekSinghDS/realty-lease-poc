@@ -216,14 +216,14 @@ async def amendment_analysis(
         print(payload[0]['content'])
         print('i got here')
         print('streaming start')
-        response = llm_adapter.get_streaming_response(payload)
-        full_text_response = ""
-        for event in response:
-            if event.type == "response.output_text.delta":
-                full_text_response+= event.delta
-                print(event.delta, end="", flush=True)
-            elif event.type == "response.completed":
-                print()  # finish with a newline        # Store the response as the next version: original_lease_<x>.json
+        response = llm_adapter.get_non_streaming_response(payload)
+        full_text_response = response.output_text
+        # for event in response:
+        #     if event.type == "response.output_text.delta":
+        #         full_text_response+= event.delta
+        #         print(event.delta, end="", flush=True)
+        #     elif event.type == "response.completed":
+        #         print()  # finish with a newline        # Store the response as the next version: original_lease_<x>.json
         try:
             next_version = (max(v for v, _ in versions) + 1) if versions else 0
             new_output_path = os.path.join(candidate_dir, f"original_lease_{next_version}.json")
@@ -239,20 +239,23 @@ async def amendment_analysis(
                 # Try to recover by extracting content between first { and last }
                 first_open = result_text.find('{')
                 last_close = result_text.rfind('}')
-
-                if first_open != -1 and last_close != -1 and first_open < last_close:
-                    json_substring = result_text[first_open:last_close + 1]
-                    try:
-                        parsed_json = json.loads(json_substring)
-                        with open(new_output_path, "w", encoding="utf-8") as out_file:
-                            json.dump(parsed_json, out_file, ensure_ascii=False, indent=2)
-                        return parsed_json
-                    except json.JSONDecodeError:
-                        print("Failed to parse even after trimming to JSON substring.")
-                else:
-                    print("Could not find valid JSON boundaries.")
-                with open(new_output_path, "w", encoding="utf-8") as out_file:
-                    out_file.write(result_text)
+                json_substring = result_text[first_open:last_close]
+                parsed_json = json.loads(json_substring)
+                # if first_open != -1 and last_close != -1 and first_open < last_close:
+                #     json_substring = result_text[first_open:last_close + 1]
+                #     print('json substring here --->>> ')
+                #     print(json_substring)
+                #     try:
+                #         parsed_json = json.loads(json_substring)
+                #         with open(new_output_path, "w", encoding="utf-8") as out_file:
+                #             json.dump(parsed_json, out_file, ensure_ascii=False, indent=2)
+                #         return parsed_json
+                #     except json.JSONDecodeError:
+                #         print("Failed to parse even after trimming to JSON substring.")
+                # else:
+                #     print("Could not find valid JSON boundaries.")
+                # with open(new_output_path, "w", encoding="utf-8") as out_file:
+                #     out_file.write(result_text)
         except Exception as write_error:
             logger.error(write_error)
 
