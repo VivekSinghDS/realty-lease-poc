@@ -59,8 +59,9 @@ async def get_lease_abstraction(
                 }
             ]
             
-            iterative_response = llm_adapter.get_non_streaming_response(payload)
-            lease = update_result_json(lease, iterative_response)
+            iterative_response = llm_adapter.get_non_streaming_response(payload).output_text
+            # Extract the text output from the response object
+            lease = update_result_json(lease, iterative_response_text)
             
         return lease 
 

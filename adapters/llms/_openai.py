@@ -20,7 +20,7 @@ class _OpenAI(LargeLanguageModel):
             input=payload,
             stream=True,
             temperature = 0,
-        ) 
+        )
     
     def get_non_streaming_response(self, payload: List[dict]):
         return self.client.responses.create(

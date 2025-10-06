@@ -43,5 +43,156 @@ def save_response_to_file(response_data: str, filename: str):
     except Exception as e:
         print(f"Error saving response to file: {str(e)}")
         
-def update_result_json(resultant_json, llm_iterative_response_json):
-    pass
+def update_result_json(resultant_json: dict, llm_iterative_response_json: str | dict) -> dict:
+    """
+    Iteratively updates the resultant_json with new data from LLM response.
+    
+    Args:
+        resultant_json: The current state of the lease JSON (can be empty dict initially)
+        llm_iterative_response_json: The LLM response, either as a JSON string or dict
+        
+    Returns:
+        Updated resultant_json with merged data
+    """
+    try:
+        # Parse LLM response if it's a string
+        if isinstance(llm_iterative_response_json, str):
+            try:
+                new_data = json.loads(llm_iterative_response_json)
+            except json.JSONDecodeError:
+                # Try to extract JSON from the response if it contains other text
+                first_open = llm_iterative_response_json.find('{')
+                last_close = llm_iterative_response_json.rfind('}')
+                if first_open != -1 and last_close != -1 and first_open < last_close:
+                    json_substring = llm_iterative_response_json[first_open:last_close + 1]
+                    new_data = json.loads(json_substring)
+                else:
+                    print(f"Warning: Could not parse LLM response as JSON: {llm_iterative_response_json[:100]}")
+                    return resultant_json
+        else:
+            new_data = llm_iterative_response_json
+            
+        # If resultant_json is empty, initialize with the structure
+        if not resultant_json:
+            # Load the template structure
+            template_path = os.path.join(os.path.dirname(__file__), 'references', 'lease_structure_template.json')
+            if os.path.exists(template_path):
+                with open(template_path, 'r') as f:
+                    resultant_json = json.load(f)
+            else:
+                # Fallback to empty dict if template doesn't exist
+                resultant_json = {}
+        
+        # Deep merge the new data into resultant_json
+        resultant_json = _deep_merge(resultant_json, new_data)
+        
+        return resultant_json
+        
+    except Exception as e:
+        print(f"Error updating result JSON: {str(e)}")
+        return resultant_json
+
+
+def _deep_merge(base: dict, update: dict) -> dict:
+    """
+    Recursively merges update dict into base dict.
+    
+    For dictionaries: merge recursively
+    For lists: append unique items (based on content similarity)
+    For primitives: update with new value if it's not empty/default
+    
+    Args:
+        base: The base dictionary to merge into
+        update: The dictionary with new values to merge
+        
+    Returns:
+        Merged dictionary
+    """
+    for key, value in update.items():
+        if key not in base:
+            # Key doesn't exist in base, add it
+            base[key] = value
+        elif isinstance(value, dict) and isinstance(base[key], dict):
+            # Both are dicts, merge recursively
+            base[key] = _deep_merge(base[key], value)
+        elif isinstance(value, list) and isinstance(base[key], list):
+            # Both are lists, append new unique items
+            for item in value:
+                # Check if item already exists (to avoid duplicates)
+                if not _item_exists_in_list(base[key], item):
+                    base[key].append(item)
+        else:
+            # For primitive values, update only if new value is meaningful
+            if value and value != "string" and value != "":
+                base[key] = value
+    
+    return base
+
+
+def _item_exists_in_list(lst: list, item: Any) -> bool:
+    """
+    Check if an item already exists in a list.
+    Handles both primitive types and dict/list comparisons.
+    
+    Args:
+        lst: The list to check
+        item: The item to look for
+        
+    Returns:
+        True if item exists in list, False otherwise
+    """
+    if not lst:
+        return False
+        
+    # For dictionaries, check if a similar dict exists based on key fields
+    if isinstance(item, dict):
+        for existing_item in lst:
+            if isinstance(existing_item, dict):
+                # Check similarity based on key fields or citation
+                if _dicts_are_similar(existing_item, item):
+                    return True
+    else:
+        # For primitives, simple membership check
+        return item in lst
+    
+    return False
+
+
+def _dicts_are_similar(dict1: dict, dict2: dict, threshold: float = 0.7) -> bool:
+    """
+    Check if two dictionaries are similar enough to be considered duplicates.
+    Compares based on common fields like citation, description, etc.
+    
+    Args:
+        dict1: First dictionary
+        dict2: Second dictionary
+        threshold: Similarity threshold (0.0 to 1.0)
+        
+    Returns:
+        True if dictionaries are similar, False otherwise
+    """
+    # Priority fields to check for similarity
+    priority_fields = ['citation', 'description', 'clause_name', 'value']
+    
+    matches = 0
+    total_checks = 0
+    
+    for field in priority_fields:
+        if field in dict1 and field in dict2:
+            total_checks += 1
+            if dict1[field] == dict2[field]:
+                matches += 1
+    
+    # If no priority fields found, check all common keys
+    if total_checks == 0:
+        common_keys = set(dict1.keys()) & set(dict2.keys())
+        if not common_keys:
+            return False
+        total_checks = len(common_keys)
+        for key in common_keys:
+            if dict1[key] == dict2[key]:
+                matches += 1
+    
+    # Calculate similarity ratio
+    similarity = matches / total_checks if total_checks > 0 else 0
+    return similarity >= threshold
