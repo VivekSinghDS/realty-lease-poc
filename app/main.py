@@ -29,13 +29,13 @@ async def timeout_middleware(request: Request, call_next):
 routers = [
     {
         "router": minimum_lease_terms.router,
-        "prefix": "/lease-summary",
-        "tags": ["lease-summary"],
+        "prefix": "/misc",
+        "tags": ["other"],
     },
     {
         "router": lease_abstraction.router,
-        "prefix": "/lease-abstract",
-        "tags": ['lease-abstract']
+        "prefix": "/lease",
+        "tags": ['lease']
     }
     # Commented out until content_entries is implemented
     # {"router": content_entries.router, "prefix": "/entries", "tags": ["entries"]},
@@ -48,7 +48,7 @@ for route in routers:
 app.add_middleware(CORSMiddleware, **CORS_CONFIG)
 @app.get("/")
 async def root():
-    return {"message": "ask-ai main page!"}
+    return {"message": "Stealth!"}
 
 
 @app.get("/health")
@@ -63,7 +63,7 @@ async def health_check():
     
 @app.post('/sample-stream')
 async def sample_stream():
-    with open("/Users/vivek.singh/realty-poc/data/lease_abstraction_sample.json", "r") as file:
+    with open("/Users/vivek.singh/realty-poc/utils/references/reference_updation.json", "r") as file:
         json_data = json.load(file)
         
     json_str = json.dumps(json_data, indent=2)

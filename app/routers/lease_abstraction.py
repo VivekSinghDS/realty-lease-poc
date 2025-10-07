@@ -3,25 +3,28 @@ import re
 import json 
 import os 
 from http import HTTPStatus
+from typing import Any
 from fastapi import (
     APIRouter,
     File,
     UploadFile,
 )
 from dotenv import load_dotenv
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, StreamingResponse
 from utils.logs import logger
 from utils.helpers import get_llm_adapter, update_result_json
 from utils.parsers.pdf import PDFChunker
-from utils.prompts import LEASE_ANALYSIS
-from utils.prompts import AMENDMENT_ANALYSIS
+from utils.prompts import LEASE_ANALYSIS, LEASE_INFORMATION
+from utils.references import charge_schedules, leaseInformation, otherLeaseProvisions, space, updated_lease_abstraction
+# from utils.prompts import AMENDMENT_ANALYSIS
 load_dotenv()
 router = APIRouter()
 
 llm_adapter = get_llm_adapter()
 
-@router.post("")
-async def get_lease_abstraction(
+
+@router.post("/executive-summary")
+async def executive_summary_analysis(
     assets: UploadFile | None = File(None)
 ):
     try:
@@ -30,40 +33,97 @@ async def get_lease_abstraction(
                 content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
             )
         
-        chunker = PDFChunker(overlap_percentage=0.2)
+        with open("./utils/references/executive_summary.json") as file:
+            original_lease_data_template = json.load(file)
+        data = await assets.read()
+        original_filename = assets.filename or "uploaded_file"
+        base64_string = base64.b64encode(data).decode("utf-8")
+        payload = [
+            {"role": "system", "content": LEASE_ANALYSIS['system'].format(JSON_STRUCTURE = json.dumps(original_lease_data_template), DOCUMENT_NAME = original_filename, reference = None)},
+            {
+                "role": "user", "content": 
+                [
+                    {
+                        "type": "input_file", 
+                        "filename": original_filename,
+                        "file_data": f"data:application/pdf;base64,{base64_string}"
+                    },
+                    {
+                        "type": "input_text", 
+                        "text": LEASE_ANALYSIS['user']
+                    },
+                    {
+                        "type": "input_text",
+                        "text": "THIS IS GOOD BUT MAKE SURE THE OUTPUT IS A VALID JSON"
+                    }
+                ]
+            }
+        ]
+        response_stream: Any = llm_adapter.get_streaming_response(payload)
+
+        async def streamer():
+            for event in response_stream:
+                if event.type == "response.output_text.delta":
+                    yield event.delta
+                elif event.type == "response.output_text.done":
+                    yield "\n"
+
+        return StreamingResponse(streamer(), media_type="text/plain")
         
-        # Process the PDF from bytes
-        chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
+    except Exception as error:
+        logger.error(error)
+        return JSONResponse(
+                content={
+                    "message": "Something went wrong, please contact support@stealth.com"
+                }, status_code=HTTPStatus.INTERNAL_SERVER_ERROR.value
+            )
+    
+
+@router.post("/info")
+async def get_lease_info(
+    assets: UploadFile | None = File(None)
+):
+    try:
+        if not assets:
+            return JSONResponse(
+                content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
+            )
+            
+        data = await assets.read()
+        original_filename = assets.filename or "uploaded_file"
+        base64_string = base64.b64encode(data).decode("utf-8")
+        payload = [
+            {"role": "system", "content": LEASE_ANALYSIS['system'].format(JSON_STRUCTURE = json.dumps(leaseInformation.structure), DOCUMENT_NAME = original_filename, reference = LEASE_INFORMATION)},
+            {
+                "role": "user", "content": 
+                [
+                    {
+                        "type": "input_file", 
+                        "filename": original_filename,
+                        "file_data": f"data:application/pdf;base64,{base64_string}"
+                    },
+                    {
+                        "type": "input_text", 
+                        "text": LEASE_ANALYSIS['user']
+                    },
+                    {
+                        "type": "input_text",
+                        "text": "THIS IS GOOD BUT MAKE SURE THE OUTPUT IS A VALID JSON"
+                    }
+                ]
+            }
+        ]
+        response_stream: Any = llm_adapter.get_streaming_response(payload)
+
+        async def streamer():
+            for event in response_stream:
+                if event.type == "response.output_text.delta":
+                    yield event.delta
+                elif event.type == "response.output_text.done":
+                    yield "\n"
+
+        return StreamingResponse(streamer(), media_type="text/plain")
         
-        # Convert chunks to JSON-serializable format
-        chunks_data = []
-        lease = {}
-        for chunk in chunks:
-            chunks_data.append({
-                "chunk_id": chunk.chunk_id,
-                "page_number": chunk.page_number,
-                "text": chunk.original_page_text,
-                "previous_overlap": chunk.previous_overlap,
-                "next_overlap": chunk.next_overlap,
-                "overlap_info": chunk.overlap_info
-            })
-            
-            print(chunk)
-            
-            payload = [
-                {
-                    "role": "system", "content": "" # will be filled by Ashruth 
-                },
-                {
-                    "role": "user", "content": ""
-                }
-            ]
-            
-            iterative_response = llm_adapter.get_non_streaming_response(payload).output_text
-            # Extract the text output from the response object
-            lease = update_result_json(lease, iterative_response_text)
-            
-        return lease 
 
 
         
@@ -75,7 +135,222 @@ async def get_lease_abstraction(
                 }, status_code=HTTPStatus.INTERNAL_SERVER_ERROR.value
             )
     
+@router.post("/space")
+async def get_space_info(
+    assets: UploadFile | None = File(None)
+):
+    try:
+        if not assets:
+            return JSONResponse(
+                content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
+            )
+            
+        data = await assets.read()
+        original_filename = assets.filename or "uploaded_file"
+        base64_string = base64.b64encode(data).decode("utf-8")
+        payload = [
+            {"role": "system", "content": LEASE_ANALYSIS['system'].format(JSON_STRUCTURE = json.dumps(space.structure), DOCUMENT_NAME = original_filename, reference = space.field_descriptions)},
+            {
+                "role": "user", "content": 
+                [
+                    {
+                        "type": "input_file", 
+                        "filename": original_filename,
+                        "file_data": f"data:application/pdf;base64,{base64_string}"
+                    },
+                    {
+                        "type": "input_text", 
+                        "text": LEASE_ANALYSIS['user']
+                    },
+                    {
+                        "type": "input_text",
+                        "text": "THIS IS GOOD BUT MAKE SURE THE OUTPUT IS A VALID JSON"
+                    }
+                ]
+            }
+        ]
+        response_stream: Any = llm_adapter.get_streaming_response(payload)
 
+        async def streamer():
+            for event in response_stream:
+                if event.type == "response.output_text.delta":
+                    yield event.delta
+                elif event.type == "response.output_text.done":
+                    yield "\n"
+
+        return StreamingResponse(streamer(), media_type="text/plain")
+        
+
+
+        
+    except Exception as error:
+        logger.error(error)
+        return JSONResponse(
+                content={
+                    "message": "Something went wrong, please contact support@stealth.com"
+                }, status_code=HTTPStatus.INTERNAL_SERVER_ERROR.value
+            )
+
+    
+@router.post("/charge-schedules")
+async def get_charge_schedules(
+    assets: UploadFile | None = File(None)
+):
+    try:
+        if not assets:
+            return JSONResponse(
+                content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
+            )
+            
+        data = await assets.read()
+        original_filename = assets.filename or "uploaded_file"
+        base64_string = base64.b64encode(data).decode("utf-8")
+        payload = [
+            {"role": "system", "content": LEASE_ANALYSIS['system'].format(JSON_STRUCTURE = json.dumps(charge_schedules.structure), DOCUMENT_NAME = original_filename, reference = charge_schedules.field_descriptions)},
+            {
+                "role": "user", "content": 
+                [
+                    {
+                        "type": "input_file", 
+                        "filename": original_filename,
+                        "file_data": f"data:application/pdf;base64,{base64_string}"
+                    },
+                    {
+                        "type": "input_text", 
+                        "text": LEASE_ANALYSIS['user']
+                    },
+                    {
+                        "type": "input_text",
+                        "text": "THIS IS GOOD BUT MAKE SURE THE OUTPUT IS A VALID JSON"
+                    }
+                ]
+            }
+        ]
+        response_stream: Any = llm_adapter.get_streaming_response(payload)
+
+        async def streamer():
+            for event in response_stream:
+                if event.type == "response.output_text.delta":
+                    yield event.delta
+                elif event.type == "response.output_text.done":
+                    yield "\n"
+
+        return StreamingResponse(streamer(), media_type="text/plain")
+
+    except Exception as error:
+        logger.error(error)
+        return JSONResponse(
+                content={
+                    "message": "Something went wrong, please contact support@stealth.com"
+                }, status_code=HTTPStatus.INTERNAL_SERVER_ERROR.value
+            )
+        
+@router.post("/miscellaneous")
+async def get_miscellaneous_info(
+    assets: UploadFile | None = File(None)
+):
+    try:
+        if not assets:
+            return JSONResponse(
+                content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
+            )
+            
+        data = await assets.read()
+        original_filename = assets.filename or "uploaded_file"
+        base64_string = base64.b64encode(data).decode("utf-8")
+        payload = [
+            {"role": "system", "content": LEASE_ANALYSIS['system'].format(JSON_STRUCTURE = json.dumps(otherLeaseProvisions.structure), DOCUMENT_NAME = original_filename, reference = otherLeaseProvisions.field_descriptions)},
+            {
+                "role": "user", "content": 
+                [
+                    {
+                        "type": "input_file", 
+                        "filename": original_filename,
+                        "file_data": f"data:application/pdf;base64,{base64_string}"
+                    },
+                    {
+                        "type": "input_text", 
+                        "text": LEASE_ANALYSIS['user']
+                    },
+                    {
+                        "type": "input_text",
+                        "text": "THIS IS GOOD BUT MAKE SURE THE OUTPUT IS A VALID JSON"
+                    }
+                ]
+            }
+        ]
+        response_stream: Any = llm_adapter.get_streaming_response(payload)
+
+        async def streamer():
+            for event in response_stream:
+                if event.type == "response.output_text.delta":
+                    yield event.delta
+                elif event.type == "response.output_text.done":
+                    yield "\n"
+
+        return StreamingResponse(streamer(), media_type="text/plain")
+
+    except Exception as error:
+        logger.error(error)
+        return JSONResponse(
+                content={
+                    "message": "Something went wrong, please contact support@stealth.com"
+                }, status_code=HTTPStatus.INTERNAL_SERVER_ERROR.value
+            )
+
+@router.post("/general")
+async def get_general_info(
+    assets: UploadFile | None = File(None)
+):
+    try:
+        if not assets:
+            return JSONResponse(
+                content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
+            )
+            
+        data = await assets.read()
+        original_filename = assets.filename or "uploaded_file"
+        base64_string = base64.b64encode(data).decode("utf-8")
+        payload = [
+            {"role": "system", "content": LEASE_ANALYSIS['system'].format(JSON_STRUCTURE = json.dumps(updated_lease_abstraction.structure), DOCUMENT_NAME = original_filename, reference = None)},
+            {
+                "role": "user", "content": 
+                [
+                    {
+                        "type": "input_file", 
+                        "filename": original_filename,
+                        "file_data": f"data:application/pdf;base64,{base64_string}"
+                    },
+                    {
+                        "type": "input_text", 
+                        "text": LEASE_ANALYSIS['user']
+                    },
+                    {
+                        "type": "input_text",
+                        "text": "THIS IS GOOD BUT MAKE SURE THE OUTPUT IS A VALID JSON"
+                    }
+                ]
+            }
+        ]
+        response_stream: Any = llm_adapter.get_streaming_response(payload)
+
+        async def streamer():
+            for event in response_stream:
+                if event.type == "response.output_text.delta":
+                    yield event.delta
+                elif event.type == "response.output_text.done":
+                    yield "\n"
+
+        return StreamingResponse(streamer(), media_type="text/plain")
+
+    except Exception as error:
+        logger.error(error)
+        return JSONResponse(
+                content={
+                    "message": "Something went wrong, please contact support@stealth.com"
+                }, status_code=HTTPStatus.INTERNAL_SERVER_ERROR.value
+            )
+     
 
 @router.post("/amendment-analysis")
 async def amendment_analysis(
