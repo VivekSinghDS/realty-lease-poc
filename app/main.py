@@ -4,10 +4,10 @@ from fastapi.middleware.trustedhost import TrustedHostMiddleware
 import time
 import asyncio
 import os
-
+import json 
 
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, StreamingResponse
 
 from app.routers import lease_abstraction, minimum_lease_terms
 from utils.constants import CORS_CONFIG
@@ -29,26 +29,26 @@ async def timeout_middleware(request: Request, call_next):
 routers = [
     {
         "router": minimum_lease_terms.router,
-        "prefix": "/lease-summary",
-        "tags": ["lease-summary"],
+        "prefix": "/misc",
+        "tags": ["other"],
     },
     {
         "router": lease_abstraction.router,
-        "prefix": "/lease-abstract",
-        "tags": ['lease-abstract']
+        "prefix": "/lease",
+        "tags": ['lease']
     }
     # Commented out until content_entries is implemented
     # {"router": content_entries.router, "prefix": "/entries", "tags": ["entries"]},
 ]
 
-app.add_middleware(CORSMiddleware, **CORS_CONFIG)
 
 for route in routers:
     app.include_router(route["router"], prefix=route["prefix"], tags=route["tags"])
     
+app.add_middleware(CORSMiddleware, **CORS_CONFIG)
 @app.get("/")
 async def root():
-    return {"message": "ask-ai main page!"}
+    return {"message": "Stealth!"}
 
 
 @app.get("/health")
@@ -60,3 +60,17 @@ async def health_check():
         "environment": os.environ.get("ENVIRONMENT", "unknown"),
         "version": "1.0.0"
     }
+    
+@app.post('/sample-stream')
+async def sample_stream():
+    with open("/Users/vivek.singh/realty-poc/utils/references/reference_updation.json", "r") as file:
+        json_data = json.load(file)
+        
+    json_str = json.dumps(json_data, indent=2)
+
+    async def char_stream():
+        for character in json_str:
+            yield character
+            await asyncio.sleep(0.01)  # optional delay to simulate real streaming
+
+    return StreamingResponse(char_stream(), media_type="application/json")
