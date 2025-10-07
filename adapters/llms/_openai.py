@@ -4,8 +4,6 @@ from openai import OpenAI
 from utils.schemas import LeaseDocument
 import json 
 
-with open("/Users/vivek.singh/realty-poc/utils/references/lease_abstraction.json", 'r') as file:
-    reference = json.load(file)
 
 
 class _OpenAI(LargeLanguageModel):
