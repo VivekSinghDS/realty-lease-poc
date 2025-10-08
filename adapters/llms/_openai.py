@@ -1,8 +1,6 @@
 from typing import List
 from adapters.llms.base import LargeLanguageModel 
 from openai import OpenAI
-from utils.schemas import LeaseDocument
-import json 
 
 
 
