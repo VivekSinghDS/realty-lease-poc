@@ -25,7 +25,6 @@ llm_adapter = get_llm_adapter()
 async def get_lease_abstraction(
     assets: UploadFile | None = File(None)
 ):
-        print('first')
         if not assets:
             return JSONResponse(
                 content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value

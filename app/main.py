@@ -9,7 +9,7 @@ import json
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse, StreamingResponse
 
-from app.routers import lease_abstraction, minimum_lease_terms
+from app.routers import debug, lease_abstraction, minimum_lease_terms
 from utils.constants import CORS_CONFIG
   
 app = FastAPI()
@@ -36,6 +36,11 @@ routers = [
         "router": lease_abstraction.router,
         "prefix": "/lease-abstract",
         "tags": ['lease-abstract']
+    },
+    {
+        "router": debug.router,
+        "prefix": "/debug",
+        "tags": ['debug']
     }
     # Commented out until content_entries is implemented
     # {"router": content_entries.router, "prefix": "/entries", "tags": ["entries"]},
