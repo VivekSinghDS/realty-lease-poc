@@ -5,59 +5,60 @@ structure = {
     "leaseInformation": {
       "lease": {
         "value": "",
-        "citation": "",
+        "citation": "", "section": "",
+        
         "amendments": []
       },
       "property": {
         "value": "",
-        "citation": "",
+        "citation": "", "section": "",
         "amendments": []
       },
       "leaseFrom": {
         "value": "",
-        "citation": "",
+        "citation": "", "section": "",
         "amendments": []
       },
       "leaseTo": {
         "value": "",
-        "citation": "",
+        "citation": "", "section": "",
         "amendments": []
       }
     },
     "space": {
       "unit": {
         "value": "",
-        "citation": "",
+        "citation": "", "section": "",
         "amendments": []
       },
       "building": {
         "value": "",
-        "citation": "",
+        "citation": "", "section": "",
         "amendments": []
       },
       "floor": {
         "value": "",
-        "citation": "",
+        "citation": "", "section": "",
         "amendments": []
       },
       "areaRentable": {
         "value": "",
-        "citation": "",
+        "citation": "", "section": "",
         "amendments": []
       },
       "areaUsable": {
         "value": "",
-        "citation": "",
+        "citation": "", "section": "",
         "amendments": []
       },
       "status": {
         "value": "",
-        "citation": "",
+        "citation": "", "section": "",
         "amendments": []
       },
       "notes": {
         "value": "",
-        "citation": "",
+        "citation": "", "section": "",
         "amendments": []
       }
     },
@@ -66,39 +67,39 @@ structure = {
         {
           "chargeCode": {
             "value": "",
-            "citation": ""
+            "citation": "", "section": "",
           },
           "description": {
             "value": "",
-            "citation": ""
+            "citation": "", "section": "",
           },
           "dateFrom": {
             "value": "",
-            "citation": ""
+            "citation": "", "section": "",
           },
           "dateTo": {
             "value": "",
-            "citation": ""
+            "citation": "", "section": "",
           },
           "monthlyAmount": {
             "value": "",
-            "citation": ""
+            "citation": "", "section": "",
           },
           "annualAmount": {
             "value": "",
-            "citation": ""
+            "citation": "", "section": "",
           },
           "areaRentable": {
             "value": "",
-            "citation": ""
+            "citation": "", "section": "",
           },
           "amountPerArea": {
             "value": "",
-            "citation": ""
+            "citation": "", "section": "",
           },
           "managementFees": {
             "value": "",
-            "citation": ""
+            "citation": "", "section": "",
           },
           "amendments": []
         }
@@ -106,37 +107,37 @@ structure = {
       "lateFee": {
         "calculationType": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         },
         "graceDays": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         },
         "percent": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         },
         "secondFeeCalculationType": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         },
         "secondFeeGrace": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         },
         "secondFeePercent": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         },
         "perDayFee": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       }
@@ -145,261 +146,261 @@ structure = {
       "premisesAndTerm": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         },
         "keyParameters": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         },
         "narrative": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "taxes": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         },
         "definition": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         },
         "keyParameters": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         },
         "narrative": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "operatingExpenses": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         },
         "definition": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         },
         "keyParameters": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         },
         "billingTimeline": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         },
         "formulas": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         },
         "capitalRules": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         },
         "narrative": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "repairsAndMaintenance": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         },
         "narrative": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "alterations": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "signs": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "services": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "insurance": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         },
         "keyParameters": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "casualty": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "liabilityAndIndemnification": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "use": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "landlordsRightOfEntry": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "assignmentAndSubletting": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "parking": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "condemnation": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "holdover": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "quietEnjoyment": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "defaultAndRemedies": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "subordination": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "liens": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "hazardousMaterials": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "rulesAndRegulations": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "brokerage": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "estoppel": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "notices": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "rightOfFirstRefusalOffer": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "expansionAndRelocation": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       },
       "landlordDefault": {
         "synopsis": {
           "value": "",
-          "citation": "",
+          "citation": "", "section": "",
           "amendments": []
         }
       }
@@ -412,6 +413,7 @@ field_definitions = """
 These fields appear repeatedly throughout the structure.
 - **value**: The extracted data point, text, or numerical value for a specific field.
 - **citation**: The location in the source lease document where the `value` was found (e.g., "Page 5, Section 4.2", "Article 10").
+- ** section ** : The exact location on the above page number where you found that article. 
 - **amendments**: An array of objects, where each object records a historical change made to the field's `value` through a formal lease amendment.
     - **effectiveDate**: The date the change became legally effective.
     - **document**: The name or identifier of the amendment document (e.g., "First Amendment to Lease").
@@ -423,6 +425,7 @@ These fields appear repeatedly throughout the structure.
 
 ### Root Level
 - **executiveSummary**: A high-level, concise overview of the most critical terms of the lease agreement.
+It should be a markdown for cleaner rendering
 
 ---
 
