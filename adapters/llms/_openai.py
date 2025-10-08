@@ -12,7 +12,7 @@ class _OpenAI(LargeLanguageModel):
     def get_streaming_response(self, payload: List[dict]):
         print('inside this method')
         return self.client.responses.create(
-            model="gpt-4o-mini",
+            model="gpt-5-nano",
             input=payload,
             stream=True,
             # temperature = 0,
