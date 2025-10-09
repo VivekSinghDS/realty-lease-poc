@@ -8,6 +8,8 @@ import json
 from fastapi import UploadFile
 import requests
 from adapters.llms._groq import _Groq
+import json 
+import requests 
 from adapters.llms._openai import _OpenAI
 from adapters.llms._perplexity import _Perplexity
 from adapters.llms.base import LargeLanguageModel

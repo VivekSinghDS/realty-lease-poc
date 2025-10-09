@@ -1,0 +1,462 @@
+{
+    "executiveSummary": {
+      "value": "This is a five-year office lease agreement between Pinnacle Holdings LLC (Landlord) and Innovate Solutions Inc. (Tenant) for 10,000 rentable square feet in Suite 500 at The Pinnacle Corporate Tower. The lease commences on January 1, 2024. The initial base rent is $50.00 per rentable square foot per year, with a 5% escalation in year four. The lease is structured as a modified gross lease, with the Tenant responsible for its pro-rata share of increases in operating expenses and real estate taxes over a base year of 2024. The Tenant has no renewal, expansion, or termination options."
+    },
+    "leaseInformation": {
+      "lease": {
+        "value": "Office Lease Agreement",
+        "citation": "Page 1, Title",
+        "amendments": []
+      },
+      "property": {
+        "value": "The Pinnacle Corporate Tower",
+        "citation": "Page 1, Section 1.1",
+        "amendments": []
+      },
+      "leaseFrom": {
+        "value": "Pinnacle Holdings LLC",
+        "citation": "Page 1, Parties",
+        "amendments": []
+      },
+      "leaseTo": {
+        "value": "Innovate Global Corp.",
+        "citation": "First Amendment, Section 2",
+        "amendments": [
+          {
+            "effectiveDate": "2025-06-01",
+            "document": "First Amendment to Lease",
+            "oldValue": "Innovate Solutions Inc.",
+            "newValue": "Innovate Global Corp.",
+            "notes": "Tenant name change due to corporate rebranding."
+          }
+        ]
+      }
+    },
+    "space": {
+      "unit": {
+        "value": "Suite 500",
+        "citation": "Page 2, Section 2.1",
+        "amendments": []
+      },
+      "building": {
+        "value": "The Pinnacle Corporate Tower",
+        "citation": "Page 2, Section 2.1",
+        "amendments": []
+      },
+      "floor": {
+        "value": "5th Floor",
+        "citation": "Exhibit A",
+        "amendments": []
+      },
+      "areaRentable": {
+        "value": "10,500",
+        "citation": "Second Amendment, Section 3",
+        "amendments": [
+          {
+            "effectiveDate": "2026-01-01",
+            "document": "Second Amendment to Lease",
+            "oldValue": "10,000",
+            "newValue": "10,500",
+            "notes": "Expansion into adjacent storage space, re-measured by architect."
+          }
+        ]
+      },
+      "areaUsable": {
+        "value": "8,925",
+        "citation": "Second Amendment, Exhibit B",
+        "amendments": []
+      },
+      "status": {
+        "value": "Occupied",
+        "citation": "",
+        "amendments": []
+      },
+      "notes": {
+        "value": "The rentable area includes a 15% common area load factor. The premises have exclusive access to the west-facing balcony.",
+        "citation": "Page 2, Section 2.2",
+        "amendments": []
+      }
+    },
+    "chargeSchedules": {
+      "baseRent": [
+        {
+          "chargeCode": {
+            "value": "BASE_RENT",
+            "citation": "Page 4, Section 4.1"
+          },
+          "description": {
+            "value": "Base Rent for Year 1-3",
+            "citation": "Page 4, Section 4.1"
+          },
+          "dateFrom": {
+            "value": "2024-01-01",
+            "citation": "Page 3, Section 3.1"
+          },
+          "dateTo": {
+            "value": "2026-12-31",
+            "citation": "Page 3, Section 3.1"
+          },
+          "monthlyAmount": {
+            "value": "41666.67",
+            "citation": "Page 4, Section 4.1"
+          },
+          "annualAmount": {
+            "value": "500000.00",
+            "citation": "Page 4, Section 4.1"
+          },
+          "areaRentable": {
+            "value": "10000",
+            "citation": "Page 2, Section 2.1"
+          },
+          "amountPerArea": {
+            "value": "50.00",
+            "citation": "Page 4, Section 4.1"
+          },
+          "managementFees": {
+            "value": "Included in Base Rent",
+            "citation": "Page 12, Section 6.1"
+          },
+          "amendments": []
+        },
+        {
+          "chargeCode": {
+            "value": "BASE_RENT",
+            "citation": "Page 4, Section 4.1"
+          },
+          "description": {
+            "value": "Base Rent for Year 4-5",
+            "citation": "Page 4, Section 4.1"
+          },
+          "dateFrom": {
+            "value": "2027-01-01",
+            "citation": "Page 3, Section 3.1"
+          },
+          "dateTo": {
+            "value": "2028-12-31",
+            "citation": "Page 3, Section 3.1"
+          },
+          "monthlyAmount": {
+            "value": "43750.00",
+            "citation": "Page 4, Section 4.1"
+          },
+          "annualAmount": {
+            "value": "525000.00",
+            "citation": "Page 4, Section 4.1"
+          },
+          "areaRentable": {
+            "value": "10500",
+            "citation": "Second Amendment, Section 3"
+          },
+          "amountPerArea": {
+            "value": "52.50",
+            "citation": "Page 4, Section 4.1"
+          },
+          "managementFees": {
+            "value": "Included in Base Rent",
+            "citation": "Page 12, Section 6.1"
+          },
+          "amendments": []
+        }
+      ],
+      "lateFee": {
+        "calculationType": {
+          "value": "Percentage of Overdue Amount",
+          "citation": "Page 6, Section 5.3",
+          "amendments": []
+        },
+        "graceDays": {
+          "value": "5",
+          "citation": "Page 6, Section 5.3",
+          "amendments": []
+        },
+        "percent": {
+          "value": "5",
+          "citation": "Page 6, Section 5.3",
+          "amendments": []
+        },
+        "secondFeeCalculationType": {
+          "value": "",
+          "citation": "",
+          "amendments": []
+        },
+        "secondFeeGrace": {
+          "value": "",
+          "citation": "",
+          "amendments": []
+        },
+        "secondFeePercent": {
+          "value": "",
+          "citation": "",
+          "amendments": []
+        },
+        "perDayFee": {
+          "value": "",
+          "citation": "",
+          "amendments": []
+        }
+      }
+    },
+    "otherLeaseProvisions": {
+      "premisesAndTerm": {
+        "synopsis": {
+          "value": "The Tenant leases Suite 500, comprising approximately 10,000 rentable square feet, for a term of 60 months commencing on January 1, 2024, and expiring on December 31, 2028.",
+          "citation": "Article 2 & 3",
+          "amendments": []
+        },
+        "keyParameters": {
+          "value": "",
+          "citation": "",
+          "amendments": []
+        },
+        "narrative": {
+          "value": "",
+          "citation": "",
+          "amendments": []
+        }
+      },
+      "taxes": {
+        "synopsis": {
+          "value": "Tenant is responsible for its pro-rata share of any increases in Real Estate Taxes over the amount assessed during the 2024 calendar year (the 'Base Year').",
+          "citation": "Article 4",
+          "amendments": []
+        },
+        "definition": {
+          "value": "",
+          "citation": "",
+          "amendments": []
+        },
+        "keyParameters": {
+          "value": "",
+          "citation": "",
+          "amendments": []
+        },
+        "narrative": {
+          "value": "",
+          "citation": "",
+          "amendments": []
+        }
+      },
+      "operatingExpenses": {
+        "synopsis": {
+          "value": "Tenant is responsible for its pro-rata share of any increases in Operating Expenses over the amount incurred during the 2024 calendar year (the 'Base Year'). Expenses are subject to standard commercial exclusions, and capital expenditures are amortized over their useful life.",
+          "citation": "Article 4",
+          "amendments": []
+        },
+        "definition": {
+          "value": "",
+          "citation": "",
+          "amendments": []
+        },
+        "keyParameters": {
+          "value": "",
+          "citation": "",
+          "amendments": []
+        },
+        "billingTimeline": {
+          "value": "",
+          "citation": "",
+          "amendments": []
+        },
+        "formulas": {
+          "value": "",
+          "citation": "",
+          "amendments": []
+        },
+        "capitalRules": {
+          "value": "",
+          "citation": "",
+          "amendments": []
+        },
+        "narrative": {
+          "value": "",
+          "citation": "",
+          "amendments": []
+        }
+      },
+      "repairsAndMaintenance": {
+        "synopsis": {
+          "value": "Landlord is responsible for the repair and maintenance of the structural elements of the building, including the roof, foundation, and common areas. Tenant is responsible for all non-structural repairs and maintenance within the leased premises.",
+          "citation": "Article 7",
+          "amendments": []
+        },
+        "narrative": {
+          "value": "",
+          "citation": "",
+          "amendments": []
+        }
+      },
+      "alterations": {
+        "synopsis": {
+          "value": "Tenant may not make any alterations, additions, or improvements to the premises without the Landlord's prior written consent, which shall not be unreasonably withheld. All alterations become the property of the Landlord upon lease termination unless Landlord requires their removal.",
+          "citation": "Article 8",
+          "amendments": []
+        }
+      },
+      "signs": {
+        "synopsis": {
+          "value": "Tenant is entitled to one listing on the building directory in the main lobby and one sign on the main entry door to the premises. All signage must conform to the Landlord's standard criteria and requires prior approval.",
+          "citation": "Article 24",
+          "amendments": []
+        }
+      },
+      "services": {
+        "synopsis": {
+          "value": "Landlord shall provide HVAC service during normal business hours (8 AM - 6 PM, M-F; 9 AM - 1 PM, Sat). Janitorial services for the premises are provided five nights a week. Electricity for standard office use is included in the Base Rent.",
+          "citation": "Article 6",
+          "amendments": []
+        }
+      },
+      "insurance": {
+        "synopsis": {
+          "value": "Tenant must maintain Commercial General Liability insurance with a combined single limit of not less than $2,000,000, Property insurance on an 'all-risk' basis for the full replacement cost of its property, and statutory Worker's Compensation insurance. Landlord must be named as an additional insured on the CGL policy.",
+          "citation": "Article 10",
+          "amendments": []
+        },
+        "keyParameters": {
+          "value": "",
+          "citation": "",
+          "amendments": []
+        }
+      },
+      "casualty": {
+        "synopsis": {
+          "value": "If the premises are damaged by fire or other casualty, rent will be abated in proportion to the part of the premises that is unusable. If the building is damaged to the extent that more than 40% is rendered untenantable, either party may terminate the lease upon 30 days' notice.",
+          "citation": "Article 11",
+          "amendments": []
+        }
+      },
+      "liabilityAndIndemnification": {
+        "synopsis": {
+          "value": "Tenant indemnifies Landlord against any claims arising from Tenant's use of the premises or any breach of the lease by Tenant. Landlord indemnifies Tenant against claims arising from Landlord's gross negligence or willful misconduct.",
+          "citation": "Article 10.3",
+          "amendments": []
+        }
+      },
+      "use": {
+        "synopsis": {
+          "value": "The premises shall be used solely for general office purposes and for no other purpose without the prior written consent of the Landlord.",
+          "citation": "Article 5",
+          "amendments": []
+        }
+      },
+      "landlordsRightOfEntry": {
+        "synopsis": {
+          "value": "Landlord has the right to enter the premises upon 24 hours' prior notice to Tenant to conduct inspections, make repairs, or show the space to prospective purchasers or tenants. In an emergency, no prior notice is required.",
+          "citation": "Article 14",
+          "amendments": []
+        }
+      },
+      "assignmentAndSubletting": {
+        "synopsis": {
+          "value": "Tenant shall not assign this lease or sublet the premises without Landlord's prior written consent, which will not be unreasonably withheld, conditioned, or delayed. Landlord is entitled to 50% of any profits received by Tenant from such an assignment or sublease.",
+          "citation": "Article 15",
+          "amendments": []
+        }
+      },
+      "parking": {
+        "synopsis": {
+          "value": "Tenant is entitled to 40 unreserved parking passes in the building's parking garage at the prevailing monthly rate, which is currently $150 per pass per month.",
+          "citation": "Article 28",
+          "amendments": []
+        }
+      },
+      "condemnation": {
+        "synopsis": {
+          "value": "If the entire premises are taken by eminent domain, the lease will terminate. If a partial taking materially impairs Tenant's ability to do business, Tenant may terminate the lease. All condemnation awards belong to the Landlord, except for any specific award for relocation expenses.",
+          "citation": "Article 16",
+          "amendments": []
+        }
+      },
+      "holdover": {
+        "synopsis": {
+          "value": "If Tenant remains in possession of the premises after the lease term expires, a month-to-month tenancy is created. The monthly rent during the holdover period will be 150% of the rent payable during the last month of the term.",
+          "citation": "Article 17",
+          "amendments": []
+        }
+      },
+      "quietEnjoyment": {
+        "synopsis": {
+          "value": "So long as Tenant is not in default, Tenant shall peaceably and quietly have, hold, and enjoy the premises for the entire lease term.",
+          "citation": "Article 26",
+          "amendments": []
+        }
+      },
+      "defaultAndRemedies": {
+        "synopsis": {
+          "value": "Tenant is in default if rent is not paid within 5 days of written notice, or if another lease covenant is not cured within 30 days of notice. In case of default, Landlord's remedies include accelerating rent, terminating the lease and possession, and re-letting the premises on Tenant's behalf.",
+          "citation": "Article 19",
+          "amendments": []
+        }
+      },
+      "subordination": {
+        "synopsis": {
+          "value": "This lease is subordinate to any existing or future mortgages or deeds of trust on the property. Tenant agrees to attorn to any new owner or lender. The subordination is conditioned on the lender signing a non-disturbance agreement protecting Tenant's rights.",
+          "citation": "Article 20",
+          "amendments": []
+        }
+      },
+      "liens": {
+        "synopsis": {
+          "value": "Tenant must keep the premises free from any mechanic's liens or other liens arising from work performed for or materials furnished to Tenant. Tenant must discharge any such lien within 20 days.",
+          "citation": "Article 9",
+          "amendments": []
+        }
+      },
+      "hazardousMaterials": {
+        "synopsis": {
+          "value": "Tenant shall not cause or permit any Hazardous Material to be brought upon, kept, or used in or about the premises, with the exception of limited quantities of standard office and cleaning supplies handled in accordance with all applicable laws.",
+          "citation": "Article 5.2",
+          "amendments": []
+        }
+      },
+      "rulesAndRegulations": {
+        "synopsis": {
+          "value": "Tenant and its employees must comply with all rules and regulations for the building, which may be amended by the Landlord from time to time.",
+          "citation": "Article 25",
+          "amendments": []
+        }
+      },
+      "brokerage": {
+        "synopsis": {
+          "value": "Landlord was represented by CBRE, Inc. and Tenant was represented by Cushman & Wakefield. Landlord is responsible for paying all brokerage commissions pursuant to a separate agreement.",
+          "citation": "Article 30",
+          "amendments": []
+        }
+      },
+      "estoppel": {
+        "synopsis": {
+          "value": "Upon not less than 10 days' prior written request from Landlord, Tenant shall execute and deliver an estoppel certificate to Landlord or Landlord's designee, certifying certain facts about the lease.",
+          "citation": "Article 21",
+          "amendments": []
+        }
+      },
+      "notices": {
+        "synopsis": {
+          "value": "All official notices must be in writing and sent by certified mail, return receipt requested, or by a recognized overnight courier service, to the addresses for Landlord and Tenant as specified in the lease.",
+          "citation": "Article 29",
+          "amendments": []
+        }
+      },
+      "rightOfFirstRefusalOffer": {
+        "synopsis": {
+          "value": "Not Applicable. The lease does not grant the Tenant any Right of First Refusal or Right of First Offer to purchase the property or lease additional space.",
+          "citation": "",
+          "amendments": []
+        }
+      },
+      "expansionAndRelocation": {
+        "synopsis": {
+          "value": "Not Applicable. The lease does not grant the Tenant any rights to expand the premises, nor does it grant the Landlord the right to relocate the Tenant.",
+          "citation": "",
+          "amendments": []
+        }
+      },
+      "landlordDefault": {
+        "synopsis": {
+          "value": "Landlord is considered in default if it fails to perform any of its obligations and such failure continues for 30 days after written notice from Tenant. In such case, Tenant may perform the obligation on Landlord's behalf and deduct the reasonable cost from rent.",
+          "citation": "Article 19.5",
+          "amendments": []
+        }
+      }
+    }
+  }
