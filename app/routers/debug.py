@@ -9,6 +9,7 @@ from fastapi import (
     File,
     UploadFile,
 )
+import pickle 
 from dotenv import load_dotenv
 from fastapi.responses import JSONResponse
 from utils.logs import logger
@@ -31,10 +32,16 @@ async def get_lease_abstraction(
                 content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
             )
         
-        chunker = PDFChunker(overlap_percentage=0.2)
-        
-        # Process the PDF from bytes
-        chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
+        if os.path.exists(f'./cached_pdfs/{assets.filename}.pkl'):
+            print('Found the PDF analysis << --')
+            with open(f'./cached_pdfs/{assets.filename}.pkl', 'rb') as file:
+                chunks = pickle.load(file)
+        else:
+            chunker = PDFChunker(overlap_percentage=0.2)
+            # Process the PDF from bytes
+            chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
+            with open(f'./cached_pdfs/{assets.filename}.pkl', 'wb') as file:
+                pickle.dump(chunks, file)
         
         # Convert chunks to JSON-serializable format
         data = "Given below is the data of a Lease PDF"
@@ -90,13 +97,20 @@ async def get_space(
                 content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
             )
         
-        chunker = PDFChunker(overlap_percentage=0.2)
+        if os.path.exists(f'./cached_pdfs/{assets.filename}.pkl'):
+            print('Found the PDF analysis << --')
+            with open(f'./cached_pdfs/{assets.filename}.pkl', 'rb') as file:
+                chunks = pickle.load(file)
+        else:
+            chunker = PDFChunker(overlap_percentage=0.2)
+            # Process the PDF from bytes
+            chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
+            with open(f'./cached_pdfs/{assets.filename}.pkl', 'wb') as file:
+                pickle.dump(chunks, file)
         
-        # Process the PDF from bytes
-        chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
         
         # Convert chunks to JSON-serializable format
-        data = "Given below is the data of a Lease PDF"
+        data = "Given below is the data of a Lease PDF\n"
         for i, chunk in enumerate(chunks):
             data += f"""
             
@@ -149,10 +163,16 @@ async def get_sched(
                 content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
             )
         
-        chunker = PDFChunker(overlap_percentage=0.2)
-        
-        # Process the PDF from bytes
-        chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
+        if os.path.exists(f'./cached_pdfs/{assets.filename}.pkl'):
+            print('Found the PDF analysis << --')
+            with open(f'./cached_pdfs/{assets.filename}.pkl', 'rb') as file:
+                chunks = pickle.load(file)
+        else:
+            chunker = PDFChunker(overlap_percentage=0.2)
+            # Process the PDF from bytes
+            chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
+            with open(f'./cached_pdfs/{assets.filename}.pkl', 'wb') as file:
+                pickle.dump(chunks, file)
         
         # Convert chunks to JSON-serializable format
         data = "Given below is the data of a Lease PDF"
@@ -208,10 +228,16 @@ async def get_misc(
                 content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
             )
         
-        chunker = PDFChunker(overlap_percentage=0.2)
-        
-        # Process the PDF from bytes
-        chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
+        if os.path.exists(f'./cached_pdfs/{assets.filename}.pkl'):
+            print('Found the PDF analysis << --')
+            with open(f'./cached_pdfs/{assets.filename}.pkl', 'rb') as file:
+                chunks = pickle.load(file)
+        else:
+            chunker = PDFChunker(overlap_percentage=0.2)
+            # Process the PDF from bytes
+            chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
+            with open(f'./cached_pdfs/{assets.filename}.pkl', 'wb') as file:
+                pickle.dump(chunks, file)
         
         # Convert chunks to JSON-serializable format
         data = "Given below is the data of a Lease PDF"
@@ -267,10 +293,16 @@ async def get_exec_summary(
                 content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
             )
         
-        chunker = PDFChunker(overlap_percentage=0.2)
-        
-        # Process the PDF from bytes
-        chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
+        if os.path.exists(f'./cached_pdfs/{assets.filename}.pkl'):
+            print('Found the PDF analysis << --')
+            with open(f'./cached_pdfs/{assets.filename}.pkl', 'rb') as file:
+                chunks = pickle.load(file)
+        else:
+            chunker = PDFChunker(overlap_percentage=0.2)
+            # Process the PDF from bytes
+            chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
+            with open(f'./cached_pdfs/{assets.filename}.pkl', 'wb') as file:
+                pickle.dump(chunks, file)
         
         # Convert chunks to JSON-serializable format
         data = "Given below is the data of a Lease PDF"
