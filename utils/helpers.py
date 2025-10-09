@@ -8,12 +8,12 @@ import json
 from fastapi import UploadFile
 import requests
 from adapters.llms._groq import _Groq
-import json 
-import requests 
 from adapters.llms._openai import _OpenAI
 from adapters.llms._perplexity import _Perplexity
 from adapters.llms.base import LargeLanguageModel
+from dotenv import load_dotenv 
 
+load_dotenv()
 def get_llm_adapter() -> LargeLanguageModel:
     llm_details = json.loads(str(os.environ.get('LLM')))
     if llm_details['provider'] == "openai":
@@ -208,10 +208,14 @@ def content_from_doc(info_list):
     from google.oauth2 import service_account
     from googleapiclient.discovery import build
 
-    SERVICE_ACCOUNT_FILE = './attempt_3.json'
+    # SERVICE_ACCOUNT_FILE = './attempt_4.json'
+    SERVICE_ACCOUNT_FILE = json.loads(os.getenv("google_creds"))
     SCOPES = ['https://www.googleapis.com/auth/documents.readonly']
 
-    credentials = service_account.Credentials.from_service_account_file(
+    # credentials = service_account.Credentials.from_service_account_file(
+    #     SERVICE_ACCOUNT_FILE, scopes=SCOPES
+    # )
+    credentials = service_account.Credentials.from_service_account_info(
         SERVICE_ACCOUNT_FILE, scopes=SCOPES
     )
 

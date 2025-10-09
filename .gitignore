@@ -208,7 +208,7 @@ token.pickle
 
 # Ruff stuff:
 .ruff_cache/
-
+attempt_4.json
 # PyPI configuration file
 .pypirc
 
