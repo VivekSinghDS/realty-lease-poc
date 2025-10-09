@@ -1,7 +1,8 @@
 from typing import List
 from adapters.llms.base import LargeLanguageModel 
 from openai import OpenAI
-
+from utils.schemas import LeaseDocument
+import json 
 
 
 class _OpenAI(LargeLanguageModel):
@@ -10,12 +11,11 @@ class _OpenAI(LargeLanguageModel):
         self.model_name = model_name
         
     def get_streaming_response(self, payload: List[dict]):
-        print('inside this method')
         return self.client.responses.create(
-            model="gpt-5-nano",
+            model="gpt-4o",
             input=payload,
             stream=True,
-            # temperature = 0,
+            temperature = 0,
         )
     
     def get_non_streaming_response(self, payload: List[dict]):

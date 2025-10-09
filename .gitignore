@@ -181,10 +181,10 @@ sample
 
 # pytype static type analyzer
 .pytype/
-
+flair.py
 # Cython debug symbols
 cython_debug/
-creds.json 
+creds.json
 token.pickle
 # PyCharm
 #   JetBrains specific template is maintained in a separate JetBrains.gitignore that can

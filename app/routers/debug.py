@@ -1,322 +1,321 @@
 import base64
 import re
+import ast
 import json 
 import os 
 from http import HTTPStatus
-from typing import Any
 from fastapi import (
     APIRouter,
     File,
     UploadFile,
 )
 from dotenv import load_dotenv
-from fastapi.responses import JSONResponse, StreamingResponse
+from fastapi.responses import JSONResponse
 from utils.logs import logger
 from utils.helpers import content_from_doc, get_llm_adapter, update_result_json
-from utils.prompts import LEASE_ANALYSIS, LEASE_INFORMATION
-from utils.references import charge_schedules, leaseInformation, otherLeaseProvisions, space, updated_lease_abstraction
-# from utils.prompts import AMENDMENT_ANALYSIS
+from utils.parsers.pdf import PDFChunker
+from utils.prompts import LEASE_ANALYSIS
+from utils.references import chargeSchedules, executive_summary, leaseInformation, misc, space
+
 load_dotenv()
 router = APIRouter()
 
 llm_adapter = get_llm_adapter()
 
-
-@router.post("/executive-summary")
-async def executive_summary_analysis(
+@router.post("/info")
+async def get_lease_abstraction(
     assets: UploadFile | None = File(None)
 ):
-    try:
         if not assets:
             return JSONResponse(
                 content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
             )
         
-        with open("./utils/references/executive_summary.json") as file:
-            original_lease_data_template = json.load(file)
+        chunker = PDFChunker(overlap_percentage=0.2)
+        
+        # Process the PDF from bytes
+        chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
+        
+        # Convert chunks to JSON-serializable format
+        data = "Given below is the data of a Lease PDF"
+        for i, chunk in enumerate(chunks):
+            data += f"""
             
-        data = await assets.read()
-        
-        original_filename = assets.filename or "uploaded_file"
-        base64_string = base64.b64encode(data).decode("utf-8")
-        
-        documents = content_from_doc([4, 5])
-        field_defintions: str= documents[0]
-        system: str = documents[1]
-        system_prompt = system.format(reference = field_defintions, JSON_STRUCTURE = json.dumps(original_lease_data_template))
-        
-        payload = [
-            {"role": "system", "content": system_prompt},
-            {
-                "role": "user", "content": 
-                [
-                    {
-                        "type": "input_file", 
-                        "filename": original_filename,
-                        "file_data": f"data:application/pdf;base64,{base64_string}"
-                    },
-                    {
-                        "type": "input_text", 
-                        "text": LEASE_ANALYSIS['user']
-                    },
-                    {
-                        "type": "input_text",
-                        "text": "THIS IS GOOD BUT MAKE SURE THE OUTPUT IS A VALID JSON"
-                    }
-                ]
-            }
-        ]
-        response = llm_adapter.get_non_streaming_response(payload)
-        return json.loads(response.output_text)
-
-        
-    except Exception as error:
-        logger.error(error)
-        return JSONResponse(
-                content={
-                    "message": "Something went wrong, please contact support@stealth.com"
-                }, status_code=HTTPStatus.INTERNAL_SERVER_ERROR.value
-            )
-    
-
-@router.post("/info")
-async def get_lease_info(
-    assets: UploadFile = File(None)
-):
-    # try:
+                Details about Page number {str(i)}
+                "chunk_id": {chunk.chunk_id},
+                "page_number": {chunk.page_number},
+                "text": {chunk.original_page_text},
+                "previous_overlap": {chunk.previous_overlap},
+                "next_overlap": {chunk.next_overlap},
+                "overlap_info": {chunk.overlap_info}
             
-        data = await assets.read()
-        original_filename = assets.filename or "uploaded_file"
-        base64_string = base64.b64encode(data).decode("utf-8")
+            """
+            
         documents = content_from_doc([0, 5])
         field_defintions: str= documents[0]
         system: str = documents[1]
         system_prompt = system.format(reference = field_defintions, JSON_STRUCTURE = json.dumps(leaseInformation.structure))
-        
+               
         payload = [
-            {"role": "system", "content": system_prompt},
             {
-                "role": "user", "content": 
-                [
-                    {
-                        "type": "input_file", 
-                        "filename": original_filename,
-                        "file_data": f"data:application/pdf;base64,{base64_string}"
-                    },
-                    {
-                        "type": "input_text", 
-                        "text": LEASE_ANALYSIS['user']
-                    },
-                    {
-                        "type": "input_text",
-                        "text": "THIS IS GOOD BUT MAKE SURE THE OUTPUT IS A VALID JSON"
-                    }
-                ]
+                "role": "system", "content": system_prompt  # will be filled by Ashruth 
+            },
+            {
+                "role": "user", "content": data
             }
         ]
-        response_stream = llm_adapter.get_non_streaming_response(payload)
-        return json.loads(response_stream.output_text)
+        
+        response = llm_adapter.get_non_streaming_response(payload)
 
+        message_content = response.choices[0].message.content
+
+        try:
+            message_dict = json.loads(message_content)
+        except json.JSONDecodeError:
+            try:
+                # Handle single-quoted Python-style dicts
+                message_dict = ast.literal_eval(message_content)
+            except (ValueError, SyntaxError):
+                # Fallback — wrap raw content
+                message_dict = {"content": message_content}
+
+        return message_dict
     
 @router.post("/space")
-async def get_space_info(
+async def get_space(
     assets: UploadFile | None = File(None)
 ):
-    try:
         if not assets:
             return JSONResponse(
                 content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
             )
-            
-        data = await assets.read()
-        original_filename = assets.filename or "uploaded_file"
-        base64_string = base64.b64encode(data).decode("utf-8")
         
+        chunker = PDFChunker(overlap_percentage=0.2)
+        
+        # Process the PDF from bytes
+        chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
+        
+        # Convert chunks to JSON-serializable format
+        data = "Given below is the data of a Lease PDF"
+        for i, chunk in enumerate(chunks):
+            data += f"""
+            
+                Details about Page number {str(i)}
+                "chunk_id": {chunk.chunk_id},
+                "page_number": {chunk.page_number},
+                "text": {chunk.original_page_text},
+                "previous_overlap": {chunk.previous_overlap},
+                "next_overlap": {chunk.next_overlap},
+                "overlap_info": {chunk.overlap_info}
+            
+            """
+            
         documents = content_from_doc([1, 5])
         field_defintions: str= documents[0]
         system: str = documents[1]
         system_prompt = system.format(reference = field_defintions, JSON_STRUCTURE = json.dumps(space.structure))
-        
+               
         payload = [
-            {"role": "system", "content": system_prompt},
             {
-                "role": "user", "content": 
-                [
-                    {
-                        "type": "input_file", 
-                        "filename": original_filename,
-                        "file_data": f"data:application/pdf;base64,{base64_string}"
-                    },
-                    {
-                        "type": "input_text", 
-                        "text": LEASE_ANALYSIS['user']
-                    },
-                    {
-                        "type": "input_text",
-                        "text": "THIS IS GOOD BUT MAKE SURE THE OUTPUT IS A VALID JSON"
-                    }
-                ]
+                "role": "system", "content": system_prompt  # will be filled by Ashruth 
+            },
+            {
+                "role": "user", "content": data
             }
         ]
         
         response = llm_adapter.get_non_streaming_response(payload)
-        return json.loads(response.output_text)
-        
-    except Exception as error:
-        logger.error(error)
-        return JSONResponse(
-                content={
-                    "message": "Something went wrong, please contact support@stealth.com"
-                }, status_code=HTTPStatus.INTERNAL_SERVER_ERROR.value
-            )
 
+        message_content = response.choices[0].message.content
+
+        try:
+            message_dict = json.loads(message_content)
+        except json.JSONDecodeError:
+            try:
+                # Handle single-quoted Python-style dicts
+                message_dict = ast.literal_eval(message_content)
+            except (ValueError, SyntaxError):
+                # Fallback — wrap raw content
+                message_dict = {"content": message_content}
+
+        return message_dict
     
 @router.post("/charge-schedules")
-async def get_charge_schedules(
+async def get_sched(
     assets: UploadFile | None = File(None)
 ):
-    try:
         if not assets:
             return JSONResponse(
                 content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
             )
+        
+        chunker = PDFChunker(overlap_percentage=0.2)
+        
+        # Process the PDF from bytes
+        chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
+        
+        # Convert chunks to JSON-serializable format
+        data = "Given below is the data of a Lease PDF"
+        for i, chunk in enumerate(chunks):
+            data += f"""
             
-        data = await assets.read()
-        original_filename = assets.filename or "uploaded_file"
-        base64_string = base64.b64encode(data).decode("utf-8")
+                Details about Page number {str(i)}
+                "chunk_id": {chunk.chunk_id},
+                "page_number": {chunk.page_number},
+                "text": {chunk.original_page_text},
+                "previous_overlap": {chunk.previous_overlap},
+                "next_overlap": {chunk.next_overlap},
+                "overlap_info": {chunk.overlap_info}
+            
+            """
+            
         documents = content_from_doc([2, 5])
         field_defintions: str= documents[0]
         system: str = documents[1]
-        system_prompt = system.format(reference = field_defintions, JSON_STRUCTURE = json.dumps(charge_schedules.structure))
-        
-        
+        system_prompt = system.format(reference = field_defintions, JSON_STRUCTURE = json.dumps(chargeSchedules.structure))
+               
         payload = [
-            {"role": "system", "content": system_prompt},
             {
-                "role": "user", "content": 
-                [
-                    {
-                        "type": "input_file", 
-                        "filename": original_filename,
-                        "file_data": f"data:application/pdf;base64,{base64_string}"
-                    },
-                    {
-                        "type": "input_text", 
-                        "text": LEASE_ANALYSIS['user']
-                    },
-                    {
-                        "type": "input_text",
-                        "text": "THIS IS GOOD BUT MAKE SURE THE OUTPUT IS A VALID JSON"
-                    }
-                ]
+                "role": "system", "content": system_prompt  # will be filled by Ashruth 
+            },
+            {
+                "role": "user", "content": data
             }
         ]
-        response = llm_adapter.get_non_streaming_response(payload)
-        return json.loads(response.output_text)
-    
-    except Exception as error:
-        logger.error(error)
-        return JSONResponse(
-                content={
-                    "message": "Something went wrong, please contact support@stealth.com"
-                }, status_code=HTTPStatus.INTERNAL_SERVER_ERROR.value
-            )
         
-@router.post("/miscellaneous")
-async def get_miscellaneous_info(
+        response = llm_adapter.get_non_streaming_response(payload)
+
+        message_content = response.choices[0].message.content
+
+        try:
+            message_dict = json.loads(message_content)
+        except json.JSONDecodeError:
+            try:
+                # Handle single-quoted Python-style dicts
+                message_dict = ast.literal_eval(message_content)
+            except (ValueError, SyntaxError):
+                # Fallback — wrap raw content
+                message_dict = {"content": message_content}
+
+        return message_dict
+    
+@router.post("/misc")
+async def get_misc(
     assets: UploadFile | None = File(None)
 ):
-    try:
         if not assets:
             return JSONResponse(
                 content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
             )
+        
+        chunker = PDFChunker(overlap_percentage=0.2)
+        
+        # Process the PDF from bytes
+        chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
+        
+        # Convert chunks to JSON-serializable format
+        data = "Given below is the data of a Lease PDF"
+        for i, chunk in enumerate(chunks):
+            data += f"""
             
-        data = await assets.read()
-        original_filename = assets.filename or "uploaded_file"
-        base64_string = base64.b64encode(data).decode("utf-8")
+                Details about Page number {str(i)}
+                "chunk_id": {chunk.chunk_id},
+                "page_number": {chunk.page_number},
+                "text": {chunk.original_page_text},
+                "previous_overlap": {chunk.previous_overlap},
+                "next_overlap": {chunk.next_overlap},
+                "overlap_info": {chunk.overlap_info}
+            
+            """
+            
         documents = content_from_doc([3, 5])
         field_defintions: str= documents[0]
         system: str = documents[1]
-        system_prompt = system.format(reference = field_defintions, JSON_STRUCTURE = json.dumps(otherLeaseProvisions.structure))
-        
-        
+        system_prompt = system.format(reference = field_defintions, JSON_STRUCTURE = json.dumps(misc.structure))
+               
         payload = [
-            {"role": "system", "content": system_prompt},
             {
-                "role": "user", "content": 
-                [
-                    {
-                        "type": "input_file", 
-                        "filename": original_filename,
-                        "file_data": f"data:application/pdf;base64,{base64_string}"
-                    },
-                    {
-                        "type": "input_text", 
-                        "text": LEASE_ANALYSIS['user']
-                    },
-                    {
-                        "type": "input_text",
-                        "text": "THIS IS GOOD BUT MAKE SURE THE OUTPUT IS A VALID JSON"
-                    }
-                ]
+                "role": "system", "content": system_prompt  # will be filled by Ashruth 
+            },
+            {
+                "role": "user", "content": data
             }
         ]
+        
         response = llm_adapter.get_non_streaming_response(payload)
-        return json.loads(response.output_text)
 
-    except Exception as error:
-        logger.error(error)
-        return JSONResponse(
-                content={
-                    "message": "Something went wrong, please contact support@stealth.com"
-                }, status_code=HTTPStatus.INTERNAL_SERVER_ERROR.value
-            )
+        message_content = response.choices[0].message.content
 
-@router.post("/general")
-async def get_general_info(
+        try:
+            message_dict = json.loads(message_content)
+        except json.JSONDecodeError:
+            try:
+                # Handle single-quoted Python-style dicts
+                message_dict = ast.literal_eval(message_content)
+            except (ValueError, SyntaxError):
+                # Fallback — wrap raw content
+                message_dict = {"content": message_content}
+
+        return message_dict
+
+@router.post("/executive-summary")
+async def get_exec_summary(
     assets: UploadFile | None = File(None)
 ):
-    try:
         if not assets:
             return JSONResponse(
                 content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
             )
+        
+        chunker = PDFChunker(overlap_percentage=0.2)
+        
+        # Process the PDF from bytes
+        chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
+        
+        # Convert chunks to JSON-serializable format
+        data = "Given below is the data of a Lease PDF"
+        for i, chunk in enumerate(chunks):
+            data += f"""
             
-        data = await assets.read()
-        original_filename = assets.filename or "uploaded_file"
-        base64_string = base64.b64encode(data).decode("utf-8")
+                Details about Page number {str(i)}
+                "chunk_id": {chunk.chunk_id},
+                "page_number": {chunk.page_number},
+                "text": {chunk.original_page_text},
+                "previous_overlap": {chunk.previous_overlap},
+                "next_overlap": {chunk.next_overlap},
+                "overlap_info": {chunk.overlap_info}
+            
+            """
+            
+        documents = content_from_doc([4, 5])
+        field_defintions: str= documents[0]
+        system: str = documents[1]
+        system_prompt = system.format(reference = field_defintions, JSON_STRUCTURE = json.dumps(executive_summary.structure))
+               
         payload = [
-            {"role": "system", "content": LEASE_ANALYSIS['system'].format(JSON_STRUCTURE = json.dumps(updated_lease_abstraction.structure), DOCUMENT_NAME = original_filename, reference = None)},
             {
-                "role": "user", "content": 
-                [
-                    {
-                        "type": "input_file", 
-                        "filename": original_filename,
-                        "file_data": f"data:application/pdf;base64,{base64_string}"
-                    },
-                    {
-                        "type": "input_text", 
-                        "text": LEASE_ANALYSIS['user']
-                    },
-                    {
-                        "type": "input_text",
-                        "text": "THIS IS GOOD BUT MAKE SURE THE OUTPUT IS A VALID JSON"
-                    }
-                ]
+                "role": "system", "content": system_prompt  # will be filled by Ashruth 
+            },
+            {
+                "role": "user", "content": data
             }
         ]
+        
         response = llm_adapter.get_non_streaming_response(payload)
-        return json.loads(response.output_text)
 
-    except Exception as error:
-        logger.error(error)
-        return JSONResponse(
-                content={
-                    "message": "Something went wrong, please contact support@stealth.com"
-                }, status_code=HTTPStatus.INTERNAL_SERVER_ERROR.value
-            )
+        message_content = response.choices[0].message.content
+
+        try:
+            message_dict = json.loads(message_content)
+        except json.JSONDecodeError:
+            try:
+                # Handle single-quoted Python-style dicts
+                message_dict = ast.literal_eval(message_content)
+            except (ValueError, SyntaxError):
+                # Fallback — wrap raw content
+                message_dict = {"content": message_content}
+
+        return message_dict
      
 
 @router.post("/amendment-analysis")
