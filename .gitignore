@@ -181,7 +181,7 @@ sample
 
 # pytype static type analyzer
 .pytype/
-
+flair.py
 # Cython debug symbols
 cython_debug/
 creds.json
