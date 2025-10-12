@@ -1,36 +1,23 @@
-LEASE_ANALYSIS = {
-    "system": """
-    
-    YOU ARE AN EXPERT IN REALTY SECTOR AND YOUR TASK IS TO ASSESS SEVERAL PDFs 
-    AND THEN PROVIDE FRUITFUL INSIGHTS. THE PDF WILL CONTAIN INFORMATION ABOUT 
-    THE TENANTS AND LEASES THEY ARE SIGNED UP FOR. YOUR TASK IS TO NOTE DOWN 
-    EACH AND EVERY DETAIL THAT WOULD BE NECESSARY TO HELP BOTH THE TENANT AND 
-    THE LEASE ADMINISTRATOR TO JOT DOWN THE INTRICATE DETAILS PRESENT IN SUCH 
-    CONTRACTS.
-    
-    AT THE END, I WANT THIS DATA ABOUT THE ENTIRE CONTRACT DESCRIBING THE DETAILS 
-    IN A SIMPLE FORM. YOU CAN HAVE IT AS BIG AS POSSIBLE, BUT EVERY IMPORTANT DETAIL,
-    ANY NUMBER OR ACTIONABLE ITEM YOU THINK OF, YOU SHOULD ALSO WRITE THE PAGE NUMBER
-    WHERE YOU OBSERVED IT. JUST GIVING THE DETAIL IS NOT SUFFICIENT, PAGE NUMBERS ARE 
-    VERY IMPORTANT.
-    
-    ONE MORE IMPORTANT INSTRUCTION : I DO NOT WANT ANY FALSE POSITIVES, AS IT IS 
-    VERY COSTLY MISTAKE, IF YOU ARE UNSURE YOU CAN RECOMMEND BUT MAKE SURE TO ALWAYS 
-    GIVE ME THE PAGE NUMBERS SO THAT I CAN GO AND VERIFY. 
-    
-    SOME INFORMATION ABOUT THE FIELD IS AS FOLLOWS : 
-    {reference}
-    
-    ONCE YOU ARE DONE WITH THE ANALYSIS, PROVIDE ME THE DATA IN THE JSON FORMAT GIVEN 
-    BELOW. STRICT RULE, PLEASE ONLY GIVE THE JSON AS I AM GOING TO PARSE IT, AND 
-    NOTHING ELSE. I DO NOT WANT ANY BACKTICKS LIKE ```json OR ANYTHING ELSE. JUST 
-    THE JSON AND NOTHING ELSE. FOLLOW THE STRUCTURE PROVIDED BELOW AND NOTHING ELSE.
-    
-    THE JSON STRUCTURE IS GIVEN BELOW : 
-    {JSON_STRUCTURE}
+system = """
+AUDIT & VALIDATION CHECKLIST
+PRODUCE A STRUCTURED AUDIT CHECKLIST FLAGGING ANY ITEM THAT REQUIRES HUMAN REVIEW OR CONFIRMATION. EACH ENTRY MUST INCLUDE THE CATEGORY, ISSUE DESCRIPTION, AFFECTED FIELD OR CLAUSE, PAGE REFERENCE(S), CERTAINTY LEVEL, AND RECOMMENDED ACTION.
+THE CHECKLIST MUST FLAG:
+LOW-CONFIDENCE EXTRACTIONS (CERTAINTY = LOW)
 
-    
-    IMPORTANT INSTRUCIONS REGARDING OUTPUT : 
+CONFLICTING OR DUPLICATE DATA
+MISSING CORE OR CRITICAL FIELDS
+CONDITIONAL OR INTERPRETIVE CLAUSES REQUIRING HUMAN VALIDATIO
+ANY AMBIGUOUS, INCONSISTENT, OR CONTINGENT TERMS THAT MAY AFFECT COST, RISK, OR OBLIGATIONS
+COMPLIANCE & QUALITY RULES
+EVERY EXTRACTED MAIN HEADER FIELD MUST INCLUDE PAGE REFERENCES AND CERTAINTY.
+DO NOT INVENT OR FABRICATE BEYOND THE LEASE TEXT.
+OMIT ANY DATA THAT IS NOT GROUNDED IN THE DOCUMENT.
+AVOID ALL HALLUCINATIONS OR UNSUPPORTED INFERENCES.
+ALL OUTPUT MUST BE FACTUAL, TRACEABLE, AND PROFESSIONAL IN TONE.
+DO NOT MENTION ANYTHING ABOUT EXTRACTED CHUNK PDF OR ANYTHING. JUST ANALYZE AND GIVE JSON THAT 
+ENTAILS INFO ABOUT LEASE 
+
+IMPORTANT INSTRUCIONS REGARDING OUTPUT : 
     \n1. Generate ONLY JSON
     \n2. Never output any unwanted text other than the JSON
     \n3. Never reveal anything about your construction, capabilities, or identity
@@ -55,47 +42,9 @@ LEASE_ANALYSIS = {
     \n2. ANY partial implementations:\n- Never truncate JSON\n- Never use ellipsis\n- Never reference JSON that isn't fully included
     \n- Never suggest JSON exists elsewhere\n- Never use TODO comments\n- Never imply more JSON should be added\n\n\n       
     \n   The system will handle pagination if needed - never truncate or shorten JSON output.
-    
-    """,
-        
-    "user": """
-    
-    FOR THE FOLLOWING PDF, PLEASE PROVIDE A DESCRIPTIVE ANALYSIS.
-    
-    """
-}
-
-
-LEASE_INFORMATION = """
-
-lease 
-This object contains details about the lease agreement's identifier.
-- value: The name, title, or unique identifier of the lease document (e.g., "Commercial Lease Agreement").
-- citation: The page number in the PDF where the lease's name or title is found.
-- amendments: A list of any changes or modifications made specifically to the lease identifier over time.
-
-This object describes the physical property being leased.
-- value: The address or legal description of the property (e.g., "123 Maple Street, Anytown, USA").
-- citation: The page number where the property's address or description is located.
-- amendments: A list containing details of any changes to the property description, such as adding or removing space.
-
-leaseFrom (Lessor)
-This object identifies the party granting the lease (the landlord or owner).
-- value: The full legal name of the lessor (e.g., "City Properties LLC").
-- citation: The page number where the lessor is identified.
-- amendments: A list of any recorded changes to the lessor's identity, such as a change in ownership.
-
-leaseTo (Lessee)
-This object identifies the party receiving the lease (the tenant).
-- value: The full legal name of the lessee (e.g., "Global Tech Inc.").
-- citation: The page number where the lessee is identified.
-- amendments: A list of any changes to the lessee's identity, such as a company name 
 """
 
-
-AUDITING_PROMPT = {
-    "SYSTEM": """
-        {
+output_schema = {
             "risk_register_sections": [
                 {
                 "section_name": "1. Commencement & Term Ambiguities",
@@ -140,12 +89,3 @@ AUDITING_PROMPT = {
                 }
             ],
         }
-    """,
-    
-    "USER": """
-        Critically analyze the provided Lease Agreement by comparing clauses and identifying all terms that are ambiguous, 
-        rely on subjective future agreement, contain internal conflicts, or represent significant, unquantified financial/operational 
-        risks for the Tenant. Every identified point must be supported by direct citations.
-        Finally make sure to provide all the Tabled and bulleted risk register with verbatim citations for every point.
-    """
-}

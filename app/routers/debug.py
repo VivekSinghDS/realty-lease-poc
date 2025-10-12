@@ -16,7 +16,7 @@ from utils.logs import logger
 from utils.helpers import content_from_doc, get_llm_adapter, update_result_json
 from utils.parsers.pdf import PDFChunker
 from utils.prompts import LEASE_ANALYSIS
-from utils.references import chargeSchedules, executive_summary, leaseInformation, misc, space
+from utils.references import audit, chargeSchedules, executive_summary, leaseInformation, misc, space
 
 load_dotenv()
 router = APIRouter()
@@ -120,7 +120,7 @@ async def get_space(
                 "text": {chunk.original_page_text},
                 "previous_overlap": {chunk.previous_overlap},
                 "next_overlap": {chunk.next_overlap},
-                "overlap_info": {chunk.overlap_info}
+                "overlap_info": {chunk.overlap_info},
             
             """
             
@@ -349,6 +349,70 @@ async def get_exec_summary(
 
         return message_dict
      
+@router.post("/audit")
+async def get_audit_details(
+    assets: UploadFile | None = File(None)
+):
+        if not assets:
+            return JSONResponse(
+                content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
+            )
+        
+        if os.path.exists(f'./cached_pdfs/{assets.filename}.pkl'):
+            print('Found the PDF analysis << --')
+            with open(f'./cached_pdfs/{assets.filename}.pkl', 'rb') as file:
+                chunks = pickle.load(file)
+        else:
+            chunker = PDFChunker(overlap_percentage=0.2)
+            # Process the PDF from bytes
+            chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
+            with open(f'./cached_pdfs/{assets.filename}.pkl', 'wb') as file:
+                pickle.dump(chunks, file)
+        
+        # Convert chunks to JSON-serializable format
+        data = "Given below is the data of a Lease PDF"
+        for i, chunk in enumerate(chunks):
+            data += f"""
+            
+                Details about Page number {str(i)}
+                "chunk_id": {chunk.chunk_id},
+                "page_number": {chunk.page_number},
+                "text": {chunk.original_page_text},
+                "previous_overlap": {chunk.previous_overlap},
+                "next_overlap": {chunk.next_overlap},
+                "overlap_info": {chunk.overlap_info}
+            
+            """
+               
+        payload = [
+            {
+                "role": "system", "content": audit.system + """ Output format is as follows """ + json.dumps(audit.output_schema) 
+            },
+            {
+                "role": "user", "content": data + """Critically analyze the provided Lease Agreement by comparing clauses and identifying all terms that are ambiguous, 
+                    rely on subjective future agreement, contain internal conflicts, or represent significant, unquantified financial/operational 
+                    risks for the Tenant. Every identified point must be supported by direct citations.
+                    Finally make sure to provide all the Tabled and bulleted risk register with verbatim citations for every point."""
+            }
+        ]
+        
+        response = llm_adapter.get_non_streaming_response(payload)
+
+        message_content = response.choices[0].message.content
+
+        try:
+            message_dict = json.loads(message_content)
+        except json.JSONDecodeError:
+            try:
+                # Handle single-quoted Python-style dicts
+                message_dict = ast.literal_eval(message_content)
+            except (ValueError, SyntaxError):
+                # Fallback — wrap raw content
+                message_dict = {"content": message_content}
+
+        return message_dict
+     
+
 
 @router.post("/amendment-analysis")
 async def amendment_analysis(
