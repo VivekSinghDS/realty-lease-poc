@@ -2,6 +2,10 @@ from typing import List
 from pydantic import BaseModel
 
 
+class SaveZod(BaseModel):
+    lease_abstract: dict
+    filename: str
+
 class TenantName(BaseModel):
     value: str
     citation: str

@@ -1,0 +1,39 @@
+{
+    "space": {
+      "unit": {
+        "value": "",
+        "citation": "",
+        "amendments": []
+      },
+      "building": {
+        "value": "PH Office 2, LLC",
+        "citation": "3",
+        "amendments": []
+      },
+      "floor": {
+        "value": "6th floor",
+        "citation": "3",
+        "amendments": []
+      },
+      "areaRentable": {
+        "value": "17,090 rentable square feet",
+        "citation": "3",
+        "amendments": []
+      },
+      "areaUsable": {
+        "value": "14,642 usable square feet",
+        "citation": "3",
+        "amendments": []
+      },
+      "status": {
+        "value": "",
+        "citation": "",
+        "amendments": []
+      },
+      "notes": {
+        "value": "Premises located at 5100 W. J.B. Hunt Drive, Suite 6SG, Rogers, Arkansas 72758",
+        "citation": "3",
+        "amendments": []
+      }
+    }
+  }
