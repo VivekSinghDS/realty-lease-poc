@@ -11,7 +11,7 @@ from fastapi import (
 from dotenv import load_dotenv
 from fastapi.responses import JSONResponse
 from utils.logs import logger
-from utils.helpers import get_llm_adapter, update_result_json
+from utils.helpers import get_llm_adapter
 from utils.parsers.pdf import PDFChunker
 from utils.prompts import LEASE_ANALYSIS
 # from utils.prompts import AMENDMENT_ANALYSIS

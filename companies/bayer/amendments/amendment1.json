@@ -1,0 +1,669 @@
+{
+      "space": {
+        "unit": {
+          "value": "Suite 6SG",
+          "citation": "2,3",
+          "amendments": []
+        },
+        "building": {
+          "value": "PH Office 2, LLC",
+          "citation": "2,3",
+          "amendments": []
+        },
+        "floor": {
+          "value": "6th floor",
+          "citation": "2,3",
+          "amendments": []
+        },
+        "areaRentable": {
+          "value": "14,952 sq ft",
+          "citation": "1",
+          "amendments": [
+            {
+              "amendment_type": "modification",
+              "previous_value": "18,284 sq ft",
+              "new_value": "14,952 sq ft",
+              "amendment_citation": "1",
+              "effective_date": "February 1, 2022",
+              "description": "Second Lease Amendment reduces the rentable area to 14,952 sq ft as part of the Premises downsizing."
+            },
+            {
+              "amendment_type": "modification",
+              "previous_value": "17,090 sq ft",
+              "new_value": "18,284 sq ft",
+              "amendment_citation": "2",
+              "effective_date": "January 22, 2018",
+              "description": "Expansion adds 1,194 rentable square feet to the Premises as set forth in the First Lease Amendment."
+            }
+          ]
+        },
+        "areaUsable": {
+          "value": "12,824 sq ft",
+          "citation": "1",
+          "amendments": [
+            {
+              "amendment_type": "modification",
+              "previous_value": "15,679 sq ft",
+              "new_value": "12,824 sq ft",
+              "amendment_citation": "1",
+              "effective_date": "February 1, 2022",
+              "description": "Second Lease Amendment reduces the usable area to 12,824 sq ft as part of the Premises downsizing."
+            },
+            {
+              "amendment_type": "modification",
+              "previous_value": "14,642 sq ft",
+              "new_value": "15,679 sq ft",
+              "amendment_citation": "2",
+              "effective_date": "January 22, 2018",
+              "description": "Expansion adds 1,037 usable square feet to the Premises as set forth in the First Lease Amendment."
+            }
+          ]
+        },
+        "status": {
+          "value": "",
+          "citation": "",
+          "amendments": []
+        },
+        "notes": {
+          "value": "",
+          "citation": "",
+          "amendments": []
+        }
+      },
+      "executiveSummary": {
+        "value": "This lease is between PH Office 2, LLC (Landlord) and Bayer HealthCare LLC (Tenant) for space on the 6th floor of 5100 W.J.B. Hunt Drive, Rogers, Arkansas. The Premises comprise approximately 17,090 rentable square feet and 14,642 usable square feet. The Primary Term runs for 77 months, ending on the last day of the 77th full month, with a Tenant option to extend to 90 months by providing notice within 21 days of Commencement. Base rent is $24.50 per rentable square foot for the first year, inclusive of operating expenses, utilities, insurance, and taxes, and escalates 2% annually. Rent commences on the first day of the sixth full month (or the seventh month if the term is extended). The Landlord provides a tenant‑improvement allowance of $72.22 per RSF (up to $1,234,239.80) or $84.42 per RSF (up to $1,442,737.80) if the term is extended. Tenant may terminate early at the end of month 51 with six‑month notice, incurring a termination fee for unamortized improvement allowance and broker commission. Two optional five‑year renewal terms are available with notice 180‑365 days prior to expiration. Additional terms include CAM pass‑through based on a 95% occupancy factor, a 5% cap on controllable expense increases, insurance requirements, signage rights per Exhibit E, parking entitlement of 4.5 spaces per 1,000 RSF at no charge, and standard maintenance, repair, and indemnity obligations.",
+        "citation": "Pages 1‑2",
+        "amendments": []
+      },
+      "otherLeaseProvisions": {
+        "premisesAndTerm": {
+          "synopsis": {
+            "value": "Premises located on the 6th floor of PH Office 2, LLC building at 5100 W. J.B. Hunt Drive, Suite 602, Rogers, AR; 12,824 usable and 14,952 rentable square feet. Primary term extended to December 31, 2026.",
+            "citation": "Pages 3,4,5",
+            "amendments": [
+              {
+                "amendment_type": "modification",
+                "previous_value": "14,642 usable and 17,090 rentable square feet. Primary term ends on the last day of the 77th full month.",
+                "new_value": "12,824 usable and 14,952 rentable square feet. Primary term extended to December 31, 2026.",
+                "amendment_citation": "1",
+                "effective_date": "February 1, 2022",
+                "description": "Second Lease Amendment downsizes the Premises and extends the lease term."
+              }
+            ]
+          },
+          "keyParameters": {
+            "value": "Usable Sq Ft: 12,824; Rentable Sq Ft: 14,952; Primary Term End: December 31, 2026; Extension Right: up to 90 months; Renewal Options: two 5‑year terms; Rent Commencement: 6th month (or 7th if extended); Base Rent: revised per amendment table.",
+            "citation": "Pages 3,5,6,7",
+            "amendments": []
+          },
+          "narrative": {
+            "value": "As indicated by the area on Exhibit A attached to the Lease, situated on the 6th floor in the building commonly known as PH Office 2, LLC (the \"Building\") located at 5100 W. J.B. Hunt Drive, Suite 602, Rogers, Arkansas 72758. The Premises now consists of approximately Twelve Thousand Eight Hundred Twenty‑four (12,824) usable square feet and Fourteen Thousand Nine Hundred Fifty‑two (14,952) rentable square feet. The primary term has been extended to December 31, 2026. Tenant shall have the right to extend the term to ninety (90) months within fourteen (14) days of the Commencement Date. Tenant also has options for two additional five (5) year renewal terms upon proper notice. Rent Commences on the first day of the sixth (6th) full month of the Primary Term (or the seventh month if the term is extended).",
+            "citation": "Pages 3,5,6",
+            "amendments": []
+          }
+        },
+        "taxes": {
+          "synopsis": {
+            "value": "Landlord pays real property taxes; Tenant pays taxes on personal property and any excess taxes passed through after the Base Year.",
+            "citation": "Page 8",
+            "amendments": []
+          },
+          "definition": {
+            "value": "\"Taxes\" means real property taxes and special assessments on the Premises, Land and improvements; and personal property taxes on Tenant's fixtures and equipment.",
+            "citation": "Page 8",
+            "amendments": []
+          },
+          "keyParameters": {
+            "value": "Base Year: calendar year 2022; Tenant liable for taxes on personal property; Excess taxes passed through pro‑rata based on square footage.",
+            "citation": "Page 8",
+            "amendments": [
+              {
+                "amendment_type": "modification",
+                "previous_value": "Base Year: calendar year 2016; Tenant Proportionate Share based on 18,284 RSF of 226,468 total building RSF (8%);",
+                "new_value": "Base Year: calendar year 2022; Tenant Proportionate Share based on 14,952 RSF of 226,468 total building RSF (6.6%);",
+                "amendment_citation": "1",
+                "effective_date": "February 1, 2022",
+                "description": "Second Lease Amendment updates the Operating Expense Base Year to 2022 and adjusts the tenant's proportionate share to 6.6% reflecting the reduced rentable area."
+              },
+              {
+                "amendment_type": "modification",
+                "previous_value": "Base Year: 2016; Tenant Proportionate Share based on 18,284 RSF of 226,468 total building RSF; Controllable expense increase cap: 5% annually.",
+                "new_value": "Base Year: 2016; Tenant Proportionate Share based on 18,284 RSF of 226,468 total building RSF (8%); Controllable expense increase cap: 5% annually.",
+                "amendment_citation": "2",
+                "effective_date": "January 22, 2018",
+                "description": "Expansion increases rentable area, raising Tenant's proportionate share to 8%."
+              }
+            ]
+          },
+          "narrative": {
+            "value": "Landlord agrees to pay all real property taxes and special assessments that accrue against the Premises, and/or the Land and/or improvements of which the Premises are a part. Property taxes incurred in any year during the lease term which exceed the taxes on the property during the \"Base Year\", will be passed through to building tenants based on a pro‑rata square footage basis. The Base Year shall be the calendar year of 2022. Tenant shall be liable for all taxes levied or assessed against any personal property or fixtures placed in the Premises.",
+            "citation": "Page 8",
+            "amendments": []
+          }
+        },
+        "operatingExpenses": {
+          "synopsis": {
+            "value": "Operating expenses above the Base Year (2022) are passed through to Tenant on a pro‑rata basis; caps on controllable expense increases; detailed billing and reconciliation process.",
+            "citation": "Pages 8,9",
+            "amendments": []
+          },
+          "definition": {
+            "value": "\"Operating Expense\" means the actual ordinary and reasonable costs incurred by Landlord for ownership, management, maintenance, repair, replacement, restoration or operation of the Real Property, excluding capital improvements, casualty costs, financing costs, depreciation, leasing commissions, and other excluded items.",
+            "citation": "Pages 9,10",
+            "amendments": []
+          },
+          "keyParameters": {
+            "value": "Base Year: 2022; Tenant Proportionate Share based on 14,952 RSF of 226,468 total building RSF (6.6%); Controllable expense increase cap: 5% annually.",
+            "citation": "Pages 9,10",
+            "amendments": [
+              {
+                "amendment_type": "modification",
+                "previous_value": "Base Year: 2016; Tenant Proportionate Share based on 18,284 RSF of 226,468 total building RSF (8%); Controllable expense increase cap: 5% annually.",
+                "new_value": "Base Year: 2022; Tenant Proportionate Share based on 14,952 RSF of 226,468 total building RSF (6.6%); Controllable expense increase cap: 5% annually.",
+                "amendment_citation": "1",
+                "effective_date": "February 1, 2022",
+                "description": "Second Lease Amendment updates the Operating Expense Base Year and tenant's share to reflect the downsized premises."
+              }
+            ]
+          },
+          "billingTimeline": {
+            "value": "Landlord provides an estimated increase notice annually; Annual Statement delivered within 90 days after year‑end; Tenant may review within 90 days of receipt; over‑statement reimbursement within 30 days.",
+            "citation": "Pages 9,10",
+            "amendments": []
+          },
+          "formulas": {
+            "value": "Tenant Share = (Tenant Rentable Sq Ft / Total Building Rentable Sq Ft) × Operating Expense amount.",
+            "citation": "Pages 9,10",
+            "amendments": []
+          },
+          "capitalRules": {
+            "value": "Capital improvements are excluded unless they directly reduce Tenant's operating expenses; such costs are amortized over their useful life on a straight‑line basis.",
+            "citation": "Pages 9,10",
+            "amendments": []
+          },
+          "narrative": {
+            "value": "Operating expenses (as defined herein) incurred in any year during the lease term which exceed the operating expenses on the Building for the Base Year (2022) will be passed through to the Building tenants on a prorata basis. Controllable Operating Expenses (defined as all Operating Expenses other than property taxes and insurance) shall not increase by more than five percent (5%) annually following Tenant's Base Year. Landlord shall send to Tenant a written statement of the amount of Tenant's Proportionate Share of any estimated increase in Operating Expenses and Tenant shall pay to Landlord, monthly as Additional Rent, Tenant's prorata share of such increase. Within ninety (90) days after the end of each calendar year, Landlord shall send an annual statement of Operating Expenses.",
+            "citation": "Pages 9,10",
+            "amendments": []
+          }
+        },
+        "parking": {
+          "synopsis": {
+            "value": "Tenant entitled to seventy‑five (75) parking spaces as a result of the reduction of the Premises.",
+            "citation": "1",
+            "amendments": [
+              {
+                "amendment_type": "modification",
+                "previous_value": "Tenant entitled to a total of 82 parking spaces as a result of the expansion.",
+                "new_value": "Tenant entitled to seventy‑five (75) parking spaces as a result of the reduction of the Premises.",
+                "amendment_citation": "1",
+                "effective_date": "February 1, 2022",
+                "description": "Second Lease Amendment reduces the parking entitlement to 75 spaces following the downsizing of the Premises."
+              },
+              {
+                "amendment_type": "modification",
+                "previous_value": "Tenant entitled to at least 4.5 parking spaces per 1,000 rentable square feet at no charge; Landlord reserves six exclusive spaces for itself.",
+                "new_value": "Tenant entitled to a total of 82 parking spaces as a result of the expansion.",
+                "amendment_citation": "2",
+                "effective_date": "January 22, 2018",
+                "description": "Expansion adds parking entitlement to 82 total spaces."
+              }
+            ]
+          }
+        },
+        "earlyTerminationOption": {
+          "synopsis": {
+            "value": "Tenant has a one‑time right to terminate the lease after the thirty‑sixth (36th) month of occupancy, provided nine (9) months’ written notice is given and a termination fee equal to the unamortized transaction costs (including TI allowance and commissions) is paid.",
+            "citation": "1",
+            "amendments": [
+              {
+                "amendment_type": "addition",
+                "previous_value": "",
+                "new_value": "Tenant may terminate after 36 months with notice and fee as described.",
+                "amendment_citation": "1",
+                "effective_date": "February 1, 2022",
+                "description": "Second Lease Amendment adds an early termination option."
+              }
+            ]
+          }
+        }
+      },
+      "chargeSchedules": {
+        "baseRent": [
+          {
+            "chargeCode": {
+              "value": "",
+              "citation": ""
+            },
+            "description": {
+              "value": "Base Rent Period 1-5 months",
+              "citation": "Page 8"
+            },
+            "dateFrom": {
+              "value": "",
+              "citation": ""
+            },
+            "dateTo": {
+              "value": "",
+              "citation": ""
+            },
+            "monthlyAmount": {
+              "value": "$0.00",
+              "citation": "Page 8"
+            },
+            "annualAmount": {
+              "value": "",
+              "citation": ""
+            },
+            "areaRentable": {
+              "value": "17090",
+              "citation": "Page 3"
+            },
+            "amountPerArea": {
+              "value": "$0.00",
+              "citation": "Page 8"
+            },
+            "managementFees": {
+              "value": "",
+              "citation": ""
+            },
+            "amendments": []
+          },
+          {
+            "chargeCode": {
+              "value": "",
+              "citation": ""
+            },
+            "description": {
+              "value": "Base Rent Period 6-17 months",
+              "citation": "Page 8"
+            },
+            "dateFrom": {
+              "value": "",
+              "citation": ""
+            },
+            "dateTo": {
+              "value": "",
+              "citation": ""
+            },
+            "monthlyAmount": {
+              "value": "$38,076.43",
+              "citation": "2"
+            },
+            "annualAmount": {
+              "value": "",
+              "citation": ""
+            },
+            "areaRentable": {
+              "value": "18284",
+              "citation": "2"
+            },
+            "amountPerArea": {
+              "value": "$2.08",
+              "citation": "2"
+            },
+            "managementFees": {
+              "value": "",
+              "citation": ""
+            },
+            "amendments": [
+              {
+                "amendment_type": "modification",
+                "previous_value": "$34,892.08",
+                "new_value": "$38,076.43",
+                "amendment_citation": "2",
+                "effective_date": "January 22, 2018",
+                "description": "Base rent increased to reflect expanded rentable area of 18,284 RSF for the period 1/1/2018‑6/30/2018."
+              },
+              {
+                "amendment_type": "modification",
+                "previous_value": "Based on 18,284 RSF",
+                "new_value": "Replaced per Second Lease Amendment – rent schedule beginning Feb 1 2022 shown in amendment table (see page 1).",
+                "amendment_citation": "1",
+                "effective_date": "February 1, 2022",
+                "description": "Second Lease Amendment replaces the base rent amounts with the new schedule (see amendment Table)."
+              }
+            ]
+          },
+          {
+            "chargeCode": {
+              "value": "",
+              "citation": ""
+            },
+            "description": {
+              "value": "Base Rent Period 18-29 months",
+              "citation": "Page 8"
+            },
+            "dateFrom": {
+              "value": "",
+              "citation": ""
+            },
+            "dateTo": {
+              "value": "",
+              "citation": ""
+            },
+            "monthlyAmount": {
+              "value": "$38,838.26",
+              "citation": "2"
+            },
+            "annualAmount": {
+              "value": "",
+              "citation": ""
+            },
+            "areaRentable": {
+              "value": "18284",
+              "citation": "2"
+            },
+            "amountPerArea": {
+              "value": "$2.12",
+              "citation": "2"
+            },
+            "managementFees": {
+              "value": "",
+              "citation": ""
+            },
+            "amendments": [
+              {
+                "amendment_type": "modification",
+                "previous_value": "$35,589.93",
+                "new_value": "$38,838.26",
+                "amendment_citation": "2",
+                "effective_date": "July 1, 2018",
+                "description": "Base rent updated for expanded area for the period 7/1/2018‑6/30/2019."
+              },
+              {
+                "amendment_type": "modification",
+                "previous_value": "Based on 18,284 RSF",
+                "new_value": "Replaced per Second Lease Amendment – rent schedule beginning Feb 1 2022 shown in amendment table (see page 1).",
+                "amendment_citation": "1",
+                "effective_date": "February 1, 2022",
+                "description": "Second Lease Amendment replaces the base rent amounts with the new schedule."
+              }
+            ]
+          },
+          {
+            "chargeCode": {
+              "value": "",
+              "citation": ""
+            },
+            "description": {
+              "value": "Base Rent Period 30-41 months",
+              "citation": "Page 8"
+            },
+            "dateFrom": {
+              "value": "",
+              "citation": ""
+            },
+            "dateTo": {
+              "value": "",
+              "citation": ""
+            },
+            "monthlyAmount": {
+              "value": "$39,615.33",
+              "citation": "2"
+            },
+            "annualAmount": {
+              "value": "",
+              "citation": ""
+            },
+            "areaRentable": {
+              "value": "18284",
+              "citation": "2"
+            },
+            "amountPerArea": {
+              "value": "$2.16",
+              "citation": "2"
+            },
+            "managementFees": {
+              "value": "",
+              "citation": ""
+            },
+            "amendments": [
+              {
+                "amendment_type": "modification",
+                "previous_value": "$36,302.01",
+                "new_value": "$39,615.33",
+                "amendment_citation": "2",
+                "effective_date": "July 1, 2019",
+                "description": "Base rent updated for expanded area for the period 7/1/2019‑6/30/2020."
+              },
+              {
+                "amendment_type": "modification",
+                "previous_value": "Based on 18,284 RSF",
+                "new_value": "Replaced per Second Lease Amendment – rent schedule beginning Feb 1 2022 shown in amendment table (see page 1).",
+                "amendment_citation": "1",
+                "effective_date": "February 1, 2022",
+                "description": "Second Lease Amendment replaces the base rent amounts with the new schedule."
+              }
+            ]
+          },
+          {
+            "chargeCode": {
+              "value": "",
+              "citation": ""
+            },
+            "description": {
+              "value": "Base Rent Period 42-53 months",
+              "citation": "Page 8"
+            },
+            "dateFrom": {
+              "value": "",
+              "citation": ""
+            },
+            "dateTo": {
+              "value": "",
+              "citation": ""
+            },
+            "monthlyAmount": {
+              "value": "$40,407.64",
+              "citation": "2"
+            },
+            "annualAmount": {
+              "value": "",
+              "citation": ""
+            },
+            "areaRentable": {
+              "value": "18284",
+              "citation": "2"
+            },
+            "amountPerArea": {
+              "value": "$2.21",
+              "citation": "2"
+            },
+            "managementFees": {
+              "value": "",
+              "citation": ""
+            },
+            "amendments": [
+              {
+                "amendment_type": "modification",
+                "previous_value": "$37,028.33",
+                "new_value": "$40,407.64",
+                "amendment_citation": "2",
+                "effective_date": "July 1, 2020",
+                "description": "Base rent updated for expanded area for the period 7/1/2020‑6/30/2021."
+              },
+              {
+                "amendment_type": "modification",
+                "previous_value": "Based on 18,284 RSF",
+                "new_value": "Replaced per Second Lease Amendment – rent schedule beginning Feb 1 2022 shown in amendment table (see page 1).",
+                "amendment_citation": "1",
+                "effective_date": "February 1, 2022",
+                "description": "Second Lease Amendment replaces the base rent amounts with the new schedule."
+              }
+            ]
+          },
+          {
+            "chargeCode": {
+              "value": "",
+              "citation": ""
+            },
+            "description": {
+              "value": "Base Rent Period 54-65 months",
+              "citation": "Page 8"
+            },
+            "dateFrom": {
+              "value": "",
+              "citation": ""
+            },
+            "dateTo": {
+              "value": "",
+              "citation": ""
+            },
+            "monthlyAmount": {
+              "value": "$41,215.18",
+              "citation": "2"
+            },
+            "annualAmount": {
+              "value": "",
+              "citation": ""
+            },
+            "areaRentable": {
+              "value": "18284",
+              "citation": "2"
+            },
+            "amountPerArea": {
+              "value": "$2.25",
+              "citation": "2"
+            },
+            "managementFees": {
+              "value": "",
+              "citation": ""
+            },
+            "amendments": [
+              {
+                "amendment_type": "modification",
+                "previous_value": "$37,768.90",
+                "new_value": "$41,215.18",
+                "amendment_citation": "2",
+                "effective_date": "July 1, 2021",
+                "description": "Base rent updated for expanded area for the period 7/1/2021‑4/30/2022."
+              },
+              {
+                "amendment_type": "modification",
+                "previous_value": "Based on 18,284 RSF",
+                "new_value": "Replaced per Second Lease Amendment – rent schedule beginning Feb 1 2022 shown in amendment table (see page 1).",
+                "amendment_citation": "1",
+                "effective_date": "February 1, 2022",
+                "description": "Second Lease Amendment replaces the base rent amounts with the new schedule."
+              }
+            ]
+          },
+          {
+            "chargeCode": {
+              "value": "",
+              "citation": ""
+            },
+            "description": {
+              "value": "Base Rent Period 66-77 months",
+              "citation": "Page 8"
+            },
+            "dateFrom": {
+              "value": "",
+              "citation": ""
+            },
+            "dateTo": {
+              "value": "",
+              "citation": ""
+            },
+            "monthlyAmount": {
+              "value": "$41,215.18",
+              "citation": "2"
+            },
+            "annualAmount": {
+              "value": "",
+              "citation": ""
+            },
+            "areaRentable": {
+              "value": "18284",
+              "citation": "2"
+            },
+            "amountPerArea": {
+              "value": "$2.25",
+              "citation": "2"
+            },
+            "managementFees": {
+              "value": "",
+              "citation": ""
+            },
+            "amendments": [
+              {
+                "amendment_type": "modification",
+                "previous_value": "$38,523.71",
+                "new_value": "$41,215.18",
+                "amendment_citation": "2",
+                "effective_date": "May 1, 2022",
+                "description": "Base rent continued at the expanded rate for the remainder of the lease term."
+              },
+              {
+                "amendment_type": "modification",
+                "previous_value": "Based on 18,284 RSF",
+                "new_value": "Replaced per Second Lease Amendment – rent schedule beginning Feb 1 2022 shown in amendment table (see page 1).",
+                "amendment_citation": "1",
+                "effective_date": "February 1, 2022",
+                "description": "Second Lease Amendment replaces the base rent amounts with the new schedule."
+              }
+            ]
+          }
+        ],
+        "lateFee": {
+          "calculationType": {
+            "value": "Percentage of Overdue Amount",
+            "citation": "Page 8",
+            "amendments": []
+          },
+          "graceDays": {
+            "value": "10 days after due date",
+            "citation": "Page 8",
+            "amendments": []
+          },
+          "percent": {
+            "value": "2%",
+            "citation": "Page 8",
+            "amendments": []
+          },
+          "secondFeeCalculationType": {
+            "value": "",
+            "citation": "",
+            "amendments": []
+          },
+          "secondFeeGrace": {
+            "value": "",
+            "citation": "",
+            "amendments": []
+          },
+          "secondFeePercent": {
+            "value": "",
+            "citation": "",
+            "amendments": []
+          },
+          "perDayFee": {
+            "value": "",
+            "citation": "",
+            "amendments": []
+          }
+        }
+      },
+      "leaseInformation": {
+        "lease": {
+          "value": "Lease ABC1",
+          "citation": "Page 1",
+          "amendments": []
+        },
+        "property": {
+          "value": "5100 W. J.B. Hunt Drive, Suite 6SG, Rogers, Arkansas 72758",
+          "citation": "Page 2",
+          "amendments": []
+        },
+        "leaseFrom": {
+          "value": "PH Office 2, LLC",
+          "citation": "Page 1",
+          "amendments": []
+        },
+        "leaseTo": {
+          "value": "Bayer HealthCare LLC",
+          "citation": "Page 0",
+          "amendments": []
+        }
+      }
+  }

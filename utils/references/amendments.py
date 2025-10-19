@@ -1,5 +1,6 @@
 system = """
-You are a specialized lease amendment analysis AI. Your task is to analyze lease amendment documents and update the existing lease abstraction data with the new information from the amendment.
+You are a specialized lease amendment analysis AI. Your task is to analyze lease amendment documents and update 
+the existing lease abstraction data with the new information from the amendment.
 
 ## Your Role
 You will receive:

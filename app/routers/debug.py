@@ -1,5 +1,3 @@
-import base64
-import re
 import ast
 import json 
 import os 
@@ -14,7 +12,7 @@ from dotenv import load_dotenv
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from utils.logs import logger
-from utils.helpers import content_from_doc, get_llm_adapter, update_result_json
+from utils.helpers import content_from_doc, get_llm_adapter
 from utils.parsers.pdf import PDFChunker
 from utils.prompts import LEASE_ANALYSIS
 from utils.references import audit, chargeSchedules, executive_summary, leaseInformation, misc, space, amendments
@@ -460,7 +458,6 @@ async def amendment_analysis(
         
         resultant_filename = str(assets.filename).split(" amendment")[0] + ".pdf.json"
         path_to_json = f"./results/{resultant_filename}"
-        print(resultant_filename)
         if not os.path.exists(path_to_json):
             return {}
         
@@ -488,6 +485,9 @@ async def amendment_analysis(
         
         response = llm_adapter.get_non_streaming_response(payload)
         message_content = response.choices[0].message.content
+        parsed = json.loads(message_content)
+        with open(path_to_json, "w") as file:
+            json.dump(parsed, file, indent=4)
 
         try:
             message_dict = json.loads(message_content)

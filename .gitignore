@@ -211,7 +211,7 @@ token.pickle
 attempt_4.json
 # PyPI configuration file
 .pypirc
-
+.DS_Store
 # Marimo
 marimo/_static/
 marimo/_lsp/

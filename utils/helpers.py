@@ -1,17 +1,21 @@
+import ast
+import asyncio
 import os 
 import json
-from pathlib import Path
-from typing import Any
-import fitz  # PyMuPDF
-import base64
+from typing import Any, Dict, List
 import json 
-from fastapi import UploadFile
-import requests
+import pickle 
+from adapters.database._local import _Local
+from adapters.database.base import Database
 from adapters.llms._groq import _Groq
 from adapters.llms._openai import _OpenAI
 from adapters.llms._perplexity import _Perplexity
 from adapters.llms.base import LargeLanguageModel
-from dotenv import load_dotenv 
+from dotenv import load_dotenv
+
+from utils.constants import ANALYSIS_CONFIG, AnalysisType
+from utils.parsers.pdf import PDFChunker
+from utils.references import audit 
 
 load_dotenv()
 def get_llm_adapter() -> LargeLanguageModel:
@@ -22,187 +26,142 @@ def get_llm_adapter() -> LargeLanguageModel:
         return _Groq()
     else:
         return _Perplexity()
-    
-    
-def save_response_to_file(response_data: str, filename: str):
+
+
+llm_adapter = get_llm_adapter()
+def build_chunk_data(chunks: List) -> str:
+    """Convert chunks to formatted string data"""
+    data = "Given below is the data of a Lease PDF\n"
+    for i, chunk in enumerate(chunks):
+        data += f"""
+        
+            Details about Page number {i}
+            "chunk_id": {chunk.chunk_id},
+            "page_number": {chunk.page_number},
+            "text": {chunk.original_page_text},
+            "previous_overlap": {chunk.previous_overlap},
+            "next_overlap": {chunk.next_overlap},
+            "overlap_info": {chunk.overlap_info}
+        
+        """
+    return data
+
+def parse_llm_response(content: str) -> Dict[str, Any]:
+    """Parse LLM response with fallback handling"""
     try:
-        # Remove file extension from filename to use as directory name
-        base_filename = Path(filename).stem
-        
-        # Create directory path
-        directory_path = Path(f"./results/{base_filename}")
-        directory_path.mkdir(parents=True, exist_ok=True)
-        
-        # Parse the response as JSON (assuming it's JSON format)
+        return json.loads(content)
+    except json.JSONDecodeError:
         try:
-            response_json = json.loads(response_data)
-        except json.JSONDecodeError:
-            # If it's not valid JSON, wrap it in a JSON structure
-            response_json = {"response": response_data}
-        
-        # Save to result.json
-        result_file_path = directory_path / "result.json"
-        with open(result_file_path, 'w', encoding='utf-8') as file:
-            json.dump(response_json, file, indent=2, ensure_ascii=False)
-            
-        print(f"Successfully saved response to {result_file_path}")
-        
-    except Exception as e:
-        print(f"Error saving response to file: {str(e)}")
-        
-def update_result_json(resultant_json: dict, llm_iterative_response_json: str | dict) -> dict:
-    """
-    Iteratively updates the resultant_json with new data from LLM response.
+            return ast.literal_eval(content)
+        except (ValueError, SyntaxError):
+            return {"content": content}
+
+def get_db_adapter() -> Database:
+    provider_config: dict = json.loads(str(os.environ.get('DATABASE')))
+    if provider_config['provider'] == "local":
+        return _Local()
+    return _Local()
+
+async def load_or_process_pdf(filename: str, file_content: bytes) -> List:
+    """Load cached PDF chunks or process new PDF"""
+    cache_path = f'./cached_pdfs/{filename}.pkl'
     
-    Args:
-        resultant_json: The current state of the lease JSON (can be empty dict initially)
-        llm_iterative_response_json: The LLM response, either as a JSON string or dict
-        
-    Returns:
-        Updated resultant_json with merged data
-    """
-    try:
-        # Parse LLM response if it's a string
-        if isinstance(llm_iterative_response_json, str):
-            try:
-                new_data = json.loads(llm_iterative_response_json)
-            except json.JSONDecodeError:
-                # Try to extract JSON from the response if it contains other text
-                first_open = llm_iterative_response_json.find('{')
-                last_close = llm_iterative_response_json.rfind('}')
-                if first_open != -1 and last_close != -1 and first_open < last_close:
-                    json_substring = llm_iterative_response_json[first_open:last_close + 1]
-                    new_data = json.loads(json_substring)
-                else:
-                    print(f"Warning: Could not parse LLM response as JSON: {llm_iterative_response_json[:100]}")
-                    return resultant_json
-        else:
-            new_data = llm_iterative_response_json
-            
-        # If resultant_json is empty, initialize with the structure
-        if not resultant_json:
-            # Load the template structure
-            template_path = os.path.join(os.path.dirname(__file__), 'references', 'lease_structure_template.json')
-            if os.path.exists(template_path):
-                with open(template_path, 'r') as f:
-                    resultant_json = json.load(f)
-            else:
-                # Fallback to empty dict if template doesn't exist
-                resultant_json = {}
-        
-        # Deep merge the new data into resultant_json
-        resultant_json = _deep_merge(resultant_json, new_data)
-        
-        return resultant_json
-        
-    except Exception as e:
-        print(f"Error updating result JSON: {str(e)}")
-        return resultant_json
+    if os.path.exists(cache_path):
+        print(f'Found cached PDF analysis for {filename}')
+        with open(cache_path, 'rb') as f:
+            return pickle.load(f)
+    
+    print(f'Processing new PDF: {filename}')
+    chunker = PDFChunker(overlap_percentage=0.2)
+    chunks = chunker.process_pdf(file_content, extract_tables=True)
+    
+    # Cache the chunks
+    os.makedirs('./cached_pdfs', exist_ok=True)
+    with open(cache_path, 'wb') as f:
+        pickle.dump(chunks, f)
+    
+    return chunks        
+
+async def perform_standard_analysis(
+    analysis_type: AnalysisType,
+    chunks: List
+) -> Dict[str, Any]:
+    """Perform standard analysis (info, space, charge-schedules, misc, executive-summary)"""
+    config = ANALYSIS_CONFIG[analysis_type]
+    data = build_chunk_data(chunks)
+    
+    documents = content_from_doc(config["doc_indices"])
+    field_definitions = documents[0]
+    system_template = documents[1]
+    
+    system_prompt = system_template.format(
+        reference=field_definitions,
+        JSON_STRUCTURE=json.dumps(config["structure"])
+    )
+    
+    payload = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": data}
+    ]
+    
+    response = llm_adapter.get_non_streaming_response(payload)
+    return parse_llm_response(response.choices[0].message.content)
+
+async def perform_audit_analysis(chunks: List) -> Dict[str, Any]:
+    """Perform audit analysis"""
+    data = build_chunk_data(chunks)
+    
+    payload = [
+        {
+            "role": "system",
+            "content": audit.system + " Output format is as follows " + json.dumps(audit.output_schema)
+        },
+        {
+            "role": "user",
+            "content": data + """Critically analyze the provided Lease Agreement by comparing clauses and identifying all terms that are ambiguous, 
+                rely on subjective future agreement, contain internal conflicts, or represent significant, unquantified financial/operational 
+                risks for the Tenant. Every identified point must be supported by direct citations.
+                Finally make sure to provide all the Tabled and bulleted risk register with verbatim citations for every point."""
+        }
+    ]
+    
+    response = llm_adapter.get_non_streaming_response(payload)
+    return parse_llm_response(response.choices[0].message.content)
 
 
-def _deep_merge(base: dict, update: dict) -> dict:
-    """
-    Recursively merges update dict into base dict.
-    
-    For dictionaries: merge recursively
-    For lists: append unique items (based on content similarity)
-    For primitives: update with new value if it's not empty/default
-    
-    Args:
-        base: The base dictionary to merge into
-        update: The dictionary with new values to merge
-        
-    Returns:
-        Merged dictionary
-    """
-    for key, value in update.items():
-        if key not in base:
-            # Key doesn't exist in base, add it
-            base[key] = value
-        elif isinstance(value, dict) and isinstance(base[key], dict):
-            # Both are dicts, merge recursively
-            base[key] = _deep_merge(base[key], value)
-        elif isinstance(value, list) and isinstance(base[key], list):
-            # Both are lists, append new unique items
-            for item in value:
-                # Check if item already exists (to avoid duplicates)
-                if not _item_exists_in_list(base[key], item):
-                    base[key].append(item)
-        else:
-            # For primitive values, update only if new value is meaningful
-            if value and value != "string" and value != "":
-                base[key] = value
-    
-    return base
-
-
-def _item_exists_in_list(lst: list, item: Any) -> bool:
-    """
-    Check if an item already exists in a list.
-    Handles both primitive types and dict/list comparisons.
-    
-    Args:
-        lst: The list to check
-        item: The item to look for
-        
-    Returns:
-        True if item exists in list, False otherwise
-    """
-    if not lst:
-        return False
-        
-    # For dictionaries, check if a similar dict exists based on key fields
-    if isinstance(item, dict):
-        for existing_item in lst:
-            if isinstance(existing_item, dict):
-                # Check similarity based on key fields or citation
-                if _dicts_are_similar(existing_item, item):
-                    return True
+async def run_single_analysis(
+    analysis_type: AnalysisType,
+    chunks: List
+) -> Dict[str, Any]:
+    """Run a single analysis based on type"""
+    if analysis_type == AnalysisType.AUDIT:
+        return await perform_audit_analysis(chunks)
     else:
-        # For primitives, simple membership check
-        return item in lst
-    
-    return False
+        return await perform_standard_analysis(analysis_type, chunks)
 
-
-def _dicts_are_similar(dict1: dict, dict2: dict, threshold: float = 0.7) -> bool:
-    """
-    Check if two dictionaries are similar enough to be considered duplicates.
-    Compares based on common fields like citation, description, etc.
+async def run_all_analyses(chunks: List) -> Dict[str, Any]:
+    """Run all analyses in parallel and merge results"""
+    tasks = {
+        analysis_type.value: run_single_analysis(analysis_type, chunks)
+        for analysis_type in AnalysisType
+        if analysis_type != AnalysisType.ALL
+    }
     
-    Args:
-        dict1: First dictionary
-        dict2: Second dictionary
-        threshold: Similarity threshold (0.0 to 1.0)
-        
-    Returns:
-        True if dictionaries are similar, False otherwise
-    """
-    # Priority fields to check for similarity
-    priority_fields = ['citation', 'description', 'clause_name', 'value']
+    results = await asyncio.gather(*tasks.values(), return_exceptions=True)
     
-    matches = 0
-    total_checks = 0
+    # Flatten results by merging all dictionaries at root level
+    combined_results = {}
+    for key, result in zip(tasks.keys(), results):
+        if isinstance(result, Exception):
+            combined_results[f"{key}_error"] = str(result)
+        else:
+            # Merge the result dictionary into combined_results
+            if isinstance(result, dict):
+                combined_results.update(result)
+            else:
+                combined_results[key] = result
     
-    for field in priority_fields:
-        if field in dict1 and field in dict2:
-            total_checks += 1
-            if dict1[field] == dict2[field]:
-                matches += 1
-    
-    # If no priority fields found, check all common keys
-    if total_checks == 0:
-        common_keys = set(dict1.keys()) & set(dict2.keys())
-        if not common_keys:
-            return False
-        total_checks = len(common_keys)
-        for key in common_keys:
-            if dict1[key] == dict2[key]:
-                matches += 1
-    
-    # Calculate similarity ratio
-    similarity = matches / total_checks if total_checks > 0 else 0
-    return similarity >= threshold
+    return combined_results
 
 def content_from_doc(info_list):
     from google.oauth2 import service_account

@@ -1,7 +1,9 @@
 from typing import List
 from pydantic import BaseModel
 
-
+class CreateRequest(BaseModel):
+    name: str
+    
 class SaveZod(BaseModel):
     lease_abstract: dict
     filename: str

@@ -10,7 +10,6 @@ from fastapi import (
 )
 from dotenv import load_dotenv
 from fastapi.responses import JSONResponse
-from utils.helpers import save_response_to_file
 from utils.logs import logger
 from utils.helpers import get_llm_adapter
 from utils.prompts import LEASE_ANALYSIS

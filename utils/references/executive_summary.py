@@ -1,5 +1,5 @@
 structure = {
     "executiveSummary": {
-      "value": ""
+      "value": "a markdown formatted string that describes the executive summary"
     }
 }

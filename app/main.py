@@ -6,10 +6,9 @@ import asyncio
 import os
 import json 
 
-from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse, StreamingResponse
+from fastapi.responses import StreamingResponse
 
-from app.routers import debug, lease_abstraction, minimum_lease_terms
+from app.routers import companies, debug, lease_abstraction, minimum_lease_terms
 from utils.constants import CORS_CONFIG
   
 app = FastAPI()
@@ -41,6 +40,11 @@ routers = [
         "router": debug.router,
         "prefix": "/debug",
         "tags": ['debug']
+    },
+    {
+        "router": companies.router, 
+        "prefix": "/company",
+        "tags": ['company']
     }
     # Commented out until content_entries is implemented
     # {"router": content_entries.router, "prefix": "/entries", "tags": ["entries"]},
@@ -53,7 +57,7 @@ for route in routers:
 app.add_middleware(CORSMiddleware, **CORS_CONFIG)
 @app.get("/")
 async def root():
-    return {"message": "ask-ai main page!"}
+    return {"message": "stealth page"}
 
 
 @app.get("/health")
