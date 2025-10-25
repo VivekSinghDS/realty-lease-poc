@@ -5,6 +5,7 @@ import json
 from typing import Any, Dict, List
 import json 
 import pickle 
+from typing import Dict, Any, List
 from adapters.database._local import _Local
 from adapters.database.base import Database
 from adapters.llms._groq import _Groq
@@ -163,6 +164,7 @@ async def run_all_analyses(chunks: List) -> Dict[str, Any]:
     
     return combined_results
 
+
 def content_from_doc(info_list):
     from google.oauth2 import service_account
     from googleapiclient.discovery import build
@@ -210,3 +212,140 @@ def content_from_doc(info_list):
             
             content.append(text)
     return content
+
+
+
+def update_result_json(message_dict: Dict[str, Any], message_content: str) -> Dict[str, Any]:
+    """
+    Iteratively updates the result dictionary with new chunk data from LLM response.
+    Handles appending to arrays and merging nested structures.
+    
+    Args:
+        message_dict: The cumulative result dictionary
+        message_content: The JSON string response from LLM for current chunk
+        
+    Returns:
+        Updated message_dict with merged content
+    """
+    # Initialize empty structure if message_dict is empty
+    if not message_dict:
+        message_dict = {
+            "newCamRules": [],
+            "continuedRules": [],
+            "crossPageContext": [],
+            "flagsAndObservations": {
+                "ambiguities": [],
+                "conflicts": [],
+                "missingProvisions": [],
+                "tenantConcerns": [],
+                "provisionsSpanningToNextPage": []
+            },
+            "cumulativeCamRulesSummary": {
+                "totalRulesExtracted": 0,
+                "rulesByCategory": {
+                    "proportionateShare": 0,
+                    "camExpenseCategories": 0,
+                    "exclusions": 0,
+                    "paymentTerms": 0,
+                    "capsLimitations": 0,
+                    "reconciliationProcedures": 0,
+                    "baseYearProvisions": 0,
+                    "grossUpProvisions": 0,
+                    "administrativeFees": 0,
+                    "auditRights": 0,
+                    "noticeRequirements": 0,
+                    "controllableVsNonControllable": 0,
+                    "definitions": 0,
+                    "calculationMethods": 0
+                },
+                "overallTenantRiskAssessment": "Low",
+                "keyTenantProtections": [],
+                "keyTenantExposures": []
+            }
+        }
+    
+    # Parse the new chunk data
+    try:
+        # Clean the message content (remove markdown code blocks if present)
+        cleaned_content = message_content.strip()
+        if cleaned_content.startswith("```json"):
+            cleaned_content = cleaned_content[7:]
+        if cleaned_content.startswith("```"):
+            cleaned_content = cleaned_content[3:]
+        if cleaned_content.endswith("```"):
+            cleaned_content = cleaned_content[:-3]
+        cleaned_content = cleaned_content.strip()
+        
+        new_data = json.loads(cleaned_content)
+    except json.JSONDecodeError as e:
+        print(f"JSON decode error: {e}")
+        print(f"Problematic content: {message_content[:200]}...")
+        raise ValueError(f"Invalid JSON response from LLM: {e}")
+    
+    # Merge newCamRules (append new rules)
+    if "newCamRules" in new_data and new_data["newCamRules"]:
+        message_dict["newCamRules"].extend(new_data["newCamRules"])
+    
+    # Merge continuedRules (append)
+    if "continuedRules" in new_data and new_data["continuedRules"]:
+        message_dict["continuedRules"].extend(new_data["continuedRules"])
+    
+    # Merge crossPageContext (append)
+    if "crossPageContext" in new_data and new_data["crossPageContext"]:
+        message_dict["crossPageContext"].extend(new_data["crossPageContext"])
+    
+    # Merge flagsAndObservations (append to each sub-array)
+    if "flagsAndObservations" in new_data:
+        flags = new_data["flagsAndObservations"]
+        
+        if "ambiguities" in flags and flags["ambiguities"]:
+            message_dict["flagsAndObservations"]["ambiguities"].extend(flags["ambiguities"])
+        
+        if "conflicts" in flags and flags["conflicts"]:
+            message_dict["flagsAndObservations"]["conflicts"].extend(flags["conflicts"])
+        
+        if "missingProvisions" in flags and flags["missingProvisions"]:
+            message_dict["flagsAndObservations"]["missingProvisions"].extend(flags["missingProvisions"])
+        
+        if "tenantConcerns" in flags and flags["tenantConcerns"]:
+            message_dict["flagsAndObservations"]["tenantConcerns"].extend(flags["tenantConcerns"])
+        
+        if "provisionsSpanningToNextPage" in flags and flags["provisionsSpanningToNextPage"]:
+            # Replace rather than append for spanning provisions (only last chunk matters)
+            message_dict["flagsAndObservations"]["provisionsSpanningToNextPage"] = flags["provisionsSpanningToNextPage"]
+    
+    # Merge cumulativeCamRulesSummary (update counts and merge arrays)
+    if "cumulativeCamRulesSummary" in new_data:
+        summary = new_data["cumulativeCamRulesSummary"]
+        
+        # Update total rules count
+        if "totalRulesExtracted" in summary:
+            message_dict["cumulativeCamRulesSummary"]["totalRulesExtracted"] = len(message_dict["newCamRules"])
+        
+        # Update category counts (accumulate)
+        if "rulesByCategory" in summary:
+            for category, count in summary["rulesByCategory"].items():
+                if category in message_dict["cumulativeCamRulesSummary"]["rulesByCategory"]:
+                    message_dict["cumulativeCamRulesSummary"]["rulesByCategory"][category] += count
+        
+        # Update risk assessment (take the highest severity)
+        if "overallTenantRiskAssessment" in summary:
+            current_risk = message_dict["cumulativeCamRulesSummary"]["overallTenantRiskAssessment"]
+            new_risk = summary["overallTenantRiskAssessment"]
+            risk_hierarchy = {"Low": 0, "Medium": 1, "High": 2, "Critical": 3}
+            if risk_hierarchy.get(new_risk, 0) > risk_hierarchy.get(current_risk, 0):
+                message_dict["cumulativeCamRulesSummary"]["overallTenantRiskAssessment"] = new_risk
+        
+        # Merge keyTenantProtections (avoid duplicates)
+        if "keyTenantProtections" in summary and summary["keyTenantProtections"]:
+            for protection in summary["keyTenantProtections"]:
+                if protection not in message_dict["cumulativeCamRulesSummary"]["keyTenantProtections"]:
+                    message_dict["cumulativeCamRulesSummary"]["keyTenantProtections"].append(protection)
+        
+        # Merge keyTenantExposures (avoid duplicates)
+        if "keyTenantExposures" in summary and summary["keyTenantExposures"]:
+            for exposure in summary["keyTenantExposures"]:
+                if exposure not in message_dict["cumulativeCamRulesSummary"]["keyTenantExposures"]:
+                    message_dict["cumulativeCamRulesSummary"]["keyTenantExposures"].append(exposure)
+    
+    return message_dict

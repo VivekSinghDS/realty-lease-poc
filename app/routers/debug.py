@@ -10,14 +10,12 @@ from fastapi import (
 import pickle 
 from dotenv import load_dotenv
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel
 from utils.logs import logger
-from utils.helpers import content_from_doc, get_llm_adapter
+from utils.helpers import content_from_doc, get_llm_adapter, update_result_json
 from utils.parsers.pdf import PDFChunker
-from utils.prompts import LEASE_ANALYSIS
-from utils.references import audit, chargeSchedules, executive_summary, leaseInformation, misc, space, amendments
+from utils.references import audit, cam, chargeSchedules, executive_summary, leaseInformation, misc, space, amendments
 from utils.schemas import SaveZod
-
+import time 
 load_dotenv()
 router = APIRouter()
 
@@ -420,6 +418,146 @@ async def save_lease(item: SaveZod):
     with open(f'./results/{filename}.json', 'w') as f:
         json.dump(lease_abstraction_json, f, indent=4) 
 
+@router.post('/cam')
+async def get_cam(
+    assets: UploadFile 
+):
+    if not assets:
+            return JSONResponse(
+                content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
+            )
+        
+    if os.path.exists(f'./cached_pdfs/{assets.filename}.pkl'):
+        print('Found the PDF analysis << --')
+        with open(f'./cached_pdfs/{assets.filename}.pkl', 'rb') as file:
+            chunks = pickle.load(file)
+    else:
+        chunker = PDFChunker(overlap_percentage=0.2)
+        # Process the PDF from bytes
+        chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
+        with open(f'./cached_pdfs/{assets.filename}.pkl', 'wb') as file:
+            pickle.dump(chunks, file)
+    
+    # Convert chunks to JSON-serializable format
+    data = "Given below is the data of a Lease PDF"
+    for i, chunk in enumerate(chunks):
+        data += f"""
+        
+            Details about Page number {str(i)}
+            "chunk_id": {chunk.chunk_id},
+            "page_number": {chunk.page_number},
+            "text": {chunk.original_page_text},
+            "previous_overlap": {chunk.previous_overlap},
+            "next_overlap": {chunk.next_overlap},
+            "overlap_info": {chunk.overlap_info}
+        
+        """
+        
+    # documents = content_from_doc([7, 5])
+    # field_defintions: str= documents[0]
+    # system: str = documents[1]
+    
+    system_prompt = cam.system.format(reference = cam.field_definitions, JSON_STRUCTURE = json.dumps(cam.structure))
+            
+    payload = [
+        {
+            "role": "system", "content": system_prompt  # will be filled by Ashruth 
+        },
+        {
+            "role": "user", "content": data
+        }
+    ]
+    with open('./something.txt', 'w') as file:
+        file.write(str(payload))
+    print(payload)
+    response = llm_adapter.get_non_streaming_response(payload)
+
+    message_content = response.choices[0].message.content
+
+    try:
+        message_dict = json.loads(message_content)
+    except json.JSONDecodeError:
+        try:
+            # Handle single-quoted Python-style dicts
+            message_dict = ast.literal_eval(message_content)
+        except (ValueError, SyntaxError):
+            # Fallback — wrap raw content
+            message_dict = {"content": message_content}
+
+    return message_dict
+
+@router.post('/cam-single')
+async def get_cam(
+    assets: UploadFile 
+):
+    if not assets:
+            return JSONResponse(
+                content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
+            )
+        
+    if os.path.exists(f'./cached_pdfs/{assets.filename}.pkl'):
+        print('Found the PDF analysis << --')
+        with open(f'./cached_pdfs/{assets.filename}.pkl', 'rb') as file:
+            chunks = pickle.load(file)
+    else:
+        chunker = PDFChunker(overlap_percentage=0.2)
+        # Process the PDF from bytes
+        chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
+        with open(f'./cached_pdfs/{assets.filename}.pkl', 'wb') as file:
+            pickle.dump(chunks, file)
+    
+    # Initialize empty result dictionary for iterative updates
+    message_dict = {}
+    # Process each chunk iteratively
+    for i, chunk in enumerate(chunks):
+        print(f"Processing chunk {i+1}/{len(chunks)} - Page {chunk.page_number}")
+        if i > 0:  # Skip delay for first chunk
+            time.sleep(2)  # Wait 1 second between chunks
+        # Create data for this specific chunk
+        chunk_data = f"""
+        Here is the content from page {chunk.page_number} of the lease document:
+        
+        Page number: {chunk.page_number}
+        Text content: {chunk.original_page_text}
+        Previous overlap: {chunk.previous_overlap}
+        Next overlap: {chunk.next_overlap}
+        Overlap info: {chunk.overlap_info}
+        """
+        try:
+        # Prepare system prompt for CAM analysis
+            system_prompt = cam.system.format(reference=cam.field_definitions, JSON_STRUCTURE=json.dumps(cam.structure))
+                    
+            payload = [
+                {
+                    "role": "system", "content": system_prompt
+                },
+                {
+                    "role": "user", "content": chunk_data
+                }
+            ]
+            
+            # Get LLM response for this chunk
+            
+
+            # Update the result dictionary with this chunk's response
+            try:
+                response = llm_adapter.get_non_streaming_response(payload)
+                message_content = response.choices[0].message.content
+                message_dict = update_result_json(message_dict, message_content)
+                with open('./sample-output.txt', 'w') as fp:
+                    fp.write(str(message_dict))
+                print(f"Successfully processed chunk {i+1}")
+            except Exception as e:
+                print(response)
+                print(f"Error processing chunk {i+1}: {str(e)}")
+                # Continue with next chunk even if this one fails
+                continue
+        except Exception as e:
+            print(e)
+            print('this was the error')
+
+    return JSONResponse(content=message_dict)
+
 
 @router.post("/amendments")
 async def amendment_analysis(
@@ -485,9 +623,7 @@ async def amendment_analysis(
         
         response = llm_adapter.get_non_streaming_response(payload)
         message_content = response.choices[0].message.content
-        parsed = json.loads(message_content)
-        with open(path_to_json, "w") as file:
-            json.dump(parsed, file, indent=4)
+        
 
         try:
             message_dict = json.loads(message_content)
