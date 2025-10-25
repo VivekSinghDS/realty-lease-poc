@@ -453,11 +453,11 @@ async def get_cam(
         
         """
         
-    # documents = content_from_doc([7, 5])
-    # field_defintions: str= documents[0]
-    # system: str = documents[1]
+    documents = content_from_doc([7, 7])
+    field_defintions: str= documents[0]
+    system: str = documents[1]
     
-    system_prompt = cam.system.format(reference = cam.field_definitions, JSON_STRUCTURE = json.dumps(cam.structure))
+    system_prompt = system.format(reference = cam.field_definitions, JSON_STRUCTURE = json.dumps(cam.structure))
             
     payload = [
         {
@@ -467,9 +467,7 @@ async def get_cam(
             "role": "user", "content": data
         }
     ]
-    with open('./something.txt', 'w') as file:
-        file.write(str(payload))
-    print(payload)
+
     response = llm_adapter.get_non_streaming_response(payload)
 
     message_content = response.choices[0].message.content
@@ -511,8 +509,8 @@ async def get_cam(
     # Process each chunk iteratively
     for i, chunk in enumerate(chunks):
         print(f"Processing chunk {i+1}/{len(chunks)} - Page {chunk.page_number}")
-        if i > 0:  # Skip delay for first chunk
-            time.sleep(2)  # Wait 1 second between chunks
+        if i > 0:
+            time.sleep(2)
         # Create data for this specific chunk
         chunk_data = f"""
         Here is the content from page {chunk.page_number} of the lease document:
@@ -523,40 +521,41 @@ async def get_cam(
         Next overlap: {chunk.next_overlap}
         Overlap info: {chunk.overlap_info}
         """
+        # try:
+        documents = content_from_doc([6, 7])
+        field_defintions: str= documents[0]
+        system: str = documents[1]
+    # Prepare system prompt for CAM analysis
+        system_prompt = system
+                
+        payload = [
+            {
+                "role": "system", "content": system_prompt + cam.JSON_PROD_INSTRUCTIONS
+            },
+            {
+                "role": "user", "content": chunk_data
+            }
+        ]
+        
+        # Get LLM response for this chunk
+        
+
+        # Update the result dictionary with this chunk's response
         try:
-        # Prepare system prompt for CAM analysis
-            system_prompt = cam.system.format(reference=cam.field_definitions, JSON_STRUCTURE=json.dumps(cam.structure))
-                    
-            payload = [
-                {
-                    "role": "system", "content": system_prompt
-                },
-                {
-                    "role": "user", "content": chunk_data
-                }
-            ]
-            
-            # Get LLM response for this chunk
-            
+            response = llm_adapter.get_non_streaming_response(payload)
+            message_content = response.choices[0].message.content
+            message_dict = update_result_json(message_dict, message_content)
 
-            # Update the result dictionary with this chunk's response
-            try:
-                response = llm_adapter.get_non_streaming_response(payload)
-                message_content = response.choices[0].message.content
-                message_dict = update_result_json(message_dict, message_content)
-                with open('./sample-output.txt', 'w') as fp:
-                    fp.write(str(message_dict))
-                print(f"Successfully processed chunk {i+1}")
-            except Exception as e:
-                print(response)
-                print(f"Error processing chunk {i+1}: {str(e)}")
-                # Continue with next chunk even if this one fails
-                continue
         except Exception as e:
-            print(e)
-            print('this was the error')
+            # print(response)
+            print(f"Error processing chunk {i+1}: {str(e)}")
+            # Continue with next chunk even if this one fails
+            continue
+        # except Exception as e:
+        #     print(e)
+        #     print('this was the error')
 
-    return JSONResponse(content=message_dict)
+    return message_dict
 
 
 @router.post("/amendments")

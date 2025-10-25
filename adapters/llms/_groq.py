@@ -14,7 +14,7 @@ class _Groq(LargeLanguageModel):
             max_retries=10,
             timeout = 10
         )
-        self.model_name = "openai/gpt-oss-20b"
+        self.model_name = "openai/gpt-oss-120b"
         
     def get_streaming_response(self, payload: List[dict]):
         return self.client.chat.completions.create(

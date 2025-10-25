@@ -139,6 +139,11 @@ HERE IS THE JSON STRUCTURE OF THE RETURN TYPE
 HERE IS THE FIELD DEFINITIONS 
 {reference}
 
+
+
+"""
+JSON_PROD_INSTRUCTIONS = """
+
 ## Important Instructions Regarding Output
 
 1. Generate ONLY JSON
@@ -214,7 +219,6 @@ HERE IS THE FIELD DEFINITIONS
 **Remember:** The system will handle pagination if needed - never truncate or shorten JSON output.
 
 """
-
 field_definitions = """
 ruleId: Unique identifier using format "CAM-P[page]-[sequence]" (e.g., "CAM-P12-001")
 ruleCategory: Classification of the CAM rule (must match one of 14 categories)
