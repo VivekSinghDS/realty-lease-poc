@@ -215,6 +215,155 @@ def content_from_doc(info_list):
 
 
 
+def compile_iterative_outputs() -> Dict[str, Any]:
+    """
+    Compiles all numbered text files (0.txt, 1.txt, etc.) into a comprehensive final output.
+    Reads all iterative outputs and merges them into a single consolidated result.
+    
+    Returns:
+        Consolidated dictionary with all CAM analysis results
+    """
+    compiled_result = {
+        "newCamRules": [],
+        "continuedRules": [],
+        "crossPageContext": [],
+        "flagsAndObservations": {
+            "ambiguities": [],
+            "conflicts": [],
+            "missingProvisions": [],
+            "tenantConcerns": [],
+            "provisionsSpanningToNextPage": []
+        },
+        "cumulativeCamRulesSummary": {
+            "totalRulesExtracted": 0,
+            "rulesByCategory": {
+                "proportionateShare": 0,
+                "camExpenseCategories": 0,
+                "exclusions": 0,
+                "paymentTerms": 0,
+                "capsLimitations": 0,
+                "reconciliationProcedures": 0,
+                "baseYearProvisions": 0,
+                "grossUpProvisions": 0,
+                "administrativeFees": 0,
+                "auditRights": 0,
+                "noticeRequirements": 0,
+                "controllableVsNonControllable": 0,
+                "definitions": 0,
+                "calculationMethods": 0
+            },
+            "overallTenantRiskAssessment": "Low",
+            "keyTenantProtections": [],
+            "keyTenantExposures": []
+        }
+    }
+    
+    # Find all numbered text files
+    numbered_files = []
+    for i in range(100):  # Check up to 100 files
+        filename = f"./cam_result/{i}.txt"
+        if os.path.exists(filename):
+            numbered_files.append(filename)
+    
+    print(f"Found {len(numbered_files)} numbered text files to compile")
+    
+    # Process each file
+    for filename in sorted(numbered_files, key=lambda x: int(x.split('.')[0])):
+        try:
+            with open(filename, 'r', encoding='utf-8') as f:
+                content = f.read().strip()
+            
+            # Clean the content (remove markdown code blocks if present)
+            if content.startswith("```json"):
+                content = content[7:]
+            if content.startswith("```"):
+                content = content[3:]
+            if content.endswith("```"):
+                content = content[:-3]
+            content = content.strip()
+            
+            # Parse JSON content
+            try:
+                data = json.loads(content)
+            except json.JSONDecodeError as e:
+                print(f"Error parsing {filename}: {e}")
+                continue
+            
+            # Merge extractedCamRules into newCamRules
+            if "extractedCamRules" in data and data["extractedCamRules"]:
+                compiled_result["newCamRules"].extend(data["extractedCamRules"])
+            
+            # Merge crossPageContext
+            if "crossPageContext" in data and data["crossPageContext"]:
+                compiled_result["crossPageContext"].extend(data["crossPageContext"])
+            
+            # Merge flagsAndObservations
+            if "flagsAndObservations" in data:
+                flags = data["flagsAndObservations"]
+                
+                if "ambiguities" in flags and flags["ambiguities"]:
+                    compiled_result["flagsAndObservations"]["ambiguities"].extend(flags["ambiguities"])
+                
+                if "conflicts" in flags and flags["conflicts"]:
+                    compiled_result["flagsAndObservations"]["conflicts"].extend(flags["conflicts"])
+                
+                if "missingProvisions" in flags and flags["missingProvisions"]:
+                    compiled_result["flagsAndObservations"]["missingProvisions"].extend(flags["missingProvisions"])
+                
+                if "tenantConcerns" in flags and flags["tenantConcerns"]:
+                    compiled_result["flagsAndObservations"]["tenantConcerns"].extend(flags["tenantConcerns"])
+                
+                if "provisionsSpanningToNextPage" in flags and flags["provisionsSpanningToNextPage"]:
+                    # Replace rather than append for spanning provisions
+                    compiled_result["flagsAndObservations"]["provisionsSpanningToNextPage"] = flags["provisionsSpanningToNextPage"]
+            
+            print(f"Successfully processed {filename}")
+            
+        except Exception as e:
+            print(f"Error processing {filename}: {e}")
+            continue
+    
+    # Update cumulative summary
+    compiled_result["cumulativeCamRulesSummary"]["totalRulesExtracted"] = len(compiled_result["newCamRules"])
+    
+    # Count rules by category
+    for rule in compiled_result["newCamRules"]:
+        if "ruleCategory" in rule:
+            category = rule["ruleCategory"]
+            if category in compiled_result["cumulativeCamRulesSummary"]["rulesByCategory"]:
+                compiled_result["cumulativeCamRulesSummary"]["rulesByCategory"][category] += 1
+    
+    # Determine overall risk assessment based on tenant concerns
+    risk_levels = []
+    for concern in compiled_result["flagsAndObservations"]["tenantConcerns"]:
+        if "riskLevel" in concern:
+            risk_levels.append(concern["riskLevel"])
+    
+    if risk_levels:
+        risk_hierarchy = {"Low": 0, "Medium": 1, "High": 2, "Critical": 3}
+        max_risk = max(risk_levels, key=lambda x: risk_hierarchy.get(x, 0))
+        compiled_result["cumulativeCamRulesSummary"]["overallTenantRiskAssessment"] = max_risk
+    
+    # Extract key tenant protections and exposures
+    for concern in compiled_result["flagsAndObservations"]["tenantConcerns"]:
+        if concern.get("negotiationPoint", False):
+            if concern.get("riskLevel") in ["High", "Critical"]:
+                compiled_result["cumulativeCamRulesSummary"]["keyTenantExposures"].append(concern.get("description", ""))
+            elif concern.get("riskLevel") in ["Low", "Medium"]:
+                compiled_result["cumulativeCamRulesSummary"]["keyTenantProtections"].append(concern.get("description", ""))
+    
+    # Remove duplicates from lists
+    compiled_result["flagsAndObservations"]["ambiguities"] = list({str(item): item for item in compiled_result["flagsAndObservations"]["ambiguities"]}.values())
+    compiled_result["flagsAndObservations"]["conflicts"] = list({str(item): item for item in compiled_result["flagsAndObservations"]["conflicts"]}.values())
+    compiled_result["flagsAndObservations"]["missingProvisions"] = list({str(item): item for item in compiled_result["flagsAndObservations"]["missingProvisions"]}.values())
+    compiled_result["flagsAndObservations"]["tenantConcerns"] = list({str(item): item for item in compiled_result["flagsAndObservations"]["tenantConcerns"]}.values())
+    compiled_result["cumulativeCamRulesSummary"]["keyTenantProtections"] = list(set(compiled_result["cumulativeCamRulesSummary"]["keyTenantProtections"]))
+    compiled_result["cumulativeCamRulesSummary"]["keyTenantExposures"] = list(set(compiled_result["cumulativeCamRulesSummary"]["keyTenantExposures"]))
+    
+    print(f"Compilation complete. Total rules extracted: {compiled_result['cumulativeCamRulesSummary']['totalRulesExtracted']}")
+    return compiled_result
+
+
 def update_result_json(message_dict: Dict[str, Any], message_content: str) -> Dict[str, Any]:
     """
     Iteratively updates the result dictionary with new chunk data from LLM response.
@@ -282,8 +431,10 @@ def update_result_json(message_dict: Dict[str, Any], message_content: str) -> Di
         print(f"Problematic content: {message_content[:200]}...")
         raise ValueError(f"Invalid JSON response from LLM: {e}")
     
-    # Merge newCamRules (append new rules)
-    if "newCamRules" in new_data and new_data["newCamRules"]:
+    # Merge extractedCamRules into newCamRules (handle both formats)
+    if "extractedCamRules" in new_data and new_data["extractedCamRules"]:
+        message_dict["newCamRules"].extend(new_data["extractedCamRules"])
+    elif "newCamRules" in new_data and new_data["newCamRules"]:
         message_dict["newCamRules"].extend(new_data["newCamRules"])
     
     # Merge continuedRules (append)

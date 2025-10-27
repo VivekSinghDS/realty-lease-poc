@@ -1,0 +1,238 @@
+{
+  "documentAnalysis": {
+    "documentTitle": "Lease Document",
+    "documentDate": "Not Specified",
+    "totalPagesAnalyzed": 1,
+    "analysisTimestamp": "2025-10-27T14:32:58Z",
+    "analysisCompleteness": "Partial - Only page 8 of the lease was provided for analysis"
+  },
+  "extractedCamRules": [
+    {
+      "ruleId": "CAM-001",
+      "ruleCategory": "proportionateShare",
+      "location": {
+        "pageNumbers": [8],
+        "section": "4. Operating Expenses",
+        "paragraph": "Tenant's pro‑rata share of building expenses shall be calculated as the resultant percentage based on the rentable square footage of the Building as the denominator and tenant's rentable square footage as the numerator."
+      },
+      "ruleSummary": "Tenant's share is calculated by dividing tenant's rentable square footage by total building rentable square footage.",
+      "exactLanguage": "Tenant's pro-rata share of building expenses shall be calculated as the resultant percentage based on the rentable square footage of the Building as the denominator and tenant's rentable square footage as the numerator.",
+      "tenantImpact": "Tenant will pay CAM charges proportional to its square footage relative to the entire building, creating a direct link between space size and expense liability.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Neutral"
+    },
+    {
+      "ruleId": "CAM-002",
+      "ruleCategory": "camExpenseCategories",
+      "location": {
+        "pageNumbers": [8],
+        "section": "4. Operating Expenses",
+        "paragraph": "Definition of Operating Expense"
+      },
+      "ruleSummary": "Operating Expenses include all ordinary and reasonable costs for ownership, management, maintenance, repair, replacement, restoration, and operation of the property, such as utilities, lighting, HVAC, sanitation, security, etc.",
+      "exactLanguage": "The term \"Operating Expense\" as used herein means the actual ordinary and reasonable costs and expenses incurred by or on behalf of Landlord for each calendar year that occurs wholly or partially during the Initial Term or any Renewal Term because of or in connection with the ownership, management, maintenance, repair, replacement, restoration or operation of the Real Property, including all costs and expenses paid or incurred by Landlord for operating, equipping, policing and protecting, lighting, utilities, heating, air-conditioning, providing sanitation and other services, providing...",
+      "tenantImpact": "Tenant is responsible for a broad range of expenses; the definition is expansive and may capture many cost items, potentially increasing CAM liability.",
+      "crossReferences": [],
+      "impactSeverity": "High",
+      "favorability": "Unfavorable"
+    },
+    {
+      "ruleId": "CAM-003",
+      "ruleCategory": "camExpenseCategories",
+      "location": {
+        "pageNumbers": [8],
+        "section": "3.A Taxes",
+        "paragraph": "Landlord pays real property taxes; excess over base year passed through"
+      },
+      "ruleSummary": "Tenant must pay its share of any property tax increase over the Base Year on a pro‑rata square‑footage basis.",
+      "exactLanguage": "Property taxes incurred in any year during the lease term which exceed the taxes on the property during the \"Base Year\", will be passed through to building tenants based on a pro‑rata square footage basis.",
+      "tenantImpact": "If property taxes rise above the Base Year amount, Tenant will incur additional CAM charges proportional to its square footage.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Neutral"
+    },
+    {
+      "ruleId": "CAM-004",
+      "ruleCategory": "baseYearProvisions",
+      "location": {
+        "pageNumbers": [8],
+        "section": "3.A Taxes",
+        "paragraph": "Definition of Base Year"
+      },
+      "ruleSummary": "Base Year is defined as calendar year 2016 (or later if the assessment does not reflect the completed building value).",
+      "exactLanguage": "The Base Year shall be the calendar year of 2016 or such later year to the extent the assessment for the Building and Land does not reflect the value of the completed Building and Premises as contemplated hereunder.",
+      "tenantImpact": "All pass‑through tax and operating expense calculations are anchored to the 2016 tax/expense levels; any increase after that year becomes Tenant’s responsibility.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Neutral"
+    },
+    {
+      "ruleId": "CAM-005",
+      "ruleCategory": "auditRights",
+      "location": {
+        "pageNumbers": [8],
+        "section": "3.A Taxes",
+        "paragraph": "Inspection rights for excess tax invoices"
+      },
+      "ruleSummary": "Tenant may inspect books related to excess tax invoices within 180 days; audit rights are waived after 180 days.",
+      "exactLanguage": "Tenant shall have a right to inspect the books and records of the property within one hundred eighty (180) days of receipt of such invoice with respect to such account. Tenant waives any right to audit after one hundred eighty (180) days.",
+      "tenantImpact": "Tenant has a limited window to verify tax pass‑through amounts; after 180 days the Tenant cannot challenge the charges, potentially limiting recourse.",
+      "crossReferences": [],
+      "impactSeverity": "High",
+      "favorability": "Unfavorable"
+    },
+    {
+      "ruleId": "CAM-006",
+      "ruleCategory": "definitions",
+      "location": {
+        "pageNumbers": [8],
+        "section": "3.A Taxes",
+        "paragraph": "\"Taxes\" definition"
+      },
+      "ruleSummary": "\"Taxes\" are defined as all real property taxes and special assessments that accrue against the Premises, Land, or improvements.",
+      "exactLanguage": "Landlord agrees to pay all real property taxes and special assessments (collectively referred to herein as \"Taxes\") that accrue against the Premises, and/or the Land and/or improvements of which the Premises are a part.",
+      "tenantImpact": "Clarifies that Landlord initially pays taxes, but excess over Base Year is passed through to Tenant, establishing the mechanism for tax-related CAM charges.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Neutral"
+    },
+    {
+      "ruleId": "CAM-007",
+      "ruleCategory": "definitions",
+      "location": {
+        "pageNumbers": [8],
+        "section": "4. Operating Expenses",
+        "paragraph": "\"Operating Expense\" definition"
+      },
+      "ruleSummary": "\"Operating Expense\" is defined broadly to include all ordinary and reasonable costs associated with ownership, management, maintenance, repair, replacement, restoration, and operation of the property.",
+      "exactLanguage": "The term \"Operating Expense\" as used herein means the actual ordinary and reasonable costs and expenses incurred by or on behalf of Landlord for each calendar year that occurs wholly or partially during the Initial Term or any Renewal Term because of or in connection with the ownership, management, maintenance, repair, replacement, restoration or operation of the Real Property, including all costs and expenses paid or incurred by Landlord for operating, equipping, policing and protecting, lighting, utilities, heating, air-conditioning, providing sanitation and other services, providing...",
+      "tenantImpact": "Provides a very wide scope for expenses that can be passed through, increasing potential CAM liability for Tenant.",
+      "crossReferences": [],
+      "impactSeverity": "High",
+      "favorability": "Unfavorable"
+    }
+  ],
+  "crossPageContext": [
+    {
+      "contextType": "Definition",
+      "description": "The term \"Operating Expense\" is defined on page 8 and is referenced throughout the lease to determine CAM pass‑throughs.",
+      "affectedPages": [8],
+      "relevantRuleIds": ["CAM-002", "CAM-007"]
+    },
+    {
+      "contextType": "Cross-Reference",
+      "description": "Base Year for both Taxes and Operating Expenses is the same (calendar year 2016), linking the two pass‑through mechanisms.",
+      "affectedPages": [8],
+      "relevantRuleIds": ["CAM-003", "CAM-004"]
+    }
+  ],
+  "flagsAndObservations": {
+    "ambiguities": [
+      {
+        "description": "Audit rights are limited to a 180‑day inspection window, after which the tenant waives any right to audit.",
+        "location": "Page 8, Section 3.A",
+        "potentialIssue": "Tenant may be unable to challenge inaccurate tax pass‑throughs if the review is not completed within 180 days.",
+        "recommendedAction": "Negotiate an extension of the audit period or retain the right to audit beyond 180 days."
+      }
+    ],
+    "conflicts": [],
+    "missingProvisions": [
+      {
+        "provisionType": "capsLimitations",
+        "significance": "High",
+        "tenantRisk": "No caps on CAM increases expose the tenant to unlimited expense growth."
+      },
+      {
+        "provisionType": "grossUpProvisions",
+        "significance": "High",
+        "tenantRisk": "Absence of a gross‑up clause could shift vacancy costs to the tenant."
+      },
+      {
+        "provisionType": "administrativeFees",
+        "significance": "Medium",
+        "tenantRisk": "Potential for undisclosed management fees to be added to CAM charges."
+      },
+      {
+        "provisionType": "controllableVsNonControllable",
+        "significance": "Medium",
+        "tenantRisk": "No distinction may allow landlord to pass through all expenses, including those beyond tenant’s control."
+      },
+      {
+        "provisionType": "paymentTerms",
+        "significance": "Low",
+        "tenantRisk": "CAM payment frequency and timing are not specified."
+      },
+      {
+        "provisionType": "reconciliationProcedures",
+        "significance": "Medium",
+        "tenantRisk": "No annual true‑up or reconciliation process is described, limiting tenant’s ability to verify final CAM amounts."
+      },
+      {
+        "provisionType": "noticeRequirements",
+        "significance": "Low",
+        "tenantRisk": "No specific notice requirements for CAM invoices or estimates are provided."
+      }
+    ],
+    "tenantConcerns": [
+      {
+        "concernType": "Unlimited Exposure",
+        "description": "No caps or limits on CAM expense increases; tenant could face escalating costs.",
+        "riskLevel": "Critical",
+        "negotiationPoint": true,
+        "affectedRuleIds": ["CAM-002", "CAM-003"]
+      },
+      {
+        "concernType": "Weak Audit Rights",
+        "description": "Audit rights limited to 180 days with a waiver thereafter.",
+        "riskLevel": "High",
+        "negotiationPoint": true,
+        "affectedRuleIds": ["CAM-005"]
+      },
+      {
+        "concernType": "Broad Expense Definition",
+        "description": "Operating Expense definition is expansive, potentially capturing many costs.",
+        "riskLevel": "High",
+        "negotiationPoint": true,
+        "affectedRuleIds": ["CAM-002", "CAM-007"]
+      }
+    ]
+  },
+  "camRulesSummary": {
+    "totalRules": 7,
+    "rulesByCategory": {
+      "proportionateShare": 1,
+      "camExpenseCategories": 2,
+      "exclusions": 0,
+      "paymentTerms": 0,
+      "capsLimitations": 0,
+      "reconciliationProcedures": 0,
+      "baseYearProvisions": 1,
+      "grossUpProvisions": 0,
+      "administrativeFees": 0,
+      "auditRights": 1,
+      "noticeRequirements": 0,
+      "controllableVsNonControllable": 0,
+      "definitions": 2,
+      "calculationMethods": 0
+    },
+    "overallTenantRiskAssessment": "Critical",
+    "riskAssessmentRationale": "The lease provides a very broad definition of Operating Expenses, lacks any caps or gross‑up mechanisms, and limits audit rights to a short 180‑day window, exposing the tenant to potentially unlimited and unverified CAM liabilities.",
+    "keyTenantProtections": [
+      "Base Year limitation provides a benchmark for tax and operating expense pass‑throughs."
+    ],
+    "keyTenantExposures": [
+      "Broad Operating Expense definition",
+      "No caps on CAM increases",
+      "No gross‑up provision for vacancy",
+      "Limited audit rights (180‑day window)"
+    ],
+    "criticalNegotiationPoints": [
+      "Introduce annual caps or percentage limits on CAM increases",
+      "Add a gross‑up clause based on a reasonable occupancy percentage (e.g., 95%)",
+      "Expand audit rights beyond 180 days and allow third‑party audit",
+      "Clarify and possibly limit the categories of expenses included in Operating Expenses",
+      "Specify payment frequency, timing, and reconciliation/true‑up procedures"
+    ]
+  }
+}

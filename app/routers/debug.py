@@ -11,7 +11,7 @@ import pickle
 from dotenv import load_dotenv
 from fastapi.responses import JSONResponse
 from utils.logs import logger
-from utils.helpers import content_from_doc, get_llm_adapter, update_result_json
+from utils.helpers import content_from_doc, get_llm_adapter, update_result_json, compile_iterative_outputs
 from utils.parsers.pdf import PDFChunker
 from utils.references import audit, cam, chargeSchedules, executive_summary, leaseInformation, misc, space, amendments
 from utils.schemas import SaveZod
@@ -84,7 +84,7 @@ async def get_lease_abstraction(
                 # Fallback — wrap raw content
                 message_dict = {"content": message_content}
 
-        return message_dict
+        return JSONResponse(content=message_dict)
     
 @router.post("/space")
 async def get_space(
@@ -150,7 +150,7 @@ async def get_space(
                 # Fallback — wrap raw content
                 message_dict = {"content": message_content}
 
-        return message_dict
+        return JSONResponse(content=message_dict)
     
 @router.post("/charge-schedules")
 async def get_sched(
@@ -215,7 +215,7 @@ async def get_sched(
                 # Fallback — wrap raw content
                 message_dict = {"content": message_content}
 
-        return message_dict
+        return JSONResponse(content=message_dict)
     
 @router.post("/misc")
 async def get_misc(
@@ -280,7 +280,7 @@ async def get_misc(
                 # Fallback — wrap raw content
                 message_dict = {"content": message_content}
 
-        return message_dict
+        return JSONResponse(content=message_dict)
 
 @router.post("/executive-summary")
 async def get_exec_summary(
@@ -345,7 +345,7 @@ async def get_exec_summary(
                 # Fallback — wrap raw content
                 message_dict = {"content": message_content}
 
-        return message_dict
+        return JSONResponse(content=message_dict)
      
 @router.post("/audit")
 async def get_audit_details(
@@ -408,7 +408,7 @@ async def get_audit_details(
                 # Fallback — wrap raw content
                 message_dict = {"content": message_content}
 
-        return message_dict
+        return JSONResponse(content=message_dict)
   
 @router.post('/save')
 async def save_lease(item: SaveZod):
@@ -482,7 +482,7 @@ async def get_cam(
             # Fallback — wrap raw content
             message_dict = {"content": message_content}
 
-    return message_dict
+    return JSONResponse(content=message_dict)
 
 @router.post('/cam-single')
 async def get_cam(
@@ -544,6 +544,8 @@ async def get_cam(
         try:
             response = llm_adapter.get_non_streaming_response(payload)
             message_content = response.choices[0].message.content
+            with open(f'./{str(i)}.txt', 'w') as fp:
+                fp.write(str(message_content))
             message_dict = update_result_json(message_dict, message_content)
 
         except Exception as e:
@@ -555,7 +557,32 @@ async def get_cam(
         #     print(e)
         #     print('this was the error')
 
-    return message_dict
+    # After processing all chunks, compile the final result from all numbered files
+    try:
+        compiled_result = compile_iterative_outputs()
+        return JSONResponse(content=compiled_result)
+    except Exception as e:
+        print(f"Error compiling final result: {e}")
+        # Fallback to the incremental result if compilation fails
+        return JSONResponse(content=message_dict)
+
+@router.post("/cam-compile")
+async def compile_cam_results():
+    """
+    Compiles all numbered text files (0.txt, 1.txt, etc.) into a comprehensive final output.
+    This endpoint reads all iterative CAM analysis outputs and merges them into a single consolidated result.
+    """
+    try:
+        compiled_result = compile_iterative_outputs()
+        return JSONResponse(content=compiled_result)
+    except Exception as e:
+        logger.error(f"Error compiling CAM results: {e}")
+        return JSONResponse(
+            content={
+                "error": f"Failed to compile CAM results: {str(e)}"
+            },
+            status_code=HTTPStatus.INTERNAL_SERVER_ERROR.value,
+        )
 
 
 @router.post("/amendments")
@@ -634,7 +661,7 @@ async def amendment_analysis(
                 # Fallback — wrap raw content
                 message_dict = {"content": message_content}
 
-        return message_dict
+        return JSONResponse(content=message_dict)
         
     except Exception as error:
         logger.error(error)

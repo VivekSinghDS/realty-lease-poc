@@ -1,0 +1,178 @@
+{
+  "documentAnalysis": {
+    "documentTitle": "Lease Agreement between PH Office 2, LLC and Bayer HealthCare LLC",
+    "documentDate": "2015-01-01",
+    "totalPagesAnalyzed": 1,
+    "analysisTimestamp": "2025-10-27T14:32:10Z",
+    "analysisCompleteness": "Partial - Only page 38 of the lease was provided for analysis."
+  },
+  "extractedCamRules": [
+    {
+      "ruleId": "CAM-001",
+      "ruleCategory": "proportionateShare",
+      "location": {
+        "pageNumbers": [38],
+        "section": "Exhibit D – Memorandum of Acceptance of Delivery of Premises",
+        "paragraph": "4."
+      },
+      "ruleSummary": "Tenant's proportionate share of CAM expenses is expressed as a percentage.",
+      "exactLanguage": "Tenant's Proportionate Share is __ %.",
+      "tenantImpact": "The tenant will be responsible for paying the indicated percentage of all CAM expenses incurred by the building.",
+      "crossReferences": [
+        "Section 3 – Building contains 226,468 rentable square feet."
+      ],
+      "impactSeverity": "Medium",
+      "favorability": "Neutral"
+    }
+  ],
+  "crossPageContext": [
+    {
+      "contextType": "Definition",
+      "description": "The proportionate share percentage is calculated based on the tenant's rentable square footage relative to the total building rentable square footage (226,468 sf). The exact percentage is left blank in the provided excerpt, indicating it should be filled in the executed memorandum.",
+      "affectedPages": [38],
+      "relevantRuleIds": ["CAM-001"]
+    }
+  ],
+  "flagsAndObservations": {
+    "ambiguities": [
+      {
+        "description": "The actual percentage for Tenant's Proportionate Share is left blank (\"__ %\").",
+        "location": "Page 38, paragraph 4 of Exhibit D",
+        "potentialIssue": "Without a defined percentage, the tenant cannot determine its CAM liability, creating uncertainty and potential exposure to higher costs.",
+        "recommendedAction": "Confirm and insert the exact proportionate share percentage in the executed memorandum before lease commencement."
+      }
+    ],
+    "conflicts": [],
+    "missingProvisions": [
+      {
+        "provisionType": "camExpenseCategories",
+        "significance": "High",
+        "tenantRisk": "Tenant may be charged for any building expense labeled as CAM without a clear list, leading to unpredictable costs."
+      },
+      {
+        "provisionType": "exclusions",
+        "significance": "High",
+        "tenantRisk": "Absence of exclusions could allow landlord to include unrelated expenses in CAM charges."
+      },
+      {
+        "provisionType": "paymentTerms",
+        "significance": "Medium",
+        "tenantRisk": "No specified frequency or method for CAM payments, potentially causing cash‑flow issues."
+      },
+      {
+        "provisionType": "capsLimitations",
+        "significance": "High",
+        "tenantRisk": "No caps on CAM increases expose tenant to unlimited expense growth."
+      },
+      {
+        "provisionType": "reconciliationProcedures",
+        "significance": "Medium",
+        "tenantRisk": "Lack of annual true‑up or audit rights may prevent tenant from verifying CAM charges."
+      },
+      {
+        "provisionType": "grossUpProvisions",
+        "significance": "High",
+        "tenantRisk": "Without gross‑up, tenant could bear a larger share of CAM when building occupancy is low."
+      },
+      {
+        "provisionType": "auditRights",
+        "significance": "High",
+        "tenantRisk": "No explicit audit rights limit tenant's ability to challenge inflated CAM charges."
+      },
+      {
+        "provisionType": "noticeRequirements",
+        "significance": "Medium",
+        "tenantRisk": "No notice period for CAM invoices may result in surprise billing."
+      },
+      {
+        "provisionType": "controllableVsNonControllable",
+        "significance": "Medium",
+        "tenantRisk": "Without distinction, tenant may be charged for both controllable and non‑controllable expenses."
+      },
+      {
+        "provisionType": "administrativeFees",
+        "significance": "Medium",
+        "tenantRisk": "Potential for additional management fees to be added to CAM without limitation."
+      },
+      {
+        "provisionType": "baseYearProvisions",
+        "significance": "Medium",
+        "tenantRisk": "No base‑year mechanism could increase tenant's share of rising operating costs."
+      },
+      {
+        "provisionType": "definitions",
+        "significance": "High",
+        "tenantRisk": "Lack of defined terms (e.g., \"CAM\", \"Operating Expenses\") creates interpretive uncertainty."
+      },
+      {
+        "provisionType": "calculationMethods",
+        "significance": "High",
+        "tenantRisk": "No formula provided for how CAM charges are calculated, leading to potential disputes."
+      }
+    ],
+    "tenantConcerns": [
+      {
+        "concernType": "Unlimited Exposure",
+        "description": "No caps or limitation language on CAM expense increases.",
+        "riskLevel": "High",
+        "negotiationPoint": true,
+        "affectedRuleIds": ["CAM-001"]
+      },
+      {
+        "concernType": "Missing Proportionate Share Value",
+        "description": "The proportionate share percentage is blank, creating uncertainty about the tenant's cost share.",
+        "riskLevel": "Critical",
+        "negotiationPoint": true,
+        "affectedRuleIds": ["CAM-001"]
+      },
+      {
+        "concernType": "Lack of Audit Rights",
+        "description": "No provision granting the tenant the right to audit or verify CAM charges.",
+        "riskLevel": "High",
+        "negotiationPoint": true,
+        "affectedRuleIds": []
+      },
+      {
+        "concernType": "Absence of Gross‑Up",
+        "description": "No gross‑up clause could cause the tenant to pay a disproportionate share when occupancy is low.",
+        "riskLevel": "High",
+        "negotiationPoint": true,
+        "affectedRuleIds": []
+      }
+    ]
+  },
+  "camRulesSummary": {
+    "totalRules": 1,
+    "rulesByCategory": {
+      "proportionateShare": 1,
+      "camExpenseCategories": 0,
+      "exclusions": 0,
+      "paymentTerms": 0,
+      "capsLimitations": 0,
+      "reconciliationProcedures": 0,
+      "baseYearProvisions": 0,
+      "grossUpProvisions": 0,
+      "administrativeFees": 0,
+      "auditRights": 0,
+      "noticeRequirements": 0,
+      "controllableVsNonControllable": 0,
+      "definitions": 0,
+      "calculationMethods": 0
+    },
+    "overallTenantRiskAssessment": "High",
+    "riskAssessmentRationale": "The lease excerpt provides only a blank proportionate share percentage and lacks virtually all standard CAM provisions (categories, caps, exclusions, audit rights, gross‑up, etc.). This creates significant uncertainty and potential for unlimited expense exposure to the tenant.",
+    "keyTenantProtections": [
+      "Explicit statement that a proportionate share percentage will be used to allocate CAM costs."
+    ],
+    "keyTenantExposures": [
+      "Blank proportionate share percentage leaves tenant's cost obligation undefined.",
+      "No caps, exclusions, audit rights, or gross‑up provisions increase risk of unlimited and unpredictable CAM charges."
+    ],
+    "criticalNegotiationPoints": [
+      "Insert the exact proportionate share percentage and define the calculation method.",
+      "Add a comprehensive list of CAM expense categories and explicit exclusions.",
+      "Include caps on annual CAM increases and a gross‑up provision based on building occupancy.",
+      "Provide tenant audit rights, notice requirements for CAM invoices, and clear payment terms."
+    ]
+  }
+}

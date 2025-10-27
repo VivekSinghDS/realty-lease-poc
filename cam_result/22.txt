@@ -1,0 +1,151 @@
+{
+  "documentAnalysis": {
+    "documentTitle": "Unknown",
+    "documentDate": "Unknown",
+    "totalPagesAnalyzed": 1,
+    "analysisTimestamp": "2025-10-27T14:32:10Z",
+    "analysisCompleteness": "Partial (only page 23 provided; CAM provisions may exist on other pages)"
+  },
+  "extractedCamRules": [],
+  "crossPageContext": [],
+  "flagsAndObservations": {
+    "ambiguities": [],
+    "conflicts": [],
+    "missingProvisions": [
+      {
+        "provisionType": "proportionateShare",
+        "significance": "High",
+        "tenantRisk": "Without a defined proportionate share, tenant cannot determine its CAM payment obligation, leading to potential overpayment."
+      },
+      {
+        "provisionType": "camExpenseCategories",
+        "significance": "High",
+        "tenantRisk": "Absence of a list of includable expenses may allow landlord to charge broad, undefined costs to the tenant."
+      },
+      {
+        "provisionType": "exclusions",
+        "significance": "High",
+        "tenantRisk": "No exclusions means tenant could be liable for all building expenses, including those unrelated to common areas."
+      },
+      {
+        "provisionType": "paymentTerms",
+        "significance": "High",
+        "tenantRisk": "Without payment frequency or timing, tenant may face unexpected billing cycles or cash flow issues."
+      },
+      {
+        "provisionType": "capsLimitations",
+        "significance": "High",
+        "tenantRisk": "No caps expose tenant to unlimited CAM cost increases."
+      },
+      {
+        "provisionType": "reconciliationProcedures",
+        "significance": "High",
+        "tenantRisk": "Lack of true‑up or audit procedures prevents tenant from verifying CAM charges."
+      },
+      {
+        "provisionType": "baseYearProvisions",
+        "significance": "Medium",
+        "tenantRisk": "If a base year is intended but not defined, tenant may be charged for all expenses without a benchmark."
+      },
+      {
+        "provisionType": "grossUpProvisions",
+        "significance": "Medium",
+        "tenantRisk": "Without gross‑up language, tenant could bear vacancy costs when building occupancy is low."
+      },
+      {
+        "provisionType": "administrativeFees",
+        "significance": "Medium",
+        "tenantRisk": "No limitation on administrative fees could allow landlord to add undisclosed management charges."
+      },
+      {
+        "provisionType": "auditRights",
+        "significance": "High",
+        "tenantRisk": "Absence of audit rights leaves tenant unable to challenge potentially inflated CAM charges."
+      },
+      {
+        "provisionType": "noticeRequirements",
+        "significance": "Medium",
+        "tenantRisk": "Without notice requirements, tenant may receive CAM invoices without adequate prior notice."
+      },
+      {
+        "provisionType": "controllableVsNonControllable",
+        "significance": "Medium",
+        "tenantRisk": "No distinction may cause tenant to pay for expenses beyond its control."
+      },
+      {
+        "provisionType": "definitions",
+        "significance": "High",
+        "tenantRisk": "Lack of defined terms (e.g., \"CAM\", \"Operating Expenses\") creates ambiguity in interpretation."
+      },
+      {
+        "provisionType": "calculationMethods",
+        "significance": "High",
+        "tenantRisk": "Without a formula, tenant cannot verify how CAM charges are computed."
+      }
+    ],
+    "tenantConcerns": [
+      {
+        "concernType": "Unlimited Exposure",
+        "description": "No caps, exclusions, or defined proportionate share found, exposing tenant to potentially unlimited CAM costs.",
+        "riskLevel": "Critical",
+        "negotiationPoint": true,
+        "affectedRuleIds": []
+      },
+      {
+        "concernType": "Weak Audit Rights",
+        "description": "Audit rights are not mentioned, limiting tenant's ability to verify CAM charges.",
+        "riskLevel": "High",
+        "negotiationPoint": true,
+        "affectedRuleIds": []
+      },
+      {
+        "concernType": "Absence of Gross‑Up",
+        "description": "No gross‑up provision, potentially shifting vacancy costs to tenant.",
+        "riskLevel": "High",
+        "negotiationPoint": true,
+        "affectedRuleIds": []
+      }
+    ]
+  },
+  "camRulesSummary": {
+    "totalRules": 0,
+    "rulesByCategory": {
+      "proportionateShare": 0,
+      "camExpenseCategories": 0,
+      "exclusions": 0,
+      "paymentTerms": 0,
+      "capsLimitations": 0,
+      "reconciliationProcedures": 0,
+      "baseYearProvisions": 0,
+      "grossUpProvisions": 0,
+      "administrativeFees": 0,
+      "auditRights": 0,
+      "noticeRequirements": 0,
+      "controllableVsNonControllable": 0,
+      "definitions": 0,
+      "calculationMethods": 0
+    },
+    "overallTenantRiskAssessment": "Critical",
+    "riskAssessmentRationale": "The provided page contains no CAM-related language. Critical CAM provisions such as proportionate share, expense categories, caps, exclusions, audit rights, and calculation methods are entirely absent, leaving the tenant exposed to unlimited and undefined CAM liabilities.",
+    "keyTenantProtections": [],
+    "keyTenantExposures": [
+      "No defined proportionate share",
+      "No expense category list",
+      "No exclusions",
+      "No caps or limitation on CAM increases",
+      "No audit rights or reconciliation procedures",
+      "No gross‑up provision",
+      "No administrative fee limitation",
+      "No notice requirements"
+    ],
+    "criticalNegotiationPoints": [
+      "Insert a clear definition of proportionate share (e.g., based on rentable square footage).",
+      "Specify CAM expense categories and provide a comprehensive exclusions list.",
+      "Add caps on annual CAM increases and/or a base‑year provision.",
+      "Include gross‑up language to allocate vacancy costs fairly.",
+      "Grant tenant audit rights and a reconciliation/true‑up procedure.",
+      "Define notice periods for CAM invoices and estimates.",
+      "Limit administrative or management fees to a reasonable percentage."
+    ]
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "documentAnalysis": {
+    "documentTitle": "Lease Document",
+    "documentDate": "Unknown",
+    "totalPagesAnalyzed": 1,
+    "analysisTimestamp": "2025-10-27T12:34:56Z",
+    "analysisCompleteness": "Partial - Only page 40 provided; CAM provisions likely span multiple pages and were not fully captured."
+  },
+  "extractedCamRules": [],
+  "crossPageContext": [],
+  "flagsAndObservations": {
+    "ambiguities": [],
+    "conflicts": [],
+    "missingProvisions": [
+      {
+        "provisionType": "proportionateShare",
+        "significance": "High",
+        "tenantRisk": "Tenant lacks a defined method to calculate its CAM share, creating potential for unpredictable charges."
+      },
+      {
+        "provisionType": "camExpenseCategories",
+        "significance": "High",
+        "tenantRisk": "Without a list of includable expenses, tenant may be billed for broad or unrelated costs."
+      },
+      {
+        "provisionType": "exclusions",
+        "significance": "High",
+        "tenantRisk": "Absence of exclusions could expose tenant to charges for items typically excluded (e.g., capital improvements)."
+      },
+      {
+        "provisionType": "paymentTerms",
+        "significance": "High",
+        "tenantRisk": "No payment schedule or method defined, risking unexpected timing or amounts."
+      },
+      {
+        "provisionType": "capsLimitations",
+        "significance": "High",
+        "tenantRisk": "No caps allow unlimited CAM expense growth."
+      },
+      {
+        "provisionType": "reconciliationProcedures",
+        "significance": "High",
+        "tenantRisk": "Tenant may not have a mechanism to verify or adjust CAM charges annually."
+      },
+      {
+        "provisionType": "baseYearProvisions",
+        "significance": "Medium",
+        "tenantRisk": "Unclear if a base year is used, affecting predictability of expense increases."
+      },
+      {
+        "provisionType": "grossUpProvisions",
+        "significance": "Medium",
+        "tenantRisk": "Without gross‑up language, tenant could bear costs of vacant space."
+      },
+      {
+        "provisionType": "administrativeFees",
+        "significance": "Medium",
+        "tenantRisk": "Potential for additional management fees not disclosed."
+      },
+      {
+        "provisionType": "auditRights",
+        "significance": "High",
+        "tenantRisk": "No audit rights limit tenant's ability to challenge CAM charges."
+      },
+      {
+        "provisionType": "noticeRequirements",
+        "significance": "Medium",
+        "tenantRisk": "Tenant may not receive timely notice of CAM invoices or estimates."
+      },
+      {
+        "provisionType": "controllableVsNonControllable",
+        "significance": "Medium",
+        "tenantRisk": "Lack of distinction could expose tenant to all expense types."
+      },
+      {
+        "provisionType": "definitions",
+        "significance": "High",
+        "tenantRisk": "Undefined terms create ambiguity in interpreting obligations."
+      },
+      {
+        "provisionType": "calculationMethods",
+        "significance": "High",
+        "tenantRisk": "No formula provided for computing tenant's CAM share."
+      }
+    ],
+    "tenantConcerns": []
+  },
+  "camRulesSummary": {
+    "totalRules": 0,
+    "rulesByCategory": {
+      "proportionateShare": 0,
+      "camExpenseCategories": 0,
+      "exclusions": 0,
+      "paymentTerms": 0,
+      "capsLimitations": 0,
+      "reconciliationProcedures": 0,
+      "baseYearProvisions": 0,
+      "grossUpProvisions": 0,
+      "administrativeFees": 0,
+      "auditRights": 0,
+      "noticeRequirements": 0,
+      "controllableVsNonControllable": 0,
+      "definitions": 0,
+      "calculationMethods": 0
+    },
+    "overallTenantRiskAssessment": "High",
+    "riskAssessmentRationale": "The provided page contains no substantive CAM language. Critical CAM provisions are missing, leaving the tenant exposed to unlimited, undefined, and potentially unpredictable expenses.",
+    "keyTenantProtections": [],
+    "keyTenantExposures": [],
+    "criticalNegotiationPoints": []
+  }
+}

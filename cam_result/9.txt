@@ -1,0 +1,210 @@
+{
+  "documentAnalysis": {
+    "documentTitle": "Lease Document (Partial)",
+    "documentDate": "Unknown",
+    "totalPagesAnalyzed": 1,
+    "analysisTimestamp": "2025-10-27T14:32:10Z",
+    "analysisCompleteness": "Partial - Only page 10 of the lease was provided for analysis."
+  },
+  "extractedCamRules": [
+    {
+      "ruleId": "CAM-001",
+      "ruleCategory": "exclusions",
+      "location": {
+        "pageNumbers": [10],
+        "section": "Operating Expenses – Exclusions",
+        "paragraph": "Items (xi) through (xxix) listed in the lease"
+      },
+      "ruleSummary": "Specific items excluded from Tenant's CAM obligations, including affiliate services, art acquisition, accounting fees, litigation costs, hazardous material remediation, and others.",
+      "exactLanguage": "xi) the costs of services or items provided by Landlord's affiliates to the extent that such costs exceed reasonable and customary charges for such services or items in the market area; (xii) acquisition or leasing costs of sculpture, paintings or other objects of art; (xiii) accounting fees, other than those incurred in connection with the preparation of statements required pursuant to the provisions of this Lease; (xiv) costs and expenses (including court costs, attorneys' fees and disbursements) related to or in connection with disputes with any holder of a mortgage or by or among any persons having an interest in the Landlord or the Building; (xv) consulting costs and expenses paid by Landlord unless such costs and expenses result in a reduction of Operating Expenses or property taxes; (xvi) any costs incurred in connection with the investigation or remediation of any Hazardous Materials ... (xx) all costs and expenses (including services and utilities) payable directly by Tenant; (xxi) costs of repairing, replacing or otherwise correcting defects ... (xxii) any tax other than property taxes required to be paid by the Tenant as specified in this Lease; (xxiii) costs of initial construction of the Building, including all project costs; (xxiv) costs and expenses incurred by Landlord associated with the operation of the business of the legal entity or entities which constitute Landlord ... (xxv) charitable or political contributions; (xxvi) any other costs or expenses which, under generally accepted accounting principles consistently applied, would not be a normal and customary expense in comparable office buildings in the market area; (xxvii) costs of compliance with any laws ... affecting structural walls, roof, columns and common areas of the Building; and (xxix) costs of any items for which Landlord is reimbursed.",
+      "tenantImpact": "These exclusions limit the types of expenses the Tenant must pay, reducing overall CAM liability.",
+      "crossReferences": [],
+      "impactSeverity": "High",
+      "favorability": "Favorable"
+    },
+    {
+      "ruleId": "CAM-002",
+      "ruleCategory": "auditRights",
+      "location": {
+        "pageNumbers": [10],
+        "section": "Tenant's Review of Operating Expenses",
+        "paragraph": "Tenant and its representatives shall have the right to examine and review Landlord's books..."
+      },
+      "ruleSummary": "Tenant may examine Landlord's operating expense records once per calendar year at Tenant's expense, with remote access permitted.",
+      "exactLanguage": "Tenant and its representatives shall have the right to examine and review Landlord's books and records pertaining to Operating Expenses (\"Tenant's Review\"), at Tenant's expense, one time during each calendar year (it is agreed that Tenant or its agents can conduct this review remotely via computer/telephone and Landlord shall use reasonable efforts to cooperate).",
+      "tenantImpact": "Provides the Tenant a mechanism to verify CAM charges and challenge overstatements.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Favorable"
+    },
+    {
+      "ruleId": "CAM-003",
+      "ruleCategory": "noticeRequirements",
+      "location": {
+        "pageNumbers": [10],
+        "section": "Tenant's Review Notice",
+        "paragraph": "provided that (i) Tenant provides Landlord with written notice..."
+      },
+      "ruleSummary": "Tenant must give written notice of intent to conduct the review no later than six months after receiving the Annual Statement.",
+      "exactLanguage": "provided that (i) Tenant provides Landlord with written notice of its election to conduct Tenant's Review no later than six (6) months following Tenant's receipt of the Annual Statement.",
+      "tenantImpact": "Sets a clear deadline for initiating the audit, ensuring timely access to expense information.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Favorable"
+    },
+    {
+      "ruleId": "CAM-004",
+      "ruleCategory": "reconciliationProcedures",
+      "location": {
+        "pageNumbers": [10],
+        "section": "Overpayment Reimbursement",
+        "paragraph": "In the event that Tenant's Review demonstrates that Landlord has overstated Operating Expenses..."
+      },
+      "ruleSummary": "Landlord must reimburse Tenant for any overpayment of the Tenant's proportionate share within 30 days after receiving sufficient documentation.",
+      "exactLanguage": "In the event that Tenant's Review demonstrates that Landlord has overstated Operating Expenses, Landlord shall reimburse Tenant for any overpayment of Tenant's Proportionate Share of such Operating Expenses within thirty (30) days of Landlord's receipt of reasonably sufficient documentation of such overstatement from Tenant.",
+      "tenantImpact": "Ensures prompt refund of excess CAM charges, reducing cash flow risk for the Tenant.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Favorable"
+    },
+    {
+      "ruleId": "CAM-005",
+      "ruleCategory": "auditRights",
+      "location": {
+        "pageNumbers": [10],
+        "section": "Audit Cost Reimbursement",
+        "paragraph": "In the event that Tenant's Review indicates that Operating Expenses were overstated by more than five percent..."
+      },
+      "ruleSummary": "If the audit shows an overstatement greater than 5%, Landlord must reimburse Tenant for reasonable audit costs.",
+      "exactLanguage": "In the event that Tenant's Review indicates that Operating Expenses were overstated by more than five percent (5%), then Landlord shall reimburse Tenant for the reasonable cost of such audit.",
+      "tenantImpact": "Protects Tenant from bearing the cost of an audit that uncovers significant overcharges.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Favorable"
+    },
+    {
+      "ruleId": "CAM-006",
+      "ruleCategory": "paymentTerms",
+      "location": {
+        "pageNumbers": [10],
+        "section": "Underpayment Obligation",
+        "paragraph": "Tenant shall promptly reimburse Landlord for any underpayment..."
+      },
+      "ruleSummary": "Tenant must promptly pay any underpayment of its proportionate share of operating expenses.",
+      "exactLanguage": "Tenant shall promptly reimburse Landlord for any underpayment of Tenant's Proportionate Share of such Operating Expenses.",
+      "tenantImpact": "Creates an ongoing obligation for the Tenant to make additional payments if expenses exceed estimates.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Unfavorable"
+    }
+  ],
+  "crossPageContext": [
+    {
+      "contextType": "Definition",
+      "description": "\"Operating Expenses\" is the umbrella term used throughout the lease for costs that may be allocated to the Tenant as CAM. The exclusions listed in CAM-001 carve out many items from this definition.",
+      "affectedPages": [10],
+      "relevantRuleIds": ["CAM-001", "CAM-002", "CAM-004", "CAM-006"]
+    }
+  ],
+  "flagsAndObservations": {
+    "ambiguities": [
+      {
+        "description": "The phrase \"reasonable and customary charges\" for affiliate services (xi) is subjective and may be interpreted broadly by Landlord.",
+        "location": "Page 10, exclusion (xi)",
+        "potentialIssue": "Tenant could be billed for inflated affiliate costs that are not truly unreasonable.",
+        "recommendedAction": "Negotiate a clear benchmark or third‑party pricing standard for affiliate services."
+      },
+      {
+        "description": "Exclusion (xxvi) references GAAP and \"normal and customary expense\" without specific criteria.",
+        "location": "Page 10, exclusion (xxvi)",
+        "potentialIssue": "Landlord may claim many expenses are non‑customary, reducing Tenant's CAM liability arbitrarily.",
+        "recommendedAction": "Request a detailed list of excluded expense categories and a definition of \"normal and customary\" specific to comparable office buildings."
+      }
+    ],
+    "conflicts": [],
+    "missingProvisions": [
+      {
+        "provisionType": "capsLimitations",
+        "significance": "High",
+        "tenantRisk": "No maximum on CAM increases exposes Tenant to unlimited expense growth."
+      },
+      {
+        "provisionType": "grossUpProvisions",
+        "significance": "High",
+        "tenantRisk": "Absence of a gross‑up clause could shift vacancy costs to the Tenant."
+      },
+      {
+        "provisionType": "baseYearProvisions",
+        "significance": "Medium",
+        "tenantRisk": "Without a base‑year benchmark, Tenant cannot compare current expenses to a historical baseline."
+      },
+      {
+        "provisionType": "administrativeFees",
+        "significance": "Medium",
+        "tenantRisk": "No mention of management or administrative fees that could be added to CAM."
+      }
+    ],
+    "tenantConcerns": [
+      {
+        "concernType": "Unlimited Exposure",
+        "description": "The lease contains no caps on CAM expense increases or annual escalation limits.",
+        "riskLevel": "High",
+        "negotiationPoint": true,
+        "affectedRuleIds": []
+      },
+      {
+        "concernType": "Weak Audit Rights",
+        "description": "Tenant bears the cost of the audit and must rely on Landlord's cooperation; no provision for independent third‑party audit.",
+        "riskLevel": "Medium",
+        "negotiationPoint": true,
+        "affectedRuleIds": ["CAM-002", "CAM-005"]
+      },
+      {
+        "concernType": "Broad Exclusions",
+        "description": "Extensive list of exclusions may allow Landlord to shift many costs to Tenant under other headings.",
+        "riskLevel": "Medium",
+        "negotiationPoint": true,
+        "affectedRuleIds": ["CAM-001"]
+      }
+    ]
+  },
+  "camRulesSummary": {
+    "totalRules": 6,
+    "rulesByCategory": {
+      "proportionateShare": 0,
+      "camExpenseCategories": 0,
+      "exclusions": 1,
+      "paymentTerms": 1,
+      "capsLimitations": 0,
+      "reconciliationProcedures": 1,
+      "baseYearProvisions": 0,
+      "grossUpProvisions": 0,
+      "administrativeFees": 0,
+      "auditRights": 2,
+      "noticeRequirements": 1,
+      "controllableVsNonControllable": 0,
+      "definitions": 0,
+      "calculationMethods": 0
+    },
+    "overallTenantRiskAssessment": "High",
+    "riskAssessmentRationale": "The lease lacks caps on CAM increases, contains no gross‑up provision, and includes broad, subjective exclusions, creating significant potential for unlimited expense exposure. While audit rights and reimbursement mechanisms are present, they are limited and costly to the Tenant.",
+    "keyTenantProtections": [
+      "Extensive list of excluded expenses (CAM-001) reduces exposure to many cost categories.",
+      "Right to annual review of operating expenses (CAM-002).",
+      "Prompt reimbursement for overpayments within 30 days (CAM-004).",
+      "Reimbursement of audit costs if overstatement exceeds 5% (CAM-005)."
+    ],
+    "keyTenantExposures": [
+      "No caps or limits on CAM expense growth.",
+      "No gross‑up provision to allocate vacancy costs fairly.",
+      "Broad, subjective exclusions may be interpreted to the Landlord's advantage.",
+      "Tenant bears audit costs unless a >5% overstatement is found."
+    ],
+    "criticalNegotiationPoints": [
+      "Introduce annual caps or percentage increase limits on CAM expenses.",
+      "Add a gross‑up clause based on building occupancy.",
+      "Define \"reasonable and customary charges\" and \"normal and customary expense\" with objective benchmarks.",
+      "Require Landlord to cover audit costs when the audit reveals any overstatement, not only when >5%."
+    ]
+  }
+}

@@ -1,0 +1,289 @@
+{
+  "documentAnalysis": {
+    "documentTitle": "Lease Agreement",
+    "documentDate": "Unknown",
+    "totalPagesAnalyzed": 1,
+    "analysisTimestamp": "2025-10-27T12:34:56Z",
+    "analysisCompleteness": "Partial - analysis performed on page 9 only; full document not provided"
+  },
+  "extractedCamRules": [
+    {
+      "ruleId": "CAM-001",
+      "ruleCategory": "proportionateShare",
+      "location": {
+        "pageNumbers": [9],
+        "section": "Section 4",
+        "paragraph": "Pro-rata share definition"
+      },
+      "ruleSummary": "Tenant's share is based on rentable square footage ratio.",
+      "exactLanguage": "Tenant's pro-rata share of building expenses shall be calculated as the resultant percentage based on the rentable square footage of the Building as the denominator and tenant's rentable square footage as the numerator.",
+      "tenantImpact": "Tenant will pay a percentage of total operating expenses equal to its share of the building’s rentable area.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Neutral"
+    },
+    {
+      "ruleId": "CAM-002",
+      "ruleCategory": "grossUpProvisions",
+      "location": {
+        "pageNumbers": [9],
+        "section": "Section 4",
+        "paragraph": "Occupancy gross‑up"
+      },
+      "ruleSummary": "Operating expenses are gross‑up to 95% occupancy.",
+      "exactLanguage": "Expenses of the project as though ninety-five percent (95%) were occupied at all times (including the Base Year).",
+      "tenantImpact": "Tenant bears a portion of expenses as if the building were 95% occupied, potentially increasing its CAM liability when actual occupancy is lower.",
+      "crossReferences": [],
+      "impactSeverity": "High",
+      "favorability": "Unfavorable"
+    },
+    {
+      "ruleId": "CAM-003",
+      "ruleCategory": "definitions",
+      "location": {
+        "pageNumbers": [9],
+        "section": "Section 4",
+        "paragraph": "Definition of Operating Expense"
+      },
+      "ruleSummary": "Defines \"Operating Expense\" to include a broad range of costs.",
+      "exactLanguage": "\"Operating Expense\" as used herein means the actual ordinary and reasonable costs and expenses incurred by or on behalf of Landlord for each calendar year that occurs wholly or partially during the Initial Term or any Renewal Term because of or in connection with the ownership, management, maintenance, repair, replacement, restoration or operation of the Real Property, including all costs and expenses paid or incurred by Landlord for operating, equipping, policing and protecting, lighting, utilities, heating, air‑conditioning, providing sanitation and other services, providing a public address system, insuring, repairing, replacing and maintaining the Building.",
+      "tenantImpact": "Tenant may be responsible for a wide array of expenses, increasing potential CAM liability.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Unfavorable"
+    },
+    {
+      "ruleId": "CAM-004",
+      "ruleCategory": "camExpenseCategories",
+      "location": {
+        "pageNumbers": [9],
+        "section": "Section 4",
+        "paragraph": "Included expense categories"
+      },
+      "ruleSummary": "Lists categories of expenses that are chargeable to the tenant.",
+      "exactLanguage": "including all costs and expenses paid or incurred by Landlord for operating, equipping, policing and protecting, lighting, utilities, heating, air‑conditioning, providing sanitation and other services, providing a public address system, insuring, repairing, replacing and maintaining the Building.",
+      "tenantImpact": "Tenant must pay for utilities, lighting, HVAC, security, insurance, and general maintenance among others.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Unfavorable"
+    },
+    {
+      "ruleId": "CAM-005",
+      "ruleCategory": "exclusions",
+      "location": {
+        "pageNumbers": [9],
+        "section": "Section 4",
+        "paragraph": "Operating Expense exclusions"
+      },
+      "ruleSummary": "Specifies items excluded from Operating Expenses.",
+      "exactLanguage": "Operating Expenses shall not include any of the following: (i) expenses for capital improvements except as expressly provided in this Section 4; (ii) costs (in excess of Landlord's insurance deductible) of repairs, restoration, replacements or other work occasioned by fire, windstorm or other casualty of an insurable nature ...; (iii) interest and amortization of funds borrowed by Landlord ...; (iv) depreciation of the Building; (v) leasing commissions; (vi) costs, fines, interest, penalties, legal fees or costs of litigation incurred due to the late payments of taxes, utility bills and other costs incurred by Landlord's failure to make such payments when due; (vii) costs incurred (less cost of recovery) for any items to the extent covered by a manufacturer's, materialmen's, vendor's or contractor's warranty; (viii) income, excess profits, franchise taxes or other such taxes imposed on or measured by the income of Landlord from the operation of the Building; (ix) costs of Landlord's defense of lawsuits against Landlord and any judgments or costs of settlement; (x) legal fees and other costs (including prepayment of any indebtedness) incurred in connection with any mortgaging, financing, refinancing, sale, change of ownership or entering into or extending or modifying any financing.",
+      "tenantImpact": "Tenant is protected from paying for capital improvements, insurance deductibles, financing costs, depreciation, leasing commissions, and many legal/financial expenses.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Favorable"
+    },
+    {
+      "ruleId": "CAM-006",
+      "ruleCategory": "capsLimitations",
+      "location": {
+        "pageNumbers": [9],
+        "section": "Section 4",
+        "paragraph": "Cap on controllable expenses"
+      },
+      "ruleSummary": "Controllable Operating Expenses may not increase more than 5% per year after the Base Year.",
+      "exactLanguage": "Controllable Operating Expenses (defined as all Operating Expenses other than property taxes and insurance) shall not increase by more than five percent (5%) annually following Tenant's Base Year.",
+      "tenantImpact": "Limits annual growth of most CAM charges to 5%, providing cost predictability.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Favorable"
+    },
+    {
+      "ruleId": "CAM-007",
+      "ruleCategory": "paymentTerms",
+      "location": {
+        "pageNumbers": [9],
+        "section": "Section 4",
+        "paragraph": "Monthly and annual payment timing"
+      },
+      "ruleSummary": "Tenant pays estimated increase monthly; final reconciliation within 30 days of annual statement.",
+      "exactLanguage": "Landlord shall send to Tenant a written statement of the amount of Tenant's Proportionate Share of any estimated increase in Operating Expenses and Tenant shall pay to Landlord, monthly as Additional Rent, Tenant's prorata share of such increase in Operating Expenses. Within ninety (90) days after the end of each calendar year, Landlord shall send an annual statement of Operating Expenses... Pursuant to the Annual Statement, Tenant shall pay to Landlord Additional Rent in a lump sum as owed or Landlord shall adjust Tenant's Rent payments if Landlord owes Tenant a credit, such payment or adjustment to be made within thirty (30) days after the Annual Statement is received by Tenant.",
+      "tenantImpact": "Tenant must make monthly payments based on estimates and settle any balance (or receive credit) within 30 days after receiving the annual statement.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Neutral"
+    },
+    {
+      "ruleId": "CAM-008",
+      "ruleCategory": "reconciliationProcedures",
+      "location": {
+        "pageNumbers": [9],
+        "section": "Section 4",
+        "paragraph": "Annual true‑up"
+      },
+      "ruleSummary": "Annual statement provided within 90 days; adjustments due within 30 days.",
+      "exactLanguage": "Within ninety (90) days after the end of each calendar year, Landlord shall send an annual statement of Operating Expenses... Pursuant to the Annual Statement, Tenant shall pay to Landlord Additional Rent in a lump sum as owed or Landlord shall adjust Tenant's Rent payments if Landlord owes Tenant a credit, such payment or adjustment to be made within thirty (30) days after the Annual Statement is received by Tenant.",
+      "tenantImpact": "Provides a defined window for reconciliation; tenant must be prepared to pay or receive adjustments promptly.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Neutral"
+    },
+    {
+      "ruleId": "CAM-009",
+      "ruleCategory": "controllableVsNonControllable",
+      "location": {
+        "pageNumbers": [9],
+        "section": "Section 4",
+        "paragraph": "Definition of controllable expenses"
+      },
+      "ruleSummary": "Distinguishes controllable expenses (all but taxes and insurance).",
+      "exactLanguage": "Controllable Operating Expenses (defined as all Operating Expenses other than property taxes and insurance)...",
+      "tenantImpact": "Only the defined controllable portion is subject to the 5% annual cap; taxes and insurance are excluded from that cap.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Neutral"
+    },
+    {
+      "ruleId": "CAM-010",
+      "ruleCategory": "baseYearProvisions",
+      "location": {
+        "pageNumbers": [9],
+        "section": "Section 4",
+        "paragraph": "Reference to Base Year"
+      },
+      "ruleSummary": "Base Year used as benchmark for caps and gross‑up calculations.",
+      "exactLanguage": "Controllable Operating Expenses ... shall not increase by more than five percent (5%) annually following Tenant's Base Year. For the calendar year commencing on January 1st of the first calendar year after the Base Year and for each calendar year thereafter during the Term, Landlord shall estimate the amount the Operating Expenses shall increase for such calendar year above the Operating Expenses incurred during the Base Year.",
+      "tenantImpact": "Tenant's expense growth is measured against the Base Year, providing a fixed reference point.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Favorable"
+    },
+    {
+      "ruleId": "CAM-011",
+      "ruleCategory": "calculationMethods",
+      "location": {
+        "pageNumbers": [9],
+        "section": "Section 4",
+        "paragraph": "Pro‑rata share and gross‑up formulas"
+      },
+      "ruleSummary": "Specifies formulas for calculating tenant’s share and gross‑up.",
+      "exactLanguage": "Tenant's pro-rata share of building expenses shall be calculated as the resultant percentage based on the rentable square footage of the Building as the denominator and tenant's rentable square footage as the numerator. Expenses of the project as though ninety-five percent (95%) were occupied at all times (including the Base Year).",
+      "tenantImpact": "Provides clear methodology for determining CAM liability, but the 95% gross‑up can increase costs when actual occupancy is lower.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Neutral"
+    },
+    {
+      "ruleId": "CAM-012",
+      "ruleCategory": "noticeRequirements",
+      "location": {
+        "pageNumbers": [9],
+        "section": "Section 4",
+        "paragraph": "Written statements"
+      },
+      "ruleSummary": "Landlord must provide written estimates and annual statements within specified timeframes.",
+      "exactLanguage": "Landlord shall send to Tenant a written statement of the amount of Tenant's Proportionate Share of any estimated increase in Operating Expenses... Within ninety (90) days after the end of each calendar year, Landlord shall send an annual statement of Operating Expenses... such payment or adjustment to be made within thirty (30) days after the Annual Statement is received by Tenant.",
+      "tenantImpact": "Ensures tenant receives advance notice of estimated charges and a formal annual accounting, allowing budgeting and verification.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Favorable"
+    }
+  ],
+  "crossPageContext": [
+    {
+      "contextType": "Definition",
+      "description": "\"Operating Expense\" is defined broadly, and the term \"Controllable Operating Expenses\" is defined as all Operating Expenses except property taxes and insurance, which ties into the 5% cap provision.",
+      "affectedPages": [9],
+      "relevantRuleIds": ["CAM-003", "CAM-009", "CAM-006"]
+    },
+    {
+      "contextType": "Cross-Reference",
+      "description": "The 5% cap (CAM-006) references the Base Year defined in CAM-010; the gross‑up assumption (CAM-002) also applies to the Base Year period.",
+      "affectedPages": [9],
+      "relevantRuleIds": ["CAM-006", "CAM-010", "CAM-002"]
+    }
+  ],
+  "flagsAndObservations": {
+    "ambiguities": [
+      {
+        "description": "Amortization of capital improvements caused by tenant negligence is described as being amortized over the remainder of the lease term \"as agreed upon between tenant and landlord,\" which leaves the amortization period undefined.",
+        "location": "Page 9, paragraph on capital improvements",
+        "potentialIssue": "Tenant may be subject to unpredictable amortization schedules and amounts.",
+        "recommendedAction": "Negotiate a fixed amortization period or cap the amount attributable to tenant negligence."
+      }
+    ],
+    "conflicts": [],
+    "missingProvisions": [
+      {
+        "provisionType": "auditRights",
+        "significance": "High",
+        "tenantRisk": "Tenant lacks explicit right to audit or challenge CAM charges, limiting ability to verify accuracy."
+      },
+      {
+        "provisionType": "administrativeFees",
+        "significance": "Medium",
+        "tenantRisk": "No provision addressing whether landlord may add management or administrative fees to CAM, creating potential hidden costs."
+      }
+    ],
+    "tenantConcerns": [
+      {
+        "concernType": "Unlimited Exposure",
+        "description": "Gross‑up to 95% occupancy can significantly increase tenant’s CAM liability when actual building occupancy is low.",
+        "riskLevel": "High",
+        "negotiationPoint": true,
+        "affectedRuleIds": ["CAM-002"]
+      },
+      {
+        "concernType": "Weak Audit Rights",
+        "description": "No explicit audit clause limits tenant’s ability to verify CAM calculations.",
+        "riskLevel": "High",
+        "negotiationPoint": true,
+        "affectedRuleIds": []
+      },
+      {
+        "concernType": "Ambiguous Capital Improvement Amortization",
+        "description": "Unclear amortization terms for tenant‑caused improvements.",
+        "riskLevel": "Medium",
+        "negotiationPoint": true,
+        "affectedRuleIds": ["CAM-003"]
+      }
+    ]
+  },
+  "camRulesSummary": {
+    "totalRules": 12,
+    "rulesByCategory": {
+      "proportionateShare": 1,
+      "camExpenseCategories": 1,
+      "exclusions": 1,
+      "paymentTerms": 1,
+      "capsLimitations": 1,
+      "reconciliationProcedures": 1,
+      "baseYearProvisions": 1,
+      "grossUpProvisions": 1,
+      "administrativeFees": 0,
+      "auditRights": 0,
+      "noticeRequirements": 1,
+      "controllableVsNonControllable": 1,
+      "definitions": 1,
+      "calculationMethods": 1
+    },
+    "overallTenantRiskAssessment": "High",
+    "riskAssessmentRationale": "The presence of a 95% gross‑up, lack of audit rights, and ambiguous amortization of tenant‑caused capital improvements create significant financial exposure for the tenant despite the favorable 5% cap on controllable expenses.",
+    "keyTenantProtections": [
+      "5% annual cap on controllable operating expenses",
+      "Comprehensive list of excluded expenses",
+      "Defined notice periods for estimates (90 days) and reconciliation (30 days)",
+      "Base Year benchmark for expense growth"
+    ],
+    "keyTenantExposures": [
+      "Gross‑up to 95% occupancy can inflate CAM charges",
+      "No explicit audit rights to verify CAM calculations",
+      "Potentially unlimited amortization of tenant‑caused capital improvements"
+    ],
+    "criticalNegotiationPoints": [
+      "Add a tenant audit clause with reasonable notice and cost sharing",
+      "Negotiate a lower gross‑up percentage or a vacancy‑adjusted gross‑up formula",
+      "Define a fixed amortization period and cap for tenant‑caused capital improvements",
+      "Clarify whether any administrative or management fees may be added to CAM"
+    ]
+  }
+}

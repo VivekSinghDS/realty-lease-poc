@@ -1,0 +1,49 @@
+{
+  "documentAnalysis": {
+    "documentTitle": "Unknown",
+    "documentDate": "Unknown",
+    "totalPagesAnalyzed": 1,
+    "analysisTimestamp": "2025-10-27T14:32:10Z",
+    "analysisCompleteness": "Partial - Only page 36 of the lease was provided; CAM provisions may exist on other pages."
+  },
+  "extractedCamRules": [],
+  "crossPageContext": [],
+  "flagsAndObservations": {
+    "ambiguities": [],
+    "conflicts": [],
+    "missingProvisions": [],
+    "tenantConcerns": [
+      {
+        "concernType": "Absence of CAM Language",
+        "description": "Page 36 does not contain any provisions related to Common Area Maintenance (CAM) expenses, leaving the tenant without information on CAM obligations from this portion of the lease.",
+        "riskLevel": "Low",
+        "negotiationPoint": false,
+        "affectedRuleIds": []
+      }
+    ]
+  },
+  "camRulesSummary": {
+    "totalRules": 0,
+    "rulesByCategory": {
+      "proportionateShare": 0,
+      "camExpenseCategories": 0,
+      "exclusions": 0,
+      "paymentTerms": 0,
+      "capsLimitations": 0,
+      "reconciliationProcedures": 0,
+      "baseYearProvisions": 0,
+      "grossUpProvisions": 0,
+      "administrativeFees": 0,
+      "auditRights": 0,
+      "noticeRequirements": 0,
+      "controllableVsNonControllable": 0,
+      "definitions": 0,
+      "calculationMethods": 0
+    },
+    "overallTenantRiskAssessment": "Low",
+    "riskAssessmentRationale": "No CAM-related obligations were identified on the provided page, so no immediate financial exposure is evident from this excerpt. However, the lack of CAM language on this page means the tenant must review the remainder of the lease to assess CAM obligations.",
+    "keyTenantProtections": [],
+    "keyTenantExposures": [],
+    "criticalNegotiationPoints": []
+  }
+}

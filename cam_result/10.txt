@@ -1,0 +1,253 @@
+{
+  "documentAnalysis": {
+    "documentTitle": "Commercial Lease Agreement",
+    "documentDate": "Unknown",
+    "totalPagesAnalyzed": 1,
+    "analysisTimestamp": "2025-10-27T14:32:10Z",
+    "analysisCompleteness": "Partial - Only page 11 of the lease was provided for analysis"
+  },
+  "extractedCamRules": [
+    {
+      "ruleId": "CAM-001",
+      "ruleCategory": "proportionateShare",
+      "location": {
+        "pageNumbers": [11],
+        "section": "5",
+        "paragraph": "Operating Expenses – Proportionate Share"
+      },
+      "ruleSummary": "Tenant must reimburse any underpayment of its proportionate share of operating expenses.",
+      "exactLanguage": "Tenant shall promptly reimburse Landlord for any underpayment of Tenant's Proportionate Share of such Operating Expenses.",
+      "tenantImpact": "Tenant is obligated to monitor its share and pay any shortfall immediately, creating a direct cash outflow if underpaid.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Unfavorable"
+    },
+    {
+      "ruleId": "CAM-002",
+      "ruleCategory": "paymentTerms",
+      "location": {
+        "pageNumbers": [11],
+        "section": "5",
+        "paragraph": "Refund of Overpayment"
+      },
+      "ruleSummary": "Landlord must refund overpaid CAM within 30 days after receiving documentation.",
+      "exactLanguage": "Landlord shall reimburse Tenant for any overpayment of Tenant's Proportionate Share of such Operating Expenses within thirty (30) days of Landlord's receipt of reasonably sufficient documentation of such overstatement from Tenant.",
+      "tenantImpact": "Provides a timely mechanism for the tenant to recover excess payments, limiting cash tied up in overpayments.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Favorable"
+    },
+    {
+      "ruleId": "CAM-003",
+      "ruleCategory": "auditRights",
+      "location": {
+        "pageNumbers": [11],
+        "section": "5",
+        "paragraph": "Tenant's Review Threshold"
+      },
+      "ruleSummary": "If an audit shows >5% overstatement, landlord pays the reasonable cost of the audit.",
+      "exactLanguage": "In the event that Tenant's Review indicates that Operating Expenses were overstated by more than five percent (5%), then Landlord shall reimburse Tenant for the reasonable cost of such audit.",
+      "tenantImpact": "Allows the tenant to challenge inflated expenses with limited financial risk, as the landlord covers audit costs beyond a modest threshold.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Favorable"
+    },
+    {
+      "ruleId": "CAM-004",
+      "ruleCategory": "noticeRequirements",
+      "location": {
+        "pageNumbers": [11],
+        "section": "5",
+        "paragraph": "Timing of Tenant's Review"
+      },
+      "ruleSummary": "Tenant must complete its expense review within six months of receiving the annual statement.",
+      "exactLanguage": "Tenant's Review no later than six (6) months following Tenant's receipt of the Annual Statement.",
+      "tenantImpact": "Sets a clear deadline for the tenant to exercise audit rights; missing the window may forfeit the right to dispute expenses.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Neutral"
+    },
+    {
+      "ruleId": "CAM-005",
+      "ruleCategory": "exclusions",
+      "location": {
+        "pageNumbers": [11],
+        "section": "5",
+        "paragraph": "Landlord's Structural Repairs"
+      },
+      "ruleSummary": "Structural repairs and building systems are excluded from operating expense charges to the tenant.",
+      "exactLanguage": "Landlord, at its expense and not as part of Operating Expenses shall be responsible only for repair and replacement of the roof, foundation, the exterior walls of the Building, interior structural walls, all structural components, common areas of the Building, grounds, walkways, windows, and the Building Systems, reasonable wear and tear excluded.",
+      "tenantImpact": "Tenant will not be billed for major structural or system repairs, limiting exposure to large, unpredictable costs.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Favorable"
+    },
+    {
+      "ruleId": "CAM-006",
+      "ruleCategory": "administrativeFees",
+      "location": {
+        "pageNumbers": [11],
+        "section": "5",
+        "paragraph": "Landlord‑Provided Maintenance Personnel"
+      },
+      "ruleSummary": "Tenant pays $50 per hour (minimum one hour) for landlord’s maintenance staff when tenant‑responsible repairs are performed.",
+      "exactLanguage": "In the event that such personnel are requested to attend to maintenance issues that are the responsibility of Tenant, Landlord shall charge, and Tenant shall pay, fifty dollars ($50.00) per hour, with a one hour minimum, for work performed by such personnel.",
+      "tenantImpact": "Creates an additional, hourly cost for the tenant when landlord staff are used for tenant‑incurred repairs, potentially increasing CAM expense.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Unfavorable"
+    },
+    {
+      "ruleId": "CAM-007",
+      "ruleCategory": "noticeRequirements",
+      "location": {
+        "pageNumbers": [11],
+        "section": "5",
+        "paragraph": "Defect Notification"
+      },
+      "ruleSummary": "Tenant must promptly give written notice of any defect or need for repairs to the landlord.",
+      "exactLanguage": "Tenant shall promptly give Landlord written notice of defect or need for repairs after which Landlord shall have reasonable opportunity to repair same or cure such defect.",
+      "tenantImpact": "Failure to provide timely notice could limit the tenant’s right to compel repairs or to claim damages, so strict compliance is required.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Neutral"
+    },
+    {
+      "ruleId": "CAM-008",
+      "ruleCategory": "reconciliationProcedures",
+      "location": {
+        "pageNumbers": [11],
+        "section": "5",
+        "paragraph": "Underpayment Reimbursement"
+      },
+      "ruleSummary": "Tenant must promptly reimburse any underpayment of its proportionate share of operating expenses.",
+      "exactLanguage": "Tenant shall promptly reimburse Landlord for any underpayment of Tenant's Proportionate Share of such Operating Expenses.",
+      "tenantImpact": "Mandates immediate payment of any shortfall, reinforcing the tenant’s cash‑flow obligation each period.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Unfavorable"
+    }
+  ],
+  "crossPageContext": [
+    {
+      "contextType": "Definition",
+      "description": "The term \"Building Systems\" is defined in this paragraph to include HVAC, electrical, gas, plumbing, sprinkler, communication, alarm, security, and fire/life/safety equipment, but excludes tenant‑specific equipment.",
+      "affectedPages": [11],
+      "relevantRuleIds": ["CAM-005"]
+    },
+    {
+      "contextType": "Clarification",
+      "description": "The exclusion of structural components from Operating Expenses means those costs are not passed through to the tenant, even though they are part of the landlord’s overall maintenance obligations.",
+      "affectedPages": [11],
+      "relevantRuleIds": ["CAM-005"]
+    }
+  ],
+  "flagsAndObservations": {
+    "ambiguities": [
+      {
+        "description": "The lease does not define how the \"Proportionate Share\" is calculated (e.g., square‑footage ratio, total building area, etc.).",
+        "location": "Page 11, Section 5",
+        "potentialIssue": "Tenant may be charged an inaccurate share of CAM expenses if the calculation method is unfavorable or unclear.",
+        "recommendedAction": "Request a clear definition and formula for proportionate share, preferably based on rentable square footage."
+      },
+      {
+        "description": "The term \"Operating Expenses\" is referenced but not enumerated on this page; categories of expenses included in CAM are not fully listed.",
+        "location": "Page 11, Section 5",
+        "potentialIssue": "Tenant may be liable for broad or undefined expense categories, leading to unlimited exposure.",
+        "recommendedAction": "Obtain a complete schedule of CAM expense categories and negotiate exclusions for non‑controllable items."
+      }
+    ],
+    "conflicts": [],
+    "missingProvisions": [
+      {
+        "provisionType": "capsLimitations",
+        "significance": "High",
+        "tenantRisk": "No caps on CAM increases expose the tenant to unlimited annual expense growth."
+      },
+      {
+        "provisionType": "grossUpProvisions",
+        "significance": "High",
+        "tenantRisk": "Absence of a gross‑up clause could shift vacancy costs to the tenant, increasing its share when occupancy is low."
+      },
+      {
+        "provisionType": "baseYearProvisions",
+        "significance": "Medium",
+        "tenantRisk": "Without a base‑year provision, the tenant may be responsible for all expense increases, not just those above a baseline."
+      },
+      {
+        "provisionType": "controllableVsNonControllable",
+        "significance": "Medium",
+        "tenantRisk": "No distinction may allow the landlord to pass through all cost increases, including those beyond the tenant’s control."
+      }
+    ],
+    "tenantConcerns": [
+      {
+        "concernType": "Unlimited Exposure",
+        "description": "No caps or limits on CAM expense increases are present in the provided text.",
+        "riskLevel": "Critical",
+        "negotiationPoint": true,
+        "affectedRuleIds": ["CAM-001", "CAM-008"]
+      },
+      {
+        "concernType": "Lack of Gross‑Up",
+        "description": "The lease does not contain a gross‑up provision to adjust CAM charges based on building occupancy.",
+        "riskLevel": "Critical",
+        "negotiationPoint": true,
+        "affectedRuleIds": []
+      },
+      {
+        "concernType": "Weak Audit Rights",
+        "description": "Audit cost reimbursement is only triggered when overstatement exceeds 5%; lower discrepancies are not covered.",
+        "riskLevel": "Medium",
+        "negotiationPoint": true,
+        "affectedRuleIds": ["CAM-003"]
+      },
+      {
+        "concernType": "Administrative Fee",
+        "description": "$50/hour charge for landlord‑provided maintenance personnel could add significant cost.",
+        "riskLevel": "Medium",
+        "negotiationPoint": true,
+        "affectedRuleIds": ["CAM-006"]
+      }
+    ]
+  },
+  "camRulesSummary": {
+    "totalRules": 8,
+    "rulesByCategory": {
+      "proportionateShare": 1,
+      "camExpenseCategories": 0,
+      "exclusions": 1,
+      "paymentTerms": 1,
+      "capsLimitations": 0,
+      "reconciliationProcedures": 1,
+      "baseYearProvisions": 0,
+      "grossUpProvisions": 0,
+      "administrativeFees": 1,
+      "auditRights": 1,
+      "noticeRequirements": 2,
+      "controllableVsNonControllable": 0,
+      "definitions": 0,
+      "calculationMethods": 0
+    },
+    "overallTenantRiskAssessment": "Critical",
+    "riskAssessmentRationale": "The lease excerpt provides no caps, no gross‑up, and lacks a clear definition of proportionate share, exposing the tenant to potentially unlimited and unpredictable CAM costs. While some tenant protections exist (audit rights, refund timing, exclusions), the missing core safeguards create a high‑risk profile.",
+    "keyTenantProtections": [
+      "Landlord must refund overpayments within 30 days (CAM-002)",
+      "Landlord reimburses audit costs when overstatement exceeds 5% (CAM-003)",
+      "Structural repairs and building systems are excluded from CAM charges (CAM-005)"
+    ],
+    "keyTenantExposures": [
+      "Tenant must promptly pay any underpayment of its share (CAM-001, CAM-008)",
+      "$50/hour charge for landlord‑provided maintenance personnel (CAM-006)",
+      "No caps or limits on CAM expense growth",
+      "No gross‑up provision for vacancy"
+    ],
+    "criticalNegotiationPoints": [
+      "Define and limit the calculation of proportionate share",
+      "Insert annual caps or percentage increase limits on CAM",
+      "Add a gross‑up clause tied to building occupancy",
+      "Expand audit cost reimbursement to any overstatement, not just >5%",
+      "Eliminate or cap the $50/hour administrative fee for landlord‑provided personnel"
+    ]
+  }
+}

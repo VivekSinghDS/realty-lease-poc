@@ -1,0 +1,156 @@
+{
+  "documentAnalysis": {
+    "documentTitle": "Lease Agreement",
+    "documentDate": "",
+    "totalPagesAnalyzed": 1,
+    "analysisTimestamp": "2025-10-27T12:34:56Z",
+    "analysisCompleteness": "Partial - Only page 13 was provided; CAM provisions may exist on other pages."
+  },
+  "extractedCamRules": [],
+  "crossPageContext": [],
+  "flagsAndObservations": {
+    "ambiguities": [],
+    "conflicts": [],
+    "missingProvisions": [
+      {
+        "provisionType": "proportionateShare",
+        "significance": "High",
+        "tenantRisk": "Without a defined proportionate share, tenant cannot calculate CAM liability and may be exposed to unlimited charges."
+      },
+      {
+        "provisionType": "camExpenseCategories",
+        "significance": "High",
+        "tenantRisk": "Absence of a list of includable expenses allows landlord to charge broad, potentially unrelated costs."
+      },
+      {
+        "provisionType": "exclusions",
+        "significance": "Medium",
+        "tenantRisk": "No exclusions means tenant may be billed for items traditionally excluded (e.g., capital improvements)."
+      },
+      {
+        "provisionType": "paymentTerms",
+        "significance": "High",
+        "tenantRisk": "Without payment frequency or due dates, tenant may face unexpected billing cycles."
+      },
+      {
+        "provisionType": "capsLimitations",
+        "significance": "High",
+        "tenantRisk": "No caps expose tenant to unlimited CAM increases."
+      },
+      {
+        "provisionType": "reconciliationProcedures",
+        "significance": "Medium",
+        "tenantRisk": "Lack of true‑up or audit procedures prevents tenant from verifying charges."
+      },
+      {
+        "provisionType": "baseYearProvisions",
+        "significance": "Medium",
+        "tenantRisk": "No base‑year reference may allow landlord to pass all increases to tenant."
+      },
+      {
+        "provisionType": "grossUpProvisions",
+        "significance": "High",
+        "tenantRisk": "Without gross‑up, tenant could bear costs of vacant space."
+      },
+      {
+        "provisionType": "administrativeFees",
+        "significance": "Medium",
+        "tenantRisk": "No limitation on administrative fees could result in additional charges."
+      },
+      {
+        "provisionType": "auditRights",
+        "significance": "High",
+        "tenantRisk": "No audit rights limit tenant's ability to challenge CAM calculations."
+      },
+      {
+        "provisionType": "noticeRequirements",
+        "significance": "Medium",
+        "tenantRisk": "Without notice rules, tenant may receive invoices without adequate lead time."
+      },
+      {
+        "provisionType": "controllableVsNonControllable",
+        "significance": "Medium",
+        "tenantRisk": "No distinction may cause tenant to pay for expenses beyond its control."
+      },
+      {
+        "provisionType": "definitions",
+        "significance": "High",
+        "tenantRisk": "Absence of defined terms (e.g., \"CAM\", \"Proportionate Share\") creates interpretive uncertainty."
+      },
+      {
+        "provisionType": "calculationMethods",
+        "significance": "High",
+        "tenantRisk": "No formula provided leaves calculation method open to landlord discretion."
+      }
+    ],
+    "tenantConcerns": [
+      {
+        "concernType": "Unlimited Exposure",
+        "description": "No caps, limits, or base‑year provisions found; tenant may be liable for all increases in common area costs.",
+        "riskLevel": "Critical",
+        "negotiationPoint": true,
+        "affectedRuleIds": []
+      },
+      {
+        "concernType": "Weak Audit Rights",
+        "description": "The lease excerpt provides no audit or verification rights for CAM charges.",
+        "riskLevel": "High",
+        "negotiationPoint": true,
+        "affectedRuleIds": []
+      },
+      {
+        "concernType": "Missing Definitions",
+        "description": "Key CAM‑related terms are not defined, leading to potential broad interpretation by landlord.",
+        "riskLevel": "High",
+        "negotiationPoint": true,
+        "affectedRuleIds": []
+      }
+    ]
+  },
+  "camRulesSummary": {
+    "totalRules": 0,
+    "rulesByCategory": {
+      "proportionateShare": 0,
+      "camExpenseCategories": 0,
+      "exclusions": 0,
+      "paymentTerms": 0,
+      "capsLimitations": 0,
+      "reconciliationProcedures": 0,
+      "baseYearProvisions": 0,
+      "grossUpProvisions": 0,
+      "administrativeFees": 0,
+      "auditRights": 0,
+      "noticeRequirements": 0,
+      "controllableVsNonControllable": 0,
+      "definitions": 0,
+      "calculationMethods": 0
+    },
+    "overallTenantRiskAssessment": "Critical",
+    "riskAssessmentRationale": "The provided page contains no CAM-related provisions. The absence of any definition, calculation method, caps, or audit rights creates extreme uncertainty and potential unlimited financial exposure for the tenant.",
+    "keyTenantProtections": [],
+    "keyTenantExposures": [
+      "No defined proportionate share",
+      "No expense categories listed",
+      "No exclusions",
+      "No payment terms",
+      "No caps or limitations",
+      "No reconciliation or audit procedures",
+      "No base‑year or gross‑up provisions",
+      "No administrative fee limits",
+      "No notice requirements",
+      "No distinction between controllable and non‑controllable expenses",
+      "No definitions of CAM terms",
+      "No calculation methodology"
+    ],
+    "criticalNegotiationPoints": [
+      "Insert a clear definition of \"Proportionate Share\" and its calculation method.",
+      "Specify which expenses are includable in CAM and provide a comprehensive exclusions list.",
+      "Add caps on annual CAM increases and/or a base‑year provision.",
+      "Include gross‑up language to allocate vacant‑space costs fairly.",
+      "Provide tenant audit rights and a reconciliation/true‑up procedure.",
+      "Define payment frequency, due dates, and notice requirements for CAM invoices.",
+      "Limit administrative fees and require landlord to disclose any management charges.",
+      "Distinguish controllable versus non‑controllable expenses and allocate accordingly."
+    ]
+  }
+}

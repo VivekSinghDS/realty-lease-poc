@@ -1,0 +1,146 @@
+{
+  "documentAnalysis": {
+    "documentTitle": "Lease Agreement - Exhibit C (Rules and Agreed Regulations)",
+    "documentDate": "Unknown",
+    "totalPagesAnalyzed": 1,
+    "analysisTimestamp": "2025-10-27T14:32:10Z",
+    "analysisCompleteness": "Partial - Only page 35 of the lease document was provided for analysis."
+  },
+  "extractedCamRules": [
+    {
+      "ruleId": "CAM-001",
+      "ruleCategory": "camExpenseCategories",
+      "location": {
+        "pageNumbers": [35],
+        "section": "Exhibit C - Rule 4",
+        "paragraph": "All such signs in common areas as requested by Tenant will be contracted for by Landlord for Tenant at the rate fixed by Landlord from time to time"
+      },
+      "ruleSummary": "Signage services in common areas requested by Tenant are treated as a CAM expense.",
+      "exactLanguage": "All such signs in common areas as requested by Tenant will be contracted for by Landlord for Tenant at the rate fixed by Landlord from time to time, and Tenant will be billed and will pay for such service.",
+      "tenantImpact": "Tenant must pay for any signage the Tenant requests in common areas, at rates set unilaterally by the Landlord.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Unfavorable"
+    },
+    {
+      "ruleId": "CAM-002",
+      "ruleCategory": "paymentTerms",
+      "location": {
+        "pageNumbers": [35],
+        "section": "Exhibit C - Rule 4",
+        "paragraph": "Tenant will be billed and will pay for such service."
+      },
+      "ruleSummary": "Tenant must pay for signage services upon billing by Landlord.",
+      "exactLanguage": "Tenant will be billed and will pay for such service.",
+      "tenantImpact": "Tenant has an obligation to pay the invoiced amount for signage; no timing or installment provisions are specified.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Unfavorable"
+    }
+  ],
+  "crossPageContext": [],
+  "flagsAndObservations": {
+    "ambiguities": [
+      {
+        "description": "The phrase \"rate fixed by Landlord from time to time\" does not define how rates are determined, whether they are reasonable, or if there is any cap.",
+        "location": "Page 35, Exhibit C, Rule 4",
+        "potentialIssue": "Tenant could be subject to unpredictable or excessive signage fees.",
+        "recommendedAction": "Negotiate a defined methodology for rate setting, include a cap or require landlord to provide a price schedule."
+      }
+    ],
+    "conflicts": [],
+    "missingProvisions": [
+      {
+        "provisionType": "proportionateShare",
+        "significance": "High",
+        "tenantRisk": "Without a defined share, tenant cannot calculate its CAM liability relative to the building."
+      },
+      {
+        "provisionType": "capsLimitations",
+        "significance": "High",
+        "tenantRisk": "No caps on CAM increases expose tenant to unlimited expense growth."
+      },
+      {
+        "provisionType": "reconciliationProcedures",
+        "significance": "Medium",
+        "tenantRisk": "Absence of annual true‑up or audit rights limits tenant's ability to verify charges."
+      },
+      {
+        "provisionType": "grossUpProvisions",
+        "significance": "Medium",
+        "tenantRisk": "Tenant may bear the full cost of CAM even when building occupancy is low."
+      },
+      {
+        "provisionType": "auditRights",
+        "significance": "High",
+        "tenantRisk": "Tenant lacks explicit right to audit CAM statements."
+      },
+      {
+        "provisionType": "noticeRequirements",
+        "significance": "Medium",
+        "tenantRisk": "No requirement for landlord to provide advance notice of CAM charges or rate changes."
+      },
+      {
+        "provisionType": "definitions",
+        "significance": "Medium",
+        "tenantRisk": "Key terms such as \"CAM\" or \"Common Areas\" are not defined, leading to interpretive risk."
+      }
+    ],
+    "tenantConcerns": [
+      {
+        "concernType": "Unlimited Exposure",
+        "description": "Signage rates are set solely by landlord and may increase without limit.",
+        "riskLevel": "High",
+        "negotiationPoint": true,
+        "affectedRuleIds": ["CAM-001", "CAM-002"]
+      },
+      {
+        "concernType": "Weak Audit Rights",
+        "description": "No explicit audit or verification rights for CAM charges are provided.",
+        "riskLevel": "High",
+        "negotiationPoint": true,
+        "affectedRuleIds": []
+      },
+      {
+        "concernType": "Lack of Caps",
+        "description": "No caps or limitation on CAM expense increases are present.",
+        "riskLevel": "High",
+        "negotiationPoint": true,
+        "affectedRuleIds": []
+      }
+    ]
+  },
+  "camRulesSummary": {
+    "totalRules": 2,
+    "rulesByCategory": {
+      "proportionateShare": 0,
+      "camExpenseCategories": 1,
+      "exclusions": 0,
+      "paymentTerms": 1,
+      "capsLimitations": 0,
+      "reconciliationProcedures": 0,
+      "baseYearProvisions": 0,
+      "grossUpProvisions": 0,
+      "administrativeFees": 0,
+      "auditRights": 0,
+      "noticeRequirements": 0,
+      "controllableVsNonControllable": 0,
+      "definitions": 0,
+      "calculationMethods": 0
+    },
+    "overallTenantRiskAssessment": "High",
+    "riskAssessmentRationale": "The lease excerpt provides only two CAM‑related obligations, both concerning signage services, with rates set unilaterally by the landlord and no caps, audit rights, or defined share. Critical CAM provisions such as proportionate share, caps, reconciliation, and audit rights are missing, exposing the tenant to potentially unlimited and unverified expenses.",
+    "keyTenantProtections": [],
+    "keyTenantExposures": [
+      "Tenant must pay for any requested signage at landlord‑determined rates.",
+      "No caps or limits on signage fees.",
+      "No audit or verification rights for CAM charges."
+    ],
+    "criticalNegotiationPoints": [
+      "Define a reasonable methodology and cap for signage rates.",
+      "Insert audit rights allowing tenant to review and challenge CAM invoices.",
+      "Add a provision limiting annual CAM increases.",
+      "Include a clear definition of \"CAM\" and the tenant's proportionate share."
+    ]
+  }
+}

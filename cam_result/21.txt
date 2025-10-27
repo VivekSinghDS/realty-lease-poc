@@ -1,0 +1,146 @@
+{
+  "documentAnalysis": {
+    "documentTitle": "Commercial Lease Agreement",
+    "documentDate": "Unknown",
+    "totalPagesAnalyzed": 1,
+    "analysisTimestamp": "2025-10-27T14:32:10Z",
+    "analysisCompleteness": "Partial - Only page 22 of the lease was provided for analysis"
+  },
+  "extractedCamRules": [],
+  "crossPageContext": [],
+  "flagsAndObservations": {
+    "ambiguities": [],
+    "conflicts": [],
+    "missingProvisions": [
+      {
+        "provisionType": "proportionateShare",
+        "significance": "High",
+        "tenantRisk": "Without a defined proportionate share, tenant may be exposed to unpredictable CAM charges."
+      },
+      {
+        "provisionType": "camExpenseCategories",
+        "significance": "High",
+        "tenantRisk": "Absence of a list of includable expenses can lead to broad interpretation and higher costs."
+      },
+      {
+        "provisionType": "exclusions",
+        "significance": "High",
+        "tenantRisk": "No exclusions means tenant could be charged for items typically excluded (e.g., capital improvements)."
+      },
+      {
+        "provisionType": "paymentTerms",
+        "significance": "High",
+        "tenantRisk": "Lack of payment schedule may result in unexpected timing or frequency of CAM payments."
+      },
+      {
+        "provisionType": "capsLimitations",
+        "significance": "High",
+        "tenantRisk": "Without caps, tenant may face unlimited CAM expense increases."
+      },
+      {
+        "provisionType": "reconciliationProcedures",
+        "significance": "High",
+        "tenantRisk": "No true‑up or audit procedures leave tenant unable to verify CAM charges."
+      },
+      {
+        "provisionType": "baseYearProvisions",
+        "significance": "Medium",
+        "tenantRisk": "Missing base‑year language may affect how increases are calculated."
+      },
+      {
+        "provisionType": "grossUpProvisions",
+        "significance": "Medium",
+        "tenantRisk": "Without gross‑up, tenant could bear costs of vacant space."
+      },
+      {
+        "provisionType": "administrativeFees",
+        "significance": "Medium",
+        "tenantRisk": "No mention of administrative fees could hide additional charges."
+      },
+      {
+        "provisionType": "auditRights",
+        "significance": "High",
+        "tenantRisk": "Absence of audit rights prevents tenant from challenging CAM calculations."
+      },
+      {
+        "provisionType": "noticeRequirements",
+        "significance": "Medium",
+        "tenantRisk": "No notice provisions may lead to surprise invoices."
+      },
+      {
+        "provisionType": "controllableVsNonControllable",
+        "significance": "Medium",
+        "tenantRisk": "Without distinction, tenant may be charged for all expense types."
+      },
+      {
+        "provisionType": "definitions",
+        "significance": "High",
+        "tenantRisk": "Lack of defined terms creates ambiguity in interpreting CAM obligations."
+      },
+      {
+        "provisionType": "calculationMethods",
+        "significance": "High",
+        "tenantRisk": "No formula provided leaves calculation method open to interpretation."
+      }
+    ],
+    "tenantConcerns": [
+      {
+        "concernType": "Unlimited Exposure",
+        "description": "No caps, exclusions, or definition of expense categories were found, exposing tenant to potentially unlimited CAM charges.",
+        "riskLevel": "Critical",
+        "negotiationPoint": true,
+        "affectedRuleIds": []
+      },
+      {
+        "concernType": "Weak Audit Rights",
+        "description": "The lease excerpt contains no audit or verification rights for CAM expenses.",
+        "riskLevel": "High",
+        "negotiationPoint": true,
+        "affectedRuleIds": []
+      },
+      {
+        "concernType": "Missing Proportionate Share Definition",
+        "description": "Tenant's share of CAM expenses is not defined, creating uncertainty in cost allocation.",
+        "riskLevel": "Critical",
+        "negotiationPoint": true,
+        "affectedRuleIds": []
+      }
+    ]
+  },
+  "camRulesSummary": {
+    "totalRules": 0,
+    "rulesByCategory": {
+      "proportionateShare": 0,
+      "camExpenseCategories": 0,
+      "exclusions": 0,
+      "paymentTerms": 0,
+      "capsLimitations": 0,
+      "reconciliationProcedures": 0,
+      "baseYearProvisions": 0,
+      "grossUpProvisions": 0,
+      "administrativeFees": 0,
+      "auditRights": 0,
+      "noticeRequirements": 0,
+      "controllableVsNonControllable": 0,
+      "definitions": 0,
+      "calculationMethods": 0
+    },
+    "overallTenantRiskAssessment": "Critical",
+    "riskAssessmentRationale": "The provided page contains no CAM-related provisions. The complete absence of definitions, calculation methods, caps, exclusions, and audit rights creates a high risk of unlimited and unpredictable CAM expense obligations for the tenant.",
+    "keyTenantProtections": [],
+    "keyTenantExposures": [
+      "No defined proportionate share",
+      "No expense category list",
+      "No exclusions or caps",
+      "No audit or reconciliation procedures",
+      "No gross‑up or base‑year language"
+    ],
+    "criticalNegotiationPoints": [
+      "Insert a clear definition of proportionate share based on rentable square footage.",
+      "Specify which CAM expense categories are includable and provide a comprehensive exclusions list.",
+      "Add caps on annual CAM increases and/or a base‑year provision.",
+      "Include gross‑up language to allocate costs based on building occupancy.",
+      "Provide tenant audit rights, notice periods for CAM invoices, and a reconciliation/true‑up process."
+    ]
+  }
+}
