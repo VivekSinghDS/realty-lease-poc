@@ -261,7 +261,7 @@ def compile_iterative_outputs() -> Dict[str, Any]:
     # Find all numbered text files
     numbered_files = []
     for i in range(100):  # Check up to 100 files
-        filename = f"./cam_result/{i}.txt"
+        filename = f"./{i}.txt"
         if os.path.exists(filename):
             numbered_files.append(filename)
     
