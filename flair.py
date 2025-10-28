@@ -1,106 +1,258 @@
-# import requests
+import json
+import os
+from pathlib import Path
+from typing import Dict, List, Any
+from collections import defaultdict
 
-# url = "https://content-docs.googleapis.com/v1/documents/17yWZSPn_wB09cb2Ln55tnF2zBn8VJBaQSCLajGi0Gqs?includeTabsContent=true"
-
-# headers = {
-#     "accept": "*/*",
-#     "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
-#     "authorization": "Bearer ya29.a0AQQ_BDSC8ZphUhM_5XD5R2NM4XCASmFUI11USIPpzvQj1KrRPPKqs3cLnE3sPod3zgVJjRm3SufglPrgOyxqbgvCzfcxGvB361jWqOYN8LaWI-ltsjQ-g_9_IG_qzUxsrX1rbil0Oxz2KvNcoU1L--6rUxWtm91qG8ZYaZbaBvbb1eBdPQcT50w47Cj_jTquXXEAaakaCgYKASUSARcSFQHGX2MiUD9DVLgPv5qu3DxByUMp7A0206",
-#     "priority": "u=1, i",
-#     "referer": "https://content-docs.googleapis.com/static/proxy.html?usegapi=1&jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.J8aLcn7bYF8.O%2Fd%3D1%2Frs%3DAHpOoo-YaQN_2soL6ZNher0ZcTp3d4Q_nw%2Fm%3D__features__",
-#     "sec-ch-ua": '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"',
-#     "sec-ch-ua-mobile": "?0",
-#     "sec-ch-ua-platform": '"macOS"',
-#     "sec-fetch-dest": "empty",
-#     "sec-fetch-mode": "cors",
-#     "sec-fetch-site": "same-origin",
-#     "sec-fetch-storage-access": "active",
-#     "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
-#     "x-browser-channel": "stable",
-#     "x-browser-copyright": "Copyright 2025 Google LLC. All rights reserved.",
-#     "x-browser-validation": "jFliu1AvGMEE7cpr93SSytkZ8D4=",
-#     "x-browser-year": "2025",
-#     "x-client-data": "CIi2yQEIo7bJAQipncoBCMmFywEIkqHLAQibpMsBCIagzQEI/aXOAQjmhM8BCI+HzwEI+ofPAQjTiM8BCJeMzwEIjY7PAQjtjs8BGLKGzwEYmIjPAQ==",
-#     "x-clientdetails": "appVersion=5.0%20(Macintosh%3B%20Intel%20Mac%20OS%20X%2010_15_7)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F140.0.0.0%20Safari%2F537.36&platform=MacIntel&userAgent=Mozilla%2F5.0%20(Macintosh%3B%20Intel%20Mac%20OS%20X%2010_15_7)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F140.0.0.0%20Safari%2F537.36",
-#     "x-goog-encode-response-if-executable": "base64",
-#     "x-javascript-user-agent": "apix/3.0.0 google-api-javascript-client/1.1.0",
-#     "x-origin": "https://explorer.apis.google.com",
-#     "x-referer": "https://explorer.apis.google.com",
-#     "x-requested-with": "XMLHttpRequest"
-# }
-
-# response = requests.get(url, headers=headers)
-
-# print(response.status_code)
-# with open("demofile.txt", "a") as f:
-#   f.write(response.text)
-  
-  
-# from google.oauth2 import service_account
-# from googleapiclient.discovery import build
-
-# SERVICE_ACCOUNT_FILE = './attempt_3.json'
-# SCOPES = ['https://www.googleapis.com/auth/documents.readonly']
-
-# credentials = service_account.Credentials.from_service_account_file(
-#     SERVICE_ACCOUNT_FILE, scopes=SCOPES
-# )
-
-# service = build('docs', 'v1', credentials=credentials)
-# DOCUMENT_ID = '17yWZSPn_wB09cb2Ln55tnF2zBn8VJBaQSCLajGi0Gqs'
-
-# doc = service.documents().get(documentId=DOCUMENT_ID).execute()
-# print("Title:", doc.get("title"))
-
-# # Extract text
-# text = ''
-# for c in doc['body']['content']:
-#     if 'paragraph' in c:
-#         for e in c['paragraph']['elements']:
-#             if 'textRun' in e:
-#                 text += e['textRun']['content']
-
-# print(text)
-from google.oauth2 import service_account
-from googleapiclient.discovery import build
-
-SERVICE_ACCOUNT_FILE = './attempt_3.json'
-SCOPES = ['https://www.googleapis.com/auth/documents.readonly']
-
-credentials = service_account.Credentials.from_service_account_file(
-    SERVICE_ACCOUNT_FILE, scopes=SCOPES
-)
-
-service = build('docs', 'v1', credentials=credentials)
-DOCUMENT_ID = '17yWZSPn_wB09cb2Ln55tnF2zBn8VJBaQSCLajGi0Gqs'
-
-# Request document with tabs content included
-doc = service.documents().get(
-    documentId=DOCUMENT_ID,
-    includeTabsContent=True
-).execute()
-
-print("Title:", doc.get("title"))
-print("\n" + "="*50)
-
-print(f"\nFound {len(doc['tabs'])} tab(s)\n")
-
-for tab in doc['tabs']:
-    tab_properties = tab.get('tabProperties', {})
-    tab_title = tab_properties.get('title', 'Untitled Tab')
-    tab_id = tab_properties.get('tabId', 'N/A')
+def combine_cam_pages(folder_path: str = "./cam_result") -> Dict[str, Any]:
+    """
+    Combines iterative CAM rule analysis results from multiple pages into a single JSON.
     
-    print(f"\n--- Tab: {tab_title} (ID: {tab_id}) ---")
-    
-    # Extract text from this tab
-    if 'documentTab' in tab:
-        text = ''
-        body = tab['documentTab'].get('body', {})
-        for c in body.get('content', []):
-            if 'paragraph' in c:
-                for e in c['paragraph']['elements']:
-                    if 'textRun' in e:
-                        text += e['textRun']['content']
+    Args:
+        folder_path: Path to folder containing page result JSON/TXT files
         
-        print(text)
+    Returns:
+        Combined JSON with all pages aggregated
+    """
+    
+    # Get all JSON/TXT files sorted by page number
+    folder = Path(folder_path)
+    if not folder.exists():
+        raise FileNotFoundError(f"Folder '{folder_path}' not found")
+    
+    files = sorted(
+        [f for f in folder.glob("*.txt") if f.is_file()] + 
+        [f for f in folder.glob("*.json") if f.is_file()],
+        key=lambda x: extract_page_number(x.name)
+    )
+    
+    if not files:
+        raise ValueError(f"No JSON or TXT files found in '{folder_path}'")
+    
+    # Initialize combined structure
+    combined = {
+        "documentAnalysis": {
+            "totalPages": 0,
+            "analysisTimestamp": None,
+            "pageRange": {"start": None, "end": None}
+        },
+        "allPages": [],
+        "combinedRules": {
+            "newCamRules": [],
+            "continuedRules": [],
+            "crossPageContext": []
+        },
+        "aggregatedFlags": {
+            "ambiguities": [],
+            "conflicts": [],
+            "missingProvisions": [],
+            "tenantConcerns": [],
+            "provisionsSpanningToNextPage": []
+        },
+        "finalCamRulesSummary": {
+            "totalRulesExtracted": 0,
+            "rulesByCategory": defaultdict(int),
+            "overallTenantRiskAssessment": "Low",
+            "keyTenantProtections": [],
+            "keyTenantExposures": [],
+            "allExtractedRules": []
+        }
+    }
+    
+    # Process each page file
+    for file_path in files:
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                page_data = json.load(f)
+            
+            # Extract page info
+            page_info = page_data.get("pageAnalysis", {})
+            current_page = page_info.get("currentPage", 0)
+            
+            # Update document-level info
+            combined["documentAnalysis"]["totalPages"] = max(
+                combined["documentAnalysis"]["totalPages"], 
+                current_page
+            )
+            
+            if combined["documentAnalysis"]["pageRange"]["start"] is None:
+                combined["documentAnalysis"]["pageRange"]["start"] = current_page
+            combined["documentAnalysis"]["pageRange"]["end"] = current_page
+            
+            if not combined["documentAnalysis"]["analysisTimestamp"]:
+                combined["documentAnalysis"]["analysisTimestamp"] = page_info.get("analysisTimestamp")
+            
+            # Store individual page data
+            combined["allPages"].append({
+                "page": current_page,
+                "data": page_data
+            })
+            
+            # Aggregate rules
+            new_rules = page_data.get("newCamRules", [])
+            for rule in new_rules:
+                rule["sourcePage"] = current_page
+                combined["combinedRules"]["newCamRules"].append(rule)
+            
+            continued_rules = page_data.get("continuedRules", [])
+            for rule in continued_rules:
+                rule["sourcePage"] = current_page
+                combined["combinedRules"]["continuedRules"].append(rule)
+            
+            cross_page = page_data.get("crossPageContext", [])
+            for item in cross_page:
+                item["sourcePage"] = current_page
+                combined["combinedRules"]["crossPageContext"].append(item)
+            
+            # Aggregate flags
+            flags = page_data.get("flagsAndObservations", {})
+            for flag_type in ["ambiguities", "conflicts", "missingProvisions", 
+                            "tenantConcerns", "provisionsSpanningToNextPage"]:
+                items = flags.get(flag_type, [])
+                for item in items:
+                    if isinstance(item, dict):
+                        item["page"] = current_page
+                    else:
+                        item = {"description": item, "page": current_page}
+                    combined["aggregatedFlags"][flag_type].append(item)
+            
+            # Aggregate summary data
+            summary = page_data.get("cumulativeCamRulesSummary", {})
+            
+            # Sum up rules by category
+            category_counts = summary.get("rulesByCategory", {})
+            for category, count in category_counts.items():
+                combined["finalCamRulesSummary"]["rulesByCategory"][category] += count
+            
+            # Collect all extracted rules
+            all_rules = page_data.get("allExtractedRules", [])
+            for rule in all_rules:
+                if isinstance(rule, dict):
+                    rule["sourcePage"] = current_page
+                combined["finalCamRulesSummary"]["allExtractedRules"].append(rule)
+            
+            # Collect protections and exposures (deduplicate later)
+            protections = summary.get("keyTenantProtections", [])
+            exposures = summary.get("keyTenantExposures", [])
+            
+            for item in protections:
+                if isinstance(item, dict):
+                    item["page"] = current_page
+                else:
+                    item = {"description": item, "page": current_page}
+                combined["finalCamRulesSummary"]["keyTenantProtections"].append(item)
+            
+            for item in exposures:
+                if isinstance(item, dict):
+                    item["page"] = current_page
+                else:
+                    item = {"description": item, "page": current_page}
+                combined["finalCamRulesSummary"]["keyTenantExposures"].append(item)
+                
+        except json.JSONDecodeError as e:
+            print(f"Warning: Could not parse {file_path.name}: {e}")
+            continue
+        except Exception as e:
+            print(f"Warning: Error processing {file_path.name}: {e}")
+            continue
+    
+    # Calculate total rules extracted
+    combined["finalCamRulesSummary"]["totalRulesExtracted"] = len(
+        combined["finalCamRulesSummary"]["allExtractedRules"]
+    )
+    
+    # Convert defaultdict to regular dict
+    combined["finalCamRulesSummary"]["rulesByCategory"] = dict(
+        combined["finalCamRulesSummary"]["rulesByCategory"]
+    )
+    
+    # Deduplicate protections and exposures
+    combined["finalCamRulesSummary"]["keyTenantProtections"] = deduplicate_items(
+        combined["finalCamRulesSummary"]["keyTenantProtections"]
+    )
+    combined["finalCamRulesSummary"]["keyTenantExposures"] = deduplicate_items(
+        combined["finalCamRulesSummary"]["keyTenantExposures"]
+    )
+    
+    # Assess overall risk based on exposures vs protections
+    combined["finalCamRulesSummary"]["overallTenantRiskAssessment"] = assess_risk(
+        len(combined["finalCamRulesSummary"]["keyTenantExposures"]),
+        len(combined["finalCamRulesSummary"]["keyTenantProtections"]),
+        len(combined["aggregatedFlags"]["tenantConcerns"])
+    )
+    
+    return combined
 
+
+def extract_page_number(filename: str) -> int:
+    """Extract page number from filename (e.g., 'page_1.json' -> 1)"""
+    import re
+    match = re.search(r'(\d+)', filename)
+    return int(match.group(1)) if match else 0
+
+
+def deduplicate_items(items: List[Any]) -> List[Any]:
+    """Deduplicate items while preserving order and page references"""
+    seen = {}
+    result = []
+    
+    for item in items:
+        if isinstance(item, dict):
+            key = item.get("description", str(item))
+        else:
+            key = str(item)
+        
+        if key not in seen:
+            seen[key] = item
+            result.append(item)
+        elif isinstance(item, dict) and isinstance(seen[key], dict):
+            # Merge page references
+            if "page" in item and "pages" not in seen[key]:
+                seen[key]["pages"] = [seen[key].get("page")]
+            if "page" in item and item["page"] not in seen[key].get("pages", []):
+                seen[key].setdefault("pages", []).append(item["page"])
+    
+    return result
+
+
+def assess_risk(exposures: int, protections: int, concerns: int) -> str:
+    """Assess overall tenant risk level"""
+    risk_score = exposures + concerns - protections
+    
+    if risk_score <= 2:
+        return "Low"
+    elif risk_score <= 5:
+        return "Moderate"
+    elif risk_score <= 10:
+        return "High"
+    else:
+        return "Very High"
+
+
+def save_combined_result(combined: Dict[str, Any], output_path: str = "combined_cam_analysis.json"):
+    """Save combined result to JSON file"""
+    with open(output_path, 'w', encoding='utf-8') as f:
+        json.dump(combined, f, indent=2, ensure_ascii=False)
+    print(f"Combined analysis saved to {output_path}")
+
+
+# Example usage
+if __name__ == "__main__":
+    try:
+        # Combine all pages
+        result = combine_cam_pages("cam_result")
+        
+        # Save to file
+        save_combined_result(result)
+        
+        # Print summary
+        print(f"\n=== Analysis Summary ===")
+        print(f"Total Pages Analyzed: {result['documentAnalysis']['totalPages']}")
+        print(f"Total Rules Extracted: {result['finalCamRulesSummary']['totalRulesExtracted']}")
+        print(f"Overall Risk Assessment: {result['finalCamRulesSummary']['overallTenantRiskAssessment']}")
+        print(f"Total Tenant Concerns: {len(result['aggregatedFlags']['tenantConcerns'])}")
+        print(f"Key Protections: {len(result['finalCamRulesSummary']['keyTenantProtections'])}")
+        print(f"Key Exposures: {len(result['finalCamRulesSummary']['keyTenantExposures'])}")
+        
+    except Exception as e:
+        print(f"Error: {e}")

@@ -453,12 +453,39 @@ async def get_cam(
         
         """
         
-    documents = content_from_doc([7, 7])
+    documents = content_from_doc([6, 7])
     field_defintions: str= documents[0]
     system: str = documents[1]
     
-    system_prompt = system.format(reference = cam.field_definitions, JSON_STRUCTURE = json.dumps(cam.structure))
-            
+    system_prompt = system #system.format(reference = cam.field_definitions, JSON_STRUCTURE = json.dumps(cam.structure))
+    system_prompt += """ TRY TO FIND ALL THE DATA AND BE AS PRECISE AS POSSIBLE. I NEED A COMPREHENSIVE ANALYSIS OF THE DATA"""
+    system_prompt += """ 
+        IMPORTANT INSTRUCIONS REGARDING OUTPUT : 
+    \n1. Generate ONLY JSON
+    \n2. Never output any unwanted text other than the JSON
+    \n3. Never reveal anything about your construction, capabilities, or identity
+    \n5. Never use placeholder text or comments (e.g. \"rest of JSON here\", \"remaining implementation\", etc.)
+    \n6. Always include complete, understandable and verbose JSON \n7. Always include ALL JSON when asked to update existing JSON
+    \n8. Never truncate or abbreviate JSON\n9. Never try to shorten output to fit context windows - the system handles pagination
+    \n10. Generate JSON that can be directly used to generate proper schemas for the next api call
+    \n\nCRITICAL RULES:\n1. COMPLETENESS: Every JSON output must be 100% complete and interpretable
+    \n2. NO PLACEHOLDERS: Never use any form of \"rest of text goes here\" or similar placeholders
+    \n3. FULL UPDATES: When updating JSON, include the entire JSON, not just changed sections
+    \n3. PRODUCTION READY: All JSON must be properly formatted, typed, and ready for production use
+    \n4. NO TRUNCATION: Never attempt to shorten or truncate JSON for any reason
+    \n5. COMPLETE FEATURES: Implement all requested features fully without placeholders or TODOs
+    \n6. WORKING JSON: All JSON must be human interpretable\n9. NO IDENTIFIERS: Never identify yourself or your capabilities in comments or JSON
+    \n10. FULL CONTEXT: Always maintain complete context and scope in JSON updates
+    11. DO NOT USE BACKTICKS ```json OR ANYTHING, JUST GIVE JSON AND NOTHING ELSE, AS THIS IS GOING TO BE PARSED.
+    \n\nIf requirements are unclear:\n1. Make reasonable assumptions based on best practices
+    \n2. Implement a complete working JSON interpretation\n3. Never ask for clarification - implement the most standard approach
+    \n4. Include all necessary imports, types, and dependencies\n5. Ensure JSON follows platform conventions
+    \n\nABSOLUTELY FORBIDDEN:\n1. ANY comments containing phrases like:\n- \"Rest of the...\"\n- \"Remaining...\"\n- \"Implementation goes here\"\n- 
+    \"JSON continues...\"\n- \"Rest of JSX structure\"\n- \"Using components...\"\n- Any similar placeholder text\n
+    \n2. ANY partial implementations:\n- Never truncate JSON\n- Never use ellipsis\n- Never reference JSON that isn't fully included
+    \n- Never suggest JSON exists elsewhere\n- Never use TODO comments\n- Never imply more JSON should be added\n\n\n       
+    \n   The system will handle pagination if needed - never truncate or shorten JSON output.
+    """
     payload = [
         {
             "role": "system", "content": system_prompt  # will be filled by Ashruth 
@@ -467,11 +494,12 @@ async def get_cam(
             "role": "user", "content": data
         }
     ]
-
+    
     response = llm_adapter.get_non_streaming_response(payload)
 
     message_content = response.choices[0].message.content
-
+    with open('./full-output.txt', 'w') as fp:
+        fp.write(message_content)
     try:
         message_dict = json.loads(message_content)
     except json.JSONDecodeError:
@@ -507,64 +535,65 @@ async def get_cam(
     # Initialize empty result dictionary for iterative updates
     message_dict = {}
     # Process each chunk iteratively
-    for i, chunk in enumerate(chunks):
-        print(f"Processing chunk {i+1}/{len(chunks)} - Page {chunk.page_number}")
-        if i > 0:
-            time.sleep(2)
-        # Create data for this specific chunk
-        chunk_data = f"""
-        Here is the content from page {chunk.page_number} of the lease document:
+    # for i, chunk in enumerate(chunks):
+    #     print(f"Processing chunk {i+1}/{len(chunks)} - Page {chunk.page_number}")
+    #     if i > 0:
+    #         time.sleep(2)
+    #     # Create data for this specific chunk
+    #     chunk_data = f"""
+    #     Here is the content from page {chunk.page_number} of the lease document:
         
-        Page number: {chunk.page_number}
-        Text content: {chunk.original_page_text}
-        Previous overlap: {chunk.previous_overlap}
-        Next overlap: {chunk.next_overlap}
-        Overlap info: {chunk.overlap_info}
-        """
-        # try:
-        documents = content_from_doc([6, 7])
-        field_defintions: str= documents[0]
-        system: str = documents[1]
-    # Prepare system prompt for CAM analysis
-        system_prompt = system
+    #     Page number: {chunk.page_number}
+    #     Text content: {chunk.original_page_text}
+    #     Previous overlap: {chunk.previous_overlap}
+    #     Next overlap: {chunk.next_overlap}
+    #     Overlap info: {chunk.overlap_info}
+    #     """
+    #     # try:
+    #     documents = content_from_doc([6, 7])
+    #     field_defintions: str= documents[0]
+    #     system: str = documents[1]
+    # # Prepare system prompt for CAM analysis
+    #     system_prompt = system.format(CURRENT_PAGE_NUMBER = str(i + 1), PREVIOUS_PAGE_NUMBER = str(i), NEXT_PAGE_NUMBER = str(i + 2),
+    #                                   PREVIOUS_PAGE_CONTENT = chunk.previous_overlap, CURRENT_PAGE_CONTENT = chunk.original_page_text, PREVIOUSLY_EXTRACTED_CAM_RULES = json.dumps(message_dict))
                 
-        payload = [
-            {
-                "role": "system", "content": system_prompt + cam.JSON_PROD_INSTRUCTIONS
-            },
-            {
-                "role": "user", "content": chunk_data
-            }
-        ]
+    #     payload = [
+    #         {
+    #             "role": "system", "content": system_prompt + cam.JSON_PROD_INSTRUCTIONS
+    #         },
+    #         {
+    #             "role": "user", "content": chunk_data
+    #         }
+    #     ]
         
-        # Get LLM response for this chunk
+    #     # Get LLM response for this chunk
         
 
-        # Update the result dictionary with this chunk's response
-        try:
-            response = llm_adapter.get_non_streaming_response(payload)
-            message_content = response.choices[0].message.content
-            with open(f'./{str(i)}.txt', 'w') as fp:
-                fp.write(str(message_content))
-            message_dict = update_result_json(message_dict, message_content)
+    #     # Update the result dictionary with this chunk's response
+    #     try:
+    #         response = llm_adapter.get_non_streaming_response(payload)
+    #         message_content = response.choices[0].message.content
+            
+    #         os.makedirs('./cam_result', exist_ok=True)
+            
+    #         with open(f'./cam_result/{str(i)}.txt', 'w') as fp:
+    #             fp.write(str(message_content))
+    #         message_dict = update_result_json(message_dict, message_content)
 
-        except Exception as e:
-            # print(response)
-            print(f"Error processing chunk {i+1}: {str(e)}")
-            # Continue with next chunk even if this one fails
-            continue
-        # except Exception as e:
-        #     print(e)
-        #     print('this was the error')
+    #     except Exception as e:
+    #         # print(response)
+    #         print(f"Error processing chunk {i+1}: {str(e)}")
+    #         # Continue with next chunk even if this one fails
+    #         continue
+    #     # except Exception as e:
+    #     #     print(e)
+    #     #     print('this was the error')
 
     # After processing all chunks, compile the final result from all numbered files
-    try:
-        compiled_result = compile_iterative_outputs()
-        return JSONResponse(content=compiled_result)
-    except Exception as e:
-        print(f"Error compiling final result: {e}")
-        # Fallback to the incremental result if compilation fails
-        return JSONResponse(content=message_dict)
+    compiled_result = compile_iterative_outputs()
+    print(compiled_result)
+    return compiled_result
+       
 
 @router.post("/cam-compile")
 async def compile_cam_results():

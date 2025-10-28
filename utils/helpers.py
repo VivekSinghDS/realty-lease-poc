@@ -2,6 +2,7 @@ import ast
 import asyncio
 import os 
 import json
+import shutil
 from typing import Any, Dict, List
 import json 
 import pickle 
@@ -224,6 +225,12 @@ def compile_iterative_outputs() -> Dict[str, Any]:
         Consolidated dictionary with all CAM analysis results
     """
     compiled_result = {
+        "pageAnalysis": {
+            "currentPage": 0,
+            "previousPage": "N/A",
+            "nextPage": "N/A",
+            "analysisTimestamp": ""
+        },
         "newCamRules": [],
         "continuedRules": [],
         "crossPageContext": [],
@@ -255,23 +262,35 @@ def compile_iterative_outputs() -> Dict[str, Any]:
             "overallTenantRiskAssessment": "Low",
             "keyTenantProtections": [],
             "keyTenantExposures": []
-        }
+        },
+        "allExtractedRules": []
     }
     
     # Find all numbered text files
     numbered_files = []
     for i in range(100):  # Check up to 100 files
-        filename = f"./{i}.txt"
+        filename = f"./cam_result/{i}.txt"
         if os.path.exists(filename):
             numbered_files.append(filename)
     
     print(f"Found {len(numbered_files)} numbered text files to compile")
     
-    # Process each file
-    for filename in sorted(numbered_files, key=lambda x: int(x.split('.')[0])):
+    # Process each file - sort by numeric order, skip invalid filenames
+    def safe_sort_key(filename):
+        try:
+            return int(filename.split('.')[0])
+        except (ValueError, IndexError):
+            return 999999  # Put invalid filenames at the end
+    
+    for filename in sorted(numbered_files, key=safe_sort_key):
         try:
             with open(filename, 'r', encoding='utf-8') as f:
                 content = f.read().strip()
+            
+            # Skip empty files
+            if not content:
+                print(f"Skipping empty file: {filename}")
+                continue
             
             # Clean the content (remove markdown code blocks if present)
             if content.startswith("```json"):
@@ -282,16 +301,52 @@ def compile_iterative_outputs() -> Dict[str, Any]:
                 content = content[:-3]
             content = content.strip()
             
+            # Skip if content is empty after cleaning
+            if not content:
+                print(f"Skipping file with no content after cleaning: {filename}")
+                continue
+            
             # Parse JSON content
             try:
                 data = json.loads(content)
             except json.JSONDecodeError as e:
-                print(f"Error parsing {filename}: {e}")
+                print(f"Skipping {filename} due to invalid JSON: {e}")
+                continue
+            except Exception as e:
+                print(f"Skipping {filename} due to unexpected error: {e}")
                 continue
             
-            # Merge extractedCamRules into newCamRules
+            # Handle pageAnalysis - update with latest page info
+            if "pageAnalysis" in data and data["pageAnalysis"]:
+                page_analysis = data["pageAnalysis"]
+                if "currentPage" in page_analysis:
+                    compiled_result["pageAnalysis"]["currentPage"] = page_analysis["currentPage"]
+                if "previousPage" in page_analysis:
+                    compiled_result["pageAnalysis"]["previousPage"] = page_analysis["previousPage"]
+                if "nextPage" in page_analysis:
+                    compiled_result["pageAnalysis"]["nextPage"] = page_analysis["nextPage"]
+                if "analysisTimestamp" in page_analysis:
+                    compiled_result["pageAnalysis"]["analysisTimestamp"] = page_analysis["analysisTimestamp"]
+            
+            # Merge newCamRules (handle both old and new formats)
             if "extractedCamRules" in data and data["extractedCamRules"]:
-                compiled_result["newCamRules"].extend(data["extractedCamRules"])
+                print(f"Adding {len(data['extractedCamRules'])} rules from extractedCamRules in {filename}")
+                # Ensure all items are dictionaries before extending
+                valid_rules = [rule for rule in data["extractedCamRules"] if isinstance(rule, dict)]
+                if len(valid_rules) != len(data["extractedCamRules"]):
+                    print(f"Warning: Found {len(data['extractedCamRules']) - len(valid_rules)} non-dict items in extractedCamRules")
+                compiled_result["newCamRules"].extend(valid_rules)
+            elif "newCamRules" in data and data["newCamRules"]:
+                print(f"Adding {len(data['newCamRules'])} rules from newCamRules in {filename}")
+                # Ensure all items are dictionaries before extending
+                valid_rules = [rule for rule in data["newCamRules"] if isinstance(rule, dict)]
+                if len(valid_rules) != len(data["newCamRules"]):
+                    print(f"Warning: Found {len(data['newCamRules']) - len(valid_rules)} non-dict items in newCamRules")
+                compiled_result["newCamRules"].extend(valid_rules)
+            
+            # Merge continuedRules
+            if "continuedRules" in data and data["continuedRules"]:
+                compiled_result["continuedRules"].extend(data["continuedRules"])
             
             # Merge crossPageContext
             if "crossPageContext" in data and data["crossPageContext"]:
@@ -317,21 +372,64 @@ def compile_iterative_outputs() -> Dict[str, Any]:
                     # Replace rather than append for spanning provisions
                     compiled_result["flagsAndObservations"]["provisionsSpanningToNextPage"] = flags["provisionsSpanningToNextPage"]
             
+            # Merge allExtractedRules
+            if "allExtractedRules" in data and data["allExtractedRules"]:
+                print(f"Adding {len(data['allExtractedRules'])} rules from allExtractedRules in {filename}")
+                # Ensure all items are dictionaries before extending
+                valid_rules = [rule for rule in data["allExtractedRules"] if isinstance(rule, dict)]
+                if len(valid_rules) != len(data["allExtractedRules"]):
+                    print(f"Warning: Found {len(data['allExtractedRules']) - len(valid_rules)} non-dict items in allExtractedRules")
+                compiled_result["allExtractedRules"].extend(valid_rules)
+            
             print(f"Successfully processed {filename}")
             
+        except FileNotFoundError:
+            print(f"File not found: {filename}")
+            continue
+        except PermissionError:
+            print(f"Permission denied reading: {filename}")
+            continue
+        except UnicodeDecodeError:
+            print(f"Unicode decode error reading: {filename}")
+            continue
         except Exception as e:
-            print(f"Error processing {filename}: {e}")
+            print(f"Unexpected error processing {filename}: {e}")
             continue
     
     # Update cumulative summary
     compiled_result["cumulativeCamRulesSummary"]["totalRulesExtracted"] = len(compiled_result["newCamRules"])
     
-    # Count rules by category
+    # Count rules by category from newCamRules
     for rule in compiled_result["newCamRules"]:
+        # Debug: Check if rule is a dictionary
+        if not isinstance(rule, dict):
+            print(f"Warning: Found non-dict rule in newCamRules: {type(rule)} - {rule}")
+            continue
+        
         if "ruleCategory" in rule:
             category = rule["ruleCategory"]
             if category in compiled_result["cumulativeCamRulesSummary"]["rulesByCategory"]:
                 compiled_result["cumulativeCamRulesSummary"]["rulesByCategory"][category] += 1
+    
+    # Also count rules from allExtractedRules if it exists and is different from newCamRules
+    if compiled_result["allExtractedRules"] and len(compiled_result["allExtractedRules"]) != len(compiled_result["newCamRules"]):
+        # Reset category counts and recount from allExtractedRules
+        for category in compiled_result["cumulativeCamRulesSummary"]["rulesByCategory"]:
+            compiled_result["cumulativeCamRulesSummary"]["rulesByCategory"][category] = 0
+        
+        for rule in compiled_result["allExtractedRules"]:
+            # Debug: Check if rule is a dictionary
+            if not isinstance(rule, dict):
+                print(f"Warning: Found non-dict rule in allExtractedRules: {type(rule)} - {rule}")
+                continue
+                
+            if "ruleCategory" in rule:
+                category = rule["ruleCategory"]
+                if category in compiled_result["cumulativeCamRulesSummary"]["rulesByCategory"]:
+                    compiled_result["cumulativeCamRulesSummary"]["rulesByCategory"][category] += 1
+        
+        # Update total count to match allExtractedRules
+        compiled_result["cumulativeCamRulesSummary"]["totalRulesExtracted"] = len(compiled_result["allExtractedRules"])
     
     # Determine overall risk assessment based on tenant concerns
     risk_levels = []
@@ -352,15 +450,88 @@ def compile_iterative_outputs() -> Dict[str, Any]:
             elif concern.get("riskLevel") in ["Low", "Medium"]:
                 compiled_result["cumulativeCamRulesSummary"]["keyTenantProtections"].append(concern.get("description", ""))
     
-    # Remove duplicates from lists
-    compiled_result["flagsAndObservations"]["ambiguities"] = list({str(item): item for item in compiled_result["flagsAndObservations"]["ambiguities"]}.values())
-    compiled_result["flagsAndObservations"]["conflicts"] = list({str(item): item for item in compiled_result["flagsAndObservations"]["conflicts"]}.values())
-    compiled_result["flagsAndObservations"]["missingProvisions"] = list({str(item): item for item in compiled_result["flagsAndObservations"]["missingProvisions"]}.values())
-    compiled_result["flagsAndObservations"]["tenantConcerns"] = list({str(item): item for item in compiled_result["flagsAndObservations"]["tenantConcerns"]}.values())
-    compiled_result["cumulativeCamRulesSummary"]["keyTenantProtections"] = list(set(compiled_result["cumulativeCamRulesSummary"]["keyTenantProtections"]))
-    compiled_result["cumulativeCamRulesSummary"]["keyTenantExposures"] = list(set(compiled_result["cumulativeCamRulesSummary"]["keyTenantExposures"]))
+    # Remove duplicates from lists (with error handling)
+    try:
+        # Deduplicate flagsAndObservations arrays
+        compiled_result["flagsAndObservations"]["ambiguities"] = list({str(item): item for item in compiled_result["flagsAndObservations"]["ambiguities"]}.values())
+        compiled_result["flagsAndObservations"]["conflicts"] = list({str(item): item for item in compiled_result["flagsAndObservations"]["conflicts"]}.values())
+        compiled_result["flagsAndObservations"]["missingProvisions"] = list({str(item): item for item in compiled_result["flagsAndObservations"]["missingProvisions"]}.values())
+        compiled_result["flagsAndObservations"]["tenantConcerns"] = list({str(item): item for item in compiled_result["flagsAndObservations"]["tenantConcerns"]}.values())
+        
+        # Deduplicate cumulative summary arrays
+        compiled_result["cumulativeCamRulesSummary"]["keyTenantProtections"] = list(set(compiled_result["cumulativeCamRulesSummary"]["keyTenantProtections"]))
+        compiled_result["cumulativeCamRulesSummary"]["keyTenantExposures"] = list(set(compiled_result["cumulativeCamRulesSummary"]["keyTenantExposures"]))
+        
+        # Deduplicate newCamRules and allExtractedRules based on ruleId
+        if compiled_result["newCamRules"]:
+            seen_rules = set()
+            unique_rules = []
+            for rule in compiled_result["newCamRules"]:
+                rule_id = rule.get("ruleId", "")
+                if rule_id and rule_id not in seen_rules:
+                    seen_rules.add(rule_id)
+                    unique_rules.append(rule)
+                elif not rule_id:  # Keep rules without IDs
+                    unique_rules.append(rule)
+            compiled_result["newCamRules"] = unique_rules
+        
+        if compiled_result["allExtractedRules"]:
+            seen_rules = set()
+            unique_rules = []
+            for rule in compiled_result["allExtractedRules"]:
+                rule_id = rule.get("ruleId", "")
+                if rule_id and rule_id not in seen_rules:
+                    seen_rules.add(rule_id)
+                    unique_rules.append(rule)
+                elif not rule_id:  # Keep rules without IDs
+                    unique_rules.append(rule)
+            compiled_result["allExtractedRules"] = unique_rules
+        
+        # Deduplicate continuedRules based on ruleId
+        if compiled_result["continuedRules"]:
+            seen_rules = set()
+            unique_rules = []
+            for rule in compiled_result["continuedRules"]:
+                rule_id = rule.get("ruleId", "")
+                if rule_id and rule_id not in seen_rules:
+                    seen_rules.add(rule_id)
+                    unique_rules.append(rule)
+                elif not rule_id:  # Keep rules without IDs
+                    unique_rules.append(rule)
+            compiled_result["continuedRules"] = unique_rules
+        
+        # Deduplicate crossPageContext based on contextType and description
+        if compiled_result["crossPageContext"]:
+            seen_contexts = set()
+            unique_contexts = []
+            for context in compiled_result["crossPageContext"]:
+                context_key = f"{context.get('contextType', '')}:{context.get('description', '')}"
+                if context_key not in seen_contexts:
+                    seen_contexts.add(context_key)
+                    unique_contexts.append(context)
+            compiled_result["crossPageContext"] = unique_contexts
+            
+    except Exception as e:
+        print(f"Warning: Error during deduplication: {e}")
+        # Continue without deduplication if there's an error
     
     print(f"Compilation complete. Total rules extracted: {compiled_result['cumulativeCamRulesSummary']['totalRulesExtracted']}")
+    
+    try:
+        if os.path.exists("./cam_result"):
+            # Check if folder is not empty (safety check)
+            if os.listdir("./cam_result"):
+                # shutil.rmtree("./cam_result")
+                print("Successfully deleted cam_result folder and its contents")
+            else:
+                # os.rmdir("./cam_result")
+                print("Successfully deleted empty cam_result folder")
+        else:
+            print("cam_result folder not found - nothing to delete")
+    except Exception as e:
+        print(f"Warning: Could not delete cam_result folder: {e}")
+        # Don't fail the compilation if cleanup fails
+    
     return compiled_result
 
 
@@ -379,6 +550,12 @@ def update_result_json(message_dict: Dict[str, Any], message_content: str) -> Di
     # Initialize empty structure if message_dict is empty
     if not message_dict:
         message_dict = {
+            "pageAnalysis": {
+                "currentPage": 0,
+                "previousPage": "N/A",
+                "nextPage": "N/A",
+                "analysisTimestamp": ""
+            },
             "newCamRules": [],
             "continuedRules": [],
             "crossPageContext": [],
@@ -410,7 +587,8 @@ def update_result_json(message_dict: Dict[str, Any], message_content: str) -> Di
                 "overallTenantRiskAssessment": "Low",
                 "keyTenantProtections": [],
                 "keyTenantExposures": []
-            }
+            },
+            "allExtractedRules": []
         }
     
     # Parse the new chunk data
@@ -431,6 +609,18 @@ def update_result_json(message_dict: Dict[str, Any], message_content: str) -> Di
         print(f"Problematic content: {message_content[:200]}...")
         raise ValueError(f"Invalid JSON response from LLM: {e}")
     
+    # Handle pageAnalysis - update with latest page info
+    if "pageAnalysis" in new_data and new_data["pageAnalysis"]:
+        page_analysis = new_data["pageAnalysis"]
+        if "currentPage" in page_analysis:
+            message_dict["pageAnalysis"]["currentPage"] = page_analysis["currentPage"]
+        if "previousPage" in page_analysis:
+            message_dict["pageAnalysis"]["previousPage"] = page_analysis["previousPage"]
+        if "nextPage" in page_analysis:
+            message_dict["pageAnalysis"]["nextPage"] = page_analysis["nextPage"]
+        if "analysisTimestamp" in page_analysis:
+            message_dict["pageAnalysis"]["analysisTimestamp"] = page_analysis["analysisTimestamp"]
+    
     # Merge extractedCamRules into newCamRules (handle both formats)
     if "extractedCamRules" in new_data and new_data["extractedCamRules"]:
         message_dict["newCamRules"].extend(new_data["extractedCamRules"])
@@ -444,6 +634,10 @@ def update_result_json(message_dict: Dict[str, Any], message_content: str) -> Di
     # Merge crossPageContext (append)
     if "crossPageContext" in new_data and new_data["crossPageContext"]:
         message_dict["crossPageContext"].extend(new_data["crossPageContext"])
+    
+    # Merge allExtractedRules
+    if "allExtractedRules" in new_data and new_data["allExtractedRules"]:
+        message_dict["allExtractedRules"].extend(new_data["allExtractedRules"])
     
     # Merge flagsAndObservations (append to each sub-array)
     if "flagsAndObservations" in new_data:

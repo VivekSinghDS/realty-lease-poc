@@ -1,0 +1,313 @@
+{
+  "documentAnalysis": {
+    "documentTitle": "Lease Agreement – PH Office 2, LLC v. Bayer HealthCare LLC",
+    "documentDate": "May 2015",
+    "totalPagesAnalyzed": 40,
+    "analysisTimestamp": "2025-10-28T12:00:00Z",
+    "analysisCompleteness": "Complete"
+  },
+  "extractedCamRules": [
+    {
+      "ruleId": "CAM-001",
+      "ruleCategory": "proportionateShare",
+      "location": {
+        "pageNumbers": [5],
+        "section": "Exhibit D – Memorandum of Acceptance of Delivery",
+        "paragraph": "Tenant's Proportionate Share is __ %."
+      },
+      "ruleSummary": "Tenant’s share is calculated by rentable square footage ratio.",
+      "exactLanguage": "Tenant's Proportionate Share is __ %.",
+      "tenantImpact": "Tenant pays CAM in proportion to its share of rentable space.",
+      "crossReferences": ["CAM-013"],
+      "impactSeverity": "Medium",
+      "favorability": "Neutral"
+    },
+    {
+      "ruleId": "CAM-002",
+      "ruleCategory": "definitions",
+      "location": {
+        "pageNumbers": [8],
+        "section": "Operating Expenses",
+        "paragraph": "\"Operating Expenses\" as defined herein"
+      },
+      "ruleSummary": "Operating expenses defined as ordinary costs incurred by landlord.",
+      "exactLanguage": "\"Operating Expenses\" as defined herein means the actual ordinary and reasonable costs and expenses incurred by or on behalf of Landlord for each calendar year that occurs wholly or partially during the Initial Term or any Renewal Term because of or in connection with the ownership, management, maintenance, repair, replacement, restoration or operation of the Real Property, including all costs and expenses paid or incurred by Landlord for operating, equipping, policing and protecting, lighting, utilities, heating, air‑conditioning, providing sanitation and other services, providing a public address system, insuring, repairing, replacing and maintaining the Building.",
+      "tenantImpact": "Defines what charges may be included in CAM.",
+      "crossReferences": ["CAM-003", "CAM-004"],
+      "impactSeverity": "Low",
+      "favorability": "Neutral"
+    },
+    {
+      "ruleId": "CAM-003",
+      "ruleCategory": "exclusions",
+      "location": {
+        "pageNumbers": [9],
+        "section": "Operating Expenses – Exclusions",
+        "paragraph": "\"Notwithstanding anything in this Lease to the contrary\""
+      },
+      "ruleSummary": "List of excluded expenses from CAM.",
+      "exactLanguage": "\"Notwithstanding anything in this Lease to the contrary, Operating Expenses shall not include any of the following: (i) expenses for capital improvements except as expressly provided in this Section 4; (ii) costs (in excess of Landlord's insurance deductible) of repairs, restoration, replacements or other work occasioned by fire, windstorm or other casualty of an insurable nature; (iii) interest and amortization of funds borrowed by Landlord; (iv) depreciation of the Building; (v) leasing commissions; (vi) costs, fines, interest, penalties, legal fees or costs of litigation incurred due to the late payments of taxes, utility bills and other costs incurred by Landlord's failure to make such payments when due; (vii) costs incurred (less cost of recovery) for any items to the extent covered by a manufacturer's, materialmen's, vendor's or contractor's warranty; (viii) income, excess profits, franchise taxes or other such taxes imposed on or measured by the income of Landlord from the operation of the Building; (ix) costs of Landlord's defense of lawsuits against Landlord and any judgments or costs of settlement; (x) legal fees and other costs (including prepayment of any indebtedness) incurred in connection with any mortgaging, financing, refinancing, sale, change of ownership or entering into or extending or modifying any financing; (xi) the costs of services or items provided by Landlord's affiliates to the extent that such costs exceed reasonable and customary charges for such services or items in the market area; (xii) acquisition or leasing costs of sculpture, paintings or other objects of art; (xiii) accounting fees, other than those incurred in connection with the preparation of statements required pursuant to the provisions of this Lease; (xiv) costs and expenses (including court costs, attorneys' fees and disbursements) related to or in connection with disputes with any holder of a mortgage or by or among any persons having an interest in the Landlord or the Building; (xv) consulting costs and expenses paid by Landlord unless such costs and expenses result in a reduction of Operating Expenses or property taxes; (xvi) any costs incurred in connection with the investigation or remediation of any Hazardous Materials; (xvii) costs incurred in connection with a sale, lease or transfer of any part of the Building; (xviii) the cost of any '1ap fees' or one‑time lump sum sewer or water connection fees for the Building; (xix) any costs, fines or penalties incurred as a result of a violation by Landlord of any legal requirements; (xx) all costs and expenses (including services and utilities) payable directly by Tenant; (xxi) costs of repairing, replacing or otherwise correcting defects in the initial construction of the Building; (xxii) any tax other than property taxes required to be paid by the Tenant as specified in this Lease; (xxiii) costs of initial construction of the Building; (xxiv) costs and expenses incurred by Landlord associated with the operation of the business of the legal entity or entities which constitute Landlord; (xxv) charitable or political contributions; (xxvi) any other costs or expenses which, under generally accepted accounting principles consistently applied, would not be a normal and customary expense in comparable office buildings in the market area; (xxvii) costs of compliance with any laws (including without limitation, laws governing fire, life safety and disabilities) enacted or in effect and applicable to the Building as of the date hereof and cost of compliance with any present and future laws; and (xxix) costs of any items for which Landlord is reimbursed.\"",
+      "tenantImpact": "Tenant is exempt from paying for the listed excluded items.",
+      "crossReferences": ["CAM-004"],
+      "impactSeverity": "Low",
+      "favorability": "Favorable"
+    },
+    {
+      "ruleId": "CAM-004",
+      "ruleCategory": "controllableVsNonControllable",
+      "location": {
+        "pageNumbers": [9],
+        "section": "Operating Expenses – Controllable",
+        "paragraph": "\"Controllable Operating Expenses (defined as all Operating Expenses other than property taxes and insurance) shall not increase by more than five percent (5%) annually following Tenant's Base Year.\""
+      },
+      "ruleSummary": "Cap on controllable operating expenses.",
+      "exactLanguage": "\"Controllable Operating Expenses (defined as all Operating Expenses other than property taxes and insurance) shall not increase by more than five percent (5%) annually following Tenant's Base Year.\"",
+      "tenantImpact": "Limits the annual increase in CAM for controllable expenses to 5%.",
+      "crossReferences": ["CAM-005"],
+      "impactSeverity": "Medium",
+      "favorability": "Favorable"
+    },
+    {
+      "ruleId": "CAM-005",
+      "ruleCategory": "capsLimitations",
+      "location": {
+        "pageNumbers": [9],
+        "section": "Operating Expenses – Cap",
+        "paragraph": "\"Controllable Operating Expenses (defined as all Operating Expenses other than property taxes and insurance) shall not increase by more than five percent (5%) annually following Tenant's Base Year.\""
+      },
+      "ruleSummary": "Annual 5% cap on controllable expenses.",
+      "exactLanguage": "\"Controllable Operating Expenses (defined as all Operating Expenses other than property taxes and insurance) shall not increase by more than five percent (5%) annually following Tenant's Base Year.\"",
+      "tenantImpact": "Tenant’s CAM share of controllable expenses cannot rise more than 5% per year.",
+      "crossReferences": ["CAM-004"],
+      "impactSeverity": "Medium",
+      "favorability": "Favorable"
+    },
+    {
+      "ruleId": "CAM-006",
+      "ruleCategory": "grossUpProvisions",
+      "location": {
+        "pageNumbers": [7],
+        "section": "Operating Expenses – Gross‑Up",
+        "paragraph": "\"Expenses of the project as though ninety‑five percent (95%) were occupied at all times (including the Base Year). Tenant's pro‑ra share of building expenses shall be calculated as the resultant percentage based on the rentable square footage of the Building as the denominator and tenant's rentable square footage as the numerator.\""
+      },
+      "ruleSummary": "Gross‑up of expenses to 95% occupancy.",
+      "exactLanguage": "\"Expenses of the project as though ninety‑five percent (95%) were occupied at all times (including the Base Year). Tenant's pro‑ra share of building expenses shall be calculated as the resultant percentage based on the rentable square footage of the Building as the denominator and tenant's rentable square footage as the numerator.\"",
+      "tenantImpact": "Tenant pays CAM as if 95% of the building were occupied, potentially inflating costs.",
+      "crossReferences": ["CAM-013"],
+      "impactSeverity": "High",
+      "favorability": "Unfavorable"
+    },
+    {
+      "ruleId": "CAM-007",
+      "ruleCategory": "baseYearProvisions",
+      "location": {
+        "pageNumbers": [8],
+        "section": "Taxes and Operating Expenses – Base Year",
+        "paragraph": "\"The Base Year shall be the calendar year of 2016 or such later year to the extent the assessment for the Building and Land does not reflect the value of the completed Building and Premises as contemplated hereunder.\""
+      },
+      "ruleSummary": "Base Year is calendar year 2016.",
+      "exactLanguage": "\"The Base Year shall be the calendar year of 2016 or such later year to the extent the assessment for the Building and Land does not reflect the value of the completed Building and Premises as contemplated hereunder.\"",
+      "tenantImpact": "CAM is measured against the 2016 amounts; any excess over 2016 is passed through.",
+      "crossReferences": ["CAM-008"],
+      "impactSeverity": "Low",
+      "favorability": "Neutral"
+    },
+    {
+      "ruleId": "CAM-008",
+      "ruleCategory": "reconciliationProcedures",
+      "location": {
+        "pageNumbers": [8],
+        "section": "Operating Expenses – Annual Statement",
+        "paragraph": "\"Within ninety (90) days after the end of each calendar year, Landlord shall send an annual statement of Operating Expenses, which shall be accounted for and reported in accordance with generally accepted accounting principles (the \"Annual Statement\") to Tenant.\""
+      },
+      "ruleSummary": "Annual statement to be sent within 90 days.",
+      "exactLanguage": "\"Within ninety (90) days after the end of each calendar year, Landlord shall send an annual statement of Operating Expenses, which shall be accounted for and reported in accordance with generally accepted accounting principles (the \"Annual Statement\") to Tenant.\"",
+      "tenantImpact": "Tenant receives a statement to review and reconcile CAM charges.",
+      "crossReferences": ["CAM-011"],
+      "impactSeverity": "Low",
+      "favorability": "Neutral"
+    },
+    {
+      "ruleId": "CAM-009",
+      "ruleCategory": "paymentTerms",
+      "location": {
+        "pageNumbers": [8],
+        "section": "Operating Expenses – Payment",
+        "paragraph": "\"Pursuant to the Annual Statement, Tenant shall pay to Landlord Additional Rent in a lump sum as owed or Landlord shall adjust Tenant's Rent payments if Landlord owes Tenant a credit, such payment or adjustment to be made within thirty (30) days after the Annual Statement is received by Tenant.\""
+      },
+      "ruleSummary": "CAM paid in lump sum or rent adjustment within 30 days.",
+      "exactLanguage": "\"Pursuant to the Annual Statement, Tenant shall pay to Landlord Additional Rent in a lump sum as owed or Landlord shall adjust Tenant's Rent payments if Landlord owes Tenant a credit, such payment or adjustment to be made within thirty (30) days after the Annual Statement is received by Tenant.\"",
+      "tenantImpact": "Tenant must pay excess CAM within 30 days after annual statement receipt.",
+      "crossReferences": ["CAM-008"],
+      "impactSeverity": "Medium",
+      "favorability": "Unfavorable"
+    },
+    {
+      "ruleId": "CAM-010",
+      "ruleCategory": "paymentTerms",
+      "location": {
+        "pageNumbers": [7],
+        "section": "Base Rent – Late Charge",
+        "paragraph": "\"If Base Rent has not been paid by the 10th of the month in which it is due, 2% of the monthly payment will be assessed as a late charge.\""
+      },
+      "ruleSummary": "Late charge of 2% if rent not paid by 10th.",
+      "exactLanguage": "\"If Base Rent has not been paid by the 10th of the month in which it is due, 2% of the monthly payment will be assessed as a late charge.\"",
+      "tenantImpact": "Tenant faces additional 2% late fee on any delayed rent or CAM payment.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Neutral"
+    },
+    {
+      "ruleId": "CAM-011",
+      "ruleCategory": "auditRights",
+      "location": {
+        "pageNumbers": [10],
+        "section": "Tenant’s Review – Audit",
+        "paragraph": "\"Tenant and its representatives shall have the right to examine and review Landlord's books and records pertaining to Operating Expenses ('Tenant's Review'), at Tenant's expense, one time during each calendar year...\""
+      },
+      "ruleSummary": "Annual audit of Landlord's books for operating expenses.",
+      "exactLanguage": "\"Tenant and its representatives shall have the right to examine and review Landlord's books and records pertaining to Operating Expenses ('Tenant's Review'), at Tenant's expense, one time during each calendar year...\"",
+      "tenantImpact": "Tenant can audit CAM calculations once per year to verify accuracy.",
+      "crossReferences": ["CAM-008"],
+      "impactSeverity": "Medium",
+      "favorability": "Neutral"
+    },
+    {
+      "ruleId": "CAM-012",
+      "ruleCategory": "noticeRequirements",
+      "location": {
+        "pageNumbers": [11],
+        "section": "Notice of Annual Statement",
+        "paragraph": "\"Within ninety (90) days after the end of each calendar year, Landlord shall send an annual statement of Operating Expenses...\""
+      },
+      "ruleSummary": "Landlord must provide annual statement within 90 days.",
+      "exactLanguage": "\"Within ninety (90) days after the end of each calendar year, Landlord shall send an annual statement of Operating Expenses...\"",
+      "tenantImpact": "Tenant expects timely notice to review CAM.",
+      "crossReferences": ["CAM-008"],
+      "impactSeverity": "Low",
+      "favorability": "Neutral"
+    },
+    {
+      "ruleId": "CAM-013",
+      "ruleCategory": "calculationMethods",
+      "location": {
+        "pageNumbers": [8],
+        "section": "Operating Expenses – Pro‑Rata Share",
+        "paragraph": "\"Tenant's pro‑ra share of building expenses shall be calculated as the resultant percentage based on the rentable square footage of the Building as the denominator and tenant's rentable square footage as the numerator.\""
+      },
+      "ruleSummary": "Pro‑rata share formula based on rentable square footage.",
+      "exactLanguage": "\"Tenant's pro‑ra share of building expenses shall be calculated as the resultant percentage based on the rentable square footage of the Building as the denominator and tenant's rentable square footage as the numerator.\"",
+      "tenantImpact": "Tenant’s CAM payment is directly tied to its square‑footage ratio.",
+      "crossReferences": ["CAM-001"],
+      "impactSeverity": "Low",
+      "favorability": "Neutral"
+    },
+    {
+      "ruleId": "CAM-014",
+      "ruleCategory": "administrativeFees",
+      "location": {
+        "pageNumbers": [7],
+        "section": "Operating Expenses – Management Fees",
+        "paragraph": "\"No management fee is expressly imposed by the Landlord for the calculation or collection of Operating Expenses.\""
+      },
+      "ruleSummary": "No explicit management fee.",
+      "exactLanguage": "\"No management fee is expressly imposed by the Landlord for the calculation or collection of Operating Expenses.\"",
+      "tenantImpact": "Tenant is not charged an additional administrative fee for CAM.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Favorable"
+    }
+  ],
+  "crossPageContext": [
+    {
+      "contextType": "Definition",
+      "description": "\"Operating Expenses\" is defined across multiple sections and is central to all CAM calculations.",
+      "affectedPages": [8, 9],
+      "relevantRuleIds": ["CAM-002", "CAM-003", "CAM-004", "CAM-006"]
+    },
+    {
+      "contextType": "Cross-Reference",
+      "description": "The gross‑up provision (95% occupancy) is referenced in the calculation of Tenant’s pro‑rata share.",
+      "affectedPages": [7, 13],
+      "relevantRuleIds": ["CAM-006", "CAM-013"]
+    }
+  ],
+  "flagsAndObservations": {
+    "ambiguities": [
+      {
+        "description": "The 95% gross‑up calculation may be interpreted as a blanket assumption for all operating expenses, potentially inflating tenant charges.",
+        "location": "Page 7, Section Operating Expenses – Gross‑Up",
+        "potentialIssue": "Tenant may be exposed to higher CAM than actual occupancy.",
+        "recommendedAction": "Negotiate a cap on the gross‑up assumption or request actual occupancy data."
+      }
+    ],
+    "conflicts": [],
+    "missingProvisions": [
+      {
+        "provisionType": "capsLimitations",
+        "significance": "High",
+        "tenantRisk": "Unlimited exposure to increases in non‑controllable operating expenses."
+      }
+    ],
+    "tenantConcerns": [
+      {
+        "concernType": "Unlimited Exposure",
+        "description": "No overall cap on total CAM increase beyond the 5% cap on controllable expenses.",
+        "riskLevel": "High",
+        "negotiationPoint": true,
+        "affectedRuleIds": ["CAM-004", "CAM-005"]
+      },
+      {
+        "concernType": "Weak Audit Rights",
+        "description": "Audit is limited to one annual review at tenant’s expense, with no right to dispute each year’s calculation.",
+        "riskLevel": "Medium",
+        "negotiationPoint": true,
+        "affectedRuleIds": ["CAM-011"]
+      },
+      {
+        "concernType": "Gross‑Up Exposure",
+        "description": "Tenant may pay for a 95% occupancy level even if actual occupancy is lower.",
+        "riskLevel": "High",
+        "negotiationPoint": true,
+        "affectedRuleIds": ["CAM-006"]
+      }
+    ]
+  },
+  "camRulesSummary": {
+    "totalRules": 13,
+    "rulesByCategory": {
+      "proportionateShare": 1,
+      "camExpenseCategories": 1,
+      "exclusions": 1,
+      "paymentTerms": 3,
+      "capsLimitations": 2,
+      "reconciliationProcedures": 1,
+      "baseYearProvisions": 1,
+      "grossUpProvisions": 1,
+      "administrativeFees": 1,
+      "auditRights": 1,
+      "noticeRequirements": 2,
+      "controllableVsNonControllable": 1,
+      "definitions": 1,
+      "calculationMethods": 1
+    },
+    "overallTenantRiskAssessment": "High",
+    "riskAssessmentRationale": "Tenant faces potential unlimited exposure to non‑controllable operating expense increases, a 95% occupancy gross‑up assumption that may inflate costs, and limited audit rights.",
+    "keyTenantProtections": [
+      "5% annual cap on controllable operating expenses",
+      "No explicit management fee for CAM calculation",
+      "Annual audit right for Tenant’s review of operating expenses"
+    ],
+    "keyTenantExposures": [
+      "Unlimited exposure to non‑controllable operating expense increases",
+      "Possible over‑charge due to 95% gross‑up assumption",
+      "Limited ability to challenge CAM calculations annually"
+    ],
+    "criticalNegotiationPoints": [
+      "Negotiate an overall cap on total CAM increases",
+      "Limit the 95% gross‑up assumption or require actual occupancy data",
+      "Expand audit rights to include quarterly reviews and tenant‑paid audit coverage",
+      "Clarify that capital improvements are excluded from CAM and are amortized only if directly reduce tenant’s operating expenses"
+    ]
+  }
+}

@@ -1,136 +1,0 @@
-
-Lease Agreement Summary
-Executive Summary
-Lease of approximately 17,090 rentable square feet on the 6th floor between Bayer HealthCare LLC (Tenant) and PH Office 2, LLC (Landlord) for a 77-month primary term (extendable to 90 months) with two 5-year renewal options. Base rent escalates from $24.50 to $27.05 per square foot, includes tenant improvement allowance, parking entitlement, holdover rent at 150% of prior rent, premises delivered as core and shell per Exhibit B-11, detailed rules and regulations (Exhibit C) governing locks, directories, signage, contractor supervision, movement, indemnity and additional prohibitions, and standard default and remedy provisions. Additional rules prohibit improper trash disposal, odors, wasteful utility use, smoking within 25 ft, portable space heaters, and require corridor doors to remain closed.
-
-Lease Information
-Tenant
-Bayer HealthCare LLC
-Citation: Bayer 2015-10-05 Lease.pdf, Page 2
-Property
-5100 W. J.B. Hunt Drive, Suite 600, Rogers, Arkansas 72758
-Citation: Bayer 2015-10-05 Lease.pdf, Page 3
-Amendment History:
-Previous: 3333 Pinnacle Hills Parkway, Suite 602, Rogers, Arkansas 72758
-Amended to: 5100 W. J.B. Hunt Drive, Suite 600, Rogers, Arkansas 72758
-Previous Citation: Bayer 2015-10-05 Lease.pdf, Page 2
-
-Space Details
-Notes: Measured by Core Architects and validated by Nielsen Architects using ANSI/BOMA Z65.1-1996; Tenant's proportionate share to be inserted in Exhibit D.
-Citation: Bayer 2015-10-05 Lease.pdf, Page 3
-
-Charge Schedules
-Base Rent Schedule
-Late Fee Structure
-Primary Late Fee: 2% of monthly payment after 10-day grace periodCitation: Bayer 2015-10-05 Lease.pdf, Page 8
-Secondary Late Fee: 5% of monthly payment after 5 business daysCitation: Bayer 2015-10-05 Lease.pdf, Page 20
-
-Other Lease Provisions
-Premises and Term
-Synopsis: Premises approximately 17,090 rentable sf; primary term 77 months ending on the last day of the 77th month, with extension to 90 months and two five-year renewal options.
-Citation: Bayer 2015-10-05 Lease.pdf, Pages 3, 5, 7
-Key Parameters:
-Rentable: 17,090 sf
-Primary term: 77 months
-Extension right to 90 months within 21 days of Commencement
-Two renewal options of five years each (notice 180-365 days)
-Tenant improvement allowance: $72.22/ft² ($1,234,239.80) or $84.42/ft² ($1,442,737.80) if term extended
-Early termination option at month 51 with six-month notice and termination fee
-Base rent payable monthly in advance on the first day
-Building contains 226,468 rentable square feetCitation: Bayer 2015-10-05 Lease.pdf, Pages 3, 5, 7, 38
-Operating Expenses
-Synopsis: Operating expenses are defined, gross-up to 95% occupancy, tenant pays pro-rata share, controllable expenses capped at 5% annual increase, with extensive exclusions.
-Citation: Bayer 2015-10-05 Lease.pdf, Page 9
-Definition: Operating Expense means all ordinary and reasonable costs incurred by Landlord for ownership, management, maintenance, repair, replacement, restoration or operation of the Real Property, with extensive exclusions listed.
-Citation: Bayer 2015-10-05 Lease.pdf, Pages 9, 10
-Key Parameters:
-Tenant's share = (Tenant rentable sq ft / Building rentable sq ft) × Operating Expenses (gross-up to 95% occupancy)
-Controllable expense increase limited to 5% annually after Base Year
-Capital improvements charged only if they directly reduce Tenant's operating expenses
-Such costs amortized straight-line over useful life per GAAP/ASHRAE
-Negligence-caused improvements amortized over lease term as agreedCitation: Bayer 2015-10-05 Lease.pdf, Page 9
-Billing Timeline: Landlord estimates annual increase each calendar year after the Base Year, sends written statement; Tenant pays monthly additional rent for its share of the increase; within 90 days after year-end Landlord provides an annual statement; Tenant pays lump-sum additional rent or receives credit within 30 days of receiving the statement.
-Citation: Bayer 2015-10-05 Lease.pdf, Page 9
-Repairs and Maintenance
-Synopsis: Landlord responsible for structural and building-system repairs; Tenant responsible for interior maintenance; landlord personnel may be used for tenant-responsible repairs at $50/hour.
-Citation: Bayer 2015-10-05 Lease.pdf, Page 10
-Narrative: Landlord shall, at its own cost, repair and replace the roof, foundation, exterior walls, interior structural walls, all structural components, common areas, grounds, walkways, windows, and Building Systems (excluding normal wear and tear and Tenant Improvements). For Tenant-responsible maintenance issues, Landlord may charge $50.00 per hour with a one-hour minimum.
-Citation: Bayer 2015-10-05 Lease.pdf, Page 10
-Alterations
-Synopsis: Tenant may make alterations only with Landlord's prior written consent (not unreasonably withheld), must use approved contractors, provide drawings, and ensure alterations do not affect building structure; tenant-installed fixtures are removable and must be restored at lease end; roof access is denied to Tenant.
-Citation: Bayer 2015-10-05 Lease.pdf, Page 12
-Signs
-Synopsis: Tenant may install corporate signage per Exhibit E at its expense, must maintain and remove it at lease end with landlord directory listing; any additional signage or exterior decorations require Landlord's prior written consent and must conform to building standards.
-Citation: Bayer 2015-10-05 Lease.pdf, Pages 12, 39
-Services
-Synopsis: Landlord provides water, temperature control, electricity, elevator service, optional janitorial services and 24/7 electronic key access; interruptions due to causes beyond Landlord's control are not deemed eviction and rent is abated until service is restored; additional services paid by Tenant become additional rent and may be discontinued after 30 days nonpayment.
-Citation: Bayer 2015-10-05 Lease.pdf, Pages 13, 14
-Insurance Requirements
-Synopsis: Landlord maintains building insurance in an amount not less than replacement cost; Tenant must maintain workers' compensation, $2M property and $4M per-occurrence liability insurance and fire/extended coverage for tenant improvements.
-Citation: Bayer 2015-10-05 Lease.pdf, Pages 13, 14
-Key Parameters:
-Landlord: Building insurance at least replacement cost covering fire, lightning, extended coverage, vandalism and malicious mischief
-Tenant: Workers' comp; general liability $2,000,000 property, $4,000,000 per occurrence; fire and extended coverage for tenant improvements replacement cost
-Policies must name Landlord as additional insured, be issued by a licensed insurer, provide 30-day cancellation notice, be assignable to Landlord's mortgageeCitation: Bayer 2015-10-05 Lease.pdf, Pages 13, 14
-Casualty
-Synopsis: If the demised Premises are damaged or destroyed by fire or other peril, the lease may terminate or rent be abated based on damage severity and repair timelines; Tenant may terminate if 30%+ of space is destroyed or if repairs exceed 120 days (or 150 days with force-majeure delays); Landlord may terminate if repair costs exceed net insurance proceeds or if a mortgagee requires insurance proceeds; mutual waivers of liability except for gross negligence or willful misconduct.
-Citation: Bayer 2015-10-05 Lease.pdf, Page 15
-Liability and Indemnification
-Synopsis: Landlord holds Tenant harmless for injuries or damage caused by Landlord (except gross negligence); Tenant holds Landlord harmless for injuries or damage caused by Tenant (except gross negligence); each party must defend claims against the other; mutual waivers of liability except for gross negligence or willful misconduct. Provisions survive expiration or termination for claims arising prior to such date.
-Citation: Bayer 2015-10-05 Lease.pdf, Pages 16, 17
-Use
-Synopsis: Premises used only for Tenant's business offices and lawful incidental purposes; outside storage of trucks/vehicles prohibited without Landlord consent; Tenant must comply with all laws, deed restrictions, building rules, and avoid nuisances; smoking prohibited within 25 ft, only in designated area.
-Citation: Bayer 2015-10-05 Lease.pdf, Page 16
-Landlord's Right of Entry
-Synopsis: Landlord may enter Premises with 24-hour notice to inspect, repair, or show to prospective buyers; may enter without notice in emergencies; during the last three months of the lease, may enter with two-business-day telephonic notice during business hours to show the Premises.
-Citation: Bayer 2015-10-05 Lease.pdf, Page 16
-Assignment and Subletting
-Synopsis: Tenant may assign or sublease any portion to affiliates with $100M net-worth or to others with Landlord consent (not unreasonably withheld, deemed given after ten business days); subtenant assumes lease obligations and Tenant shares any rent above Base Rent with Landlord. If the lease is assigned pursuant to the U.S. Bankruptcy Code, all payments become the exclusive property of Landlord and the assignee must execute an assumption instrument.
-Citation: Bayer 2015-10-05 Lease.pdf, Pages 16, 18
-Parking
-Synopsis: Tenant entitled to use at least 4.5 parking spaces per 1,000 rentable sq ft at no charge; shared building lot; Landlord reserves six exclusive spaces for itself and affiliates; if other tenants receive exclusive spaces, Tenant receives equivalent ratio.
-Citation: Bayer 2015-10-05 Lease.pdf, Page 17
-Condemnation
-Synopsis: If >50% of Premises taken for public or quasi-public use, lease terminates and rent is abated for the remainder; if <50% taken, lease continues with rent reduced to a fair and reasonable amount; all compensation awarded belongs to Landlord except Tenant's award for loss of business, goodwill, fixtures, or leasehold interest.
-Citation: Bayer 2015-10-05 Lease.pdf, Page 17
-Holdover
-Synopsis: If Tenant holds over, Landlord may elect month-to-month tenancy at 150% of prior monthly rent plus Tenant's share of operating expenses and real estate taxes; without notice tenancy at sufferance deemed created at that rent; holdover beyond three months incurs damages; Tenant must deliver possession with required repairs completed at lease end.
-Citation: Bayer 2015-10-05 Lease.pdf, Pages 17, 19
-Quiet Enjoyment
-Synopsis: Tenant entitled to peaceful quiet enjoyment of the Premises provided rent is paid and covenants performed, subject to lease provisions.
-Citation: Bayer 2015-10-05 Lease.pdf, Page 19
-Default and Remedies
-Synopsis: Events of default include failure to pay rent, insolvency, bankruptcy rejection, failure to discharge liens, breach of covenants, and failure to pay a 5% late charge; remedies include lease termination, damages equal to remaining rent less fair market value, reentry, reletting, recovery of costs, and entitlement to attorneys' fees.
-Citation: Bayer 2015-10-05 Lease.pdf, Pages 19, 20, 21
-Subordination
-Synopsis: Tenant's lease is subordinate to any existing mortgages or deeds of trust, but may become superior if the mortgagee elects the lease to be superior, in which case the lease is deemed superior to the lien.
-Citation: Bayer 2015-10-05 Lease.pdf, Pages 21, 22, 23
-Liens
-Synopsis: Tenant has no authority to create or place any lien on the Premises; must pay all sums due for labor/materials and hold Landlord harmless; must give Landlord immediate written notice of any lien.
-Citation: Bayer 2015-10-05 Lease.pdf, Page 23
-Hazardous Materials
-Synopsis: Tenant may not incorporate or dispose of toxic or hazardous materials except limited office supplies and kitchen cleaning supplies (≤1 gallon); must label, store, handle per industry standards and provide MSDS when required; must notify Landlord of spills and allow Landlord to require reasonable changes; Landlord represents the Property is free of hazardous materials and will indemnify Tenant for releases not caused by Tenant.
-Citation: Bayer 2015-10-05 Lease.pdf, Pages 23, 24
-Rules and Regulations
-Synopsis: Tenant must comply with detailed building rules and regulations set forth in Exhibit C, covering locks, directories, signage, contractor supervision, movement restrictions, indemnity obligations, and additional provisions prohibiting loss of property liability, sleeping quarters, animals, hazardous materials without consent, obstruction of passages, parking sign compliance, floor load limits, vendor deliveries, proper toilet use, solicitation restrictions, antenna installations, hand-truck usage, as well as requirements for trash storage within premises, prohibition of odors and wasteful utility use, mandatory closure of corridor/exterior doors, reporting of solicitors, restriction on non-Landlord janitorial contractors, landlord waiver rights, smoking prohibited within 25 ft, prohibition of portable space heaters, and conflict-of-rules clause favoring lease terms.
-Citation: Bayer 2015-10-05 Lease.pdf, Pages 23, 24, 30, 35, 36, 37
-Brokerage
-Synopsis: Sage Partners represents Tenant; Pinnacle Realty Group represents Landlord.
-Citation: Bayer 2015-10-05 Lease.pdf, Pages 3, 4, 27
-Estoppel
-Synopsis: Tenant must deliver an estoppel certificate within 30 days of Landlord's request, confirming lease is in force, rent paid to date, no defaults, no offsets, and other factual matters as requested.
-Citation: Bayer 2015-10-05 Lease.pdf, Page 27
-Notices
-Synopsis: Lease terms are confidential; parties may disclose only to permitted professionals or parties involved in purchase/financing, unless required by law. Notices must be sent to the addresses in Basic Lease Information, delivered personally, by overnight carrier, or certified mail, and are effective upon delivery.
-Citation: Bayer 2015-10-05 Lease.pdf, Pages 26, 27
-Right of First Refusal/Offer
-Synopsis: Tenant has a first right of refusal on adjacent space on the 6th floor; Landlord must notify Tenant of any bona-fide offer, Tenant has 10 business days to respond, rental rate mirrors current lease rate, and the tenant improvement allowance is prorated at 90% for the expansion. Tenant Improvement Allowance prorated at $49.80 per RSF (90% of $55.34) for expansion.
-Citation: Bayer 2015-10-05 Lease.pdf, Pages 27, 28
-Expansion and Relocation
-Synopsis: Tenant may expand into First Refusal Space on the 6th floor under the same rent terms, with a 10-day notice period; Landlord may not relocate Tenant during the lease term or any renewal periods.
-Citation: Bayer 2015-10-05 Lease.pdf, Page 27
-Landlord Default
-Synopsis: If Landlord fails to cure defaults within 30 days after written notice, it constitutes a Landlord Default; Tenant may cure emergencies, offset incurred costs against rent, and retain rights to recover any amounts owed by Landlord.
-
-Citation: Bayer 2015-10-05 Lease.pdf, Page 27
-
