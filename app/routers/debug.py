@@ -1,4 +1,5 @@
 import ast
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import json 
 import os 
 from http import HTTPStatus
@@ -531,67 +532,89 @@ async def get_cam(
         chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
         with open(f'./cached_pdfs/{assets.filename}.pkl', 'wb') as file:
             pickle.dump(chunks, file)
-    
-    # Initialize empty result dictionary for iterative updates
+            
+    def process_chunk(i, chunk, documents, message_dict):
+        print(f"Processing chunk {i+1}/{len(chunks)} - Page {chunk.page_number}")
+        
+        # Create data for this specific chunk
+        chunk_data = f"""
+        Here is the content from page {chunk.page_number} of the lease document:
+        
+        Page number: {chunk.page_number}
+        Text content: {chunk.original_page_text}
+        Previous overlap: {chunk.previous_overlap}
+        Next overlap: {chunk.next_overlap}
+        Overlap info: {chunk.overlap_info}
+        """
+        
+        field_definitions: str = documents[0]
+        system: str = documents[1]
+        
+        # Prepare system prompt for CAM analysis
+        system_prompt = system.format(
+            CURRENT_PAGE_NUMBER=str(i + 1),
+            PREVIOUS_PAGE_NUMBER=str(i),
+            NEXT_PAGE_NUMBER=str(i + 2),
+            PREVIOUS_PAGE_CONTENT=chunk.previous_overlap,
+            CURRENT_PAGE_CONTENT=chunk.original_page_text,
+            PREVIOUSLY_EXTRACTED_CAM_RULES=json.dumps(message_dict)
+        )
+        
+        payload = [
+            {"role": "system", "content": system_prompt + cam.JSON_PROD_INSTRUCTIONS},
+            {"role": "user", "content": chunk_data}
+        ]
+        
+        try:
+            response = llm_adapter.get_non_streaming_response(payload)
+            message_content = response.choices[0].message.content
+            
+            os.makedirs('./cam_result', exist_ok=True)
+            with open(f'./cam_result/{str(i)}.txt', 'w') as fp:
+                fp.write(str(message_content))
+            
+            return {
+                'index': i,
+                'success': True,
+                'content': message_content,
+                'page_number': chunk.page_number
+            }
+        except Exception as e:
+            print(f"Error processing chunk {i+1}: {str(e)}")
+            return {
+                'index': i,
+                'success': False,
+                'error': str(e),
+                'page_number': chunk.page_number
+            }
+        # Initialize empty result dictionary for iterative updates
     message_dict = {}
-    # Process each chunk iteratively
-    # for i, chunk in enumerate(chunks):
-    #     print(f"Processing chunk {i+1}/{len(chunks)} - Page {chunk.page_number}")
-    #     if i > 0:
-    #         time.sleep(2)
-    #     # Create data for this specific chunk
-    #     chunk_data = f"""
-    #     Here is the content from page {chunk.page_number} of the lease document:
-        
-    #     Page number: {chunk.page_number}
-    #     Text content: {chunk.original_page_text}
-    #     Previous overlap: {chunk.previous_overlap}
-    #     Next overlap: {chunk.next_overlap}
-    #     Overlap info: {chunk.overlap_info}
-    #     """
-    #     # try:
-    #     documents = content_from_doc([6, 7])
-    #     field_defintions: str= documents[0]
-    #     system: str = documents[1]
-    # # Prepare system prompt for CAM analysis
-    #     system_prompt = system.format(CURRENT_PAGE_NUMBER = str(i + 1), PREVIOUS_PAGE_NUMBER = str(i), NEXT_PAGE_NUMBER = str(i + 2),
-    #                                   PREVIOUS_PAGE_CONTENT = chunk.previous_overlap, CURRENT_PAGE_CONTENT = chunk.original_page_text, PREVIOUSLY_EXTRACTED_CAM_RULES = json.dumps(message_dict))
-                
-    #     payload = [
-    #         {
-    #             "role": "system", "content": system_prompt + cam.JSON_PROD_INSTRUCTIONS
-    #         },
-    #         {
-    #             "role": "user", "content": chunk_data
-    #         }
-    #     ]
-        
-    #     # Get LLM response for this chunk
-        
+    documents = content_from_doc([6, 7])
+    results = []
+    max_workers = 5  # Adjust based on your rate limits
 
-    #     # Update the result dictionary with this chunk's response
-    #     try:
-    #         response = llm_adapter.get_non_streaming_response(payload)
-    #         message_content = response.choices[0].message.content
-            
-    #         os.makedirs('./cam_result', exist_ok=True)
-            
-    #         with open(f'./cam_result/{str(i)}.txt', 'w') as fp:
-    #             fp.write(str(message_content))
-    #         message_dict = update_result_json(message_dict, message_content)
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        # Submit all tasks
+        future_to_chunk = {
+            executor.submit(process_chunk, i, chunk, documents, message_dict): i 
+            for i, chunk in enumerate(chunks)
+        }
+        
+        # Collect results as they complete
+        for future in as_completed(future_to_chunk):
+            result = future.result()
+            results.append(result)
 
-    #     except Exception as e:
-    #         # print(response)
-    #         print(f"Error processing chunk {i+1}: {str(e)}")
-    #         # Continue with next chunk even if this one fails
-    #         continue
-    #     # except Exception as e:
-    #     #     print(e)
-    #     #     print('this was the error')
+    # Sort results by index to maintain order
+    results.sort(key=lambda x: x['index'])
+
+    # Now update message_dict with all successful results
+    for result in results:
+        if result['success']:
+            message_dict = update_result_json(message_dict, result['content'])
 
     # After processing all chunks, compile the final result from all numbered files
     compiled_result = compile_iterative_outputs()
-    print(compiled_result)
     return compiled_result
        
 

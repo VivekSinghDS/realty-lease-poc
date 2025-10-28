@@ -6,7 +6,7 @@ import json
 
 
 class _OpenAI(LargeLanguageModel):
-    def __init__(self, model_name: str = "gpt-5"):
+    def __init__(self, model_name: str = "gpt-5-nano"):
         self.client = OpenAI()
         self.model_name = model_name
         

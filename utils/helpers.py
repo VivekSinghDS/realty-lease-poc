@@ -521,10 +521,10 @@ def compile_iterative_outputs() -> Dict[str, Any]:
         if os.path.exists("./cam_result"):
             # Check if folder is not empty (safety check)
             if os.listdir("./cam_result"):
-                # shutil.rmtree("./cam_result")
+                shutil.rmtree("./cam_result")
                 print("Successfully deleted cam_result folder and its contents")
             else:
-                # os.rmdir("./cam_result")
+                os.rmdir("./cam_result")
                 print("Successfully deleted empty cam_result folder")
         else:
             print("cam_result folder not found - nothing to delete")
