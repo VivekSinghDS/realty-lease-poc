@@ -12,4 +12,4 @@ USER appuser
 EXPOSE 8000
 COPY --chown=appuser:appuser . .
 
-CMD ["uvicorn", "app.main:app", "--port", "8000", "--host", "0.0.0.0", "--no-access-log", "--timeout-keep-alive", "1000", "--timeout-graceful-shutdown", "30", "--limit-concurrency", "100", "--limit-max-requests", "1000"]
+CMD ["uvicorn", "app.main:app", "--port", "8000", "--host", "0.0.0.0", "--no-access-log", "--timeout-keep-alive", "10000", "--timeout-graceful-shutdown", "30", "--limit-concurrency", "100", "--limit-max-requests", "1000"]

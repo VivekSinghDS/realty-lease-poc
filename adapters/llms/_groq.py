@@ -1,6 +1,6 @@
 import os
 
-from groq import Groq
+from groq import Groq, AsyncGroq
 
 from typing import List
 from adapters.llms.base import LargeLanguageModel 
@@ -11,8 +11,8 @@ class _Groq(LargeLanguageModel):
         self.client = Groq(
             # This is the default and can be omitted
             api_key=os.environ.get("GROQ_API_KEY"),
-            max_retries=10,
-            timeout = 10
+            max_retries=20,
+            timeout = 60
         )
         self.model_name = "openai/gpt-oss-120b"
         
@@ -30,5 +30,5 @@ class _Groq(LargeLanguageModel):
                 model=self.model_name,
                 temperature=0,
                 max_completion_tokens=50000,
-                max_tokens = 50000
+                # reasoning_effort='medium'
             )

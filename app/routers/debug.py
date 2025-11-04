@@ -1,8 +1,8 @@
 import ast
-from concurrent.futures import ThreadPoolExecutor, as_completed
 import json 
 import os 
 from http import HTTPStatus
+import shutil
 from fastapi import (
     APIRouter,
     File,
@@ -12,7 +12,7 @@ import pickle
 from dotenv import load_dotenv
 from fastapi.responses import JSONResponse
 from utils.logs import logger
-from utils.helpers import content_from_doc, get_llm_adapter, update_result_json, compile_iterative_outputs
+from utils.helpers import combined_analysis, content_from_doc, get_llm_adapter, update_result_json, compile_iterative_outputs
 from utils.parsers.pdf import PDFChunker
 from utils.references import audit, cam, chargeSchedules, executive_summary, leaseInformation, misc, space, amendments
 from utils.schemas import SaveZod
@@ -448,9 +448,6 @@ async def get_cam(
             "chunk_id": {chunk.chunk_id},
             "page_number": {chunk.page_number},
             "text": {chunk.original_page_text},
-            "previous_overlap": {chunk.previous_overlap},
-            "next_overlap": {chunk.next_overlap},
-            "overlap_info": {chunk.overlap_info}
         
         """
         
@@ -487,17 +484,18 @@ async def get_cam(
     \n- Never suggest JSON exists elsewhere\n- Never use TODO comments\n- Never imply more JSON should be added\n\n\n       
     \n   The system will handle pagination if needed - never truncate or shorten JSON output.
     """
-    payload = [
-        {
-            "role": "system", "content": system_prompt  # will be filled by Ashruth 
-        },
-        {
-            "role": "user", "content": data
+    
+    with open('./data.txt', 'w') as fppp:
+        fppp.write(data)
+    payload = {
+            "system": system_prompt,
+            "role": "system", "content": system_prompt,  # will be filled by Ashruth 
+            "user_prompt": [{"role": "user", "content": data}]
         }
-    ]
+        
     
     response = llm_adapter.get_non_streaming_response(payload)
-
+    return json.loads(response)
     message_content = response.choices[0].message.content
     with open('./full-output.txt', 'w') as fp:
         fp.write(message_content)
@@ -517,6 +515,7 @@ async def get_cam(
 async def get_cam(
     assets: UploadFile 
 ):
+    
     if not assets:
             return JSONResponse(
                 content={"error": {"asset": "is invalid"}}, status_code=HTTPStatus.BAD_REQUEST.value
@@ -532,90 +531,82 @@ async def get_cam(
         chunks = chunker.process_pdf(await assets.read(), extract_tables=True)
         with open(f'./cached_pdfs/{assets.filename}.pkl', 'wb') as file:
             pickle.dump(chunks, file)
-            
-    def process_chunk(i, chunk, documents, message_dict):
-        print(f"Processing chunk {i+1}/{len(chunks)} - Page {chunk.page_number}")
-        
-        # Create data for this specific chunk
-        chunk_data = f"""
-        Here is the content from page {chunk.page_number} of the lease document:
-        
-        Page number: {chunk.page_number}
-        Text content: {chunk.original_page_text}
-        Previous overlap: {chunk.previous_overlap}
-        Next overlap: {chunk.next_overlap}
-        Overlap info: {chunk.overlap_info}
-        """
-        
-        field_definitions: str = documents[0]
-        system: str = documents[1]
-        
-        # Prepare system prompt for CAM analysis
-        system_prompt = system.format(
-            CURRENT_PAGE_NUMBER=str(i + 1),
-            PREVIOUS_PAGE_NUMBER=str(i),
-            NEXT_PAGE_NUMBER=str(i + 2),
-            PREVIOUS_PAGE_CONTENT=chunk.previous_overlap,
-            CURRENT_PAGE_CONTENT=chunk.original_page_text,
-            PREVIOUSLY_EXTRACTED_CAM_RULES=json.dumps(message_dict)
-        )
-        
-        payload = [
-            {"role": "system", "content": system_prompt + cam.JSON_PROD_INSTRUCTIONS},
-            {"role": "user", "content": chunk_data}
-        ]
-        
-        try:
-            response = llm_adapter.get_non_streaming_response(payload)
-            message_content = response.choices[0].message.content
-            
-            os.makedirs('./cam_result', exist_ok=True)
-            with open(f'./cam_result/{str(i)}.txt', 'w') as fp:
-                fp.write(str(message_content))
-            
-            return {
-                'index': i,
-                'success': True,
-                'content': message_content,
-                'page_number': chunk.page_number
-            }
-        except Exception as e:
-            print(f"Error processing chunk {i+1}: {str(e)}")
-            return {
-                'index': i,
-                'success': False,
-                'error': str(e),
-                'page_number': chunk.page_number
-            }
-        # Initialize empty result dictionary for iterative updates
-    message_dict = {}
+    
+    # Initialize empty result dictionary for iterative updates
     documents = content_from_doc([6, 7])
-    results = []
-    max_workers = 5  # Adjust based on your rate limits
+    try:
+        for i, chunk in enumerate(chunks):
+            print(f"Processing chunk {i+1}/{len(chunks)} - Page {chunk.page_number}")
+            try:
+            # Create data for this specific chunk
+                chunk_data = f"""
+                Here is the content from page {chunk.page_number} of the lease document:
+                
+                Page number: {chunk.page_number}
+                Text content: {chunk.original_page_text} # full page for next, and previous 
+                """
+                
+                field_defintions: str= documents[0]
+                system: str = documents[1]
+            # Prepare system prompt for CAM analysis
+                previous_cam = None 
+                if i > 0:
+                    with open(f"./cam_result/{str(i - 1)}.txt", "r") as fpp:
+                        previous_cam = fpp.read()
+                system_prompt = system.format(CURRENT_PAGE_NUMBER = str(i + 1), PREVIOUS_PAGE_NUMBER = str(i), NEXT_PAGE_NUMBER = str(i + 2),
+                                            PREVIOUS_PAGE_CONTENT = None if i == 0 else chunks[i - 1].original_page_text, CURRENT_PAGE_CONTENT = chunk.original_page_text, PREVIOUSLY_EXTRACTED_CAM_RULES = previous_cam)
+                        
+                payload = [
+                    {
+                        "role": "system", "content": system_prompt + cam.JSON_PROD_INSTRUCTIONS
+                    },
+                    {
+                        "role": "user", "content": chunk_data
+                    }
+                ]
+            # with open(f'./prompts_{str(i)}.txt', 'w') as fpp:
+            #     fpp.write(str(payload))
+            # Get LLM response for this chunk
+            
 
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        # Submit all tasks
-        future_to_chunk = {
-            executor.submit(process_chunk, i, chunk, documents, message_dict): i 
-            for i, chunk in enumerate(chunks)
-        }
-        
-        # Collect results as they complete
-        for future in as_completed(future_to_chunk):
-            result = future.result()
-            results.append(result)
-
-    # Sort results by index to maintain order
-    results.sort(key=lambda x: x['index'])
-
-    # Now update message_dict with all successful results
-    for result in results:
-        if result['success']:
-            message_dict = update_result_json(message_dict, result['content'])
-
+            # Update the result dictionary with this chunk's response
+                response = llm_adapter.get_non_streaming_response(payload)
+                message_content = response.choices[0].message.content
+                
+                # message_content = response.output_text
+                os.makedirs('./cam_result', exist_ok=True)
+                
+                with open(f'./cam_result/{str(i)}.txt', 'w') as fp:
+                    fp.write(str(message_content))
+                    
+                continue
+            except Exception as e:
+                print(e)
+                print('this was the error')
+                continue
+    except Exception as error:
+        print('kuch to error aya ', error)
+    print('all analysis done')
     # After processing all chunks, compile the final result from all numbered files
-    compiled_result = compile_iterative_outputs()
-    return compiled_result
+    folder_path = "./cam_result"
+    print('folder checked')
+    # List all .txt files
+    txt_files = [f for f in os.listdir(folder_path) if f.endswith(".txt")]
+    print('txt files analysis done')
+    # Extract the numeric part (assuming files are named like "0.txt", "1.txt", etc.)
+    numbers = [int(f.split(".")[0]) for f in txt_files if f.split(".")[0].isdigit()]
+    print('numbers extracted')
+    # Get the highest number
+    last_number = max(numbers)
+    print(last_number)
+    last_file = f"{last_number}.txt"
+    print(last_file, f'./cam_result/{last_file}')
+    with open(f'./cam_result/{last_file}', 'r') as _files:
+        data = json.load(_files)
+    print(data)
+    # shutil.rmtree('./cam_result')
+    # print(compiled_result)
+    return str(data)
        
 
 @router.post("/cam-compile")

@@ -1,0 +1,920 @@
+{
+    "leaseInformation": {
+        "lease": {
+            "value": "Lease ABC1",
+            "citation": "Page 1",
+            "amendments": []
+        },
+        "property": {
+            "value": "5100 W. J.B. Hunt Drive, Suite 6, Rogers, Arkansas 72758",
+            "citation": "Page 2",
+            "amendments": []
+        },
+        "leaseFrom": {
+            "value": "PH Office 2, LLC",
+            "citation": "Page 2",
+            "amendments": []
+        },
+        "leaseTo": {
+            "value": "Bayer HealthCare LLC",
+            "citation": "Page 1",
+            "amendments": []
+        }
+    },
+    "space": {
+        "unit": {
+            "value": "",
+            "citation": "",
+            "amendments": []
+        },
+        "building": {
+            "value": "PH Office 2, LLC",
+            "citation": "3",
+            "amendments": []
+        },
+        "floor": {
+            "value": "6th floor",
+            "citation": "3",
+            "amendments": []
+        },
+        "areaRentable": {
+            "value": "14,952 rentable square feet",
+            "citation": "1",
+            "amendments": [
+                {
+                    "amendment_type": "modification",
+                    "previous_value": "17,090 rentable square feet",
+                    "new_value": "14,952 rentable square feet",
+                    "amendment_citation": "1",
+                    "effective_date": "February 1, 2022",
+                    "description": "Premises downsized \u2013 rentable area reduced from 17,090 RSF to 14,952 RSF as set out in Section 1 of the Second Lease Amendment."
+                }
+            ]
+        },
+        "areaUsable": {
+            "value": "12,824 usable square feet",
+            "citation": "1",
+            "amendments": [
+                {
+                    "amendment_type": "modification",
+                    "previous_value": "14,642 usable square feet",
+                    "new_value": "12,824 usable square feet",
+                    "amendment_citation": "1",
+                    "effective_date": "February 1, 2022",
+                    "description": "Premises downsized \u2013 usable area reduced from 14,642 USF to 12,824 USF as set out in Section 1 of the Second Lease Amendment."
+                }
+            ]
+        },
+        "status": {
+            "value": "",
+            "citation": "",
+            "amendments": []
+        },
+        "notes": {
+            "value": "Premises located at 5100 W. J.B. Hunt Drive, Suite 6SG, Rogers, Arkansas 72758",
+            "citation": "3",
+            "amendments": []
+        }
+    },
+    "chargeSchedules": {
+        "baseRent": [
+            {
+                "chargeCode": {
+                    "value": "BR1",
+                    "citation": "Page 1, Table 1 row 1"
+                },
+                "description": {
+                    "value": "Months 6-17",
+                    "citation": "Page 8, Table 1 row 2"
+                },
+                "dateFrom": {
+                    "value": "Feb. 1, 2022",
+                    "citation": "Page 1"
+                },
+                "dateTo": {
+                    "value": "Jan. 31, 2023",
+                    "citation": "Page 1"
+                },
+                "monthlyAmount": {
+                    "value": "$396,228.00",
+                    "citation": "Page 1, Table 1 row 1"
+                },
+                "annualAmount": {
+                    "value": "$33,019.00",
+                    "citation": "Page 1, Table 1 row 1"
+                },
+                "areaRentable": {
+                    "value": "14,952",
+                    "citation": "Page 1"
+                },
+                "amountPerArea": {
+                    "value": "$26.50 per sqft per annum",
+                    "citation": "Page 1, Table 1 row 1"
+                },
+                "managementFees": {
+                    "value": "",
+                    "citation": ""
+                },
+                "amendments": [
+                    {
+                        "amendment_type": "modification",
+                        "previous_value": "$34,892.08 monthly / $24.50 per sqft per annum / 17,090 RSF",
+                        "new_value": "$396,228.00 monthly / $26.50 per sqft per annum / 14,952 RSF",
+                        "amendment_citation": "1",
+                        "effective_date": "February 1, 2022",
+                        "description": "Base rent for Year\u202f1 (Feb\u202f1\u202f2022\u2011Jan\u202f31\u202f2023) revised per amendment table."
+                    }
+                ]
+            },
+            {
+                "chargeCode": {
+                    "value": "BR2",
+                    "citation": "Page 1, Table 1 row 2"
+                },
+                "description": {
+                    "value": "Months 18-29",
+                    "citation": "Page 8, Table 1 row 3"
+                },
+                "dateFrom": {
+                    "value": "Feb. 1, 2023",
+                    "citation": "Page 1"
+                },
+                "dateTo": {
+                    "value": "Jan. 31, 2024",
+                    "citation": "Page 1"
+                },
+                "monthlyAmount": {
+                    "value": "$404,152.56",
+                    "citation": "Page 1, Table 1 row 2"
+                },
+                "annualAmount": {
+                    "value": "$33,679.38",
+                    "citation": "Page 1, Table 1 row 2"
+                },
+                "areaRentable": {
+                    "value": "14,952",
+                    "citation": "Page 1"
+                },
+                "amountPerArea": {
+                    "value": "$27.03 per sqft per annum",
+                    "citation": "Page 1, Table 1 row 2"
+                },
+                "managementFees": {
+                    "value": "",
+                    "citation": ""
+                },
+                "amendments": [
+                    {
+                        "amendment_type": "modification",
+                        "previous_value": "$35,589.93 monthly / $24.99 per sqft per annum / 17,090 RSF",
+                        "new_value": "$404,152.56 monthly / $27.03 per sqft per annum / 14,952 RSF",
+                        "amendment_citation": "1",
+                        "effective_date": "February 1, 2022",
+                        "description": "Base rent for Year\u202f2 (Feb\u202f1\u202f2023\u2011Jan\u202f31\u202f2024) revised per amendment table."
+                    }
+                ]
+            },
+            {
+                "chargeCode": {
+                    "value": "BR3",
+                    "citation": "Page 1, Table 1 row 3"
+                },
+                "description": {
+                    "value": "Months 30-41",
+                    "citation": "Page 8, Table 1 row 4"
+                },
+                "dateFrom": {
+                    "value": "Feb. 1, 2024",
+                    "citation": "Page 1"
+                },
+                "dateTo": {
+                    "value": "Jan. 31, 2025",
+                    "citation": "Page 1"
+                },
+                "monthlyAmount": {
+                    "value": "$412,226.64",
+                    "citation": "Page 1, Table 1 row 3"
+                },
+                "annualAmount": {
+                    "value": "$34,352.22",
+                    "citation": "Page 1, Table 1 row 3"
+                },
+                "areaRentable": {
+                    "value": "14,952",
+                    "citation": "Page 1"
+                },
+                "amountPerArea": {
+                    "value": "$27.57 per sqft per annum",
+                    "citation": "Page 1, Table 1 row 3"
+                },
+                "managementFees": {
+                    "value": "",
+                    "citation": ""
+                },
+                "amendments": [
+                    {
+                        "amendment_type": "modification",
+                        "previous_value": "$36,302.01 monthly / $25.49 per sqft per annum / 17,090 RSF",
+                        "new_value": "$412,226.64 monthly / $27.57 per sqft per annum / 14,952 RSF",
+                        "amendment_citation": "1",
+                        "effective_date": "February 1, 2022",
+                        "description": "Base rent for Year\u202f3 (Feb\u202f1\u202f2024\u2011Jan\u202f31\u202f2025) revised per amendment table."
+                    }
+                ]
+            },
+            {
+                "chargeCode": {
+                    "value": "BR4",
+                    "citation": "Page 1, Table 1 row 4"
+                },
+                "description": {
+                    "value": "Months 42-53",
+                    "citation": "Page 8, Table 1 row 5"
+                },
+                "dateFrom": {
+                    "value": "Feb. 1, 2025",
+                    "citation": "Page 1"
+                },
+                "dateTo": {
+                    "value": "Jan. 31, 2026",
+                    "citation": "Page 1"
+                },
+                "monthlyAmount": {
+                    "value": "$420,450.24",
+                    "citation": "Page 1, Table 1 row 4"
+                },
+                "annualAmount": {
+                    "value": "$35,037.52",
+                    "citation": "Page 1, Table 1 row 4"
+                },
+                "areaRentable": {
+                    "value": "14,952",
+                    "citation": "Page 1"
+                },
+                "amountPerArea": {
+                    "value": "$28.12 per sqft per annum",
+                    "citation": "Page 1, Table 1 row 4"
+                },
+                "managementFees": {
+                    "value": "",
+                    "citation": ""
+                },
+                "amendments": [
+                    {
+                        "amendment_type": "modification",
+                        "previous_value": "$37,028.33 monthly / $26.00 per sqft per annum / 17,090 RSF",
+                        "new_value": "$420,450.24 monthly / $28.12 per sqft per annum / 14,952 RSF",
+                        "amendment_citation": "1",
+                        "effective_date": "February 1, 2022",
+                        "description": "Base rent for Year\u202f4 (Feb\u202f1\u202f2025\u2011Jan\u202f31\u202f2026) revised per amendment table."
+                    }
+                ]
+            },
+            {
+                "chargeCode": {
+                    "value": "BR5",
+                    "citation": "Page 1, Table 1 row 5"
+                },
+                "description": {
+                    "value": "Months 54-65",
+                    "citation": "Page 8, Table 1 row 6"
+                },
+                "dateFrom": {
+                    "value": "Feb. 1, 2026",
+                    "citation": "Page 1"
+                },
+                "dateTo": {
+                    "value": "Jan. 31, 2027",
+                    "citation": "Page 1"
+                },
+                "monthlyAmount": {
+                    "value": "$428,823.36",
+                    "citation": "Page 1, Table 1 row 5"
+                },
+                "annualAmount": {
+                    "value": "$35,735.28",
+                    "citation": "Page 1, Table 1 row 5"
+                },
+                "areaRentable": {
+                    "value": "14,952",
+                    "citation": "Page 1"
+                },
+                "amountPerArea": {
+                    "value": "$28.68 per sqft per annum",
+                    "citation": "Page 1, Table 1 row 5"
+                },
+                "managementFees": {
+                    "value": "",
+                    "citation": ""
+                },
+                "amendments": [
+                    {
+                        "amendment_type": "modification",
+                        "previous_value": "$37,768.90 monthly / $26.52 per sqft per annum / 17,090 RSF",
+                        "new_value": "$428,823.36 monthly / $28.68 per sqft per annum / 14,952 RSF",
+                        "amendment_citation": "1",
+                        "effective_date": "February 1, 2022",
+                        "description": "Base rent for Year\u202f5 (Feb\u202f1\u202f2026\u2011Jan\u202f31\u202f2027) revised per amendment table."
+                    }
+                ]
+            }
+        ],
+        "lateFee": {
+            "calculationType": {
+                "value": "Percentage of Overdue Amount",
+                "citation": "Page 8, late charge provision \u2013 \u201c2% of the monthly payment will be assessed as a late charge.\u201d"
+            },
+            "graceDays": {
+                "value": "10",
+                "citation": "Page 8 \u2013 late charge applies if rent not paid by the 10th of the month"
+            },
+            "percent": {
+                "value": "2",
+                "citation": "Page 8 \u2013 2% late charge"
+            },
+            "secondFeeCalculationType": {
+                "value": "Percentage of Overdue Amount",
+                "citation": "Page 21 \u2013 \u201clate charge in an amount equal to five percent (5%) of such payment.\u201d"
+            },
+            "secondFeeGrace": {
+                "value": "0",
+                "citation": "Page 21 \u2013 no grace period mentioned for the 5% charge"
+            },
+            "secondFeePercent": {
+                "value": "5",
+                "citation": "Page 21 \u2013 5% late charge"
+            },
+            "perDayFee": {
+                "value": "",
+                "citation": ""
+            }
+        }
+    },
+    "otherLeaseProvisions": {
+        "premisesAndTerm": {
+            "synopsis": {
+                "value": "The Premises are located at 5100 W. J.B. Hunt Drive, Suite 602, Rogers, Arkansas 72758 on the 6th floor, consisting of approximately 12,824 usable square feet and 14,952 rentable square feet. The Primary Term ends on the last day of the 77th full month, with an option to extend to 90 months.",
+                "citation": "Pages 2-5",
+                "amendments": [
+                    {
+                        "amendment_type": "modification",
+                        "previous_value": "approximately 14,642 usable square feet and 17,090 rentable square feet",
+                        "new_value": "approximately 12,824 usable square feet and 14,952 rentable square feet",
+                        "amendment_citation": "1",
+                        "effective_date": "February 1, 2022",
+                        "description": "Premises size reduced per Second Lease Amendment."
+                    }
+                ]
+            },
+            "keyParameters": {
+                "value": "Usable Area: 12,824 sf; Rentable Area: 14,952 sf; Building Total Rentable: 226,468 sf; Primary Term: 77 months; Extension Option: up to 90 months; Rent Commencement: 6th full month (or 7th if extended)",
+                "citation": "Pages 3-5",
+                "amendments": [
+                    {
+                        "amendment_type": "modification",
+                        "previous_value": "Usable Area: 14,642 sf; Rentable Area: 17,090 sf",
+                        "new_value": "Usable Area: 12,824 sf; Rentable Area: 14,952 sf",
+                        "amendment_citation": "1",
+                        "effective_date": "February 1, 2022",
+                        "description": "Updated area figures after downsizing."
+                    }
+                ]
+            },
+            "narrative": {
+                "value": "As indicated by the area on Exhibit A attached to the Lease, situated on the 6th floor in the building commonly known as PH Office 2, LLC (the \"Building\") located at 5100 W. J.B. Hunt Drive, Suite 602, Rogers, Arkansas 72758. The Premises consists of approximately Twelve Thousand Eight Hundred Twenty\u2011four (12,824) usable square feet and Fourteen Thousand Nine Hundred Fifty\u2011two (14,952) rentable square feet. Primary Term shall end on the last day of the seventy\u2011seventh (77th) full month. Tenant may extend the term to ninety (90) months within fourteen (14) days of the Commencement Date (later restated as twenty\u2011one (21) days). Rent Commences on the first day of the sixth (6th) full month of the Primary Term (or the seventh (7th) full month if the extension is exercised).",
+                "citation": "Pages 3-5",
+                "amendments": [
+                    {
+                        "amendment_type": "modification",
+                        "previous_value": "Fourteen Thousand Six Hundred Forty\u2011two (14,642) usable square feet and Seventeen Thousand Ninety (17,090) rentable square feet",
+                        "new_value": "Twelve Thousand Eight Hundred Twenty\u2011four (12,824) usable square feet and Fourteen Thousand Nine Hundred Fifty\u2011two (14,952) rentable square feet",
+                        "amendment_citation": "1",
+                        "effective_date": "February 1, 2022",
+                        "description": "Narrative updated to reflect downsized premises."
+                    }
+                ]
+            }
+        },
+        "taxes": {
+            "synopsis": {
+                "value": "Landlord pays real property taxes; any amount exceeding the Base Year (calendar year 2016) is passed through to Tenant on a pro\u2011ra ta basis. Tenant is responsible for taxes on personal property and fixtures.",
+                "citation": "Pages 8-9",
+                "amendments": []
+            },
+            "definition": {
+                "value": "\"Taxes\" means real property taxes and special assessments on the Premises, Land and improvements, and personal property taxes on Tenant\u2019s fixtures.",
+                "citation": "Pages 8-9",
+                "amendments": []
+            },
+            "keyParameters": {
+                "value": "Base Year: 2016; Pass\u2011through threshold: any tax amount exceeding Base Year; Tenant liability for personal property taxes.",
+                "citation": "Pages 8-9",
+                "amendments": []
+            },
+            "narrative": {
+                "value": "Landlord agrees to pay all real property taxes and special assessments that accrue against the Premises, and/or the Land and/or improvements of which the Premises are a part. Property taxes incurred in any year during the lease term which exceed the taxes on the property during the \"Base Year\" (2016) will be passed through to building tenants based on a pro\u2011ra ta square footage basis. Tenant shall be liable for all taxes levied or assessed against any personal property or fixtures placed in the Premises.",
+                "citation": "Pages 8-9",
+                "amendments": []
+            }
+        },
+        "operatingExpenses": {
+            "synopsis": {
+                "value": "Operating expenses in excess of the Base Year (2022) are passed through to Tenant on a pro\u2011ra ta basis. Tenant pays its share as Additional Rent monthly, with annual reconciliation.",
+                "citation": "Pages 8-10",
+                "amendments": [
+                    {
+                        "amendment_type": "modification",
+                        "previous_value": "Operating expenses in excess of the Base Year (2016) are passed through to Tenant on a pro\u2011ra ta basis.",
+                        "new_value": "Operating expenses in excess of the Base Year (2022) are passed through to Tenant on a pro\u2011ra ta basis.",
+                        "amendment_citation": "1",
+                        "effective_date": "February 1, 2022",
+                        "description": "Base Year for Operating Expenses changed from 2016 to 2022 per Section\u202f4 of the amendment."
+                    }
+                ]
+            },
+            "definition": {
+                "value": "\"Operating Expenses\" means the actual ordinary and reasonable costs and expenses incurred by Landlord for ownership, management, maintenance, repair, replacement, restoration or operation of the Real Property, excluding capital improvements, casualty repairs, financing costs, depreciation, leasing commissions, legal fees, and other excluded items.",
+                "citation": "Pages 9-10",
+                "amendments": []
+            },
+            "keyParameters": {
+                "value": "Base Year: 2022; Pass\u2011through threshold: expenses exceeding Base Year; Tenant Share: proportional to rentable square footage; Controllable expense cap: 5% annual increase.",
+                "citation": "Pages 9-10",
+                "amendments": [
+                    {
+                        "amendment_type": "modification",
+                        "previous_value": "Base Year: 2016; Pass\u2011through threshold: expenses exceeding Base Year; Tenant Share: proportional to rentable square footage; Controllable expense cap: 5% annual increase.",
+                        "new_value": "Base Year: 2022; Pass\u2011through threshold: expenses exceeding Base Year; Tenant Share: proportional to rentable square footage; Controllable expense cap: 5% annual increase.",
+                        "amendment_citation": "1",
+                        "effective_date": "February 1, 2022",
+                        "description": "Operating Expenses Base Year updated."
+                    }
+                ]
+            },
+            "billingTimeline": {
+                "value": "Landlord provides an annual statement within ninety (90) days after year\u2011end; Tenant pays monthly Additional Rent based on estimated increase; any over\u2011payment or under\u2011payment reconciled within thirty (30) days of receipt of the Annual Statement.",
+                "citation": "Pages 9-10",
+                "amendments": []
+            },
+            "formulas": {
+                "value": "Tenant's Proportionate Share = (Tenant Rentable Sq Ft \u00f7 Building Total Rentable Sq Ft) \u00d7 100%; Additional Rent = Tenant's Share \u00d7 (Operating Expenses \u2013 Base Year Expenses).",
+                "citation": "Pages 9-10",
+                "amendments": [
+                    {
+                        "amendment_type": "modification",
+                        "previous_value": "Tenant's Proportionate Share = (Tenant Rentable Sq Ft \u00f7 Building Total Rentable Sq Ft) \u00d7 100%; Additional Rent = Tenant's Share \u00d7 (Operating Expenses \u2013 Base Year Expenses).",
+                        "new_value": "Tenant's Proportionate Share = (Tenant Rentable Sq Ft \u00f7 Building Total Rentable Sq Ft) \u00d7 100%; Additional Rent = Tenant's Share \u00d7 (Operating Expenses \u2013 Base Year Expenses).",
+                        "amendment_citation": "1",
+                        "effective_date": "February 1, 2022",
+                        "description": "Proportionate share percentage updated to 6.6% (see amendment)."
+                    }
+                ]
+            },
+            "capitalRules": {
+                "value": "Capital improvements are excluded from Operating Expenses unless they directly reduce Tenant's Operating Expenses; such costs are amortized on a straight\u2011line basis over their useful life. Tenant\u2011caused capital improvements are amortized over the remainder of the lease term.",
+                "citation": "Pages 9-10",
+                "amendments": []
+            },
+            "narrative": {
+                "value": "Operating expenses (as defined herein) incurred in any year during the lease term which exceed the operating expenses on the Building for the Base Year (2022) will be passed through to the Building tenants on a prorata basis. Operating Expenses shall be adjusted to reflect the Operating ... Controllable Operating Expenses shall not increase by more than five percent (5%) annually following Tenant's Base Year. Landlord shall send to Tenant a written statement of the amount of Tenant's Proportionate Share of any estimated increase in Operating Expenses and Tenant shall pay to Landlord, monthly as Additional Rent, Tenant's prorata share of such increase in Operating Expenses. Within ninety (90) days after the end of each calendar year, Landlord shall send an annual statement of Operating Expenses ...",
+                "citation": "Pages 9-10",
+                "amendments": []
+            }
+        },
+        "parking": {
+            "synopsis": {
+                "value": "Tenant shall be entitled to seventy\u2011five (75) parking spaces as a result of the reduction of the Premises.",
+                "citation": "1",
+                "amendments": [
+                    {
+                        "amendment_type": "modification",
+                        "previous_value": "Tenant is entitled to not less than 4.5 parking spaces per 1,000 rentable square feet at no charge. No exclusive reserved spaces are provided to Tenant.",
+                        "new_value": "Tenant shall be entitled to seventy\u2011five (75) parking spaces as a result of the reduction of the Premises.",
+                        "amendment_citation": "1",
+                        "effective_date": "February 1, 2022",
+                        "description": "Parking allocation increased to 75 spaces per amendment Section\u202f16."
+                    }
+                ]
+            }
+        }
+    },
+    "executiveSummary": {
+        "value": "This lease, dated May\u202f2015, is between PH Office\u202f2,\u202fLLC (Landlord) and Bayer HealthCare\u202fLLC (Tenant). The Premises are on the 6th floor of 5100\u202fW.J.B.\u202fHunt\u202fDrive, Suite\u202f602, Rogers, Arkansas, comprising approximately 14,952\u202frentable square feet (12,824\u202fusable square feet) after a downsizing amendment effective February\u202f1\u202f2022. The Primary Term runs for 77\u202fmonths, ending on the last day of the 77th full month, with a Tenant\u2011option to extend to 90\u202fmonths by giving notice within 21\u202fdays of Commencement; two additional five\u2011year Renewal Terms are available upon 180\u2011365\u202fday notice. Base rent is set per the amendment table (Year\u202f1 $33,019 annual, $396,228 monthly, etc.) and is calculated on the reduced rentable area. Tenant receives a one\u2011time early termination right after 36\u202fmonths of occupancy and is allocated 75 parking spaces. Operating Expenses Base Year changed to 2022 and Tenant\u2019s proportionate share is 6.6%.",
+        "citation": "Compiled from original lease and Second Lease Amendment (pages 1\u20115)",
+        "amendments": []
+    },
+    "audit_items": [
+        {
+            "category": "Low\u2011Confidence Extraction",
+            "issue_description": "Lease Date is shown as \"_`--5. 2015\" which is garbled and unclear.",
+            "affected_clause": "Lease Date (Basic Lease Information)",
+            "page_references": [
+                2
+            ],
+            "certainty": "LOW",
+            "recommended_action": "Confirm the exact lease execution date with the parties and update the record."
+        },
+        {
+            "category": "Missing Core Field",
+            "issue_description": "Security Deposit field is marked as \"Intentionally Deleted\" with no amount provided.",
+            "affected_clause": "Security Deposit (Section 2 \u2013 Base Rent and Security Deposit)",
+            "page_references": [
+                8,
+                9
+            ],
+            "certainty": "HIGH",
+            "recommended_action": "Obtain the intended security deposit amount or confirm that no deposit is required."
+        },
+        {
+            "category": "Missing Exhibit Content",
+            "issue_description": "Exhibit A, B, C, D, and E are placeholders with no substantive data (e.g., rentable square footage, tenant improvements, rules, memorandum details).",
+            "affected_clause": "References to Exhibits throughout the lease (e.g., Premises description, Tenant Improvements, Rules and Regulations, Memorandum of Acceptance).",
+            "page_references": [
+                3,
+                31,
+                32,
+                33,
+                38,
+                39
+            ],
+            "certainty": "HIGH",
+            "recommended_action": "Secure the finalized exhibits and attach them to the lease file."
+        },
+        {
+            "category": "Conflicting Extension Notice Periods",
+            "issue_description": "Primary Term extension notice is 14 days in Section 3 (page 3) but 21 days in Section 5 (page 5).",
+            "affected_clause": "Extension of Primary Term notice period",
+            "page_references": [
+                3,
+                5
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Clarify and reconcile the correct notice period for lease extension."
+        },
+        {
+            "category": "Conflicting Rent Commencement Definitions",
+            "issue_description": "Rent Commencement is described as the first day of the 6th full month (page 3) but also states rent commences on the first day of the 7th full month if the tenant extends to 90 months (page 3).",
+            "affected_clause": "Rent Commencement date",
+            "page_references": [
+                3
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Specify a single, unambiguous rent commencement rule for both scenarios."
+        },
+        {
+            "category": "Ambiguous Conditional Clause \u2013 Commencement Date",
+            "issue_description": "Commencement Date depends on multiple conditions (Landlord\u2019s substantial completion, notice, tenant\u2019s 2\u2011day furniture installation window, certificate of occupancy) without clear sequencing or deadlines.",
+            "affected_clause": "Commencement Date definition (page 3)",
+            "page_references": [
+                3
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Create a detailed timeline with explicit dates or maximum allowable delays for each condition."
+        },
+        {
+            "category": "Subjective Standard \u2013 Landlord Satisfaction",
+            "issue_description": "Tenant Improvements must be performed in a \"good and workmanlike manner\" and comply with all applicable laws, but no objective criteria are defined for \"good and workmanlike\".",
+            "affected_clause": "Tenant Improvements (Section D, page 6)",
+            "page_references": [
+                6
+            ],
+            "certainty": "HIGH",
+            "recommended_action": "Define measurable standards or reference industry guidelines for workmanship quality."
+        },
+        {
+            "category": "Subjective Standard \u2013 Reasonable and Good\u2011Faith Determination",
+            "issue_description": "Landlord must provide a \"reasonable and good\u2011faith determination\" of the annual Base Rent for Renewal Terms (page 5). No criteria are provided.",
+            "affected_clause": "Option Rent Notice (Section A, page 5)",
+            "page_references": [
+                5
+            ],
+            "certainty": "HIGH",
+            "recommended_action": "Specify the methodology, benchmarks, or third\u2011party data to be used for this determination."
+        },
+        {
+            "category": "Unquantified Financial Risk \u2013 Tenant Improvement Allowance",
+            "issue_description": "Improvement Allowance is stated as $72.22 per rentable square foot (page 6) but the total dollar amount ($1,234,239.80) may not align with the actual rentable area (17,090 RSF) and no cap is mentioned for overruns.",
+            "affected_clause": "Tenant Improvement Allowance (Section D, page 6)",
+            "page_references": [
+                6
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Re\u2011calculate the total allowance based on the exact rentable square footage and include an overruns cap or cost\u2011sharing mechanism."
+        },
+        {
+            "category": "Unquantified Financial Risk \u2013 Early Termination Fee",
+            "issue_description": "Early termination fee includes reimbursement of the unamortized Improvement Allowance and Broker's commission, amortized with 7% annual interest, but the exact formula and timing are not detailed.",
+            "affected_clause": "Early Termination (Section G, page 7)",
+            "page_references": [
+                7
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Provide a clear amortization schedule and define the date of interest calculation."
+        },
+        {
+            "category": "Ambiguous Cost Allocation \u2013 Operating Expenses Cap",
+            "issue_description": "Controllable Operating Expenses shall not increase by more than 5% annually (page 9) but the definition of \"controllable\" excludes taxes and insurance, creating potential disputes over classification.",
+            "affected_clause": "Operating Expenses cap (Section 4, page 9)",
+            "page_references": [
+                9
+            ],
+            "certainty": "HIGH",
+            "recommended_action": "List specific expense categories considered controllable and provide examples."
+        },
+        {
+            "category": "Conflicting Provisions \u2013 Conflict Resolution",
+            "issue_description": "Basic Lease Information states it controls over conflicts (page 4), yet later sections (e.g., Section 29 \u2013 Notices) may contain contradictory language without reference to Basic Lease Information.",
+            "affected_clause": "Conflict resolution hierarchy",
+            "page_references": [
+                4,
+                29
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Insert a definitive clause stating the hierarchy and ensure all sections reference it consistently."
+        },
+        {
+            "category": "Duplicate Data \u2013 Base Rent Table",
+            "issue_description": "Base Rent schedule appears twice (pages 8 and 9) with identical figures, increasing the risk of inconsistency if one copy is edited.",
+            "affected_clause": "Base Rent schedule (Table 1)",
+            "page_references": [
+                8,
+                9
+            ],
+            "certainty": "HIGH",
+            "recommended_action": "Consolidate the table into a single reference and cross\u2011link any future updates."
+        },
+        {
+            "category": "Missing Critical Field \u2013 Tenant\u2019s Proportionate Share",
+            "issue_description": "Tenant\u2019s Proportionate Share percentage is left blank in Exhibit D (page 38).",
+            "affected_clause": "Tenant\u2019s Proportionate Share (Exhibit D)",
+            "page_references": [
+                38
+            ],
+            "certainty": "HIGH",
+            "recommended_action": "Calculate and insert the correct proportion based on rentable square footage."
+        },
+        {
+            "category": "Conditional Clause \u2013 First Right of Refusal",
+            "issue_description": "First Right of Refusal (Section 30, page 27) requires tenant to notify within 10 business days, but the notice period for the landlord to present the offer is not defined.",
+            "affected_clause": "Right of First Refusal (Section 30)",
+            "page_references": [
+                27
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Specify the landlord\u2019s notice deadline and method of communication."
+        },
+        {
+            "category": "Ambiguous Term \u2013 \"Reasonable\" Costs for Additional Services",
+            "issue_description": "Janitorial services may be arranged at \"reasonable rates\" (page 13) without a defined benchmark.",
+            "affected_clause": "Janitorial Services (Section 9(c), page 13)",
+            "page_references": [
+                13
+            ],
+            "certainty": "HIGH",
+            "recommended_action": "Define a pricing formula or reference market rates."
+        },
+        {
+            "category": "Subjective Standard \u2013 \"Reasonable\" Maintenance Personnel",
+            "issue_description": "Tenant may request qualified maintenance personnel; Landlord must provide them without charge, but \u201cqualified\u201d is undefined (page 11).",
+            "affected_clause": "Maintenance Personnel (Section 5, page 11)",
+            "page_references": [
+                11
+            ],
+            "certainty": "HIGH",
+            "recommended_action": "Establish qualification criteria (certifications, experience) for maintenance staff."
+        },
+        {
+            "category": "Unquantified Risk \u2013 Hazardous Materials Cleanup",
+            "issue_description": "Tenant is liable for cleanup costs of hazardous material spills, but no cap or insurance requirement is stated (page 24).",
+            "affected_clause": "Hazardous Materials (Section 24, page 24)",
+            "page_references": [
+                24
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Require Tenant to maintain environmental liability insurance and set a maximum exposure limit."
+        },
+        {
+            "category": "Ambiguous Term \u2013 \"Force Majeure Delays\"",
+            "issue_description": "Force Majeure Delays are referenced in multiple sections (e.g., lease termination after 120 days) without a definition of what constitutes such delays (page 15).",
+            "affected_clause": "Force Majeure definition (Section 11, page 15)",
+            "page_references": [
+                15
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Insert a definition listing specific events that qualify as force majeure."
+        },
+        {
+            "category": "Missing Financial Detail \u2013 Late Charge Rate",
+            "issue_description": "Late charge is described as 5% of the overdue amount (page 21) but the lease also mentions a 2% late charge elsewhere (page 8), creating inconsistency.",
+            "affected_clause": "Late Charge provision (Sections 20(C) and 2)",
+            "page_references": [
+                8,
+                21
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Standardize the late charge rate throughout the lease."
+        },
+        {
+            "category": "Conflicting Termination Rights \u2013 Landlord vs. Tenant",
+            "issue_description": "Landlord may terminate for insurance shortfall (Section 15(D), page 15) while Tenant also has a termination right after 120 days of unrepaired damage (Section 15(B), page 15). Overlap may cause disputes.",
+            "affected_clause": "Termination rights (Section 15, pages 15\u201116)",
+            "page_references": [
+                15,
+                16
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Clarify the order of precedence and conditions for each termination right."
+        },
+        {
+            "category": "Ambiguous Measurement Method \u2013 Premises Size",
+            "issue_description": "Premises size to be measured by Core Architects and validated by Nielsen Architects using ANSI/BOMA Z65.1\u20111996, but no deadline for completion is set.",
+            "affected_clause": "Premises measurement (Section 3, page 3)",
+            "page_references": [
+                3
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Add a specific timeline for measurement and validation, and define consequences for delays."
+        },
+        {
+            "category": "Missing Clause \u2013 Insurance Deductible Responsibility",
+            "issue_description": "Tenant\u2019s responsibility for insurance deductibles is not specified, though Tenant must maintain policies (page 14).",
+            "affected_clause": "Insurance (Section 10, page 14)",
+            "page_references": [
+                14
+            ],
+            "certainty": "HIGH",
+            "recommended_action": "Insert a clause allocating deductible costs to either Landlord or Tenant."
+        },
+        {
+            "category": "Subjective Standard \u2013 \"Reasonable\" Adjustments to Base Rent",
+            "issue_description": "Landlord must provide a \u201creasonable and good\u2011faith determination\u201d of annual Base Rent for Renewal Terms (page 5), but no formula is provided.",
+            "affected_clause": "Option Rent determination (Section A, page 5)",
+            "page_references": [
+                5
+            ],
+            "certainty": "HIGH",
+            "recommended_action": "Adopt a market rent survey method or index to calculate renewal rent."
+        },
+        {
+            "category": "Ambiguous Definition \u2013 \"Walls\"",
+            "issue_description": "Section 5 defines \u201cwalls\u201d as not including components of Tenant Improvements, yet earlier sections assign repair obligations to Tenant for walls (page 11).",
+            "affected_clause": "Walls definition (Section 5, page 11)",
+            "page_references": [
+                11
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Clarify which walls are tenant\u2011responsible versus landlord\u2011responsible."
+        },
+        {
+            "category": "Missing Financial Detail \u2013 Broker Commission",
+            "issue_description": "Broker commission amount is not disclosed anywhere; only broker names are listed (page 4).",
+            "affected_clause": "Broker representation (Section 4, page 4)",
+            "page_references": [
+                4
+            ],
+            "certainty": "HIGH",
+            "recommended_action": "Obtain the agreed commission percentage or dollar amount and document it."
+        },
+        {
+            "category": "Conditional Clause \u2013 Holding Over Rent",
+            "issue_description": "Holding over rent is set at 150% of monthly rent plus operating expenses (page 18) but the calculation method for partial months is vague.",
+            "affected_clause": "Holding Over (Section 18, page 18)",
+            "page_references": [
+                18
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Specify prorated rent calculation for partial days."
+        },
+        {
+            "category": "Ambiguous Term \u2013 \"Reasonable\" Access Hours for Moving",
+            "issue_description": "Moving hours are limited to 7:00\u202fam\u20116:00\u202fpm (page 36) but no exception process is defined for emergencies or special circumstances.",
+            "affected_clause": "Moving restrictions (Section 36, page 36)",
+            "page_references": [
+                36
+            ],
+            "certainty": "HIGH",
+            "recommended_action": "Create a request procedure for after\u2011hours moves."
+        },
+        {
+            "category": "Missing Clause \u2013 Sublease Approval Timeline",
+            "issue_description": "Landlord\u2019s consent to sublease is deemed given if no response within ten business days (page 15), but no method of notice is defined.",
+            "affected_clause": "Assignment and Subletting (Section 15, page 15)",
+            "page_references": [
+                15
+            ],
+            "certainty": "HIGH",
+            "recommended_action": "Define the acceptable method of delivering the sublease request (e.g., certified mail, email)."
+        },
+        {
+            "category": "Unquantified Risk \u2013 Additional Services Charges",
+            "issue_description": "Landlord may discontinue extra services after 30 days of non\u2011payment and treat them as additional rent (page 14), but no cap on such charges is provided.",
+            "affected_clause": "Additional Services (Section 14, page 14)",
+            "page_references": [
+                14
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Set a maximum percentage or dollar limit for additional service charges."
+        },
+        {
+            "category": "Ambiguous Term \u2013 \"Reasonable\" Cost for Third Appraiser",
+            "issue_description": "If two appraisers cannot agree, a third is appointed; costs are split but \u201creasonable\u201d cost is not defined (page 5).",
+            "affected_clause": "Appraiser selection (Section A, page 5)",
+            "page_references": [
+                5
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Specify a fee schedule or maximum cost for the third appraiser."
+        },
+        {
+            "category": "Missing Financial Detail \u2013 Late Charge Interest Rate",
+            "issue_description": "Late charge is 5% of overdue amount (page 21) but earlier mention of a 2% late charge exists (page 8), creating inconsistency.",
+            "affected_clause": "Late Charge provision (Sections 2 and 20(C))",
+            "page_references": [
+                8,
+                21
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Consolidate to a single late charge rate and delete the contradictory provision."
+        },
+        {
+            "category": "Subjective Standard \u2013 \"Reasonable\" Maintenance Personnel Costs",
+            "issue_description": "Tenant may use qualified maintenance personnel at no charge (page 11), but \u201cqualified\u201d and \u201cno charge\u201d are not defined.",
+            "affected_clause": "Maintenance Personnel (Section 5, page 11)",
+            "page_references": [
+                11
+            ],
+            "certainty": "HIGH",
+            "recommended_action": "Define qualifications and confirm that costs (e.g., parts, overtime) are covered."
+        },
+        {
+            "category": "Ambiguous Term \u2013 \"Reasonable\" Use of Building Name",
+            "issue_description": "Tenant may use the building name only in a conventional manner (page 26), but \u201cconventional\u201d is not defined.",
+            "affected_clause": "Use of Building Name (Section 25, page 26)",
+            "page_references": [
+                26
+            ],
+            "certainty": "HIGH",
+            "recommended_action": "Provide examples or a style guide for permissible usage."
+        },
+        {
+            "category": "Missing Clause \u2013 Insurance Cancellation Notice Period",
+            "issue_description": "Policies shall not be canceled unless 30 days prior written notice is given (page 14), but no procedure for providing such notice is described.",
+            "affected_clause": "Insurance cancellation (Section 10, page 14)",
+            "page_references": [
+                14
+            ],
+            "certainty": "HIGH",
+            "recommended_action": "Add a notice method (e.g., certified mail) and address requirement."
+        },
+        {
+            "category": "Conflicting Definition \u2013 \"Operating Expenses\"",
+            "issue_description": "Operating Expenses exclude capital improvements (page 9) but later Section 4 lists capital improvements as excluded only if they reduce Tenant\u2019s expenses, creating potential overlap.",
+            "affected_clause": "Operating Expenses definition (Section 4, page 9)",
+            "page_references": [
+                9
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Provide a clear, exhaustive list of excluded items."
+        },
+        {
+            "category": "Missing Financial Detail \u2013 Broker Commission for Reletting",
+            "issue_description": "Landlord may recover broker\u2019s commission in default remedies (page 21) but the commission amount or percentage is not specified.",
+            "affected_clause": "Reletting costs (Section 21(B), page 21)",
+            "page_references": [
+                21
+            ],
+            "certainty": "HIGH",
+            "recommended_action": "Insert the agreed broker commission rate or a method to calculate it."
+        },
+        {
+            "category": "Ambiguous Term \u2013 \"Reasonable\" Cost for Additional Rent",
+            "issue_description": "Additional Rent for Operating Expenses is payable monthly, but \u201creasonable\u201d cost for services like extra temperature control is not defined (page 13).",
+            "affected_clause": "Additional services cost (Section 9(c), page 13)",
+            "page_references": [
+                13
+            ],
+            "certainty": "HIGH",
+            "recommended_action": "Reference market rates or provide a cost schedule."
+        },
+        {
+            "category": "Missing Clause \u2013 Subordination Language",
+            "issue_description": "Section 22 mentions subordination to mortgages but does not include a non\u2011disturbance clause, which is critical for tenant protection.",
+            "affected_clause": "Subordination (Section 22, page 22)",
+            "page_references": [
+                22
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Add a standard non\u2011disturbance, non\u2011derogation clause."
+        },
+        {
+            "category": "Ambiguous Term \u2013 \"Reasonable\" Time for Landlord to Cure Default",
+            "issue_description": "Landlord has 30 days to cure defaults (Section 33, page 28) but \u201creasonable diligence\u201d is also mentioned elsewhere without a specific timeframe.",
+            "affected_clause": "Landlord Default cure period (Section 33, page 28)",
+            "page_references": [
+                28
+            ],
+            "certainty": "MEDIUM",
+            "recommended_action": "Standardize cure periods and remove vague language."
+        }
+    ]
+}

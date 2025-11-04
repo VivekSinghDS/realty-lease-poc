@@ -1,0 +1,146 @@
+{
+  "newCamRules": [
+    {
+      "ruleId": "CAM-P3-001",
+      "ruleSummary": "Tenant's proportionate share of the building will be inserted in Exhibit D after BOMA measurement"
+    }
+  ],
+  "continuedRules": [],
+  "updatedRules": [],
+  "flagsAndObservations": {
+    "ambiguities": [],
+    "conflicts": [],
+    "missingProvisions": [
+      {
+        "provisionType": "camExpenseCategories",
+        "significance": "High",
+        "tenantRisk": "Potential exposure to undefined CAM charges"
+      },
+      {
+        "provisionType": "exclusions",
+        "significance": "High",
+        "tenantRisk": "Unclear which expenses are excluded from CAM"
+      },
+      {
+        "provisionType": "paymentTerms",
+        "significance": "High",
+        "tenantRisk": "No timing or frequency for CAM payments defined"
+      },
+      {
+        "provisionType": "capsLimitations",
+        "significance": "Medium",
+        "tenantRisk": "Absence of caps may allow unlimited CAM increases"
+      },
+      {
+        "provisionType": "reconciliationProcedures",
+        "significance": "Medium",
+        "tenantRisk": "No annual true‑up or audit rights described"
+      },
+      {
+        "provisionType": "baseYearProvisions",
+        "significance": "Medium",
+        "tenantRisk": "Unclear if CAM is based on a base year"
+      },
+      {
+        "provisionType": "grossUpProvisions",
+        "significance": "Medium",
+        "tenantRisk": "No gross‑up methodology for occupancy variations"
+      },
+      {
+        "provisionType": "administrativeFees",
+        "significance": "Low",
+        "tenantRisk": "Potential hidden administrative charges"
+      },
+      {
+        "provisionType": "auditRights",
+        "significance": "High",
+        "tenantRisk": "Tenant may lack right to audit CAM statements"
+      },
+      {
+        "provisionType": "noticeRequirements",
+        "significance": "Medium",
+        "tenantRisk": "No notice provisions for CAM invoices or estimates"
+      },
+      {
+        "provisionType": "controllableVsNonControllable",
+        "significance": "Medium",
+        "tenantRisk": "No distinction may affect cost predictability"
+      },
+      {
+        "provisionType": "definitions",
+        "significance": "High",
+        "tenantRisk": "Key CAM terms may be undefined"
+      },
+      {
+        "provisionType": "calculationMethods",
+        "significance": "High",
+        "tenantRisk": "No formula for calculating CAM charges"
+      }
+    ],
+    "tenantConcerns": [],
+    "provisionsSpanningToNextPage": []
+  },
+  "cumulativeCamRulesSummary": {
+    "totalRulesExtracted": 1,
+    "totalUpdates": 0,
+    "totalContinuations": 0,
+    "rulesByCategory": {
+      "proportionateShare": 1,
+      "camExpenseCategories": 0,
+      "exclusions": 0,
+      "paymentTerms": 0,
+      "capsLimitations": 0,
+      "reconciliationProcedures": 0,
+      "baseYearProvisions": 0,
+      "grossUpProvisions": 0,
+      "administrativeFees": 0,
+      "auditRights": 0,
+      "noticeRequirements": 0,
+      "controllableVsNonControllable": 0,
+      "definitions": 0,
+      "calculationMethods": 0
+    },
+    "completenessScore": {
+      "categoriesWithRules": 1,
+      "criticalMissingProvisions": [
+        "camExpenseCategories",
+        "exclusions",
+        "paymentTerms",
+        "auditRights",
+        "definitions",
+        "calculationMethods"
+      ],
+      "overallCompleteness": "Sparse"
+    },
+    "riskAssessment": {
+      "overallTenantRisk": "Low",
+      "highRiskRuleCount": 0,
+      "unfavorableRuleCount": 0,
+      "keyTenantProtections": [],
+      "keyTenantExposures": []
+    }
+  },
+  "allExtractedRules": [
+    {
+      "ruleId": "CAM-P3-001",
+      "ruleCategory": "proportionateShare",
+      "locations": [
+        {
+          "pageNumber": 3,
+          "section": "Premises",
+          "paragraph": "",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Tenant's proportionate share of the building will be inserted in Exhibit D after BOMA measurement",
+      "exactLanguage": "After such measurements have been measured and validated, Landlord shall insert the rentable square feet of the Premises and Tenant's Proportionate Share in Exhibit D (Memorandum Of Acceptance Of Delivery Of Premises).",
+      "tenantImpact": "Tenant's CAM liability will be calculated based on the proportionate share determined post‑measurement, tying CAM expense responsibility to the tenant's share of rentable area.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Neutral",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 3
+    }
+  ]
+}

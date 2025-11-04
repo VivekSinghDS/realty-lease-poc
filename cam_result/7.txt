@@ -1,0 +1,240 @@
+{
+  "newCamRules": [
+    {
+      "ruleId": "CAM-P8-001",
+      "ruleSummary": "Operating expenses exceeding the 2016 Base Year are passed through to tenants on a prorata basis."
+    },
+    {
+      "ruleId": "CAM-P8-002",
+      "ruleSummary": "Property taxes and special assessments exceeding the Base Year are passed through to tenants on a prorata basis."
+    },
+    {
+      "ruleId": "CAM-P8-003",
+      "ruleSummary": "Tenant may inspect books related to excess tax invoices within 180 days; audit rights waived thereafter."
+    },
+    {
+      "ruleId": "CAM-P8-004",
+      "ruleSummary": "Defines the Base Year as the calendar year 2016 for both taxes and operating expenses."
+    }
+  ],
+  "continuedRules": [],
+  "updatedRules": [],
+  "flagsAndObservations": {
+    "ambiguities": [],
+    "conflicts": [],
+    "missingProvisions": [
+      {
+        "provisionType": "paymentTerms",
+        "significance": "Medium",
+        "tenantRisk": "Uncertainty about timing and method of CAM payments"
+      },
+      {
+        "provisionType": "capsLimitations",
+        "significance": "Medium",
+        "tenantRisk": "Potential for unlimited CAM cost increases"
+      },
+      {
+        "provisionType": "grossUpProvisions",
+        "significance": "Medium",
+        "tenantRisk": "Exposure to expense adjustments based on occupancy"
+      },
+      {
+        "provisionType": "administrativeFees",
+        "significance": "Low",
+        "tenantRisk": "Possible additional fees not yet disclosed"
+      }
+    ],
+    "tenantConcerns": [
+      {
+        "concernType": "auditRights",
+        "description": "Audit window limited to 180 days after receipt of tax invoice; tenant must act promptly.",
+        "riskLevel": "Medium",
+        "negotiationPoint": true
+      },
+      {
+        "concernType": "baseYearDefinition",
+        "description": "Base Year fixed to 2016; if building improvements occur after that year, tenant may bear increased costs.",
+        "riskLevel": "Medium",
+        "negotiationPoint": true
+      }
+    ],
+    "provisionsSpanningToNextPage": [
+      {
+        "ruleId": "CAM-P8-001",
+        "partialText": "Operating Expenses shall be adjusted to reflect the Operating",
+        "expectedContinuation": "completion of the adjustment methodology and any gross‑up provisions on the following page."
+      }
+    ]
+  },
+  "cumulativeCamRulesSummary": {
+    "totalRulesExtracted": 5,
+    "totalUpdates": 1,
+    "totalContinuations": 2,
+    "rulesByCategory": {
+      "proportionateShare": 1,
+      "camExpenseCategories": 2,
+      "exclusions": 0,
+      "paymentTerms": 0,
+      "capsLimitations": 0,
+      "reconciliationProcedures": 0,
+      "baseYearProvisions": 1,
+      "grossUpProvisions": 0,
+      "administrativeFees": 0,
+      "auditRights": 1,
+      "noticeRequirements": 0,
+      "controllableVsNonControllable": 0,
+      "definitions": 0,
+      "calculationMethods": 0
+    },
+    "completenessScore": {
+      "categoriesWithRules": 5,
+      "criticalMissingProvisions": [
+        "paymentTerms",
+        "capsLimitations",
+        "grossUpProvisions",
+        "administrativeFees",
+        "reconciliationProcedures"
+      ],
+      "overallCompleteness": "Limited"
+    },
+    "riskAssessment": {
+      "overallTenantRisk": "Medium",
+      "highRiskRuleCount": 0,
+      "unfavorableRuleCount": 0,
+      "keyTenantProtections": [
+        "Audit rights to inspect tax invoices within 180 days",
+        "Pro rata pass‑through of excess taxes and operating expenses"
+      ],
+      "keyTenantExposures": [
+        "Potential unlimited increase in operating expense charges",
+        "Base Year fixed to 2016 may result in higher future expense allocations"
+      ]
+    }
+  },
+  "allExtractedRules": [
+    {
+      "ruleId": "CAM-P3-001",
+      "ruleCategory": "proportionateShare",
+      "locations": [
+        {
+          "pageNumber": 3,
+          "section": "Premises",
+          "paragraph": "",
+          "locationType": "Original"
+        },
+        {
+          "pageNumber": 4,
+          "section": "Basic Lease Information",
+          "paragraph": "",
+          "locationType": "Continuation"
+        }
+      ],
+      "ruleSummary": "Tenant's proportionate share of the building will be inserted in Exhibit D after BOMA measurement and may be adjusted per the Premises paragraph.",
+      "exactLanguage": "After such measurements have been measured and validated, Landlord shall insert the rentable square feet of the Premises and Tenant's Proportionate Share in Exhibit D (Memorandum Of Acceptance Of Delivery Of Premises). Tenant's Proportionate Share shall be adjusted in accordance with the Premises paragraph above.",
+      "tenantImpact": "Tenant's CAM liability is based on a proportionate share calculated from rentable area, but the share can be modified later, introducing potential variability in CAM expense responsibility.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Neutral",
+      "ruleStatus": "Partial",
+      "updateHistory": [
+        {
+          "updatePage": 4,
+          "updateType": "Additional Context",
+          "updateSummary": "Added language indicating the proportionate share may be adjusted per the Premises paragraph.",
+          "materialityOfChange": "Moderate Clarification"
+        }
+      ],
+      "firstExtractedPage": 3
+    },
+    {
+      "ruleId": "CAM-P8-001",
+      "ruleCategory": "camExpenseCategories",
+      "locations": [
+        {
+          "pageNumber": 8,
+          "section": "OPERATING EXPENSES",
+          "paragraph": "4.",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Operating expenses exceeding the 2016 Base Year are passed through to tenants on a prorata basis.",
+      "exactLanguage": "Operating expenses (as defined herein) incurred in any year during the lease term which exceed the operating expenses on the Building for the Base Year (2016) (the \"Base Year'') will be passed through to the Building tenants on a prorata basis.",
+      "tenantImpact": "Tenant must pay its proportionate share of any operating expenses above the 2016 base‑year amount, increasing CAM liability when actual costs rise.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Neutral",
+      "ruleStatus": "Partial",
+      "updateHistory": [],
+      "firstExtractedPage": 8
+    },
+    {
+      "ruleId": "CAM-P8-002",
+      "ruleCategory": "camExpenseCategories",
+      "locations": [
+        {
+          "pageNumber": 8,
+          "section": "TAXES",
+          "paragraph": "A.",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Property taxes and special assessments exceeding the Base Year are passed through to tenants on a prorata basis.",
+      "exactLanguage": "Landlord agrees to pay all real property taxes and special assessments (collectively referred to herein as \"Taxes\") that accrue against the Premises, and/or the Land and/or improvements of which the Premises are a part. Property taxes incurred in any year during the lease term which exceed the taxes on the property during the \"Base Year\", will be passed through to building tenants based on a pro‑rata square footage basis.",
+      "tenantImpact": "Tenant becomes responsible for its share of any tax increases above the 2016 base‑year level, adding to CAM costs.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Neutral",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 8
+    },
+    {
+      "ruleId": "CAM-P8-003",
+      "ruleCategory": "auditRights",
+      "locations": [
+        {
+          "pageNumber": 8,
+          "section": "TAXES",
+          "paragraph": "A.",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Tenant may inspect books related to excess tax invoices within 180 days; audit rights waived thereafter.",
+      "exactLanguage": "For any year in which Landlord invoices Tenant for excess property taxes, Tenant shall have a right to inspect the books and records of the property within one hundred eighty (180) days of receipt of such invoice with respect to such account. Tenant waives any right to audit after one hundred eighty (180) days.",
+      "tenantImpact": "Tenant has a limited window to verify tax pass‑through calculations, requiring timely action to protect against overcharges.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Neutral",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 8
+    },
+    {
+      "ruleId": "CAM-P8-004",
+      "ruleCategory": "baseYearProvisions",
+      "locations": [
+        {
+          "pageNumber": 8,
+          "section": "TAXES",
+          "paragraph": "A.",
+          "locationType": "Original"
+        },
+        {
+          "pageNumber": 8,
+          "section": "OPERATING EXPENSES",
+          "paragraph": "4.",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Defines the Base Year as the calendar year 2016 for both taxes and operating expenses.",
+      "exactLanguage": "The Base Year shall be the calendar year of 2016 or such later year to the extent the assessment for the Building and Land does not reflect the value of the completed Building and Premises as contemplated hereunder.",
+      "tenantImpact": "All pass‑through calculations for taxes and operating expenses are anchored to 2016 levels; any cost increases after that year are allocated to tenants.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Neutral",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 8
+    }
+  ]
+}

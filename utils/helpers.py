@@ -9,6 +9,7 @@ import pickle
 from typing import Dict, Any, List
 from adapters.database._local import _Local
 from adapters.database.base import Database
+from adapters.llms._claude import AnthropicAdapter
 from adapters.llms._groq import _Groq
 from adapters.llms._openai import _OpenAI
 from adapters.llms._perplexity import _Perplexity
@@ -22,10 +23,13 @@ from utils.references import audit
 load_dotenv()
 def get_llm_adapter() -> LargeLanguageModel:
     llm_details = json.loads(str(os.environ.get('LLM')))
+    print(llm_details, ' --=>>>>> <<<<==== ---')
     if llm_details['provider'] == "openai":
         return _OpenAI()
     elif llm_details['provider'] == "groq":
         return _Groq()
+    elif llm_details['provider'] == "claude":
+        return AnthropicAdapter()
     else:
         return _Perplexity()
 
@@ -214,6 +218,43 @@ def content_from_doc(info_list):
             content.append(text)
     return content
 
+def combined_analysis():
+    previous = None 
+    for i, files in enumerate(os.listdir("./cam_result")):
+        print(i)
+        if not files.endswith('.txt'):
+            continue 
+        
+        # try:
+        with open(f"./cam_result/{files}", 'r', encoding='utf-8') as f:
+            content = f.read().strip()
+        try:
+            content = json.loads(content)
+        except:
+            print('this is here -> ', i)
+            continue
+        if previous is None:
+            previous = content
+            continue 
+        
+        # previous['pageAnalysis'] = content['pageAnalysis']
+        previous['newCamRules'].extend(content['newCamRules'])
+        previous['continuedRules'].extend(content['continuedRules'])
+        previous['updatedRules'].extend(content['updatedRules'])
+        
+        previous['flagsAndObservations']['ambiguities'].extend(content['flagsAndObservations']['ambiguities'])
+        previous['flagsAndObservations']['conflicts'].extend(content['flagsAndObservations']['conflicts'])
+        previous['flagsAndObservations']['missingProvisions'].extend(content['flagsAndObservations']['missingProvisions'])
+        previous['flagsAndObservations']['tenantConcerns'].extend(content['flagsAndObservations']['tenantConcerns'])
+        previous['flagsAndObservations']['provisionsSpanningToNextPage'].extend(content['flagsAndObservations']['provisionsSpanningToNextPage'])
+        previous['cumulativeCamRulesSummary'] = content['cumulativeCamRulesSummary']
+        previous['allExtractedRules'].extend(content['allExtractedRules'])
+        
+            
+        # except:
+        #     continue 
+    return previous
+     
 
 
 def compile_iterative_outputs() -> Dict[str, Any]:

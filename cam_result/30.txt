@@ -1,0 +1,621 @@
+{
+  "newCamRules": [],
+  "continuedRules": [],
+  "updatedRules": [],
+  "flagsAndObservations": {
+    "ambiguities": [],
+    "conflicts": [],
+    "missingProvisions": [],
+    "tenantConcerns": [],
+    "provisionsSpanningToNextPage": []
+  },
+  "cumulativeCamRulesSummary": {
+    "totalRulesExtracted": 24,
+    "totalUpdates": 3,
+    "totalContinuations": 4,
+    "rulesByCategory": {
+      "proportionateShare": 1,
+      "camExpenseCategories": 5,
+      "exclusions": 2,
+      "paymentTerms": 5,
+      "capsLimitations": 1,
+      "reconciliationProcedures": 0,
+      "baseYearProvisions": 1,
+      "grossUpProvisions": 1,
+      "administrativeFees": 2,
+      "auditRights": 2,
+      "noticeRequirements": 2,
+      "controllableVsNonControllable": 1,
+      "definitions": 2,
+      "calculationMethods": 0
+    },
+    "completenessScore": {
+      "categoriesWithRules": 14,
+      "criticalMissingProvisions": [
+        "reconciliationProcedures"
+      ],
+      "overallCompleteness": "Comprehensive"
+    },
+    "riskAssessment": {
+      "overallTenantRisk": "Medium",
+      "highRiskRuleCount": 1,
+      "unfavorableRuleCount": 6,
+      "keyTenantProtections": [
+        "5% annual cap on controllable operating expense increases",
+        "Annual operating expense statement within 90 days and payment/credit adjustment within 30 days",
+        "Audit rights to review Operating Expense records once per year with 6‑month notice",
+        "Extensive exclusions list reducing CAM exposure",
+        "Clarified exclusion of structural components and building systems",
+        "No overhead or supervision fee for contractor use on alterations",
+        "Free parking entitlement reduces CAM exposure",
+        "Tenant may offset costs from Landlord default against rent (new rule)"
+      ],
+      "keyTenantExposures": [
+        "95% occupancy gross‑up may increase CAM liability if actual occupancy is lower",
+        "No cap on non‑controllable expense growth",
+        "Potential ambiguity in affiliate cost exclusions and direct‑pay expense exclusions",
+        "Hourly personnel charge for tenant‑initiated repairs",
+        "Charges for extra services may be added as additional rent with a short 30‑day payment window",
+        "Holdover penalty of 150% of rent plus CAM share creates high exposure if tenancy extends beyond term",
+        "All CAM charges classified as rent may be subject to rent‑related penalties",
+        "Survival of tax and insurance payment obligations after lease termination may create unexpected post‑termination costs"
+      ]
+    }
+  },
+  "allExtractedRules": [
+    {
+      "ruleId": "CAM-P3-001",
+      "ruleCategory": "proportionateShare",
+      "locations": [
+        {
+          "pageNumber": 3,
+          "section": "Premises",
+          "paragraph": "",
+          "locationType": "Original"
+        },
+        {
+          "pageNumber": 4,
+          "section": "Basic Lease Information",
+          "paragraph": "",
+          "locationType": "Continuation"
+        }
+      ],
+      "ruleSummary": "Tenant's proportionate share of the building will be inserted in Exhibit D after BOMA measurement and may be adjusted per the Premises paragraph.",
+      "exactLanguage": "After such measurements have been measured and validated, Landlord shall insert the rentable square feet of the Premises and Tenant's Proportionate Share in Exhibit D (Memorandum Of Acceptance Of Delivery Of Premises). Tenant's Proportionate Share shall be adjusted in accordance with the Premises paragraph above.",
+      "tenantImpact": "Tenant's CAM liability is based on a proportionate share calculated from rentable area, but the share can be modified later, introducing potential variability in CAM expense responsibility.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Neutral",
+      "ruleStatus": "Partial",
+      "updateHistory": [
+        {
+          "updatePage": 4,
+          "updateType": "Additional Context",
+          "updateSummary": "Added language indicating the proportionate share may be adjusted per the Premises paragraph.",
+          "materialityOfChange": "Moderate Clarification"
+        }
+      ],
+      "firstExtractedPage": 3
+    },
+    {
+      "ruleId": "CAM-P8-001",
+      "ruleCategory": "camExpenseCategories",
+      "locations": [
+        {
+          "pageNumber": 8,
+          "section": "OPERATING EXPENSES",
+          "paragraph": "4.",
+          "locationType": "Original"
+        },
+        {
+          "pageNumber": 9,
+          "section": "OPERATING EXPENSES",
+          "paragraph": "Gross‑up",
+          "locationType": "Continuation"
+        }
+      ],
+      "ruleSummary": "Operating expenses exceeding the 2016 Base Year are passed through to tenants on a prorata basis, calculated using a 95% occupancy gross‑up and rentable‑area ratio.",
+      "exactLanguage": "Operating expenses (as defined herein) incurred in any year during the lease term which exceed the operating expenses on the Building for the Base Year (2016) (the \"Base Year'') will be passed through to the Building tenants on a prorata basis. Expenses of the project as though ninety‑four percent (95%) were occupied at all times (including the Base Year). Tenant's pro‑rata share of building expenses shall be calculated as the resultant percentage based on the rentable square footage of the Building as the denominator and tenant's rentable square footage as the numerator.",
+      "tenantImpact": "Tenant must pay its proportionate share of any operating expenses above the 2016 base‑year amount, with the share calculated using a 95% occupancy gross‑up, potentially increasing liability if actual occupancy is lower.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Neutral",
+      "ruleStatus": "Updated",
+      "updateHistory": [
+        {
+          "updatePage": 9,
+          "updateType": "Specification",
+          "updateSummary": "Added gross‑up occupancy assumption of 95% and clarified calculation method based on rentable square footage.",
+          "materialityOfChange": "Moderate Clarification"
+        }
+      ],
+      "firstExtractedPage": 8
+    },
+    {
+      "ruleId": "CAM-P8-002",
+      "ruleCategory": "camExpenseCategories",
+      "locations": [
+        {
+          "pageNumber": 8,
+          "section": "TAXES",
+          "paragraph": "A.",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Property taxes and special assessments exceeding the Base Year are passed through to tenants on a prorata basis.",
+      "exactLanguage": "Landlord agrees to pay all real property taxes and special assessments (collectively referred to herein as \"Taxes\") that accrue against the Premises, and/or the Land and/or improvements of which the Premises are a part. Property taxes incurred in any year during the lease term which exceed the taxes on the property during the \"Base Year\", will be passed through to building tenants based on a pro‑ra square footage basis.",
+      "tenantImpact": "Tenant becomes responsible for its share of any tax increases above the 2016 base‑year level, adding to CAM costs.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Neutral",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 8
+    },
+    {
+      "ruleId": "CAM-P8-003",
+      "ruleCategory": "auditRights",
+      "locations": [
+        {
+          "pageNumber": 8,
+          "section": "TAXES",
+          "paragraph": "A.",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Tenant may inspect books related to excess tax invoices within 180 days; audit rights waived thereafter.",
+      "exactLanguage": "For any year in which Landlord invoices Tenant for excess property taxes, Tenant shall have a right to inspect the books and records of the property within one hundred eighty (180) days of receipt of such invoice with respect to such account. Tenant waives any right to audit after one hundred eighty (180) days.",
+      "tenantImpact": "Tenant has a limited window to verify tax pass‑through calculations, requiring timely action to protect against overcharges.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Neutral",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 8
+    },
+    {
+      "ruleId": "CAM-P8-004",
+      "ruleCategory": "baseYearProvisions",
+      "locations": [
+        {
+          "pageNumber": 8,
+          "section": "TAXES",
+          "paragraph": "A.",
+          "locationType": "Original"
+        },
+        {
+          "pageNumber": 8,
+          "section": "OPERATING EXPENSES",
+          "paragraph": "4.",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Defines the Base Year as the calendar year 2016 for both taxes and operating expenses.",
+      "exactLanguage": "The Base Year shall be the calendar year of 2016 or such later year to the extent the assessment for the Building and Land does not reflect the value of the completed Building and Premises as contemplated hereunder.",
+      "tenantImpact": "All pass‑through calculations for taxes and operating expenses are anchored to 2016 levels; any cost increases after that year are allocated to tenants.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Neutral",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 8
+    },
+    {
+      "ruleId": "CAM-P8-005",
+      "ruleCategory": "definitions",
+      "locations": [
+        {
+          "pageNumber": 9,
+          "section": "OPERATING EXPENSES",
+          "paragraph": "Definition",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Defines \"Operating Expense\" as all ordinary and reasonable costs incurred by Landlord for ownership, management, maintenance, repair, replacement, restoration, and operation of the property.",
+      "exactLanguage": "The term \"Operating Expense\" as used herein means the actual ordinary and reasonable costs and expenses incurred by or on behalf of Landlord for each calendar year that occurs wholly or partially during the Initial Term or any Renewal Term because of or in connection with the ownership, management, maintenance, repair, replacement, restoration or operation of the Real Property, including all costs and expenses paid or incurred by Landlord for operating, equipping, policing and protecting, lighting, utilities, heating, air‑conditioning, providing sanitation and other services, providing a public address system, insuring, repairing, replacing and maintaining the Building.",
+      "tenantImpact": "Clarifies exactly which costs are considered Operating Expenses, giving the tenant a clear scope of potential CAM charges.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Neutral",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 9
+    },
+    {
+      "ruleId": "CAM-P9-001",
+      "ruleCategory": "capsLimitations",
+      "locations": [
+        {
+          "pageNumber": 9,
+          "section": "OPERATING EXPENSES",
+          "paragraph": "Controllable Operating Expenses",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Controllable Operating Expenses (all except taxes and insurance) may not increase more than 5% annually after the Base Year.",
+      "exactLanguage": "Controllable Operating Expenses (defined as all Operating Expenses other than property taxes and insurance) shall not increase by more than five percent (5%) annually following Tenant's Base Year.",
+      "tenantImpact": "Limits the tenant's exposure to rising controllable expenses, providing a predictable ceiling on annual increases.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Favorable",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 9
+    },
+    {
+      "ruleId": "CAM-P9-002",
+      "ruleCategory": "paymentTerms",
+      "locations": [
+        {
+          "pageNumber": 9,
+          "section": "OPERATING EXPENSES",
+          "paragraph": "Estimates and Annual Statement",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Tenant pays monthly Additional Rent for estimated operating expense increases; Landlord provides annual statement within 90 days; payment or credit adjustment due within 30 days of receipt.",
+      "exactLanguage": "For the calendar year commencing on January 1st of the first calendar year after the Base Year and for each calendar year thereafter during the Term, Landlord shall estimate the amount the Operating Expenses shall increase for such calendar year above the Operating Expenses incurred during the Base Year. Landlord shall send to Tenant a written statement of the amount of Tenant's Proportionate Share of any estimated increase in Operating Expenses and Tenant shall pay to Landlord, monthly as Additional Rent, Tenant's prorata share of such increase in Operating Expenses. Within ninety (90) days after the end of each calendar year, Landlord shall send an annual statement of Operating Expenses... Pursuant to the Annual Statement, Tenant shall pay to Landlord Additional Rent in a lump sum as owed or Landlord shall adjust Tenant's Rent payments if Landlord owes Tenant a credit, such payment or adjustment to be made within thirty (30) days after the Annual Statement is received by Tenant.",
+      "tenantImpact": "Establishes a clear schedule for estimated monthly payments and an annual true‑up, but requires the tenant to manage cash flow for both monthly and potential lump‑sum adjustments.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Neutral",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 9
+    },
+    {
+      "ruleId": "CAM-P9-003",
+      "ruleCategory": "exclusions",
+      "locations": [
+        {
+          "pageNumber": 9,
+          "section": "OPERATING EXPENSES",
+          "paragraph": "Exclusions",
+          "locationType": "Original"
+        },
+        {
+          "pageNumber": 10,
+          "section": "OPERATING EXPENSES",
+          "paragraph": "Exclusions",
+          "locationType": "Update"
+        },
+        {
+          "pageNumber": 11,
+          "section": "LANDLORD'S REPAIRS AND MAINTENANCE",
+          "paragraph": "5.",
+          "locationType": "Update"
+        }
+      ],
+      "ruleSummary": "Operating Expenses shall not include capital improvements, casualty repairs, financing costs, depreciation, leasing commissions, penalties, warranty work, landlord income taxes, legal defense, financing transaction costs, plus additional items (xi)-(xxix) listed on page 10, and expressly exclude roof, foundation, exterior and interior structural walls, structural components, common areas, grounds, walkways, windows, and Building Systems.",
+      "exactLanguage": "Notwithstanding anything in this Lease to the contrary, Operating Expenses shall not include any of the following: (i) expenses for capital improvements except as expressly provided in this Section 4; (ii) costs (in excess of Landlord's insurance deductible) of repairs, restoration, replacements or other work occasioned by fire, windstorm or other casualty of an insurable nature (whether such destruction be total or partial), or the negligence or intentional tort of Landlord, or any subsidiary or affiliate of Landlord, or any representative, employee or agent of same; (iii) interest and amortization of funds borrowed by Landlord, whether secured or unsecured, and other financing costs; (iv) depreciation of the Building; (v) leasing commissions; (vi) costs, fines, interest, penalties, legal fees or costs of litigation incurred due to the late payments of taxes, utility bills and other costs incurred by Landlord's failure to make such payments when due; (vii) costs incurred (less cost of recovery) for any items to the extent covered by a manufacturer's, materialmen's, vendor's or contractor's warranty; (viii) income, excess profits, franchise taxes or other such taxes imposed on or measured by the income of Landlord from the operation of the Building; (ix) costs of Landlord's defense of lawsuits against Landlord and any judgments or costs of settlement; (x) legal fees and other costs (including prepayment of any indebtedness) incurred in connection with any mortgaging, financing, refinancing, sale, change of ownership or entering into or extending or modifying any financing, ground lease or any other lease or sublease to, or assumed by, directly or indirectly, Landlord, Landlord's agents or Landlord's affiliates; (xi) the costs of services or items provided by Landlord's affiliates to the extent that such costs exceed reasonable and customary charges for such services or items in the market area; (xii) acquisition or leasing costs of sculpture, paintings or other objects of art; (xiii) accounting fees, other than those incurred in connection with the preparation of statements required pursuant to the provisions of this Lease; (xiv) costs and expenses (including court costs, attorneys' fees and disbursements) related to or in connection with disputes with any holder of a mortgage or by or among any persons having an interest in the Landlord or the Building; (xv) consulting costs and expenses paid by Landlord unless such costs and expenses result in a reduction of Operating Expenses or property taxes; (xvi) any costs incurred in connection with the investigation or remediation of any Hazardous Materials (as specified in Section 24 of this Lease) located in, on, under or about the Premises as of the date hereof or any Hazardous Materials stored, used or released in, on, under or about the Premises after the date hereof, and any cost incurred in connection with any government investigation, order, proceeding or report with respect thereto (unless such materials were introduced in the Premises by Tenant, its invitees or guests); (xvii) costs incurred in connection with a sale, lease or transfer (including testamentary transfers) of all or any part of the Building or any interest therein, or any interest in Landlord, or in any person comprising, directly or indirectly, Landlord or in any person having an equity interest, directly or indirectly in Landlord; (xviii) the cost of any '1ap fees\" or one-time lump sum sewer or water connection fees for the Building payable in connection with the initial construction of the Building; (xix) any costs, fines or penalties incurred as a result of a violation by Landlord of any legal requirements; (xx) all costs and expenses (including services and utilities) payable directly by Tenant; (xxi) costs of repairing, replacing or otherwise correcting defects (but not the costs of repair or normal wear and tear) in the initial construction of the Building; (xxii) any tax other than property taxes required to be paid by the Tenant as specified in this Lease; (xxiii) costs of initial construction of the Building, including all project costs; (xxiv) costs and expenses incurred by Landlord associated with the operation of the business of the legal entity or entities which constitute Landlord (as opposed to operation of the Building); (xxv) charitable or political contributions; (xxvi) any other costs or expenses which, under generally accepted accounting principles consistently applied, would not be a normal and customary expense in comparable office buildings in the market area; (xxvii) costs of compliance with any laws (including without limitation, laws governing fire, life safety and disabilities) enacted or in effect and applicable to the Building as of the date hereof and cost of compliance with any present and future laws (including without limitation, laws governing fire, life safety and disability) affecting structural walls, roof, columns and common areas of the Building; (xxix) costs of any items for which Landlord is reimbursed. Landlord, at its expense and not as part of Operating Expenses shall be responsible only for repair and replacement of the roof, foundation, the exterior walls of the Building, interior structural walls, all structural components, common areas of the Building, grounds, walkways, windows, and the Building Systems, reasonable wear and tear excluded.",
+      "tenantImpact": "Provides a comprehensive list of items that will not be passed through to the tenant, reducing potential CAM liability while also clarifying that major structural components and building systems are excluded from Operating Expenses.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Favorable",
+      "ruleStatus": "Complete",
+      "updateHistory": [
+        {
+          "updatePage": 10,
+          "updateType": "Expansion",
+          "updateSummary": "Added items (xi) through (xxix) to the exclusions list.",
+          "materialityOfChange": "Significant Change"
+        },
+        {
+          "updatePage": 11,
+          "updateType": "Clarification",
+          "updateSummary": "Explicitly excluded roof, foundation, exterior and interior structural walls, structural components, common areas, grounds, walkways, windows, and Building Systems from Operating Expenses.",
+          "materialityOfChange": "Moderate Clarification"
+        }
+      ],
+      "firstExtractedPage": 9
+    },
+    {
+      "ruleId": "CAM-P9-004",
+      "ruleCategory": "grossUpProvisions",
+      "locations": [
+        {
+          "pageNumber": 9,
+          "section": "OPERATING EXPENSES",
+          "paragraph": "Gross‑up",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Expenses are calculated as if the building were 95% occupied; tenant's share is based on rentable square footage ratio.",
+      "exactLanguage": "Expenses of the project as though ninety‑five percent (95%) were occupied at all times (including the Base Year). Tenant's pro‑rata share of building expenses shall be calculated as the resultant percentage based on the rentable square footage of the Building as the denominator and tenant's rentable square footage as the numerator.",
+      "tenantImpact": "If actual occupancy falls below 95%, the tenant will still pay a share based on the higher assumed occupancy, potentially increasing CAM costs.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Unfavorable",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 9
+    },
+    {
+      "ruleId": "CAM-P9-005",
+      "ruleCategory": "administrativeFees",
+      "locations": [
+        {
+          "pageNumber": 11,
+          "section": "LANDLORD'S REPAIRS AND MAINTENANCE",
+          "paragraph": "5.",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Landlord may charge Tenant $50 per hour (minimum one hour) for use of Landlord's maintenance personnel to address Tenant's repair responsibilities.",
+      "exactLanguage": "Landlord shall charge, and Tenant shall pay, fifty dollars ($50.00) per hour, with a one hour minimum, for work performed by such personnel. Tenant shall reimburse Landlord for the cost of using such personnel upon delivery and receipt of invoice(s) and confirmation that said repairs are complete.",
+      "tenantImpact": "Tenant must pay hourly fees for Landlord's staff when they perform repairs that are Tenant's responsibility, adding a potential variable cost beyond standard CAM charges.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Unfavorable",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 11
+    },
+    {
+      "ruleId": "CAM-P11-003",
+      "ruleCategory": "administrativeFees",
+      "locations": [
+        {
+          "pageNumber": 11,
+          "section": "LANDLORD'S REPAIRS AND MAINTENANCE",
+          "paragraph": "5.",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Landlord may charge Tenant $50 per hour (minimum one hour) for use of Landlord's maintenance personnel to address Tenant's repair responsibilities.",
+      "exactLanguage": "Landlord shall charge, and Tenant shall pay, fifty dollars ($50.00) per hour, with a one hour minimum, for work performed by such personnel. Tenant shall reimburse Landlord for the cost of using such personnel upon delivery and receipt of invoice(s) and confirmation that said repairs are complete.",
+      "tenantImpact": "Tenant must pay hourly fees for Landlord's staff when they perform repairs that are Tenant's responsibility, adding a potential variable cost beyond standard CAM charges.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Unfavorable",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 11
+    },
+    {
+      "ruleId": "CAM-P12-001",
+      "ruleCategory": "administrativeFees",
+      "locations": [
+        {
+          "pageNumber": 12,
+          "section": "ALTERATIONS",
+          "paragraph": "",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Landlord will not charge overhead or supervision fees for contractors used by Tenant for alterations, additions, or improvements.",
+      "exactLanguage": "there shall be no overhead or supervision fee charged by Landlord.",
+      "tenantImpact": "Tenant avoids additional administrative fees when employing contractors for alterations, reducing overall CAM‑related costs.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Favorable",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 12
+    },
+    {
+      "ruleId": "CAM-P13-001",
+      "ruleCategory": "camExpenseCategories",
+      "locations": [
+        {
+          "pageNumber": 13,
+          "section": "SERVICES",
+          "paragraph": "(a)",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Landlord provides water service to Tenant; Tenant must not waste water and bears no direct charge for water provision.",
+      "exactLanguage": "Water, including cold water from mains for drinking, lavatory and toilet purposes drawn through fixtures installed by Landlord (including any fixtures within the Premises installed as part of the Landlord's Work), or by Tenant with Landlord's written consent, and water for lavatory purposes from the regular Building supply at the prevailing temperature. Tenant shall not waste or permit the waste of water.",
+      "tenantImpact": "Tenant receives water service as part of the lease without an explicit charge, but must avoid waste; no additional CAM cost is identified for water.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Neutral",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 13
+    },
+    {
+      "ruleId": "CAM-P13-002",
+      "ruleCategory": "camExpenseCategories",
+      "locations": [
+        {
+          "pageNumber": 13,
+          "section": "SERVICES",
+          "paragraph": "(e)",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Landlord supplies electrical lighting and heating/air‑conditioning for all public and special service areas; costs are included in CAM expense categories.",
+      "exactLanguage": "Electrical lighting services and heating and air conditioning for all public areas and special service areas of Building in the manner and to the extent reasonably deemed by Landlord to be standard.",
+      "tenantImpact": "Tenant's CAM liability includes its proportionate share of public‑area lighting and HVAC costs, increasing overall CAM exposure.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Neutral",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 13
+    },
+    {
+      "ruleId": "CAM-P13-003",
+      "ruleCategory": "camExpenseCategories",
+      "locations": [
+        {
+          "pageNumber": 13,
+          "section": "SERVICES",
+          "paragraph": "(c)",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Optional janitorial services may be arranged by Landlord for Tenant at Tenant's expense, subject to Landlord's prior written consent and supervision.",
+      "exactLanguage": "At an additional expense to Tenant, and only if requested by Tenant, Janitorial services may be arranged by Landlord through a third‑party janitorial service. Tenant shall not be permitted to provide janitorial services without Landlord's prior written consent, such consent not to be unreasonably withheld, and then, only by a janitor contractor or employee at all times satisfactory to Landlord and subject to the supervision of Landlord.",
+      "tenantImpact": "If Tenant elects to use janitorial services, it will bear the cost directly, adding a separate CAM‑related expense beyond the standard CAM pool.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Neutral",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 13
+    },
+    {
+      "ruleId": "CAM-P14-001",
+      "ruleCategory": "paymentTerms",
+      "locations": [
+        {
+          "pageNumber": 14,
+          "section": "SERVICES",
+          "paragraph": "",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Landlord‑provided extra services billed to Tenant are treated as additional rent and must be paid within 30 days, otherwise service may be discontinued.",
+      "exactLanguage": "In the event that by agreement with Tenant, Landlord furnishes extra or additional services to be paid for by Tenant, a failure to pay for such services within thirty days after notice shall, ipso facto, authorize Landlord, in Landlord's discretion and without further notice, to discontinue such services and terminate any agreement for services. The money due for services shall be deemed additional rental due hereunder and the same shall be subject to all of the provisions pertaining to the payment of rental.",
+      "tenantImpact": "Tenant is obligated to pay for any extra services within a short 30‑day window; such charges are classified as additional rent, subjecting them to the same payment provisions as base rent and potentially increasing CAM‑related cash outflows.",
+      "crossReferences": [],
+      "impactSeverity": "Medium",
+      "favorability": "Unfavorable",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 14
+    },
+    {
+      "ruleId": "CAM-P18-001",
+      "ruleCategory": "exclusions",
+      "locations": [
+        {
+          "pageNumber": 18,
+          "section": "PARKING",
+          "paragraph": "",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Tenant receives a minimum of 4.5 parking spaces per 1,000 rentable sq ft at no charge, effectively excluding parking fees from CAM charges.",
+      "exactLanguage": "Parking is shared in the Building's parking lot with other tenants of the Building; however, Landlord confirms that Tenant shall be entitled to the use of not less than four and one half (4.5) parking spaces per 1,000 rentable square feet of the Premises, with the exception of Tenant's layout room (if any), at no charge to Tenant during the term of this Lease. The Building will not provide any exclusive reserved spaces for any tenant use with the exception of the Landlord and its affiliated entities which shall be limited to six (6) reserved parking spaces. In the event Landlord grants any other tenants or occupants of the building exclusive reserved spaces, Tenant shall be provided an equivalent ratio.",
+      "tenantImpact": "Provides a defined, cost‑free parking allocation, reducing potential CAM exposure for parking-related expenses.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Favorable",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 18
+    },
+    {
+      "ruleId": "CAM-P19-001",
+      "ruleCategory": "paymentTerms",
+      "locations": [
+        {
+          "pageNumber": 19,
+          "section": "Holding Over",
+          "paragraph": "(ii)",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Holdover tenancy requires Tenant to pay 150% of monthly rent plus Tenant's proportionate share of Operating Expenses and Real Estate Taxes, prorated daily.",
+      "exactLanguage": "(ii) shall, in addition to all other sums which are to be paid by Tenant hereunder, whether or not as additional rent, be equal to one hundred fifty (150) percent of the rental being paid monthly to Landlord under this Lease in addition to Tenant's proportionate share of Operating Expenses and Real Estate Taxes immediately prior to such termination (prorated in the case of (ii) on the basis of a 365-day year for each day Tenant remains in possession).",
+      "tenantImpact": "If Tenant remains in possession after lease termination, rent escalates to 150% of the regular monthly rent and Tenant must also pay its proportionate share of operating expenses and real estate taxes for the holdover period, creating a significant financial exposure.",
+      "crossReferences": [],
+      "impactSeverity": "High",
+      "favorability": "Unfavorable",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 19
+    },
+    {
+      "ruleId": "CAM-P22-001",
+      "ruleCategory": "definitions",
+      "locations": [
+        {
+          "pageNumber": 22,
+          "section": "H.",
+          "paragraph": "",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "All Tenant payments to Landlord, even if not labeled rent, are deemed rent.",
+      "exactLanguage": "Notwithstanding anything in this Lease to the contrary, all amounts payable by Tenant to or on behalf of Landlord under this Lease, whether or not expressly denominated as rent, shall constitute rent.",
+      "tenantImpact": "CAM charges, fees, and other payments are treated as rent, making them subject to rent‑related provisions such as late fees, interest, and holdover penalties.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Unfavorable",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 22
+    },
+    {
+      "ruleId": "CAM-P26-001",
+      "ruleCategory": "paymentTerms",
+      "locations": [
+        {
+          "pageNumber": 26,
+          "section": "F.",
+          "paragraph": "",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Tenant's payment obligations for taxes and insurance survive lease termination, including any amounts due under Paragraph 28F.",
+      "exactLanguage": "All obligations of Tenant hereunder not fully performed as of the expiration or earlier termination of the Term of this Lease shall survive the expiration or earlier termination of the Term hereof, including without limitation, all payment obligations with respect to taxes and insurance and all obligations concerning the condition and repair of the Premises. Any security deposit held by Landlord shall be credited against the amounts due from Tenant under this Paragraph 28F.",
+      "tenantImpact": "Tenant remains liable for tax and insurance payments even after lease ends, potentially creating post‑termination financial exposure.",
+      "crossReferences": [
+        "Paragraph 28F"
+      ],
+      "impactSeverity": "Medium",
+      "favorability": "Unfavorable",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 26
+    },
+    {
+      "ruleId": "CAM-P27-001",
+      "ruleCategory": "noticeRequirements",
+      "locations": [
+        {
+          "pageNumber": 27,
+          "section": "29. NOTICES.",
+          "paragraph": "(a)",
+          "locationType": "Original"
+        },
+        {
+          "pageNumber": 27,
+          "section": "29. NOTICES.",
+          "paragraph": "(b)",
+          "locationType": "Original"
+        },
+        {
+          "pageNumber": 27,
+          "section": "29. NOTICES.",
+          "paragraph": "(c)",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Notice delivery must be personal, overnight carrier, or certified mail; deemed complied when steps are taken and effective upon delivery or attempted delivery per carrier records.",
+      "exactLanguage": "(a) All rent and other payments required to be made by Tenant to Landlord hereunder shall be payable to Landlord at the address for Landlord set forth in title Basic Lease Information or at such other address as Landlord may specify from time to time by written notice delivered in accordance herewith. Tenant's obligation to pay rent and any other amounts to Landlord under the terms of this Lease shall not be deemed satisfied until such rent and other amounts have been actually received by Landlord. In addition to Base Rent due hereunder, all sums of money and all payments due Landlord hereunder shall be deemed to be additional rental (\"Additional Rent\") owed to Landlord.\n(b) All payments required to be made by Landlord to Tenant hereunder shall be payable to Tenant at the address set forth in the Basic Lease Information, or at such other address within the continental United States as Tenant may specify from time to time by written notice delivered in accordance herewith.\n(c) Any written notice or document required or permitted to be delivered hereunder shall be in writing and shall be personally delivered or sent by nationally recognized overnight carrier, such as Federal Express, or by certified mail, return receipt requested, postage prepaid, addressed to the parties hereto at the respective addresses set out in the Basic Lease Information, or at such other address as they have theretofore specified by ...",
+      "tenantImpact": "Tenant must use the specified delivery methods for all notices and payments to ensure they are effective; failure to comply could jeopardize rights such as first refusal or other lease obligations.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Neutral",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 27
+    },
+    {
+      "ruleId": "CAM-P28-001",
+      "ruleCategory": "paymentTerms",
+      "locations": [
+        {
+          "pageNumber": 28,
+          "section": "33. LANDLORD DEFAULT / RIGHT OF OFFSET",
+          "paragraph": "",
+          "locationType": "Original"
+        }
+      ],
+      "ruleSummary": "Tenant may offset costs incurred due to Landlord default against Base Rent and Additional Rent (including CAM) until fully reimbursed.",
+      "exactLanguage": "If Landlord fails to perform any of its obligations hereunder within thirty (30) days after written notice from Tenant specifying in detail such failure ... Tenant may offset the amounts owed against monthly installments of Base Rent and Additional Rent due from Tenant to Landlord until Tenant is reimbursed, in full.",
+      "tenantImpact": "Provides a mechanism for Tenant to recover costs incurred from Landlord's failure to perform, reducing net out‑of‑pocket expense, but the offset calculation method is not detailed.",
+      "crossReferences": [],
+      "impactSeverity": "Low",
+      "favorability": "Favorable",
+      "ruleStatus": "Complete",
+      "updateHistory": [],
+      "firstExtractedPage": 28
+    }
+  ]
+}
