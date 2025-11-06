@@ -11,9 +11,9 @@ class _Local(Database):
         company_name: str = query.get('name', 'None')
         uid = company_name.lower().replace('-', '_').replace(' ', "_")
         if not os.path.exists(f"./companies/{company_name}"):
-            os.makedirs(f"./companies/{uid}")
-            os.makedirs(f"./companies/{uid}/lease")
-            os.makedirs(f"./companies/{uid}/amendments")
+            os.makedirs(f"./companies/{uid}", exist_ok=True)
+            os.makedirs(f"./companies/{uid}/lease", exist_ok=True)
+            os.makedirs(f"./companies/{uid}/amendments", exist_ok=True)
             
         return {
             "message": "Company successfully created",
