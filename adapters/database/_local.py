@@ -32,7 +32,7 @@ class _Local(Database):
     
     def get_single(self, query: dict):
         uid = query.get("uid", "None")
-        base_path = os.path.join("companies", uid)
+        base_path = os.path.join("./companies", uid)
 
         def load_json_files(folder, multiple=True):
             path = os.path.join(base_path, folder)
