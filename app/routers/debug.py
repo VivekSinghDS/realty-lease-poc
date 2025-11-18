@@ -551,9 +551,11 @@ async def get_cam(
             # Prepare system prompt for CAM analysis
                 previous_cam = None 
                 if i > 0:
+                    if not os.path.exists('./cam_result'):
+                        os.makedirs('./cam_result', exist_ok=True)
                     with open(f"./cam_result/{str(i - 1)}.txt", "r") as fpp:
                         previous_cam = fpp.read()
-                system_prompt = system.format(CURRENT_PAGE_NUMBER = str(i + 1), PREVIOUS_PAGE_NUMBER = str(i), NEXT_PAGE_NUMBER = str(i + 2),
+                system_prompt = system.format(CURRENT_PAGE_NUMBER = str(i + 1), PREVIOUS_PAGE_NUMBER = str(i), NEXT_PAGE_NUMBER = str(i + 2), NEXT_PAGE_CONTENT = None,
                                             PREVIOUS_PAGE_CONTENT = None if i == 0 else chunks[i - 1].original_page_text, CURRENT_PAGE_CONTENT = chunk.original_page_text, PREVIOUSLY_EXTRACTED_CAM_RULES = previous_cam)
                         
                 payload = [
@@ -563,15 +565,12 @@ async def get_cam(
                     {
                         "role": "user", "content": chunk_data
                     }
-                ]
-            # with open(f'./prompts_{str(i)}.txt', 'w') as fpp:
-            #     fpp.write(str(payload))
-            # Get LLM response for this chunk
-            
+                ]            
 
             # Update the result dictionary with this chunk's response
                 response = llm_adapter.get_non_streaming_response(payload)
                 message_content = response.choices[0].message.content
+                print('stanley', message_content)
                 
                 # message_content = response.output_text
                 os.makedirs('./cam_result', exist_ok=True)

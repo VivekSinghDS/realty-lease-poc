@@ -13,17 +13,17 @@ from utils.constants import CORS_CONFIG
   
 app = FastAPI()
 
-@app.middleware("http")
-async def timeout_middleware(request: Request, call_next):
-    start_time = time.time()
-    try:
-        # Set a reasonable timeout for all requests
-        response = await asyncio.wait_for(call_next(request), timeout=300.0)
-        process_time = time.time() - start_time
-        response.headers["X-Process-Time"] = str(process_time)
-        return response
-    except asyncio.TimeoutError:
-        return {"error": "Request timeout", "detail": "Request took too long to process"}
+# @app.middleware("http")
+# async def timeout_middleware(request: Request, call_next):
+#     start_time = time.time()
+#     try:
+#         # Set a reasonable timeout for all requests
+#         response = await asyncio.wait_for(call_next(request), timeout=300.0)
+#         process_time = time.time() - start_time
+#         response.headers["X-Process-Time"] = str(process_time)
+#         return response
+#     except asyncio.TimeoutError:
+#         return {"error": "Request timeout", "detail": "Request took too long to process"}
 
 routers = [
     {
