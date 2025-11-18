@@ -2,6 +2,7 @@ import os
 from typing import List
 from adapters.database.base import Database 
 import json 
+import shutil 
 
 class _Local(Database):
     def __init__(self):
@@ -56,6 +57,13 @@ class _Local(Database):
         }
         
     def delete(self, query: dict):
-        return {
-            
-        }
+        company_name: str = query.get('name', 'None')
+        uid = company_name.lower().replace('-', '_').replace(' ', "_")
+        if os.path.exists(f"./companies/{company_name}"):
+            shutil.rmtree(f"./companies/{company_name}")
+            return {
+                "message": "Company successfully deleted",
+                "uid": uid,
+                "deleted": True
+            }
+        

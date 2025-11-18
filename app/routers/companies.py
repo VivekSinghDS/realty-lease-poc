@@ -23,6 +23,10 @@ llm_adapter = get_llm_adapter()
 async def create_company(item: CreateRequest):
     return database_adapter.create({"name": item.name})
 
+@router.delete("/{company_uid}")
+async def delete_company(company_uid: str):
+    return database_adapter.delete({"name": company_uid})
+
 @router.get("")
 async def get_company():
     companies_data: dict = database_adapter.get() or {}
@@ -306,7 +310,5 @@ async def get_cam_rules(
 async def update_company():
     pass
 
-@router.delete("")
-async def delete_company():
-    pass
+
 
